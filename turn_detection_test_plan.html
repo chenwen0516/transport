@@ -1,0 +1,510 @@
+
+<h2 class="sr-only">轮次检测测试方案 — 完整测试用例与实施指南</h2>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.plan-header {
+  padding: 1.5rem 0 1rem;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  margin-bottom: 1.5rem;
+}
+.plan-title { font-size: 20px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.plan-sub { font-size: 13px; color: var(--color-text-secondary); }
+
+.section { margin-bottom: 2rem; }
+.section-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: 10px;
+}
+
+.def-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+.def-card {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md); padding: 12px 14px;
+}
+.def-name { font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px; }
+.def-formula { font-family: var(--font-mono); font-size: 12px; color: var(--color-text-primary); font-weight: 500; margin-bottom: 4px; line-height: 1.5; }
+.def-note { font-size: 11px; color: var(--color-text-tertiary); line-height: 1.4; }
+
+.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1rem; }
+.metric-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg); padding: 12px 14px;
+}
+.metric-label { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 5px; }
+.metric-value { font-size: 20px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 2px; }
+.metric-desc { font-size: 11px; color: var(--color-text-tertiary); line-height: 1.3; }
+
+.tc-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.tc-table th {
+  text-align: left; padding: 8px 10px; font-size: 11px; font-weight: 500;
+  color: var(--color-text-secondary); border-bottom: 0.5px solid var(--color-border-tertiary); white-space: nowrap;
+}
+.tc-table td {
+  padding: 9px 10px; color: var(--color-text-primary);
+  border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: top; line-height: 1.5;
+}
+.tc-table tr:last-child td { border-bottom: none; }
+.tc-table tr:hover td { background: var(--color-background-secondary); }
+
+.badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500; white-space: nowrap; }
+.badge-blue { background: #E6F1FB; color: #0C447C; }
+.badge-amber { background: #FAEEDA; color: #633806; }
+.badge-red { background: #FCEBEB; color: #791F1F; }
+.badge-teal { background: #E1F5EE; color: #085041; }
+.badge-purple { background: #EEEDFE; color: #3C3489; }
+.badge-gray { background: #F1EFE8; color: #444441; }
+
+.mono { font-family: var(--font-mono); font-size: 12px; }
+
+.divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 1.5rem 0; }
+
+/* VAD param table */
+.param-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1rem; }
+.param-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md); padding: 12px 14px;
+}
+.param-name { font-family: var(--font-mono); font-size: 11px; color: var(--color-text-secondary); margin-bottom: 6px; }
+.param-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+.param-label { font-size: 11px; color: var(--color-text-tertiary); }
+.param-val { font-size: 12px; font-weight: 500; color: var(--color-text-primary); font-family: var(--font-mono); }
+.param-risk { font-size: 11px; color: var(--color-text-tertiary); margin-top: 4px; line-height: 1.3; }
+
+.code-block {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md); padding: 14px 16px;
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--color-text-primary); line-height: 1.7; overflow-x: auto; margin-bottom: 10px;
+}
+.code-comment { color: var(--color-text-tertiary); }
+.code-key { color: #185FA5; }
+.code-str { color: #3B6D11; }
+.code-num { color: #854F0B; }
+
+.checklist { list-style: none; }
+.checklist li {
+  display: flex; gap: 10px; padding: 7px 0;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  font-size: 13px; color: var(--color-text-primary); line-height: 1.4;
+}
+.checklist li:last-child { border-bottom: none; }
+.check-icon {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--color-background-info); color: var(--color-text-info);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; flex-shrink: 0; margin-top: 1px;
+}
+
+/* Turn lifecycle diagram */
+.lifecycle {
+  display: flex; align-items: center; gap: 0;
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md); padding: 14px 16px;
+  margin-bottom: 1rem; overflow-x: auto;
+}
+.lc-event { text-align: center; flex-shrink: 0; }
+.lc-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  margin: 0 auto 6px;
+}
+.lc-dot-blue { background: #378ADD; }
+.lc-dot-green { background: #639922; }
+.lc-dot-amber { background: #BA7517; }
+.lc-dot-gray { background: #888780; }
+.lc-name { font-size: 11px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 2px; }
+.lc-ts { font-size: 10px; color: var(--color-text-tertiary); font-family: var(--font-mono); }
+.lc-line {
+  flex: 1; min-width: 24px; height: 1px;
+  background: var(--color-border-tertiary); margin: 0 4px; margin-bottom: 14px;
+}
+.lc-seg {
+  text-align: center; flex: 1; min-width: 60px;
+  margin-bottom: 14px;
+}
+.lc-seg-label { font-size: 10px; color: var(--color-text-tertiary); white-space: nowrap; }
+
+@media (max-width: 600px) {
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .def-grid { grid-template-columns: 1fr; }
+  .param-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="plan-header">
+  <div class="plan-title">轮次检测测试方案</div>
+  <div class="plan-sub">VAD轮次划分 · 边界场景 · 中文口语停顿 · 噪音抗干扰</div>
+</div>
+
+<!-- Section 1: Turn definition -->
+<div class="section">
+  <div class="section-label">轮次定义（精确版）</div>
+  <div class="lifecycle">
+    <div class="lc-event">
+      <div class="lc-dot lc-dot-blue"></div>
+      <div class="lc-name">用户开口</div>
+      <div class="lc-ts">T_speech_start</div>
+    </div>
+    <div class="lc-line"></div>
+    <div class="lc-event">
+      <div class="lc-dot lc-dot-green"></div>
+      <div class="lc-name">VAD触发</div>
+      <div class="lc-ts">T_vad_start</div>
+    </div>
+    <div class="lc-line"></div>
+    <div class="lc-event">
+      <div class="lc-dot lc-dot-amber"></div>
+      <div class="lc-name">静音超时</div>
+      <div class="lc-ts">T_silence_end</div>
+    </div>
+    <div class="lc-line"></div>
+    <div class="lc-event">
+      <div class="lc-dot lc-dot-gray"></div>
+      <div class="lc-name">轮次结束</div>
+      <div class="lc-ts">T_turn_end</div>
+    </div>
+    <div class="lc-line"></div>
+    <div class="lc-event">
+      <div class="lc-dot lc-dot-blue"></div>
+      <div class="lc-name">ASR完成</div>
+      <div class="lc-ts">T_asr_done</div>
+    </div>
+    <div class="lc-line"></div>
+    <div class="lc-event">
+      <div class="lc-dot lc-dot-green"></div>
+      <div class="lc-name">LLM响应</div>
+      <div class="lc-ts">T_llm_start</div>
+    </div>
+  </div>
+  <div style="font-size: 12px; color: var(--color-text-secondary); line-height: 1.6; padding: 0 2px;">
+    1轮 = 从用户开口（T_speech_start）到LLM开始回复（T_llm_start）的完整闭环。停顿期间未触发新speech_started事件，则属于同一轮次内部停顿，不切轮。
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Section 2: Metrics -->
+<div class="section">
+  <div class="section-label">核心指标定义</div>
+  <div class="def-grid">
+    <div class="def-card">
+      <div class="def-name">VAD检测延迟</div>
+      <div class="def-formula">T_vad_start − T_speech_start</div>
+      <div class="def-note">从用户真正开口到系统检测到语音的时间。需用注入时间戳作为T_speech_start，而非VAD自报时间</div>
+    </div>
+    <div class="def-card">
+      <div class="def-name">轮次结束延迟</div>
+      <div class="def-formula">T_turn_end − T_last_voice_frame</div>
+      <div class="def-note">最后一帧语音到系统判定轮次结束的时间，等于silence_duration_ms ± 检测误差</div>
+    </div>
+    <div class="def-card">
+      <div class="def-name">字符错误率（CER）</div>
+      <div class="def-formula">编辑距离(ASR结果, 标注文本) / 标注文本长度</div>
+      <div class="def-note">比"有无ASR结果"更严格，必须验证转写内容是否完整准确，尤其关注首字是否丢失</div>
+    </div>
+    <div class="def-card">
+      <div class="def-name">轮次划分准确率</div>
+      <div class="def-formula">边界误差 &lt; 200ms的轮次数 / 总应划分轮次数</div>
+      <div class="def-note">以200ms为容差窗口判断切轮时机是否正确，按轮次计数而非按字符</div>
+    </div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">VAD检测延迟</div>
+      <div class="metric-value">&lt; 200ms</div>
+      <div class="metric-desc">P90目标</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">轮次结束延迟</div>
+      <div class="metric-value">500±100ms</div>
+      <div class="metric-desc">与silence_duration_ms对齐</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">划分准确率</div>
+      <div class="metric-value">&gt; 95%</div>
+      <div class="metric-desc">200ms容差窗口内</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">ASR字符错误率</div>
+      <div class="metric-value">&lt; 10%</div>
+      <div class="metric-desc">CER，关注首字</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Section 3: Test Cases -->
+<div class="section">
+  <div class="section-label">完整测试用例</div>
+  <table class="tc-table">
+    <thead>
+      <tr>
+        <th>用例ID</th>
+        <th>类别</th>
+        <th>场景描述</th>
+        <th>音频构造要点</th>
+        <th>预期结果</th>
+        <th>关注指标</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mono">TRN-001</td>
+        <td><span class="badge badge-blue">正常轮次</span></td>
+        <td>短句（&lt;3秒）</td>
+        <td>"今天血压多少" — 真实录音</td>
+        <td>1轮，CER &lt; 10%，有LLM回复</td>
+        <td>VAD延迟、CER</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-002</td>
+        <td><span class="badge badge-blue">正常轮次</span></td>
+        <td>中等长度（5-15秒）</td>
+        <td>"我最近感觉头晕，血压有时候会偏高，想知道该怎么调整饮食"</td>
+        <td>1轮，不被中途切断，CER &lt; 10%</td>
+        <td>划分准确率</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-003</td>
+        <td><span class="badge badge-blue">正常轮次</span></td>
+        <td>长句（&gt;30秒）</td>
+        <td>连续叙述症状30秒，无明显停顿</td>
+        <td>1轮，全程不切断</td>
+        <td>划分准确率</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-004</td>
+        <td><span class="badge badge-amber">中文停顿</span></td>
+        <td>语气词短停顿（200ms）</td>
+        <td>"那个……（200ms）我想问一下"</td>
+        <td>1轮，停顿不切轮</td>
+        <td>划分准确率、CER</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-005</td>
+        <td><span class="badge badge-amber">中文停顿</span></td>
+        <td>语气词中停顿（400ms）</td>
+        <td>"就是说……（400ms）血压偏高的话"</td>
+        <td>1轮（400ms &lt; silence_duration 500ms）</td>
+        <td>划分准确率</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-006</td>
+        <td><span class="badge badge-amber">中文停顿</span></td>
+        <td>语气词长停顿（600ms）</td>
+        <td>"嗯……（600ms）怎么说呢"</td>
+        <td><strong>需明确策略</strong>：600ms &gt; silence_duration，可能切轮；需团队确认是否调整阈值</td>
+        <td>策略确认</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-007</td>
+        <td><span class="badge badge-amber">中文停顿</span></td>
+        <td>多次停顿组合</td>
+        <td>"那个（200ms）我想问一下（300ms）血压（200ms）高了该怎么办"</td>
+        <td>1轮，停顿均不切轮</td>
+        <td>划分准确率、CER首字</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-008</td>
+        <td><span class="badge badge-red">噪音过滤</span></td>
+        <td>空调白噪音全程</td>
+        <td>SNR=10dB背景白噪音，无用户说话</td>
+        <td>不触发轮次</td>
+        <td>误触发率</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-009</td>
+        <td><span class="badge badge-red">噪音过滤</span></td>
+        <td>电视人声（类语音噪音）</td>
+        <td>电视新闻播报声，SNR=15dB，无用户说话</td>
+        <td>不触发轮次（最难场景）</td>
+        <td>误触发率</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-010</td>
+        <td><span class="badge badge-red">噪音过滤</span></td>
+        <td>噪音中用户说话</td>
+        <td>SNR=5dB噪音环境下录制正常语音</td>
+        <td>正确触发1轮，CER &lt; 15%（噪音下适当放宽）</td>
+        <td>CER、误触发率</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-011</td>
+        <td><span class="badge badge-teal">边界过滤</span></td>
+        <td>超短语音（50ms）</td>
+        <td>50ms语音片段</td>
+        <td>不触发轮次（&lt; min_speech_duration）</td>
+        <td>误触发率</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-012</td>
+        <td><span class="badge badge-teal">边界过滤</span></td>
+        <td>超短语音（150ms）</td>
+        <td>150ms语音片段</td>
+        <td>不触发轮次（&lt; min_speech_duration）</td>
+        <td>误触发率</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-013</td>
+        <td><span class="badge badge-teal">边界过滤</span></td>
+        <td>刚好达到阈值（200ms）</td>
+        <td>200ms正常语音</td>
+        <td>应触发轮次，记录实际最短触发时长</td>
+        <td>边界准确性</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-014</td>
+        <td><span class="badge badge-teal">边界过滤</span></td>
+        <td>静音超时后轮次结束</td>
+        <td>说完后等待5秒静音</td>
+        <td>silence_duration后轮次结束，不挂起</td>
+        <td>轮次结束延迟</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-015</td>
+        <td><span class="badge badge-purple">ASR质量</span></td>
+        <td>prefix_padding首字验证</td>
+        <td>说"血压""不舒服""头晕"等，prefix_padding=0 vs 200ms对比</td>
+        <td>prefix_padding=200ms时首字不丢失，CER提升</td>
+        <td>CER、首字准确</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-016</td>
+        <td><span class="badge badge-purple">ASR质量</span></td>
+        <td>医疗专业词汇转写</td>
+        <td>"收缩压""舒张压""心率失常""降压药"</td>
+        <td>关键词CER &lt; 5%（专业词汇要求更高）</td>
+        <td>专业词CER</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-017</td>
+        <td><span class="badge badge-gray">多轮累积</span></td>
+        <td>10轮连续对话无退化</td>
+        <td>10轮连续正常对话</td>
+        <td>全程VAD延迟无累积增长，无状态泄漏</td>
+        <td>各轮延迟趋势</td>
+      </tr>
+      <tr>
+        <td class="mono">TRN-018</td>
+        <td><span class="badge badge-gray">多轮累积</span></td>
+        <td>打断后接正常轮次</td>
+        <td>打断1次后正常说话</td>
+        <td>轮次状态正确重置，不继承打断前状态</td>
+        <td>状态正确性</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="divider">
+
+<!-- Section 4: VAD params -->
+<div class="section">
+  <div class="section-label">VAD参数与测试覆盖映射</div>
+  <div class="param-grid">
+    <div class="param-card">
+      <div class="param-name">VAD_ACTIVATION_THRESHOLD</div>
+      <div class="param-row"><span class="param-label">当前值</span><span class="param-val">0.5</span></div>
+      <div class="param-row"><span class="param-label">测试范围</span><span class="param-val">0.3 / 0.5 / 0.7</span></div>
+      <div class="param-risk">覆盖用例：TRN-008~010。调高时需验证正常轮次不漏检（TRN-001~003）</div>
+    </div>
+    <div class="param-card">
+      <div class="param-name">silence_duration_ms</div>
+      <div class="param-row"><span class="param-label">当前值</span><span class="param-val">500ms</span></div>
+      <div class="param-row"><span class="param-label">测试范围</span><span class="param-val">300 / 500 / 800ms</span></div>
+      <div class="param-risk">覆盖用例：TRN-004~007。直接影响中文停顿切轮行为，调整时需与业务对齐</div>
+    </div>
+    <div class="param-card">
+      <div class="param-name">prefix_padding_ms</div>
+      <div class="param-row"><span class="param-label">当前值</span><span class="param-val">0（存在风险）</span></div>
+      <div class="param-row"><span class="param-label">建议值</span><span class="param-val">200ms</span></div>
+      <div class="param-risk">覆盖用例：TRN-015。设为0会导致语音首帧被截断，建议改为200ms并验证</div>
+    </div>
+    <div class="param-card">
+      <div class="param-name">VAD_MIN_SPEECH_DURATION</div>
+      <div class="param-row"><span class="param-label">当前值</span><span class="param-val">50ms</span></div>
+      <div class="param-row"><span class="param-label">测试范围</span><span class="param-val">50 / 100 / 200ms</span></div>
+      <div class="param-risk">覆盖用例：TRN-011~013。决定超短语音是否被过滤，需找到过滤噪音和捕获短句的平衡点</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Section 5: Code -->
+<div class="section">
+  <div class="section-label">自动化实施代码框架</div>
+  <div class="code-block">
+<span class="code-comment"># turn_detection_test.py — 轮次检测自动化测试框架</span>
+<span class="code-key">import</span> asyncio, jiwer, time
+
+<span class="code-key">class</span> TurnTestCase:
+    <span class="code-key">def</span> __init__(self, id, audio_file, reference_text,
+                 expect_turn=<span class="code-str">True</span>, pause_segments=<span class="code-str">None</span>):
+        self.id = id
+        self.audio_file = audio_file
+        self.reference = reference_text   <span class="code-comment"># 标注文本，用于算CER</span>
+        self.expect_turn = expect_turn    <span class="code-comment"># 是否期望触发轮次</span>
+        self.pause_segments = pause_segments or []  <span class="code-comment"># [(start_ms, duration_ms)]</span>
+
+<span class="code-key">async def</span> run_turn_case(ws_client, case, capture):
+    <span class="code-comment"># 注入音频，记录精确注入时间</span>
+    capture.record(<span class="code-str">"audio_inject"</span>)
+    <span class="code-key">await</span> ws_client.send_audio(case.audio_file)
+
+    <span class="code-comment"># 等待事件（最长等5秒）</span>
+    events_received = <span class="code-key">await</span> ws_client.collect_events(timeout=<span class="code-num">5.0</span>, events=[
+        <span class="code-str">"speech_started"</span>, <span class="code-str">"speech_ended"</span>,
+        <span class="code-str">"transcription.completed"</span>, <span class="code-str">"response.created"</span>
+    ])
+
+    turn_triggered = <span class="code-str">"speech_started"</span> <span class="code-key">in</span> events_received
+    asr_text = events_received.get(<span class="code-str">"transcription.completed"</span>, {}).get(<span class="code-str">"text"</span>, <span class="code-str">""</span>)
+
+    <span class="code-comment"># 计算CER（字符错误率）</span>
+    cer = jiwer.cer(case.reference, asr_text) <span class="code-key">if</span> asr_text <span class="code-key">else</span> <span class="code-num">1.0</span>
+
+    <span class="code-comment"># 计算VAD检测延迟</span>
+    vad_latency = <span class="code-str">None</span>
+    <span class="code-key">if</span> turn_triggered:
+        vad_latency = (events_received[<span class="code-str">"speech_started"</span>][<span class="code-str">"ts"</span>]
+                       - capture.get_ts(<span class="code-str">"audio_inject"</span>))
+
+    <span class="code-key">return</span> {
+        <span class="code-str">"case_id"</span>: case.id,
+        <span class="code-str">"turn_triggered"</span>: turn_triggered,
+        <span class="code-str">"expected_turn"</span>: case.expect_turn,
+        <span class="code-str">"vad_latency_ms"</span>: round(vad_latency, <span class="code-num">1</span>) <span class="code-key">if</span> vad_latency <span class="code-key">else</span> <span class="code-str">None</span>,
+        <span class="code-str">"asr_cer"</span>: round(cer, <span class="code-num">3</span>),
+        <span class="code-str">"asr_text"</span>: asr_text,
+        <span class="code-str">"passed"</span>: (turn_triggered == case.expect_turn) <span class="code-key">and</span> (cer &lt; <span class="code-num">0.1</span>)
+    }
+
+<span class="code-comment"># 中文停顿测试 — 动态构造停顿音频</span>
+<span class="code-key">def</span> build_pause_audio(segments, pause_ms, sample_rate=<span class="code-num">16000</span>):
+    <span class="code-key">import</span> numpy <span class="code-key">as</span> np
+    silence = np.zeros(int(sample_rate * pause_ms / <span class="code-num">1000</span>))
+    <span class="code-key">return</span> np.concatenate([seg <span class="code-key">for</span> pair <span class="code-key">in</span>
+        zip(segments, [silence] * len(segments)) <span class="code-key">for</span> seg <span class="code-key">in</span> pair])
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Section 6: Checklist -->
+<div class="section">
+  <div class="section-label">实施前置条件与注意事项</div>
+  <ul class="checklist">
+    <li><div class="check-icon">✓</div><div>prefix_padding_ms 必须从0改为200ms，并用TRN-015验证首字不丢失，这是健康场景高风险缺陷</div></li>
+    <li><div class="check-icon">✓</div><div>TRN-006（600ms停顿切轮）需团队明确策略再定预期结果，不可跳过</div></li>
+    <li><div class="check-icon">✓</div><div>TRN-009（电视人声）是最难场景，建议单独统计，阈值调整时优先保证该项</div></li>
+    <li><div class="check-icon">✓</div><div>ASR评测必须使用jiwer等工具计算CER，禁止人工判断"大概对了"</div></li>
+    <li><div class="check-icon">✓</div><div>建立包含100+条真实录音的黄金数据集，每次版本更新自动跑CER对比，输出趋势图</div></li>
+    <li><div class="check-icon">✓</div><div>VAD参数调整必须联动测试：调threshold时同步跑TRN-001~003和TRN-008~009，防止顾此失彼</div></li>
+    <li><div class="check-icon">✓</div><div>TRN-017多轮累积测试，每轮延迟数据单独记录，画折线图观察是否有退化趋势</div></li>
+  </ul>
+</div>

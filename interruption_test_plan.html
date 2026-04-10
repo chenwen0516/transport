@@ -1,0 +1,536 @@
+
+<h2 class="sr-only">语音打断效果测试方案 — 完整测试用例与实施指南</h2>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+
+.plan-header {
+  padding: 1.5rem 0 1rem;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  margin-bottom: 1.5rem;
+}
+.plan-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+.plan-sub {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.section { margin-bottom: 2rem; }
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 10px;
+}
+
+/* Definition cards */
+.def-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+.def-card {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 12px 14px;
+}
+.def-name {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+.def-formula {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+.def-note {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+}
+
+/* Test case table */
+.tc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.tc-table th {
+  text-align: left;
+  padding: 8px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  white-space: nowrap;
+}
+.tc-table td {
+  padding: 9px 10px;
+  color: var(--color-text-primary);
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.tc-table tr:last-child td { border-bottom: none; }
+.tc-table tr:hover td { background: var(--color-background-secondary); }
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.badge-blue { background: #E6F1FB; color: #0C447C; }
+.badge-amber { background: #FAEEDA; color: #633806; }
+.badge-red { background: #FCEBEB; color: #791F1F; }
+.badge-teal { background: #E1F5EE; color: #085041; }
+.badge-gray { background: #F1EFE8; color: #444441; }
+
+.mono { font-family: var(--font-mono); font-size: 12px; }
+
+/* Pipeline */
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+.pipe-step {
+  flex: 1;
+  min-width: 100px;
+  background: var(--color-background-secondary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: 0;
+  padding: 10px 12px;
+  position: relative;
+}
+.pipe-step:first-child { border-radius: var(--border-radius-md) 0 0 var(--border-radius-md); }
+.pipe-step:last-child { border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; }
+.pipe-num {
+  font-size: 10px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 3px;
+}
+.pipe-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 3px;
+}
+.pipe-detail {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+.pipe-arrow {
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  color: var(--color-text-tertiary);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Metrics targets */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.metric-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 14px 16px;
+}
+.metric-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-bottom: 6px;
+}
+.metric-value {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+.metric-desc {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+}
+
+/* Code block */
+.code-block {
+  background: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  overflow-x: auto;
+  margin-bottom: 10px;
+}
+.code-comment { color: var(--color-text-tertiary); }
+.code-key { color: #185FA5; }
+.code-str { color: #3B6D11; }
+.code-num { color: #854F0B; }
+
+/* Checklist */
+.checklist { list-style: none; }
+.checklist li {
+  display: flex;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  font-size: 13px;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+.checklist li:last-child { border-bottom: none; }
+.check-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-background-info);
+  color: var(--color-text-info);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.divider {
+  border: none;
+  border-top: 0.5px solid var(--color-border-tertiary);
+  margin: 1.5rem 0;
+}
+
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 600px) {
+  .metrics-grid { grid-template-columns: 1fr 1fr; }
+  .row2 { grid-template-columns: 1fr; }
+  .def-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<div class="plan-header">
+  <div class="plan-title">打断效果测试方案</div>
+  <div class="plan-sub">语音打断检测 · 全链路时延 · 误打断过滤</div>
+</div>
+
+<!-- Section 1: Core Definitions -->
+<div class="section">
+  <div class="section-label">核心指标定义</div>
+  <div class="def-grid">
+    <div class="def-card">
+      <div class="def-name">打断延迟（用户感知）</div>
+      <div class="def-formula">T_tts_stop − T_user_speech_start</div>
+      <div class="def-note">从用户开口到TTS停止播放的全程时间，是用户真实感受到的响应速度</div>
+    </div>
+    <div class="def-card">
+      <div class="def-name">系统响应延迟</div>
+      <div class="def-formula">T_vad_triggered − T_user_speech_start</div>
+      <div class="def-note">VAD检测到语音起始的延迟，反映检测层性能</div>
+    </div>
+    <div class="def-card">
+      <div class="def-name">TTS停止延迟</div>
+      <div class="def-formula">T_tts_stop − T_vad_triggered</div>
+      <div class="def-note">VAD触发后系统终止TTS播放的执行时间</div>
+    </div>
+    <div class="def-card">
+      <div class="def-name">误打断率</div>
+      <div class="def-formula">误触发次数 / 总测试次数</div>
+      <div class="def-note">噪音、背景音等非语音输入导致TTS被错误中断的比率</div>
+    </div>
+  </div>
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div class="metric-label">打断延迟目标（统一）</div>
+      <div class="metric-value">&lt; 500ms</div>
+      <div class="metric-desc">任意时机打断均适用，不因早/中/晚而放宽</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">打断成功率</div>
+      <div class="metric-value">&gt; 90%</div>
+      <div class="metric-desc">所有打断场景平均，按会话计算</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">误打断率</div>
+      <div class="metric-value">&lt; 5%</div>
+      <div class="metric-desc">噪音场景下TTS被错误中断的比率</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Section 2: Test Pipeline -->
+<div class="section">
+  <div class="section-label">测试执行流程</div>
+  <div class="pipeline">
+    <div class="pipe-step">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">音频注入</div>
+      <div class="pipe-detail">WebSocket推送测试音频，记录T_inject</div>
+    </div>
+    <div class="pipe-arrow">›</div>
+    <div class="pipe-step">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">TTS触发</div>
+      <div class="pipe-detail">系统开始播报，记录T_tts_start</div>
+    </div>
+    <div class="pipe-arrow">›</div>
+    <div class="pipe-step">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">用户语音注入</div>
+      <div class="pipe-detail">按场景在指定时间点注入用户音频，记录T_speech_start</div>
+    </div>
+    <div class="pipe-arrow">›</div>
+    <div class="pipe-step">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">VAD检测</div>
+      <div class="pipe-detail">捕获speech_started事件，记录T_vad</div>
+    </div>
+    <div class="pipe-arrow">›</div>
+    <div class="pipe-step">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">TTS终止</div>
+      <div class="pipe-detail">捕获TTS停止事件，记录T_tts_stop</div>
+    </div>
+    <div class="pipe-arrow">›</div>
+    <div class="pipe-step">
+      <div class="pipe-num">06</div>
+      <div class="pipe-name">指标计算</div>
+      <div class="pipe-detail">计算全链路各段延迟，写入报告</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Section 3: Test Cases -->
+<div class="section">
+  <div class="section-label">完整测试用例</div>
+  <table class="tc-table">
+    <thead>
+      <tr>
+        <th>用例ID</th>
+        <th>类别</th>
+        <th>场景描述</th>
+        <th>打断时机</th>
+        <th>音频构造</th>
+        <th>通过标准</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="mono">INT-001</td>
+        <td><span class="badge badge-blue">正常打断</span></td>
+        <td>TTS开始后0.5s打断</td>
+        <td>T_tts_start + 500ms</td>
+        <td>TTS音频 + 500ms后叠加用户语音</td>
+        <td>打断延迟 &lt; 500ms，TTS停止</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-002</td>
+        <td><span class="badge badge-blue">正常打断</span></td>
+        <td>TTS开始后2s打断</td>
+        <td>T_tts_start + 2000ms</td>
+        <td>TTS音频 + 2s后叠加用户语音</td>
+        <td>打断延迟 &lt; 500ms，TTS停止</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-003</td>
+        <td><span class="badge badge-blue">正常打断</span></td>
+        <td>TTS开始后5s打断</td>
+        <td>T_tts_start + 5000ms</td>
+        <td>TTS音频 + 5s后叠加用户语音</td>
+        <td>打断延迟 &lt; 500ms，TTS停止</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-004</td>
+        <td><span class="badge badge-blue">正常打断</span></td>
+        <td>TTS接近结束时打断（尾部100ms）</td>
+        <td>T_tts_end − 100ms</td>
+        <td>在TTS即将结束时注入语音</td>
+        <td>打断成功或TTS自然结束后正确转入新轮次，不丢语音</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-005</td>
+        <td><span class="badge badge-amber">复合打断</span></td>
+        <td>打断后停顿再继续说</td>
+        <td>T_tts_start + 1s</td>
+        <td>用户语音 + 300ms静音 + 继续说话</td>
+        <td>停顿不触发轮次结束，整段作为一次打断</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-006</td>
+        <td><span class="badge badge-amber">复合打断</span></td>
+        <td>连续打断3次</td>
+        <td>每次回复播报中打断</td>
+        <td>3轮连续打断场景</td>
+        <td>每次打断均在500ms内生效，无状态残留</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-007</td>
+        <td><span class="badge badge-amber">复合打断</span></td>
+        <td>打断后立即再被打断</td>
+        <td>第一次打断后200ms</td>
+        <td>快速连续两次打断信号</td>
+        <td>系统稳定处理，不崩溃，第二次打断生效</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-008</td>
+        <td><span class="badge badge-red">误打断过滤</span></td>
+        <td>背景白噪音</td>
+        <td>TTS播报全程</td>
+        <td>SNR=10dB白噪音叠加</td>
+        <td>不触发打断，TTS完整播完</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-009</td>
+        <td><span class="badge badge-red">误打断过滤</span></td>
+        <td>远场他人说话声</td>
+        <td>TTS播报全程</td>
+        <td>3米外录制的对话声，SNR=15dB</td>
+        <td>不触发打断</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-010</td>
+        <td><span class="badge badge-red">误打断过滤</span></td>
+        <td>TTS音频回声（扬声器反馈）</td>
+        <td>TTS播报全程</td>
+        <td>将TTS输出回灌至输入通道</td>
+        <td>AEC生效，不自打断</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-011</td>
+        <td><span class="badge badge-red">误打断过滤</span></td>
+        <td>用户清嗓子/咳嗽</td>
+        <td>TTS播报2s时</td>
+        <td>真实录音的咳嗽、清嗓声</td>
+        <td>不触发打断，或有明确策略说明</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-012</td>
+        <td><span class="badge badge-teal">边界条件</span></td>
+        <td>极短语音打断（50ms）</td>
+        <td>TTS播报2s时</td>
+        <td>50ms语音片段</td>
+        <td>不触发打断（低于min_speech_duration）</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-013</td>
+        <td><span class="badge badge-teal">边界条件</span></td>
+        <td>极低音量打断</td>
+        <td>TTS播报2s时</td>
+        <td>正常音量的10%，距麦1.5米</td>
+        <td>明确是否触发，记录实际阈值</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-014</td>
+        <td><span class="badge badge-teal">边界条件</span></td>
+        <td>网络抖动场景下打断</td>
+        <td>TTS播报2s时</td>
+        <td>模拟50ms网络延迟抖动</td>
+        <td>打断延迟允许放宽至700ms，不崩溃</td>
+      </tr>
+      <tr>
+        <td class="mono">INT-015</td>
+        <td><span class="badge badge-gray">ASR验证</span></td>
+        <td>打断后ASR首字完整性</td>
+        <td>TTS播报2s时</td>
+        <td>用户说"血压偏高怎么办"</td>
+        <td>ASR结果首字不丢失，CER &lt; 10%</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="divider">
+
+<!-- Section 4: Implementation -->
+<div class="section">
+  <div class="section-label">自动化实施代码框架</div>
+  <div class="code-block">
+<span class="code-comment"># interruption_test.py — 打断测试自动化框架</span>
+<span class="code-key">import</span> asyncio, time, numpy <span class="code-key">as</span> np, soundfile <span class="code-key">as</span> sf
+
+<span class="code-key">class</span> EventCapture:
+    <span class="code-key">def</span> __init__(self):
+        self.events = []
+        self._t0 = time.monotonic()
+
+    <span class="code-key">def</span> record(self, name, payload=<span class="code-str">None</span>):
+        <span class="code-comment"># 统一单调时钟，避免各组件时钟不同步</span>
+        ts = (time.monotonic() - self._t0) * <span class="code-num">1000</span>
+        self.events.append({<span class="code-str">"name"</span>: name, <span class="code-str">"ts"</span>: ts, <span class="code-str">"data"</span>: payload})
+
+    <span class="code-key">def</span> latency(self, from_event, to_event):
+        t = {e[<span class="code-str">"name"</span>]: e[<span class="code-str">"ts"</span>] <span class="code-key">for</span> e <span class="code-key">in</span> self.events}
+        <span class="code-key">return</span> t[to_event] - t[from_event]
+
+<span class="code-key">class</span> InterruptionTestCase:
+    <span class="code-key">def</span> __init__(self, id, delay_ms, user_audio, max_latency_ms=<span class="code-num">500</span>):
+        self.id = id
+        self.interrupt_delay = delay_ms  <span class="code-comment"># 距TTS开始的打断时机</span>
+        self.user_audio = user_audio
+        self.max_latency = max_latency_ms
+
+<span class="code-key">async def</span> run_case(ws_client, case, capture):
+    <span class="code-comment"># 1. 触发TTS播报</span>
+    <span class="code-key">await</span> ws_client.trigger_tts(<span class="code-str">"请告诉我您的症状..."</span>)
+    capture.record(<span class="code-str">"tts_start"</span>)
+
+    <span class="code-comment"># 2. 等待指定时机再注入用户语音</span>
+    <span class="code-key">await</span> asyncio.sleep(case.interrupt_delay / <span class="code-num">1000</span>)
+    capture.record(<span class="code-str">"user_speech_start"</span>)
+    <span class="code-key">await</span> ws_client.send_audio(case.user_audio)
+
+    <span class="code-comment"># 3. 监听TTS停止事件</span>
+    <span class="code-key">await</span> ws_client.wait_for_event(<span class="code-str">"tts_stopped"</span>, timeout=<span class="code-num">2.0</span>)
+    capture.record(<span class="code-str">"tts_stop"</span>)
+
+    <span class="code-comment"># 4. 计算用户感知延迟（关键指标）</span>
+    latency = capture.latency(<span class="code-str">"user_speech_start"</span>, <span class="code-str">"tts_stop"</span>)
+    <span class="code-key">return</span> {
+        <span class="code-str">"case_id"</span>: case.id,
+        <span class="code-str">"interruption_latency_ms"</span>: round(latency, <span class="code-num">1</span>),
+        <span class="code-str">"passed"</span>: latency &lt; case.max_latency
+    }
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- Section 5: Checklist -->
+<div class="section">
+  <div class="section-label">实施前置条件检查</div>
+  <ul class="checklist">
+    <li><div class="check-icon">✓</div><div>已确认所有时间戳使用同一单调时钟源（time.monotonic），禁止混用系统时间</div></li>
+    <li><div class="check-icon">✓</div><div>已准备真实人声录音（至少50条），覆盖老年人、儿童、不同口音，禁止只用合成音频</div></li>
+    <li><div class="check-icon">✓</div><div>AEC（回声消除）测试（INT-010）必须在真实扬声器环境下执行，不可纯软件模拟</div></li>
+    <li><div class="check-icon">✓</div><div>prefix_padding_ms 建议设为200-300ms，并有专项用例验证首字不丢失（INT-015）</div></li>
+    <li><div class="check-icon">✓</div><div>打断延迟目标统一为500ms，早/中/晚打断不分级放宽</div></li>
+    <li><div class="check-icon">✓</div><div>每个用例至少运行30次，取P50/P90/P99，不以单次结果判断通过</div></li>
+    <li><div class="check-icon">✓</div><div>CI集成：每次合并前自动运行核心用例（INT-001～003, 008～010），输出与上版本的对比</div></li>
+  </ul>
+</div>
