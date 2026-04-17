@@ -1,0 +1,254 @@
+============================================================================ test session starts =============================================================================
+platform linux -- Python 3.12.12, pytest-9.0.3, pluggy-1.6.0 -- /root/.local/share/mise/installs/python/3.12.12/bin/python3.12
+cachedir: .pytest_cache
+rootdir: /root/ai-agent/health-assistant/backend/livekit_agent/test/realtime
+configfile: pytest.ini
+testpaths: .
+plugins: asyncio-1.3.0, anyio-4.13.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 61 items                                                                                                                                                           
+
+test_interruption.py::test_interruption[barge_in_clear_speech] PASSED
+test_interruption.py::test_interruption[barge_in_late_phase] PASSED
+test_interruption.py::test_interruption[barge_in_short_word] PASSED
+test_interruption.py::test_interruption[no_barge_in_white_noise] PASSED
+test_interruption.py::test_interruption[no_barge_in_silence] PASSED
+test_interruption.py::test_interruption[no_barge_in_low_amplitude] PASSED
+test_interruption.py::test_interruption[no_barge_in_sine_wave] PASSED
+test_interruption.py::test_interruption[no_barge_in_sine_50hz] PASSED
+test_interruption.py::test_interruption[no_barge_in_sine_80hz] PASSED
+test_interruption.py::test_interruption[barge_in_tts_speech] PASSED
+test_interruption.py::test_interruption[barge_in_tts_short] PASSED
+test_interruption.py::test_interruption[barge_in_tts_1s] PASSED
+test_interruption.py::test_interruption[barge_in_tts_15s] PASSED
+test_interruption.py::test_interruption[barge_in_tts_25s] PASSED
+test_interruption.py::test_interruption[barge_in_tts_3s] PASSED
+test_interruption.py::test_interruption[barge_in_tts_4s] PASSED
+test_interruption.py::test_interruption[barge_in_tts_5s] PASSED
+test_interruption.py::test_interruption[barge_in_tts_late_phase] PASSED
+test_interruption.py::test_interruption[barge_in_long_speech_middle] PASSED
+test_interruption.py::test_interruption[barge_in_ultra_short_200ms] 
+------------------------------------------------------------------------------- live log call --------------------------------------------------------------------------------
+WARNING  core.audio_generator:audio_generator.py:129 TTS fixture /root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tts_speech_200ms.pcm not found, falling back to programmatic speech_like
+PASSED
+test_interruption.py::test_interruption[barge_in_ramp_up] PASSED
+test_interruption.py::test_interruption[barge_in_quick_succession] PASSED
+test_interruption.py::test_barge_in_then_recovery[barge_in_then_turn_handoff] PASSED
+test_smoke.py::test_connect_and_session_created PASSED
+test_smoke.py::test_agent_greeting PASSED
+test_smoke.py::test_session_update PASSED
+test_smoke.py::test_inject_audio_triggers_speech_detection PASSED
+test_turn_detection.py::test_turn_detection[turn_model_2100ms] PASSED
+test_turn_detection.py::test_turn_detection[turn_model_2500ms] PASSED
+test_turn_detection.py::test_turn_detection[turn_guaranteed_3500ms] PASSED
+test_turn_detection.py::test_turn_detection[turn_guaranteed_5000ms] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_300ms] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_600ms] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_1000ms] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_1500ms] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_1800ms] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_1900ms] PASSED
+test_turn_detection.py::test_turn_detection[long_speech_with_breaths] PASSED
+test_turn_detection.py::test_turn_detection[turn_boundary_exact_min_delay] PASSED
+test_turn_detection.py::test_turn_detection[turn_boundary_exact_max_delay] PASSED
+test_turn_detection.py::test_turn_detection[turn_boundary_just_above_max_delay] PASSED
+test_turn_detection.py::test_turn_detection[turn_boundary_just_below_max_delay] PASSED
+test_turn_detection.py::test_turn_detection[short_speech_long_silence] PASSED
+test_turn_detection.py::test_turn_detection[ultra_long_speech] 
+------------------------------------------------------------------------------- live log call --------------------------------------------------------------------------------
+WARNING  core.audio_generator:audio_generator.py:129 TTS fixture /root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tts_speech_10000ms.pcm not found, falling back to programmatic speech_like
+FAILED
+test_turn_detection.py::test_turn_detection[multi_turn_switch] PASSED
+test_turn_detection.py::test_turn_detection[multiple_short_pauses] PASSED
+test_turn_detection.py::test_turn_detection[quick_resume_after_pause] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_2s] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_500ms] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_1s] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_15s] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_25s] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_3s] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_4s] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_5s] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_model_zone_21] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_model_zone_25] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_speech_model_zone_29] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_long_speech_with_breaths] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_multi_turn] PASSED
+test_turn_detection.py::test_turn_detection[long_speech_multiple_breaths] PASSED
+================================================================================
+  打断测试结果 (Interruption Test Results)
+================================================================================
++-----------------------------+------------+----------+----------+------------+
+| Case                        | Expected   | Actual   | Result   | E2E Lat.   |
++=============================+============+==========+==========+============+
+| barge_in_clear_speech       | Yes        | Yes      | PASS     | 1647.0ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_late_phase         | Yes        | Yes      | PASS     | 1317.3ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_short_word         | Yes        | Yes      | PASS     | 1287.8ms   |
++-----------------------------+------------+----------+----------+------------+
+| no_barge_in_white_noise     | No         | No       | PASS     | 3327.2ms   |
++-----------------------------+------------+----------+----------+------------+
+| no_barge_in_silence         | No         | No       | PASS     | 3985.6ms   |
++-----------------------------+------------+----------+----------+------------+
+| no_barge_in_low_amplitude   | No         | No       | PASS     | 3889.8ms   |
++-----------------------------+------------+----------+----------+------------+
+| no_barge_in_sine_wave       | No         | No       | PASS     | 3649.9ms   |
++-----------------------------+------------+----------+----------+------------+
+| no_barge_in_sine_50hz       | No         | No       | PASS     | 3809.7ms   |
++-----------------------------+------------+----------+----------+------------+
+| no_barge_in_sine_80hz       | No         | No       | PASS     | 4213.0ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_tts_speech         | Yes        | Yes      | PASS     | 1615.1ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_tts_short          | Yes        | Yes      | PASS     | 1256.1ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_tts_1s             | Yes        | Yes      | PASS     | 1346.7ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_tts_15s            | Yes        | Yes      | PASS     | 1441.7ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_tts_25s            | Yes        | Yes      | PASS     | 1427.4ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_tts_3s             | Yes        | Yes      | PASS     | 1327.3ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_tts_4s             | Yes        | Yes      | PASS     | 1333.9ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_tts_5s             | Yes        | Yes      | PASS     | 1322.7ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_tts_late_phase     | Yes        | Yes      | PASS     | 1514.3ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_long_speech_middle | Yes        | Yes      | PASS     | 1485.9ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_ultra_short_200ms  | Yes        | Yes      | PASS     | 1387.3ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_ramp_up            | Yes        | Yes      | PASS     | 2320.7ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_quick_succession   | Yes        | Yes      | PASS     | 1538.6ms   |
++-----------------------------+------------+----------+----------+------------+
+| barge_in_then_turn_handoff  | Yes        | Yes      | PASS     | 1587.2ms   |
++-----------------------------+------------+----------+----------+------------+
+
+  准确率: 100.0%
+  误打断率: 0.0%
+  端到端打断时延: p50=1427.4ms p90=1647.0ms p95=2320.7ms p99=2320.7ms max=2320.7ms
+
+================================================================================
+  轮次检测结果 (Turn Detection Test Results)
+================================================================================
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| Case                                        | Silence   | Expected   | Actual   | Result   | EP Excess   | TTFB     |
++=============================================+===========+============+==========+==========+=============+==========+
+| turn_model_2100ms                           | 2.1s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_model_2500ms                           | 2.5s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_guaranteed_3500ms                      | 3.5s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_guaranteed_5000ms                      | 5.0s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_300ms_mid_pause                     | 0.3s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_300ms_final                         | 3.5s      | Yes        | Yes      | PASS     | 347.4ms     | 876.0ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_600ms_mid_pause                     | 0.6s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_600ms_final                         | 3.5s      | Yes        | Yes      | PASS     | 358.6ms     | 912.6ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1000ms_mid_pause                    | 1.0s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1000ms_final                        | 3.5s      | Yes        | Yes      | PASS     | 351.2ms     | 898.8ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1500ms_mid_pause                    | 1.5s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1500ms_final                        | 3.5s      | Yes        | Yes      | PASS     | 356.1ms     | 890.6ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1800ms_mid_pause                    | 1.8s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1800ms_final                        | 3.5s      | Yes        | Yes      | PASS     | 334.3ms     | 880.5ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1900ms_mid_pause                    | 1.9s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1900ms_final                        | 3.5s      | Yes        | Yes      | PASS     | 374.0ms     | 923.3ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| long_speech_with_breaths_mid_pause          | 0.0s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| long_speech_with_breaths_final              | 3.5s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_boundary_exact_min_delay_mid_pause     | 0.5s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_boundary_exact_min_delay_final         | 3.5s      | Yes        | Yes      | PASS     | 374.7ms     | 920.6ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_boundary_exact_max_delay               | 3.0s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_boundary_just_above_max_delay          | 3.1s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_boundary_just_below_max_delay          | 2.9s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| short_speech_long_silence                   | 5.0s      | Yes        | Yes      | PASS     | 333.1ms     | 866.0ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| ultra_long_speech                           | 3.5s      | Yes        | No       | FAIL     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| multi_turn_switch                           | 3.5s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| multiple_short_pauses_mid_pause             | 0.2s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| multiple_short_pauses_final                 | 3.5s      | Yes        | Yes      | PASS     | 2718.4ms    | 3238.0ms |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| quick_resume_after_pause_mid_pause          | 0.4s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| quick_resume_after_pause_final              | 3.5s      | Yes        | Yes      | PASS     | 384.2ms     | 893.5ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_2s                          | 3.5s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_500ms                       | 3.5s      | Yes        | Yes      | PASS     | 307.7ms     | 830.3ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_1s                          | 3.5s      | Yes        | Yes      | PASS     | 2750.8ms    | 3273.0ms |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_15s                         | 3.5s      | Yes        | Yes      | PASS     | -496.7ms    | 29.4ms   |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_25s                         | 3.5s      | Yes        | Yes      | PASS     | -422.9ms    | 112.6ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_3s                          | 3.5s      | Yes        | Yes      | PASS     | 269.4ms     | 815.2ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_4s                          | 3.5s      | Yes        | Yes      | PASS     | 2693.9ms    | 3219.5ms |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_5s                          | 3.5s      | Yes        | Yes      | PASS     | -98.0ms     | 459.9ms  |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_model_zone_21               | 2.1s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_model_zone_25               | 2.5s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_speech_model_zone_29               | 2.9s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_long_speech_with_breaths_mid_pause | 0.0s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_long_speech_with_breaths_final     | 3.5s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_multi_turn                         | 3.5s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| long_speech_multiple_breaths_mid_pause      | 0.0s      | No         | No       | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| long_speech_multiple_breaths_final          | 3.5s      | Yes        | Yes      | PASS     | N/A         | N/A      |
++---------------------------------------------+-----------+------------+----------+----------+-------------+----------+
+
+  端点准确率: 97.8%
+  误切轮率: 0.0%
+  漏切轮率: 2.9%
+  超额端点时延: p50=351.2ms p90=2718.4ms p95=2750.8ms p99=2750.8ms max=2750.8ms
+  TTFB:         p50=890.6ms p90=3238.0ms p95=3273.0ms p99=3273.0ms max=3273.0ms
+
+[Report] Saved to /root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/test_reports/realtime_test_real_20260417_172033.json
+
+
+================================================================================== FAILURES ==================================================================================
+___________________________________________________________________ test_turn_detection[ultra_long_speech] ___________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: ultra_long_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='ultra_long_speech', silence_duration_s=3.5, expected_turn_switch=True, actual_turn_switched=False, t_audio_end=4919903.398228861, t_agent_thinking=None, t_agent_speaking=None, t_first_agent_audio_delta=None, mid_pause_switched=False, min_delay_s=0.5).correct
+----------------------------------------------------------------------------- Captured log call ------------------------------------------------------------------------------
+WARNING  core.audio_generator:audio_generator.py:129 TTS fixture /root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tts_speech_10000ms.pcm not found, falling back to programmatic speech_like
+========================================================================== short test summary info ===========================================================================
+FAILED test_turn_detection.py::test_turn_detection[ultra_long_speech] - AssertionError: ultra_long_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
+================================================================= 1 failed, 60 passed in 1035.81s (0:17:15) ==================================================================
