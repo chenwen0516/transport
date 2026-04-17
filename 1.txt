@@ -1,0 +1,26 @@
+================================================================================== FAILURES ==================================================================================
+______________________________________________________________ test_interruption[no_barge_in_noise_then_speech] ______________________________________________________________
+test_interruption.py:102: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_noise_then_speech: expected_interrupt=False, actual=True, e2e_latency=1653.8675855845213
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_noise_then_speech', expected_interrupt=False, actual_interrupted=True, t_inject_first=4914042.014356902, t_inject_last=4914044.447689505, t_agent_listening=4914043.668224487).correct
+_______________________________________________________________ test_turn_detection[long_speech_with_breaths] ________________________________________________________________
+test_turn_detection.py:149: in test_turn_detection
+    assert mid_pause_switched == case.expect_mid_pause_switch, (
+E   AssertionError: long_speech_with_breaths: mid-pause switch expected=False, actual=True
+E   assert True == False
+E    +  where False = TurnDetectionCase(name='long_speech_with_breaths', description='~15s 长语音含换气停顿，不应中途切轮', segments=[TurnSegment(type='speech', audio_type='speech_like', audio_duration_s=3.0, duration_s=None), TurnSegment(type='silence', audio_type=None, audio_duration_s=None, duration_s=0.3), TurnSegment(type='speech', audio_type='speech_like', audio_duration_s=3.0, duration_s=None), TurnSegment(type='silence', audio_type=None, audio_duration_s=None, duration_s=0.4), TurnSegment(type='speech', audio_type='speech_like', audio_duration_s=3.0, duration_s=None), TurnSegment(type='silence', audio_type=None, audio_duration_s=None, duration_s=0.3), TurnSegment(type='speech', audio_type='speech_like', audio_duration_s=3.0, duration_s=None), TurnSegment(type='silence', audio_type=None, audio_duration_s=None, duration_s=3.5)], mid_pause_s=None, expect_turn_switch=None, expect_mid_pause_switch=False, expect_final_switch=True).expect_mid_pause_switch
+___________________________________________________________________ test_turn_detection[ultra_long_speech] ___________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: ultra_long_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='ultra_long_speech', silence_duration_s=3.5, expected_turn_switch=True, actual_turn_switched=False, t_audio_end=4914411.702668585, t_agent_thinking=None, t_agent_speaking=None, t_first_agent_audio_delta=None, mid_pause_switched=False, min_delay_s=0.5).correct
+----------------------------------------------------------------------------- Captured log call ------------------------------------------------------------------------------
+WARNING  core.audio_generator:audio_generator.py:129 TTS fixture /root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tts_speech_20000ms.pcm not found, falling back to programmatic speech_like
+========================================================================== short test summary info ===========================================================================
+FAILED test_interruption.py::test_interruption[no_barge_in_noise_then_speech] - AssertionError: no_barge_in_noise_then_speech: expected_interrupt=False, actual=True, e2e_latency=1653.8675855845213
+FAILED test_turn_detection.py::test_turn_detection[long_speech_with_breaths] - AssertionError: long_speech_with_breaths: mid-pause switch expected=False, actual=True
+FAILED test_turn_detection.py::test_turn_detection[ultra_long_speech] - AssertionError: ultra_long_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
+================================================================== 3 failed, 41 passed in 747.68s (0:12:27) ==================================================================
