@@ -1,39 +1,7 @@
-root@health-develop:~/ai-agent/health-assistant/backend/livekit_agent# python save_tts_audio.py -t "停" -v siyue -o test/realtime/fixtures/audio
-Traceback (most recent call last):
-  File "/root/ai-agent/health-assistant/backend/livekit_agent/save_tts_audio.py", line 3, in <module>
-    import nls
-ModuleNotFoundError: No module named 'nls'
-root@health-develop:~/ai-agent/health-assistant/backend/livekit_agent# pip install nls
-Collecting nls
-  Downloading nls-0.2.0.tar.gz (151 kB)
-  Installing build dependencies ... done
-  Getting requirements to build wheel ... error
-  error: subprocess-exited-with-error
-  
-  × Getting requirements to build wheel did not run successfully.
-  │ exit code: 1
-  ╰─> [20 lines of output]
-      Traceback (most recent call last):
-        File "/root/.local/share/mise/installs/python/3.12.13/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 389, in <module>
-          main()
-        File "/root/.local/share/mise/installs/python/3.12.13/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 373, in main
-          json_out["return_val"] = hook(**hook_input["kwargs"])
-                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        File "/root/.local/share/mise/installs/python/3.12.13/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 143, in get_requires_for_build_wheel
-          return hook(config_settings)
-                 ^^^^^^^^^^^^^^^^^^^^^
-        File "/tmp/pip-build-env-t6iftb9d/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 333, in get_requires_for_build_wheel
-          return self._get_build_requires(config_settings, requirements=[])
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        File "/tmp/pip-build-env-t6iftb9d/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 301, in _get_build_requires
-          self.run_setup()
-        File "/tmp/pip-build-env-t6iftb9d/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 520, in run_setup
-          super().run_setup(setup_script=setup_script)
-        File "/tmp/pip-build-env-t6iftb9d/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 317, in run_setup
-          exec(code, locals())
-        File "<string>", line 13, in <module>
-      ModuleNotFoundError: No module named 'numpy'
-      [end of output]
-  
-  note: This error originates from a subprocess, and is likely not a problem with pip.
-ERROR: Failed to build 'nls' when getting requirements to build wheel
+test_interruption.py::test_third_party_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
+test_interruption.py::test_media_interference[NOTSET] SKIPPED (got empty parameter set for (case))
+test_interruption.py::test_affirmation_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
+test_interruption.py::test_echo_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
+test_interruption.py::test_semantic_invalid_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
+test_interruption.py::test_emotion_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
+test_interruption.py::test_overlap_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
