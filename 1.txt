@@ -1,36 +1,39 @@
-root@health-develop:~/ai-agent/health-assistant/backend/livekit_agent# python generate_tts_fixtures.py 
-TTS: 13 texts, SSML: 2 texts
-Output: /root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio
-
-  [TTS] stop一下                         -> tts_8eb2207d.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', 'stop一下', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 你听我说                           -> tts_688ce93b.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '你听我说', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 你说错了                           -> tts_44561619.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '你说错了', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 停                              -> tts_87438613.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '停', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 停停停停                           -> tts_18709c25.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '停停停停', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 停！！！                           -> tts_cd6972bb.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '停！！！', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 啊！                             -> tts_f1293e94.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '啊！', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 嗯                              -> tts_e885cb9c.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '嗯', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 嗯嗯                             -> tts_c6711816.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '嗯嗯', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 我想...                          -> tts_6f624b80.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '我想...', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 等一下我说一句                        -> tts_a6d57386.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '等一下我说一句', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 这个...那个...                     -> tts_c150e6c6.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '这个...那个...', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [TTS] 那个...                          -> tts_4a1c1b71.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '那个...', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [SSML] <speak>A<break time="500ms"/>B<break time="500ms"/ -> ssml_5db47978.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '<speak>A<break time="500ms"/>B<break time="500ms"/>C<break time="500ms"/>D</speak>', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-  [SSML] <speak>a<break time="300ms"/>at<break time="300ms" -> ssml_6db737f0.pcm
-        [ERROR] Command '['/root/.local/share/mise/installs/python/3.12/bin/python', 'save_tts_audio.py', '-t', '<speak>a<break time="300ms"/>at<break time="300ms"/>b<break time="300ms"/>dot<break time="300ms"/>com</speak>', '-v', 'siyue', '-o', '/root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/fixtures/audio/tmp']' returned non-zero exit status 1.
-
-Done!
+root@health-develop:~/ai-agent/health-assistant/backend/livekit_agent# python save_tts_audio.py -t "停" -v siyue -o test/realtime/fixtures/audio
+Traceback (most recent call last):
+  File "/root/ai-agent/health-assistant/backend/livekit_agent/save_tts_audio.py", line 3, in <module>
+    import nls
+ModuleNotFoundError: No module named 'nls'
+root@health-develop:~/ai-agent/health-assistant/backend/livekit_agent# pip install nls
+Collecting nls
+  Downloading nls-0.2.0.tar.gz (151 kB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... error
+  error: subprocess-exited-with-error
+  
+  × Getting requirements to build wheel did not run successfully.
+  │ exit code: 1
+  ╰─> [20 lines of output]
+      Traceback (most recent call last):
+        File "/root/.local/share/mise/installs/python/3.12.13/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 389, in <module>
+          main()
+        File "/root/.local/share/mise/installs/python/3.12.13/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 373, in main
+          json_out["return_val"] = hook(**hook_input["kwargs"])
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/root/.local/share/mise/installs/python/3.12.13/lib/python3.12/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 143, in get_requires_for_build_wheel
+          return hook(config_settings)
+                 ^^^^^^^^^^^^^^^^^^^^^
+        File "/tmp/pip-build-env-t6iftb9d/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 333, in get_requires_for_build_wheel
+          return self._get_build_requires(config_settings, requirements=[])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/tmp/pip-build-env-t6iftb9d/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 301, in _get_build_requires
+          self.run_setup()
+        File "/tmp/pip-build-env-t6iftb9d/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 520, in run_setup
+          super().run_setup(setup_script=setup_script)
+        File "/tmp/pip-build-env-t6iftb9d/overlay/lib/python3.12/site-packages/setuptools/build_meta.py", line 317, in run_setup
+          exec(code, locals())
+        File "<string>", line 13, in <module>
+      ModuleNotFoundError: No module named 'numpy'
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+ERROR: Failed to build 'nls' when getting requirements to build wheel
