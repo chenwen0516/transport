@@ -1,7 +1,42 @@
-test_interruption.py::test_third_party_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
-test_interruption.py::test_media_interference[NOTSET] SKIPPED (got empty parameter set for (case))
-test_interruption.py::test_affirmation_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
-test_interruption.py::test_echo_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
-test_interruption.py::test_semantic_invalid_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
-test_interruption.py::test_emotion_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
-test_interruption.py::test_overlap_interruption[NOTSET] SKIPPED (got empty parameter set for (case))
+test_interruption.py::test_interruption[barge_in_speech_like_2s] FAILED
+test_interruption.py::test_interruption[barge_in_short_word_500ms] PASSED
+test_interruption.py::test_interruption[barge_in_ultra_short_200ms] PASSED
+test_interruption.py::test_interruption[barge_in_ramp_up] PASSED
+test_interruption.py::test_interruption[barge_in_tts_ting] PASSED
+test_interruption.py::test_interruption[barge_in_tts_tingjia] PASSED
+test_interruption.py::test_interruption[barge_in_tts_tingtingting] PASSED
+test_interruption.py::test_interruption[barge_in_tts_dengyixia] PASSED
+test_interruption.py::test_interruption[barge_in_tts_tingwoshuo] PASSED
+test_interruption.py::test_interruption[barge_in_tts_nixiangcuo] PASSED
+test_interruption.py::test_interruption[barge_in_tts_stop_yixia] PASSED
+test_interruption.py::test_interruption[barge_in_ssml_abcd] PASSED
+test_interruption.py::test_interruption[barge_in_ssml_email] PASSED
+test_interruption.py::test_interruption[barge_in_whisper] FAILED
+test_interruption.py::test_interruption[barge_in_angry_speech] PASSED
+test_interruption.py::test_interruption[barge_in_early_phase] PASSED
+test_interruption.py::test_interruption[barge_in_late_phase] PASSED
+test_interruption.py::test_interruption[no_barge_in_white_noise] PASSED
+test_interruption.py::test_interruption[no_barge_in_silence] PASSED
+test_interruption.py::test_interruption[no_barge_in_low_amplitude] PASSED
+test_interruption.py::test_interruption[no_barge_in_sine_wave] PASSED
+test_interruption.py::test_interruption[no_barge_in_sine_50hz] PASSED
+test_interruption.py::test_interruption[no_barge_in_sine_80hz] PASSED
+test_interruption.py::test_interruption[no_barge_in_impulse_noise] PASSED
+test_interruption.py::test_interruption[no_barge_in_cough] PASSED
+test_interruption.py::test_interruption[no_barge_in_echo_speaker] FAILED
+test_interruption.py::test_interruption[no_barge_in_echo_delayed] FAILED
+test_interruption.py::test_interruption[no_barge_in_background_music] PASSED
+test_interruption.py::test_interruption[no_barge_in_third_party_voice] FAILED
+test_interruption.py::test_interruption[no_barge_in_tts_ninen] FAILED
+test_interruption.py::test_interruption[no_barge_in_tts_nage] FAILED
+test_interruption.py::test_interruption[no_barge_in_tts_nen] FAILED
+test_interruption.py::test_interruption[no_barge_in_tts_a] FAILED
+test_interruption.py::test_interruption[no_barge_in_tts_woxiang] FAILED
+test_interruption.py::test_interruption[no_barge_in_tts_zhegenage] FAILED
+test_interruption.py::test_interruption[no_barge_in_multi_person] FAILED
+test_interruption.py::test_barge_in_then_recovery[barge_in_then_recovery] FAILED
+test_smoke.py::test_connect_and_session_created PASSED
+test_smoke.py::test_agent_greeting 
+------------------------------------------------------------------------------- live log call --------------------------------------------------------------------------------
+WARNING  test.smoke:test_smoke.py:45 response.done not received — may be expected in real agent mode
+PASSED
