@@ -1,7 +1,17 @@
-test_interruption.py::test_interruption[barge_in_speech_like_2s] FAILED
-test_interruption.py::test_interruption[barge_in_short_word_500ms] PASSED
+============================================================================ test session starts =============================================================================
+platform linux -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0 -- /root/.local/share/mise/installs/python/3.12.13/bin/python3.12
+cachedir: .pytest_cache
+rootdir: /root/ai-agent/health-assistant/backend/livekit_agent/test/realtime
+configfile: pytest.ini
+testpaths: .
+plugins: asyncio-1.3.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 87 items                                                                                                                                                           
+
+test_interruption.py::test_interruption[barge_in_speech_like_2s] PASSED
+test_interruption.py::test_interruption[barge_in_short_word_500ms] FAILED
 test_interruption.py::test_interruption[barge_in_ultra_short_200ms] PASSED
-test_interruption.py::test_interruption[barge_in_ramp_up] PASSED
+test_interruption.py::test_interruption[barge_in_ramp_up] FAILED
 test_interruption.py::test_interruption[barge_in_tts_ting] PASSED
 test_interruption.py::test_interruption[barge_in_tts_tingjia] PASSED
 test_interruption.py::test_interruption[barge_in_tts_tingtingting] PASSED
@@ -12,9 +22,9 @@ test_interruption.py::test_interruption[barge_in_tts_stop_yixia] PASSED
 test_interruption.py::test_interruption[barge_in_ssml_abcd] PASSED
 test_interruption.py::test_interruption[barge_in_ssml_email] PASSED
 test_interruption.py::test_interruption[barge_in_whisper] FAILED
-test_interruption.py::test_interruption[barge_in_angry_speech] PASSED
+test_interruption.py::test_interruption[barge_in_angry_speech] FAILED
 test_interruption.py::test_interruption[barge_in_early_phase] PASSED
-test_interruption.py::test_interruption[barge_in_late_phase] PASSED
+test_interruption.py::test_interruption[barge_in_late_phase] FAILED
 test_interruption.py::test_interruption[no_barge_in_white_noise] PASSED
 test_interruption.py::test_interruption[no_barge_in_silence] PASSED
 test_interruption.py::test_interruption[no_barge_in_low_amplitude] PASSED
@@ -23,8 +33,8 @@ test_interruption.py::test_interruption[no_barge_in_sine_50hz] PASSED
 test_interruption.py::test_interruption[no_barge_in_sine_80hz] PASSED
 test_interruption.py::test_interruption[no_barge_in_impulse_noise] PASSED
 test_interruption.py::test_interruption[no_barge_in_cough] PASSED
-test_interruption.py::test_interruption[no_barge_in_echo_speaker] FAILED
-test_interruption.py::test_interruption[no_barge_in_echo_delayed] FAILED
+test_interruption.py::test_interruption[no_barge_in_echo_speaker] PASSED
+test_interruption.py::test_interruption[no_barge_in_echo_delayed] PASSED
 test_interruption.py::test_interruption[no_barge_in_background_music] PASSED
 test_interruption.py::test_interruption[no_barge_in_third_party_voice] FAILED
 test_interruption.py::test_interruption[no_barge_in_tts_ninen] FAILED
@@ -36,7 +46,417 @@ test_interruption.py::test_interruption[no_barge_in_tts_zhegenage] FAILED
 test_interruption.py::test_interruption[no_barge_in_multi_person] FAILED
 test_interruption.py::test_barge_in_then_recovery[barge_in_then_recovery] FAILED
 test_smoke.py::test_connect_and_session_created PASSED
-test_smoke.py::test_agent_greeting 
-------------------------------------------------------------------------------- live log call --------------------------------------------------------------------------------
-WARNING  test.smoke:test_smoke.py:45 response.done not received — may be expected in real agent mode
-PASSED
+test_smoke.py::test_agent_greeting PASSED
+test_smoke.py::test_session_update PASSED
+test_smoke.py::test_inject_audio_triggers_speech_detection FAILED
+test_turn_detection.py::test_turn_detection[turn_normal_2500ms] PASSED
+test_turn_detection.py::test_turn_detection[turn_normal_3000ms] PASSED
+test_turn_detection.py::test_turn_detection[turn_short_2000ms] PASSED
+test_turn_detection.py::test_turn_detection[turn_long_2500ms] PASSED
+test_turn_detection.py::test_turn_detection[turn_long_silence_5000ms] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_weather] PASSED
+test_turn_detection.py::test_turn_detection[turn_ssml_abcd] PASSED
+test_turn_detection.py::test_turn_detection[turn_long_speech_multi_pause] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_500ms_pause] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_800ms_pause] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_1200ms_pause] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_1500ms_pause] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_1800ms_pause] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_multiple_short_pauses] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_breathing_pause] PASSED
+test_turn_detection.py::test_turn_detection[no_turn_tts_ninen] FAILED
+test_turn_detection.py::test_turn_detection[no_turn_tts_nage] FAILED
+test_turn_detection.py::test_turn_detection[no_turn_tts_woxiang] FAILED
+test_turn_detection.py::test_turn_detection[turn_long_speech_10s] PASSED
+test_turn_detection.py::test_turn_detection[turn_long_speech_15s] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_long_with_breaths] PASSED
+test_turn_detection.py::test_turn_detection[turn_long_speech_20s] PASSED
+test_turn_detection.py::test_turn_detection[turn_short_sentences] PASSED
+test_turn_detection.py::test_turn_detection[turn_boundary_exact_min] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_scream] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_single_word] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_stop_command] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_repeated] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_incomplete_timeout] PASSED
+test_turn_detection.py::test_turn_detection[turn_tts_mixed] PASSED
+test_turn_detection.py::test_turn_detection[turn_ssml_email] PASSED
+test_turn_detection.py::test_turn_detection[turn_ssml_code] PASSED
+test_turn_detection.py::test_turn_detection[turn_multi_round] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_1500ms] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_1600ms] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_1700ms] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_1800ms] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_1900ms] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_2000ms] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_2500ms] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_2900ms] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_3000ms] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_3100ms] PASSED
+test_turn_detection.py::test_turn_detection[max_delay_3500ms] PASSED
+test_turn_detection.py::test_turn_detection[long_text_100_chars] PASSED
+test_turn_detection.py::test_turn_detection[long_text_200_chars] PASSED
+================================================================================
+  打断测试结果 (Interruption Test Results)
+================================================================================
++-------------------------------+------------+----------+----------+------------+
+| Case                          | Expected   | Actual   | Result   | E2E Lat.   |
++===============================+============+==========+==========+============+
+| barge_in_speech_like_2s       | Yes        | Yes      | PASS     | 870.7ms    |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_short_word_500ms     | Yes        | No       | FAIL     | 3632.7ms   |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_ultra_short_200ms    | Yes        | Yes      | PASS     | 1022.1ms   |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_ramp_up              | Yes        | No       | FAIL     | 3569.1ms   |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_tts_ting             | Yes        | Yes      | PASS     | 1311.3ms   |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_tts_tingjia          | Yes        | Yes      | PASS     | 1255.7ms   |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_tts_tingtingting     | Yes        | Yes      | PASS     | 840.0ms    |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_tts_dengyixia        | Yes        | Yes      | PASS     | 907.0ms    |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_tts_tingwoshuo       | Yes        | Yes      | PASS     | 830.1ms    |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_tts_nixiangcuo       | Yes        | Yes      | PASS     | 940.4ms    |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_tts_stop_yixia       | Yes        | Yes      | PASS     | 897.1ms    |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_ssml_abcd            | Yes        | Yes      | PASS     | 2560.3ms   |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_ssml_email           | Yes        | Yes      | PASS     | 2238.4ms   |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_whisper              | Yes        | No       | FAIL     | 3603.1ms   |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_angry_speech         | Yes        | No       | FAIL     | 3389.4ms   |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_early_phase          | Yes        | Yes      | PASS     | 825.7ms    |
++-------------------------------+------------+----------+----------+------------+
+| barge_in_late_phase           | Yes        | No       | FAIL     | 2922.2ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_white_noise       | No         | No       | PASS     | 3247.6ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_silence           | No         | No       | PASS     | 3655.4ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_low_amplitude     | No         | No       | PASS     | 3635.0ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_sine_wave         | No         | No       | PASS     | 3634.7ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_sine_50hz         | No         | No       | PASS     | 3637.0ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_sine_80hz         | No         | No       | PASS     | 3638.9ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_impulse_noise     | No         | No       | PASS     | 3829.3ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_cough             | No         | No       | PASS     | 3632.0ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_echo_speaker      | No         | No       | PASS     | 3530.3ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_echo_delayed      | No         | No       | PASS     | 1128.8ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_background_music  | No         | No       | PASS     | 3189.1ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_third_party_voice | No         | Yes      | FAIL     | 1592.3ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_tts_ninen         | No         | Yes      | FAIL     | 871.6ms    |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_tts_nage          | No         | Yes      | FAIL     | 872.9ms    |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_tts_nen           | No         | Yes      | FAIL     | 1288.2ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_tts_a             | No         | Yes      | FAIL     | 1234.3ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_tts_woxiang       | No         | Yes      | FAIL     | 1437.5ms   |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_tts_zhegenage     | No         | Yes      | FAIL     | 851.7ms    |
++-------------------------------+------------+----------+----------+------------+
+| no_barge_in_multi_person      | No         | Yes      | FAIL     | 1584.5ms   |
++-------------------------------+------------+----------+----------+------------+
+
+  准确率: 63.9%
+  误打断率: 42.1%
+  端到端打断时延: p50=940.4ms p90=2238.4ms p95=2560.3ms p99=2560.3ms max=2560.3ms
+
+================================================================================
+  轮次检测结果 (Turn Detection Test Results)
+================================================================================
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| Case                                    | Silence   | Expected   | Actual   | Result   | EP Excess   | TTFB     |
++=========================================+===========+============+==========+==========+=============+==========+
+| turn_normal_2500ms                      | 2.5s      | Yes        | Yes      | PASS     | 547.2ms     | 1070.9ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_normal_3000ms                      | 3.0s      | Yes        | Yes      | PASS     | 494.3ms     | 995.9ms  |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_short_2000ms                       | 2.0s      | Yes        | Yes      | PASS     | 410.9ms     | 913.0ms  |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_long_2500ms                        | 2.5s      | Yes        | Yes      | PASS     | 664.3ms     | 1167.9ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_long_silence_5000ms                | 5.0s      | Yes        | Yes      | PASS     | 620.5ms     | 1131.0ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_weather                        | 2.5s      | Yes        | Yes      | PASS     | 587.1ms     | 1091.2ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_ssml_abcd                          | 2.5s      | Yes        | Yes      | PASS     | 346.7ms     | 879.7ms  |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_long_speech_multi_pause_final      | 3.0s      | Yes        | Yes      | PASS     | 724.5ms     | 1246.4ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_500ms_pause_mid_pause           | 0.5s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_500ms_pause_final               | 3.0s      | Yes        | Yes      | PASS     | 598.1ms     | 1112.1ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_800ms_pause_mid_pause           | 0.8s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_800ms_pause_final               | 3.0s      | Yes        | Yes      | PASS     | 410.7ms     | 964.5ms  |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1200ms_pause_mid_pause          | 1.2s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1200ms_pause_final              | 3.0s      | Yes        | Yes      | PASS     | 380.1ms     | 933.8ms  |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1500ms_pause_mid_pause          | 1.5s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1500ms_pause_final              | 3.0s      | Yes        | Yes      | PASS     | 424.7ms     | 934.4ms  |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1800ms_pause_mid_pause          | 1.8s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_1800ms_pause_final              | 3.0s      | Yes        | Yes      | PASS     | 2744.1ms    | 3275.4ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_multiple_short_pauses_mid_pause | 0.2s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_multiple_short_pauses_final     | 3.0s      | Yes        | Yes      | PASS     | 607.0ms     | 1121.2ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_breathing_pause_mid_pause       | 0.3s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_breathing_pause_final           | 3.0s      | Yes        | Yes      | PASS     | 548.7ms     | 1063.9ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_tts_ninen                       | 3.0s      | No         | Yes      | FAIL     | 3443.9ms    | 3986.6ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_tts_nage                        | 3.0s      | No         | Yes      | FAIL     | 488.0ms     | 1014.6ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| no_turn_tts_woxiang                     | 3.0s      | No         | Yes      | FAIL     | 2624.3ms    | 3157.5ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_long_speech_10s_mid_pause          | 0.0s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_long_speech_10s_final              | 3.0s      | Yes        | Yes      | PASS     | 727.0ms     | 1242.1ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_long_speech_15s_mid_pause          | 0.0s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_long_speech_15s_final              | 3.0s      | Yes        | Yes      | PASS     | 742.7ms     | 1245.2ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_long_with_breaths_mid_pause    | 0.0s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_long_with_breaths_final        | 3.0s      | Yes        | Yes      | PASS     | 758.0ms     | 1298.4ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_long_speech_20s_mid_pause          | 0.0s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_long_speech_20s_final              | 3.0s      | Yes        | Yes      | PASS     | 773.1ms     | 1286.2ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_short_sentences_mid_pause          | 0.0s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_short_sentences_final              | 3.0s      | Yes        | Yes      | PASS     | 498.2ms     | 1017.3ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_boundary_exact_min_mid_pause       | 0.5s      | No         | No       | PASS     | N/A         | N/A      |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_boundary_exact_min_final           | 3.0s      | Yes        | Yes      | PASS     | 552.9ms     | 1082.5ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_scream                         | 3.0s      | Yes        | Yes      | PASS     | 3401.6ms    | 3937.5ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_single_word                    | 3.0s      | Yes        | Yes      | PASS     | 2667.7ms    | 3200.4ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_stop_command                   | 3.0s      | Yes        | Yes      | PASS     | 2677.1ms    | 3182.4ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_repeated                       | 3.0s      | Yes        | Yes      | PASS     | 466.6ms     | 989.9ms  |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_incomplete_timeout             | 3.0s      | Yes        | Yes      | PASS     | 2646.5ms    | 3175.5ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_tts_mixed                          | 3.0s      | Yes        | Yes      | PASS     | 578.1ms     | 1080.9ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_ssml_email                         | 3.0s      | Yes        | Yes      | PASS     | 283.9ms     | 829.5ms  |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_ssml_code                          | 3.0s      | Yes        | Yes      | PASS     | 2710.7ms    | 3228.7ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| turn_multi_round                        | 3.5s      | Yes        | Yes      | PASS     | 361.6ms     | 892.9ms  |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_1500ms                        | 1.5s      | Yes        | Yes      | PASS     | 586.8ms     | 1136.1ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_1600ms                        | 1.6s      | Yes        | Yes      | PASS     | 607.7ms     | 1114.1ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_1700ms                        | 1.7s      | Yes        | Yes      | PASS     | 534.1ms     | 1035.5ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_1800ms                        | 1.8s      | Yes        | Yes      | PASS     | 593.2ms     | 1111.8ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_1900ms                        | 1.9s      | Yes        | Yes      | PASS     | 579.0ms     | 1122.5ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_2000ms                        | 2.0s      | Yes        | Yes      | PASS     | 555.1ms     | 1058.0ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_2500ms                        | 2.5s      | Yes        | Yes      | PASS     | 649.7ms     | 1201.6ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_2900ms                        | 2.9s      | Yes        | Yes      | PASS     | 631.9ms     | 1135.2ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_3000ms                        | 3.0s      | Yes        | Yes      | PASS     | 566.3ms     | 1072.2ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_3100ms                        | 3.1s      | Yes        | Yes      | PASS     | 569.3ms     | 1117.1ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| max_delay_3500ms                        | 3.5s      | Yes        | Yes      | PASS     | 610.4ms     | 1112.8ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| long_text_100_chars                     | 3.0s      | Yes        | Yes      | PASS     | 2679.8ms    | 3204.7ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+| long_text_200_chars                     | 3.0s      | Yes        | Yes      | PASS     | 610.5ms     | 1127.3ms |
++-----------------------------------------+-----------+------------+----------+----------+-------------+----------+
+
+  端点准确率: 94.9%
+  误切轮率: 18.8%
+  漏切轮率: 0.0%
+  超额端点时延: p50=593.2ms p90=2677.1ms p95=2710.7ms p99=3401.6ms max=3401.6ms
+  TTFB:         p50=1114.1ms p90=3200.4ms p95=3228.7ms p99=3937.5ms max=3937.5ms
+
+[Report] Saved to /root/ai-agent/health-assistant/backend/livekit_agent/test/realtime/test_reports/realtime_test_real_20260424_095013.json
+
+
+================================================================================== FAILURES ==================================================================================
+________________________________________________________________ test_interruption[barge_in_short_word_500ms] ________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: barge_in_short_word_500ms: expected_interrupt=True, actual=False, e2e_latency=3632.691360078752
+E   assert False
+E    +  where False = InterruptionResult(case_name='barge_in_short_word_500ms', expected_interrupt=True, actual_interrupted=False, t_inject_first=5496709.271683106, t_inject_last=5496709.675313489, t_agent_listening=5496712.904374466).correct
+____________________________________________________________________ test_interruption[barge_in_ramp_up] _____________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: barge_in_ramp_up: expected_interrupt=True, actual=False, e2e_latency=3569.093046709895
+E   assert False
+E    +  where False = InterruptionResult(case_name='barge_in_ramp_up', expected_interrupt=True, actual_interrupted=False, t_inject_first=5496733.470275649, t_inject_last=5496735.397942951, t_agent_listening=5496737.039368696).correct
+____________________________________________________________________ test_interruption[barge_in_whisper] _____________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: barge_in_whisper: expected_interrupt=True, actual=False, e2e_latency=3603.0635004863143
+E   assert False
+E    +  where False = InterruptionResult(case_name='barge_in_whisper', expected_interrupt=True, actual_interrupted=False, t_inject_first=5496866.548173181, t_inject_last=5496867.969834062, t_agent_listening=5496870.151236681).correct
+__________________________________________________________________ test_interruption[barge_in_angry_speech] __________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: barge_in_angry_speech: expected_interrupt=True, actual=False, e2e_latency=3389.3697718158364
+E   assert False
+E    +  where False = InterruptionResult(case_name='barge_in_angry_speech', expected_interrupt=True, actual_interrupted=False, t_inject_first=5496880.158502133, t_inject_last=5496881.571078041, t_agent_listening=5496883.547871904).correct
+___________________________________________________________________ test_interruption[barge_in_late_phase] ___________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: barge_in_late_phase: expected_interrupt=True, actual=False, e2e_latency=2922.205484472215
+E   assert False
+E    +  where False = InterruptionResult(case_name='barge_in_late_phase', expected_interrupt=True, actual_interrupted=False, t_inject_first=5496906.082417102, t_inject_last=5496906.99359641, t_agent_listening=5496909.004622586).correct
+______________________________________________________________ test_interruption[no_barge_in_third_party_voice] ______________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_third_party_voice: expected_interrupt=False, actual=True, e2e_latency=1592.3372032120824
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_third_party_voice', expected_interrupt=False, actual_interrupted=True, t_inject_first=5497067.45336284, t_inject_last=5497069.377148367, t_agent_listening=5497069.045700043).correct
+__________________________________________________________________ test_interruption[no_barge_in_tts_ninen] __________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_ninen: expected_interrupt=False, actual=True, e2e_latency=871.6078577563167
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_ninen', expected_interrupt=False, actual_interrupted=True, t_inject_first=5497081.069141407, t_inject_last=5497081.575054768, t_agent_listening=5497081.940749264).correct
+__________________________________________________________________ test_interruption[no_barge_in_tts_nage] ___________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_nage: expected_interrupt=False, actual=True, e2e_latency=872.8959821164608
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_nage', expected_interrupt=False, actual_interrupted=True, t_inject_first=5497093.18023578, t_inject_last=5497093.585342897, t_agent_listening=5497094.053131762).correct
+___________________________________________________________________ test_interruption[no_barge_in_tts_nen] ___________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_nen: expected_interrupt=False, actual=True, e2e_latency=1288.234538398683
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_nen', expected_interrupt=False, actual_interrupted=True, t_inject_first=5497105.113143029, t_inject_last=5497105.51719235, t_agent_listening=5497106.401377567).correct
+____________________________________________________________________ test_interruption[no_barge_in_tts_a] ____________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_a: expected_interrupt=False, actual=True, e2e_latency=1234.2550959438086
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_a', expected_interrupt=False, actual_interrupted=True, t_inject_first=5497117.268779288, t_inject_last=5497117.674451264, t_agent_listening=5497118.503034384).correct
+_________________________________________________________________ test_interruption[no_barge_in_tts_woxiang] _________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_woxiang: expected_interrupt=False, actual=True, e2e_latency=1437.4657468870282
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_woxiang', expected_interrupt=False, actual_interrupted=True, t_inject_first=5497129.289886613, t_inject_last=5497129.798804312, t_agent_listening=5497130.72735236).correct
+________________________________________________________________ test_interruption[no_barge_in_tts_zhegenage] ________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_zhegenage: expected_interrupt=False, actual=True, e2e_latency=851.701888255775
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_zhegenage', expected_interrupt=False, actual_interrupted=True, t_inject_first=5497141.420867762, t_inject_last=5497142.836298838, t_agent_listening=5497142.27256965).correct
+________________________________________________________________ test_interruption[no_barge_in_multi_person] _________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_multi_person: expected_interrupt=False, actual=True, e2e_latency=1584.5206743106246
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_multi_person', expected_interrupt=False, actual_interrupted=True, t_inject_first=5497154.644813721, t_inject_last=5497157.579585013, t_agent_listening=5497156.229334395).correct
+____________________________________________________________ test_barge_in_then_recovery[barge_in_then_recovery] _____________________________________________________________
+test_interruption.py:158: in test_barge_in_then_recovery
+    assert interrupted, f"{case.name}: 打断未成功，agent 没有停止说话"
+E   AssertionError: barge_in_then_recovery: 打断未成功，agent 没有停止说话
+E   assert False
+________________________________________________________________ test_inject_audio_triggers_speech_detection _________________________________________________________________
+/root/.local/share/mise/installs/python/3.12.13/lib/python3.12/asyncio/tasks.py:520: in wait_for
+    return await fut
+           ^^^^^^^^^
+/root/.local/share/mise/installs/python/3.12.13/lib/python3.12/asyncio/locks.py:212: in wait
+    await fut
+E   asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+test_smoke.py:96: in test_inject_audio_triggers_speech_detection
+    await ws_client.wait_for_agent_state("speaking", timeout=5)
+core/ws_test_client.py:215: in wait_for_agent_state
+    return await self.wait_for_event(
+core/ws_test_client.py:199: in wait_for_event
+    await asyncio.wait_for(waiter_event.wait(), timeout=remaining)
+/root/.local/share/mise/installs/python/3.12.13/lib/python3.12/asyncio/tasks.py:519: in wait_for
+    async with timeouts.timeout(timeout):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+/root/.local/share/mise/installs/python/3.12.13/lib/python3.12/asyncio/timeouts.py:115: in __aexit__
+    raise TimeoutError from exc_val
+E   TimeoutError
+
+During handling of the above exception, another exception occurred:
+test_smoke.py:98: in test_inject_audio_triggers_speech_detection
+    pytest.fail(
+E   Failed: Neither speech_started nor agent state change received after injecting speech-like audio
+___________________________________________________________________ test_turn_detection[no_turn_tts_ninen] ___________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_ninen: expected_turn_switch=False, actual=True, ep_excess=3443.8620479777455, ttfb=3986.5958653390408
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_ninen', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5497482.039047834, t_agent_thinking=5497485.982909882, t_agent_speaking=None, t_first_agent_audio_delta=5497486.0256437, mid_pause_switched=False, min_delay_s=0.5).correct
+___________________________________________________________________ test_turn_detection[no_turn_tts_nage] ____________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_nage: expected_turn_switch=False, actual=True, ep_excess=488.0371978506446, ttfb=1014.5741114392877
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_nage', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5497498.653379232, t_agent_thinking=5497499.64141643, t_agent_speaking=None, t_first_agent_audio_delta=5497499.667953343, mid_pause_switched=False, min_delay_s=0.5).correct
+__________________________________________________________________ test_turn_detection[no_turn_tts_woxiang] __________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_woxiang: expected_turn_switch=False, actual=True, ep_excess=2624.2942893877625, ttfb=3157.5127448886633
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_woxiang', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5497515.508151227, t_agent_thinking=5497518.632445516, t_agent_speaking=None, t_first_agent_audio_delta=5497518.665663972, mid_pause_switched=False, min_delay_s=0.5).correct
+========================================================================== short test summary info ===========================================================================
+FAILED test_interruption.py::test_interruption[barge_in_short_word_500ms] - AssertionError: barge_in_short_word_500ms: expected_interrupt=True, actual=False, e2e_latency=3632.691360078752
+FAILED test_interruption.py::test_interruption[barge_in_ramp_up] - AssertionError: barge_in_ramp_up: expected_interrupt=True, actual=False, e2e_latency=3569.093046709895
+FAILED test_interruption.py::test_interruption[barge_in_whisper] - AssertionError: barge_in_whisper: expected_interrupt=True, actual=False, e2e_latency=3603.0635004863143
+FAILED test_interruption.py::test_interruption[barge_in_angry_speech] - AssertionError: barge_in_angry_speech: expected_interrupt=True, actual=False, e2e_latency=3389.3697718158364
+FAILED test_interruption.py::test_interruption[barge_in_late_phase] - AssertionError: barge_in_late_phase: expected_interrupt=True, actual=False, e2e_latency=2922.205484472215
+FAILED test_interruption.py::test_interruption[no_barge_in_third_party_voice] - AssertionError: no_barge_in_third_party_voice: expected_interrupt=False, actual=True, e2e_latency=1592.3372032120824
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_ninen] - AssertionError: no_barge_in_tts_ninen: expected_interrupt=False, actual=True, e2e_latency=871.6078577563167
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_nage] - AssertionError: no_barge_in_tts_nage: expected_interrupt=False, actual=True, e2e_latency=872.8959821164608
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_nen] - AssertionError: no_barge_in_tts_nen: expected_interrupt=False, actual=True, e2e_latency=1288.234538398683
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_a] - AssertionError: no_barge_in_tts_a: expected_interrupt=False, actual=True, e2e_latency=1234.2550959438086
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_woxiang] - AssertionError: no_barge_in_tts_woxiang: expected_interrupt=False, actual=True, e2e_latency=1437.4657468870282
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_zhegenage] - AssertionError: no_barge_in_tts_zhegenage: expected_interrupt=False, actual=True, e2e_latency=851.701888255775
+FAILED test_interruption.py::test_interruption[no_barge_in_multi_person] - AssertionError: no_barge_in_multi_person: expected_interrupt=False, actual=True, e2e_latency=1584.5206743106246
+FAILED test_interruption.py::test_barge_in_then_recovery[barge_in_then_recovery] - AssertionError: barge_in_then_recovery: 打断未成功，agent 没有停止说话
+FAILED test_smoke.py::test_inject_audio_triggers_speech_detection - Failed: Neither speech_started nor agent state change received after injecting speech-like audio
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_ninen] - AssertionError: no_turn_tts_ninen: expected_turn_switch=False, actual=True, ep_excess=3443.8620479777455, ttfb=3986.5958653390408
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_nage] - AssertionError: no_turn_tts_nage: expected_turn_switch=False, actual=True, ep_excess=488.0371978506446, ttfb=1014.5741114392877
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_woxiang] - AssertionError: no_turn_tts_woxiang: expected_turn_switch=False, actual=True, ep_excess=2624.2942893877625, ttfb=3157.5127448886633
+================================================================= 18 failed, 69 passed in 1391.44s (0:23:11) =================================================================
