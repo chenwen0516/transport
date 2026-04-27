@@ -1,0 +1,308 @@
+================================================================================== FAILURES ==================================================================================
+___________________________________________________________________ test_interruption[barge_in_music_song] ___________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: barge_in_music_song: expected_interrupt=True, actual=False, e2e_latency=3358.5842456668615
+E   assert False
+E    +  where False = InterruptionResult(case_name='barge_in_music_song', expected_interrupt=True, actual_interrupted=False, t_inject_first=5761735.653638266, t_inject_last=5761737.579259806, t_agent_listening=5761739.012222512).correct
+__________________________________________________________________ test_interruption[barge_in_slow_speech] ___________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: barge_in_slow_speech: expected_interrupt=True, actual=False, e2e_latency=3307.3436096310616
+E   assert False
+E    +  where False = InterruptionResult(case_name='barge_in_slow_speech', expected_interrupt=True, actual_interrupted=False, t_inject_first=5761748.735275109, t_inject_last=5761750.655129151, t_agent_listening=5761752.042618719).correct
+__________________________________________________________________ test_interruption[barge_in_fast_speech] ___________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: barge_in_fast_speech: expected_interrupt=True, actual=False, e2e_latency=5227.4279138073325
+E   assert False
+E    +  where False = InterruptionResult(case_name='barge_in_fast_speech', expected_interrupt=True, actual_interrupted=False, t_inject_first=5761761.784430532, t_inject_last=5761763.710136351, t_agent_listening=5761767.011858446).correct
+________________________________________________________________ test_interruption[no_barge_in_echo_speaker] _________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_echo_speaker: expected_interrupt=False, actual=True, e2e_latency=2454.2866572737694
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_echo_speaker', expected_interrupt=False, actual_interrupted=True, t_inject_first=5761994.611423057, t_inject_last=5761996.533989508, t_agent_listening=5761997.065709714).correct
+________________________________________________________________ test_interruption[no_barge_in_echo_delayed] _________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_echo_delayed: expected_interrupt=False, actual=True, e2e_latency=2528.0557814985514
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_echo_delayed', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762007.756570828, t_inject_last=5762010.188431778, t_agent_listening=5762010.28462661).correct
+______________________________________________________________ test_interruption[no_barge_in_third_party_voice] ______________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_third_party_voice: expected_interrupt=False, actual=True, e2e_latency=1940.7488396391273
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_third_party_voice', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762035.623346208, t_inject_last=5762037.549085678, t_agent_listening=5762037.564095047).correct
+__________________________________________________________________ test_interruption[no_barge_in_tts_ninen] __________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_ninen: expected_interrupt=False, actual=True, e2e_latency=1252.776832319796
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_ninen', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762048.63047863, t_inject_last=5762049.136036782, t_agent_listening=5762049.883255462).correct
+__________________________________________________________________ test_interruption[no_barge_in_tts_nage] ___________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_nage: expected_interrupt=False, actual=True, e2e_latency=1255.3267301991582
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_nage', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762060.222211142, t_inject_last=5762060.627073051, t_agent_listening=5762061.477537872).correct
+___________________________________________________________________ test_interruption[no_barge_in_tts_nen] ___________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_nen: expected_interrupt=False, actual=True, e2e_latency=1017.254919745028
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_nen', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762071.721539649, t_inject_last=5762072.126608196, t_agent_listening=5762072.738794569).correct
+____________________________________________________________________ test_interruption[no_barge_in_tts_a] ____________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_a: expected_interrupt=False, actual=True, e2e_latency=998.3062669634819
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_a', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762083.24154231, t_inject_last=5762083.645637601, t_agent_listening=5762084.239848577).correct
+_________________________________________________________________ test_interruption[no_barge_in_tts_woxiang] _________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_woxiang: expected_interrupt=False, actual=True, e2e_latency=1215.9239193424582
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_woxiang', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762094.739593822, t_inject_last=5762095.245740772, t_agent_listening=5762095.955517741).correct
+________________________________________________________________ test_interruption[no_barge_in_tts_zhegenage] ________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_zhegenage: expected_interrupt=False, actual=True, e2e_latency=1257.4176909402013
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_zhegenage', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762106.369294104, t_inject_last=5762107.787632837, t_agent_listening=5762107.626711795).correct
+________________________________________________________________ test_interruption[no_barge_in_multi_person] _________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_multi_person: expected_interrupt=False, actual=True, e2e_latency=1964.6681025624275
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_multi_person', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762118.978206409, t_inject_last=5762121.91605884, t_agent_listening=5762120.942874512).correct
+___________________________________________________________________ test_interruption[no_barge_in_tts_oh] ____________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_oh: expected_interrupt=False, actual=True, e2e_latency=1009.0159932151437
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_oh', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762213.547460375, t_inject_last=5762213.850861173, t_agent_listening=5762214.556476369).correct
+__________________________________________________________________ test_interruption[no_barge_in_tts_okay] ___________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_okay: expected_interrupt=False, actual=True, e2e_latency=1258.7382784113288
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_okay', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762224.951345508, t_inject_last=5762225.456940621, t_agent_listening=5762226.210083786).correct
+__________________________________________________________________ test_interruption[no_barge_in_tts_right] __________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_right: expected_interrupt=False, actual=True, e2e_latency=1090.677684172988
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_right', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762236.616922486, t_inject_last=5762236.919434266, t_agent_listening=5762237.70760017).correct
+__________________________________________________________________ test_interruption[no_barge_in_tts_maybe] __________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_maybe: expected_interrupt=False, actual=True, e2e_latency=1308.8896535336971
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_maybe', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762248.000594029, t_inject_last=5762248.608982266, t_agent_listening=5762249.309483683).correct
+__________________________________________________________________ test_interruption[no_barge_in_tts_sorry] __________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_sorry: expected_interrupt=False, actual=True, e2e_latency=1354.4124104082584
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_sorry', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762259.801870249, t_inject_last=5762260.50875225, t_agent_listening=5762261.15628266).correct
+________________________________________________________________ test_interruption[no_barge_in_tts_excuse_me] ________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_excuse_me: expected_interrupt=False, actual=True, e2e_latency=1423.0510937049985
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_excuse_me', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762271.628699231, t_inject_last=5762272.435594118, t_agent_listening=5762273.051750325).correct
+_______________________________________________________________ test_interruption[no_barge_in_tts_by_the_way] ________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_by_the_way: expected_interrupt=False, actual=True, e2e_latency=1264.404535293579
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_by_the_way', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762283.523395263, t_inject_last=5762284.028958685, t_agent_listening=5762284.787799798).correct
+_________________________________________________________________ test_interruption[no_barge_in_tts_waiting] _________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_waiting: expected_interrupt=False, actual=True, e2e_latency=1103.9792411029339
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_waiting', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762295.110432197, t_inject_last=5762295.513522783, t_agent_listening=5762296.214411438).correct
+________________________________________________________________ test_interruption[no_barge_in_tts_thinking] _________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_thinking: expected_interrupt=False, actual=True, e2e_latency=1249.1802275180817
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_thinking', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762306.793710314, t_inject_last=5762307.704724084, t_agent_listening=5762308.042890541).correct
+___________________________________________________________________ test_interruption[no_barge_in_tts_ha] ____________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_ha: expected_interrupt=False, actual=True, e2e_latency=3435.9100935980678
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_ha', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762318.802707107, t_inject_last=5762319.20637457, t_agent_listening=5762322.2386172).correct
+___________________________________________________________________ test_interruption[no_barge_in_tts_er] ____________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_er: expected_interrupt=False, actual=True, e2e_latency=1102.135868743062
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_er', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762330.354789603, t_inject_last=5762330.760156979, t_agent_listening=5762331.456925471).correct
+__________________________________________________________________ test_interruption[no_barge_in_tts_like] ___________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_like: expected_interrupt=False, actual=True, e2e_latency=1256.4746253192425
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_like', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762341.873550505, t_inject_last=5762342.986761829, t_agent_listening=5762343.130025131).correct
+________________________________________________________________ test_interruption[no_barge_in_tts_forget_it] ________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_forget_it: expected_interrupt=False, actual=True, e2e_latency=1355.5143177509308
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_forget_it', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762354.069805994, t_inject_last=5762355.082375523, t_agent_listening=5762355.425320311).correct
+__________________________________________________________________ test_interruption[no_barge_in_tts_kinda] __________________________________________________________________
+test_interruption.py:103: in test_interruption
+    assert result.correct, (
+E   AssertionError: no_barge_in_tts_kinda: expected_interrupt=False, actual=True, e2e_latency=1204.1534576565027
+E   assert False
+E    +  where False = InterruptionResult(case_name='no_barge_in_tts_kinda', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762366.192691579, t_inject_last=5762366.899248072, t_agent_listening=5762367.396845037).correct
+________________________________________________________ test_barge_in_then_recovery[double_interrupt_then_recovery] _________________________________________________________
+test_interruption.py:163: in test_barge_in_then_recovery
+    assert interrupted, f"{case.name}: 打断未成功，agent 没有停止说话"
+E   AssertionError: double_interrupt_then_recovery: 打断未成功，agent 没有停止说话
+E   assert False
+___________________________________________________________________ test_turn_detection[no_turn_tts_ninen] ___________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_ninen: expected_turn_switch=False, actual=True, ep_excess=3211.990031413734, ttfb=3726.5373626723886
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_ninen', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762699.331531795, t_agent_thinking=5762703.043521826, t_agent_speaking=None, t_first_agent_audio_delta=5762703.058069157, mid_pause_switched=False, min_delay_s=0.5).correct
+___________________________________________________________________ test_turn_detection[no_turn_tts_nage] ____________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_nage: expected_turn_switch=False, actual=True, ep_excess=285.99028289318085, ttfb=786.0065428540111
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_nage', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762715.282663034, t_agent_thinking=5762716.068653317, t_agent_speaking=None, t_first_agent_audio_delta=5762716.068669577, mid_pause_switched=False, min_delay_s=0.5).correct
+__________________________________________________________________ test_turn_detection[no_turn_tts_woxiang] __________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_woxiang: expected_turn_switch=False, actual=True, ep_excess=2603.299873881042, ttfb=3138.3541226387024
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_woxiang', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762732.421833524, t_agent_thinking=5762735.525133397, t_agent_speaking=None, t_first_agent_audio_delta=5762735.560187646, mid_pause_switched=False, min_delay_s=0.5).correct
+____________________________________________________________________ test_turn_detection[no_turn_tts_oh] _____________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_oh: expected_turn_switch=False, actual=True, ep_excess=3153.9790546521544, ttfb=3671.471963636577
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_oh', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762747.997964841, t_agent_thinking=5762751.651943896, t_agent_speaking=None, t_first_agent_audio_delta=5762751.669436805, mid_pause_switched=False, min_delay_s=0.5).correct
+----------------------------------------------------------------------------- Captured log call ------------------------------------------------------------------------------
+WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_oh, text=哦, falling back to speech_like
+___________________________________________________________________ test_turn_detection[no_turn_tts_okay] ____________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_okay: expected_turn_switch=False, actual=True, ep_excess=3206.0785237699747, ttfb=3725.0038674101233
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_okay', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762764.014089218, t_agent_thinking=5762767.720167742, t_agent_speaking=None, t_first_agent_audio_delta=5762767.739093086, mid_pause_switched=False, min_delay_s=0.5).correct
+----------------------------------------------------------------------------- Captured log call ------------------------------------------------------------------------------
+WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_okay, text=好的, falling back to speech_like
+___________________________________________________________________ test_turn_detection[no_turn_tts_right] ___________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_right: expected_turn_switch=False, actual=True, ep_excess=3164.7528298199177, ttfb=3692.747287452221
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_right', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762779.646220658, t_agent_thinking=5762783.310973488, t_agent_speaking=None, t_first_agent_audio_delta=5762783.338967945, mid_pause_switched=False, min_delay_s=0.5).correct
+----------------------------------------------------------------------------- Captured log call ------------------------------------------------------------------------------
+WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_right, text=对, falling back to speech_like
+___________________________________________________________________ test_turn_detection[no_turn_tts_sorry] ___________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_sorry: expected_turn_switch=False, actual=True, ep_excess=3249.834598042071, ttfb=3789.4267179071903
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_sorry', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762795.329226855, t_agent_thinking=5762799.079061453, t_agent_speaking=None, t_first_agent_audio_delta=5762799.118653573, mid_pause_switched=False, min_delay_s=0.5).correct
+----------------------------------------------------------------------------- Captured log call ------------------------------------------------------------------------------
+WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_sorry, text=不好意思, falling back to speech_like
+__________________________________________________________________ test_turn_detection[no_turn_tts_waiting] __________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_waiting: expected_turn_switch=False, actual=True, ep_excess=3035.9829794615507, ttfb=3536.5503169596195
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_waiting', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762811.311858764, t_agent_thinking=5762814.847841743, t_agent_speaking=None, t_first_agent_audio_delta=5762814.848409081, mid_pause_switched=False, min_delay_s=0.5).correct
+----------------------------------------------------------------------------- Captured log call ------------------------------------------------------------------------------
+WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_waiting, text=嗯……, falling back to speech_like
+____________________________________________________________________ test_turn_detection[no_turn_tts_ha] _____________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_turn_tts_ha: expected_turn_switch=False, actual=True, ep_excess=3185.7043765485287, ttfb=3705.687467008829
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_turn_tts_ha', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762828.033395944, t_agent_thinking=5762831.719100321, t_agent_speaking=None, t_first_agent_audio_delta=5762831.739083411, mid_pause_switched=False, min_delay_s=0.5).correct
+----------------------------------------------------------------------------- Captured log call ------------------------------------------------------------------------------
+WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_ha, text=哈, falling back to speech_like
+_______________________________________________________________ test_turn_detection[incomplete_speech_1800ms] ________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: incomplete_speech_1800ms: expected_turn_switch=False, actual=True, ep_excess=222.02660143375397, ttfb=754.8751384019852
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='incomplete_speech_1800ms', silence_duration_s=1.8, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5763530.215812308, t_agent_thinking=5763530.937838909, t_agent_speaking=None, t_first_agent_audio_delta=5763530.970687446, mid_pause_switched=False, min_delay_s=0.5).correct
+____________________________________________________________________ test_turn_detection[no_switch_300ms] ____________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: no_switch_300ms: expected_turn_switch=False, actual=True, ep_excess=216.6500212624669, ttfb=736.8659405037761
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='no_switch_300ms', silence_duration_s=0.3, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5763546.461520742, t_agent_thinking=5763547.178170763, t_agent_speaking=None, t_first_agent_audio_delta=5763547.198386682, mid_pause_switched=False, min_delay_s=0.5).correct
+___________________________________________________________________ test_turn_detection[turn_fast_speech] ____________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: turn_fast_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='turn_fast_speech', silence_duration_s=2.5, expected_turn_switch=True, actual_turn_switched=False, t_audio_end=5763614.774796979, t_agent_thinking=None, t_agent_speaking=None, t_first_agent_audio_delta=None, mid_pause_switched=False, min_delay_s=0.5).correct
+___________________________________________________________________ test_turn_detection[turn_slow_speech] ____________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: turn_slow_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='turn_slow_speech', silence_duration_s=2.5, expected_turn_switch=True, actual_turn_switched=False, t_audio_end=5763671.939833497, t_agent_thinking=None, t_agent_speaking=None, t_first_agent_audio_delta=None, mid_pause_switched=False, min_delay_s=0.5).correct
+_________________________________________________________________ test_turn_detection[turn_slow_then_pause] __________________________________________________________________
+test_turn_detection.py:140: in test_turn_detection
+    assert result.correct, (
+E   AssertionError: turn_slow_then_pause: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
+E   assert False
+E    +  where False = TurnDetectionResult(case_name='turn_slow_then_pause', silence_duration_s=3.0, expected_turn_switch=True, actual_turn_switched=False, t_audio_end=5763730.197375331, t_agent_thinking=None, t_agent_speaking=None, t_first_agent_audio_delta=None, mid_pause_switched=False, min_delay_s=0.5).correct
+========================================================================== short test summary info ===========================================================================
+FAILED test_interruption.py::test_interruption[barge_in_music_song] - AssertionError: barge_in_music_song: expected_interrupt=True, actual=False, e2e_latency=3358.5842456668615
+FAILED test_interruption.py::test_interruption[barge_in_slow_speech] - AssertionError: barge_in_slow_speech: expected_interrupt=True, actual=False, e2e_latency=3307.3436096310616
+FAILED test_interruption.py::test_interruption[barge_in_fast_speech] - AssertionError: barge_in_fast_speech: expected_interrupt=True, actual=False, e2e_latency=5227.4279138073325
+FAILED test_interruption.py::test_interruption[no_barge_in_echo_speaker] - AssertionError: no_barge_in_echo_speaker: expected_interrupt=False, actual=True, e2e_latency=2454.2866572737694
+FAILED test_interruption.py::test_interruption[no_barge_in_echo_delayed] - AssertionError: no_barge_in_echo_delayed: expected_interrupt=False, actual=True, e2e_latency=2528.0557814985514
+FAILED test_interruption.py::test_interruption[no_barge_in_third_party_voice] - AssertionError: no_barge_in_third_party_voice: expected_interrupt=False, actual=True, e2e_latency=1940.7488396391273
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_ninen] - AssertionError: no_barge_in_tts_ninen: expected_interrupt=False, actual=True, e2e_latency=1252.776832319796
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_nage] - AssertionError: no_barge_in_tts_nage: expected_interrupt=False, actual=True, e2e_latency=1255.3267301991582
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_nen] - AssertionError: no_barge_in_tts_nen: expected_interrupt=False, actual=True, e2e_latency=1017.254919745028
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_a] - AssertionError: no_barge_in_tts_a: expected_interrupt=False, actual=True, e2e_latency=998.3062669634819
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_woxiang] - AssertionError: no_barge_in_tts_woxiang: expected_interrupt=False, actual=True, e2e_latency=1215.9239193424582
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_zhegenage] - AssertionError: no_barge_in_tts_zhegenage: expected_interrupt=False, actual=True, e2e_latency=1257.4176909402013
+FAILED test_interruption.py::test_interruption[no_barge_in_multi_person] - AssertionError: no_barge_in_multi_person: expected_interrupt=False, actual=True, e2e_latency=1964.6681025624275
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_oh] - AssertionError: no_barge_in_tts_oh: expected_interrupt=False, actual=True, e2e_latency=1009.0159932151437
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_okay] - AssertionError: no_barge_in_tts_okay: expected_interrupt=False, actual=True, e2e_latency=1258.7382784113288
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_right] - AssertionError: no_barge_in_tts_right: expected_interrupt=False, actual=True, e2e_latency=1090.677684172988
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_maybe] - AssertionError: no_barge_in_tts_maybe: expected_interrupt=False, actual=True, e2e_latency=1308.8896535336971
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_sorry] - AssertionError: no_barge_in_tts_sorry: expected_interrupt=False, actual=True, e2e_latency=1354.4124104082584
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_excuse_me] - AssertionError: no_barge_in_tts_excuse_me: expected_interrupt=False, actual=True, e2e_latency=1423.0510937049985
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_by_the_way] - AssertionError: no_barge_in_tts_by_the_way: expected_interrupt=False, actual=True, e2e_latency=1264.404535293579
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_waiting] - AssertionError: no_barge_in_tts_waiting: expected_interrupt=False, actual=True, e2e_latency=1103.9792411029339
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_thinking] - AssertionError: no_barge_in_tts_thinking: expected_interrupt=False, actual=True, e2e_latency=1249.1802275180817
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_ha] - AssertionError: no_barge_in_tts_ha: expected_interrupt=False, actual=True, e2e_latency=3435.9100935980678
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_er] - AssertionError: no_barge_in_tts_er: expected_interrupt=False, actual=True, e2e_latency=1102.135868743062
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_like] - AssertionError: no_barge_in_tts_like: expected_interrupt=False, actual=True, e2e_latency=1256.4746253192425
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_forget_it] - AssertionError: no_barge_in_tts_forget_it: expected_interrupt=False, actual=True, e2e_latency=1355.5143177509308
+FAILED test_interruption.py::test_interruption[no_barge_in_tts_kinda] - AssertionError: no_barge_in_tts_kinda: expected_interrupt=False, actual=True, e2e_latency=1204.1534576565027
+FAILED test_interruption.py::test_barge_in_then_recovery[double_interrupt_then_recovery] - AssertionError: double_interrupt_then_recovery: 打断未成功，agent 没有停止说话
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_ninen] - AssertionError: no_turn_tts_ninen: expected_turn_switch=False, actual=True, ep_excess=3211.990031413734, ttfb=3726.5373626723886
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_nage] - AssertionError: no_turn_tts_nage: expected_turn_switch=False, actual=True, ep_excess=285.99028289318085, ttfb=786.0065428540111
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_woxiang] - AssertionError: no_turn_tts_woxiang: expected_turn_switch=False, actual=True, ep_excess=2603.299873881042, ttfb=3138.3541226387024
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_oh] - AssertionError: no_turn_tts_oh: expected_turn_switch=False, actual=True, ep_excess=3153.9790546521544, ttfb=3671.471963636577
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_okay] - AssertionError: no_turn_tts_okay: expected_turn_switch=False, actual=True, ep_excess=3206.0785237699747, ttfb=3725.0038674101233
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_right] - AssertionError: no_turn_tts_right: expected_turn_switch=False, actual=True, ep_excess=3164.7528298199177, ttfb=3692.747287452221
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_sorry] - AssertionError: no_turn_tts_sorry: expected_turn_switch=False, actual=True, ep_excess=3249.834598042071, ttfb=3789.4267179071903
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_waiting] - AssertionError: no_turn_tts_waiting: expected_turn_switch=False, actual=True, ep_excess=3035.9829794615507, ttfb=3536.5503169596195
+FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_ha] - AssertionError: no_turn_tts_ha: expected_turn_switch=False, actual=True, ep_excess=3185.7043765485287, ttfb=3705.687467008829
+FAILED test_turn_detection.py::test_turn_detection[incomplete_speech_1800ms] - AssertionError: incomplete_speech_1800ms: expected_turn_switch=False, actual=True, ep_excess=222.02660143375397, ttfb=754.8751384019852
+FAILED test_turn_detection.py::test_turn_detection[no_switch_300ms] - AssertionError: no_switch_300ms: expected_turn_switch=False, actual=True, ep_excess=216.6500212624669, ttfb=736.8659405037761
+FAILED test_turn_detection.py::test_turn_detection[turn_fast_speech] - AssertionError: turn_fast_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
+FAILED test_turn_detection.py::test_turn_detection[turn_slow_speech] - AssertionError: turn_slow_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
+FAILED test_turn_detection.py::test_turn_detection[turn_slow_then_pause] - AssertionError: turn_slow_then_pause: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
+================================================================ 42 failed, 103 passed in 2261.12s (0:37:41) =================================================================
