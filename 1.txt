@@ -1,4 +1,4 @@
-python3 -c "
+root@health-develop:~/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench# python3 -c "
 import wave
 wav = '/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/synthetic_user_interruption/1/interrupt.wav'
 with wave.open(wav, 'rb') as f:
@@ -7,3 +7,18 @@ with wave.open(wav, 'rb') as f:
     print(f'framerate: {f.getframerate()}')
     print(f'nframes: {f.getnframes()}')
 "
+Traceback (most recent call last):
+  File "<string>", line 4, in <module>
+    with wave.open(wav, 'rb') as f:
+         ~~~~~~~~~^^^^^^^^^^^
+  File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/wave.py", line 661, in open
+    return Wave_read(f)
+  File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/wave.py", line 286, in __init__
+    self.initfp(f)
+    ~~~~~~~~~~~^^^
+  File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/wave.py", line 266, in initfp
+    self._read_fmt_chunk(chunk)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/wave.py", line 387, in _read_fmt_chunk
+    raise Error('unknown format: %r' % (wFormatTag,))
+wave.Error: unknown format: 3
