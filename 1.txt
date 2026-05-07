@@ -1,40 +1,207 @@
-root@health-develop:~/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench# pip install nls
-Collecting nls
-  Using cached nls-0.2.0.tar.gz (151 kB)
-  Installing build dependencies ... done
-  Getting requirements to build wheel ... error
-  error: subprocess-exited-with-error
-  
-  × Getting requirements to build wheel did not run successfully.
-  │ exit code: 1
-  ╰─> [23 lines of output]
-      Traceback (most recent call last):
-        File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 389, in <module>
-          main()
-          ~~~~^^
-        File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 373, in main
-          json_out["return_val"] = hook(**hook_input["kwargs"])
-                                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-        File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 143, in get_requires_for_build_wheel
-          return hook(config_settings)
-        File "/tmp/pip-build-env-kys6xo27/overlay/lib/python3.14/site-packages/setuptools/build_meta.py", line 333, in get_requires_for_build_wheel
-          return self._get_build_requires(config_settings, requirements=[])
-                 ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        File "/tmp/pip-build-env-kys6xo27/overlay/lib/python3.14/site-packages/setuptools/build_meta.py", line 301, in _get_build_requires
-          self.run_setup()
-          ~~~~~~~~~~~~~~^^
-        File "/tmp/pip-build-env-kys6xo27/overlay/lib/python3.14/site-packages/setuptools/build_meta.py", line 520, in run_setup
-          super().run_setup(setup_script=setup_script)
-          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        File "/tmp/pip-build-env-kys6xo27/overlay/lib/python3.14/site-packages/setuptools/build_meta.py", line 317, in run_setup
-          exec(code, locals())
-          ~~~~^^^^^^^^^^^^^^^^
-        File "<string>", line 13, in <module>
-      ModuleNotFoundError: No module named 'numpy'
-      [end of output]
-  
-  note: This error originates from a subprocess, and is likely not a problem with pip.
-
-[notice] A new release of pip is available: 26.0.1 -> 26.1.1
-[notice] To update, run: python3.14 -m pip install --upgrade pip
-ERROR: Failed to build 'nls' when getting requirements to build wheel怎么解决
+root@health-develop:~/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench# ls dataset/v1.0/synthetic_user_interruption/1/
+context.wav  input.wav  interrupt.json  interrupt.wav
+root@health-develop:~/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench# ls -la dataset/v1.0/synthetic_user_interruption/
+total 820
+drwxrwxr-x 202 root root 4096 Mar 18  2025 .
+drwxr-xr-x   8 root root 4096 May  7 15:10 ..
+drwxrwxr-x   2 root root 4096 Apr 14  2025 1
+drwxrwxr-x   2 root root 4096 Apr 14  2025 10
+drwxrwxr-x   2 root root 4096 Apr 14  2025 100
+drwxrwxr-x   2 root root 4096 Apr 14  2025 101
+drwxrwxr-x   2 root root 4096 Apr 14  2025 102
+drwxrwxr-x   2 root root 4096 Apr 14  2025 103
+drwxrwxr-x   2 root root 4096 Apr 14  2025 104
+drwxrwxr-x   2 root root 4096 Apr 14  2025 105
+drwxrwxr-x   2 root root 4096 Apr 14  2025 106
+drwxrwxr-x   2 root root 4096 Apr 14  2025 107
+drwxrwxr-x   2 root root 4096 Apr 14  2025 108
+drwxrwxr-x   2 root root 4096 Apr 14  2025 109
+drwxrwxr-x   2 root root 4096 Apr 14  2025 11
+drwxrwxr-x   2 root root 4096 Apr 14  2025 110
+drwxrwxr-x   2 root root 4096 Apr 14  2025 111
+drwxrwxr-x   2 root root 4096 Apr 14  2025 112
+drwxrwxr-x   2 root root 4096 Apr 14  2025 113
+drwxrwxr-x   2 root root 4096 Apr 14  2025 114
+drwxrwxr-x   2 root root 4096 Apr 14  2025 115
+drwxrwxr-x   2 root root 4096 Apr 14  2025 116
+drwxrwxr-x   2 root root 4096 Apr 14  2025 117
+drwxrwxr-x   2 root root 4096 Apr 14  2025 118
+drwxrwxr-x   2 root root 4096 Apr 14  2025 119
+drwxrwxr-x   2 root root 4096 Apr 14  2025 12
+drwxrwxr-x   2 root root 4096 Apr 14  2025 120
+drwxrwxr-x   2 root root 4096 Apr 14  2025 121
+drwxrwxr-x   2 root root 4096 Apr 14  2025 122
+drwxrwxr-x   2 root root 4096 Apr 14  2025 123
+drwxrwxr-x   2 root root 4096 Apr 14  2025 124
+drwxrwxr-x   2 root root 4096 Apr 14  2025 125
+drwxrwxr-x   2 root root 4096 Apr 14  2025 126
+drwxrwxr-x   2 root root 4096 Apr 14  2025 127
+drwxrwxr-x   2 root root 4096 Apr 14  2025 128
+drwxrwxr-x   2 root root 4096 Apr 14  2025 129
+drwxrwxr-x   2 root root 4096 Apr 14  2025 13
+drwxrwxr-x   2 root root 4096 Apr 14  2025 130
+drwxrwxr-x   2 root root 4096 Apr 14  2025 131
+drwxrwxr-x   2 root root 4096 Apr 14  2025 132
+drwxrwxr-x   2 root root 4096 Apr 14  2025 133
+drwxrwxr-x   2 root root 4096 Apr 14  2025 134
+drwxrwxr-x   2 root root 4096 Apr 14  2025 135
+drwxrwxr-x   2 root root 4096 Apr 14  2025 136
+drwxrwxr-x   2 root root 4096 Apr 14  2025 137
+drwxrwxr-x   2 root root 4096 Apr 14  2025 138
+drwxrwxr-x   2 root root 4096 Apr 14  2025 139
+drwxrwxr-x   2 root root 4096 Apr 14  2025 14
+drwxrwxr-x   2 root root 4096 Apr 14  2025 140
+drwxrwxr-x   2 root root 4096 Apr 14  2025 141
+drwxrwxr-x   2 root root 4096 Apr 14  2025 142
+drwxrwxr-x   2 root root 4096 Apr 14  2025 143
+drwxrwxr-x   2 root root 4096 Apr 14  2025 144
+drwxrwxr-x   2 root root 4096 Apr 14  2025 145
+drwxrwxr-x   2 root root 4096 Apr 14  2025 146
+drwxrwxr-x   2 root root 4096 Apr 14  2025 147
+drwxrwxr-x   2 root root 4096 Apr 14  2025 148
+drwxrwxr-x   2 root root 4096 Apr 14  2025 149
+drwxrwxr-x   2 root root 4096 Apr 14  2025 15
+drwxrwxr-x   2 root root 4096 Apr 14  2025 150
+drwxrwxr-x   2 root root 4096 Apr 14  2025 151
+drwxrwxr-x   2 root root 4096 Apr 14  2025 152
+drwxrwxr-x   2 root root 4096 Apr 14  2025 153
+drwxrwxr-x   2 root root 4096 Apr 14  2025 154
+drwxrwxr-x   2 root root 4096 Apr 14  2025 155
+drwxrwxr-x   2 root root 4096 Apr 14  2025 156
+drwxrwxr-x   2 root root 4096 Apr 14  2025 157
+drwxrwxr-x   2 root root 4096 Apr 14  2025 158
+drwxrwxr-x   2 root root 4096 Apr 14  2025 159
+drwxrwxr-x   2 root root 4096 Apr 14  2025 16
+drwxrwxr-x   2 root root 4096 Apr 14  2025 160
+drwxrwxr-x   2 root root 4096 Apr 14  2025 161
+drwxrwxr-x   2 root root 4096 Apr 14  2025 162
+drwxrwxr-x   2 root root 4096 Apr 14  2025 163
+drwxrwxr-x   2 root root 4096 Apr 14  2025 164
+drwxrwxr-x   2 root root 4096 Apr 14  2025 165
+drwxrwxr-x   2 root root 4096 Apr 14  2025 166
+drwxrwxr-x   2 root root 4096 Apr 14  2025 167
+drwxrwxr-x   2 root root 4096 Apr 14  2025 168
+drwxrwxr-x   2 root root 4096 Apr 14  2025 169
+drwxrwxr-x   2 root root 4096 Apr 14  2025 17
+drwxrwxr-x   2 root root 4096 Apr 14  2025 170
+drwxrwxr-x   2 root root 4096 Apr 14  2025 171
+drwxrwxr-x   2 root root 4096 Apr 14  2025 172
+drwxrwxr-x   2 root root 4096 Apr 14  2025 173
+drwxrwxr-x   2 root root 4096 Apr 14  2025 174
+drwxrwxr-x   2 root root 4096 Apr 14  2025 175
+drwxrwxr-x   2 root root 4096 Apr 14  2025 176
+drwxrwxr-x   2 root root 4096 Apr 14  2025 177
+drwxrwxr-x   2 root root 4096 Apr 14  2025 178
+drwxrwxr-x   2 root root 4096 Apr 14  2025 179
+drwxrwxr-x   2 root root 4096 Apr 14  2025 18
+drwxrwxr-x   2 root root 4096 Apr 14  2025 180
+drwxrwxr-x   2 root root 4096 Apr 14  2025 181
+drwxrwxr-x   2 root root 4096 Apr 14  2025 182
+drwxrwxr-x   2 root root 4096 Apr 14  2025 183
+drwxrwxr-x   2 root root 4096 Apr 14  2025 184
+drwxrwxr-x   2 root root 4096 Apr 14  2025 185
+drwxrwxr-x   2 root root 4096 Apr 14  2025 186
+drwxrwxr-x   2 root root 4096 Apr 14  2025 187
+drwxrwxr-x   2 root root 4096 Apr 14  2025 188
+drwxrwxr-x   2 root root 4096 Apr 14  2025 189
+drwxrwxr-x   2 root root 4096 Apr 14  2025 19
+drwxrwxr-x   2 root root 4096 Apr 14  2025 190
+drwxrwxr-x   2 root root 4096 Apr 14  2025 191
+drwxrwxr-x   2 root root 4096 Apr 14  2025 192
+drwxrwxr-x   2 root root 4096 Apr 14  2025 193
+drwxrwxr-x   2 root root 4096 Apr 14  2025 194
+drwxrwxr-x   2 root root 4096 Apr 14  2025 195
+drwxrwxr-x   2 root root 4096 Apr 14  2025 196
+drwxrwxr-x   2 root root 4096 Apr 14  2025 197
+drwxrwxr-x   2 root root 4096 Apr 14  2025 198
+drwxrwxr-x   2 root root 4096 Apr 14  2025 199
+drwxrwxr-x   2 root root 4096 Apr 14  2025 2
+drwxrwxr-x   2 root root 4096 Apr 14  2025 20
+drwxrwxr-x   2 root root 4096 Apr 14  2025 200
+drwxrwxr-x   2 root root 4096 Apr 14  2025 21
+drwxrwxr-x   2 root root 4096 Apr 14  2025 22
+drwxrwxr-x   2 root root 4096 Apr 14  2025 23
+drwxrwxr-x   2 root root 4096 Apr 14  2025 24
+drwxrwxr-x   2 root root 4096 Apr 14  2025 25
+drwxrwxr-x   2 root root 4096 Apr 14  2025 26
+drwxrwxr-x   2 root root 4096 Apr 14  2025 27
+drwxrwxr-x   2 root root 4096 Apr 14  2025 28
+drwxrwxr-x   2 root root 4096 Apr 14  2025 29
+drwxrwxr-x   2 root root 4096 Apr 14  2025 3
+drwxrwxr-x   2 root root 4096 Apr 14  2025 30
+drwxrwxr-x   2 root root 4096 Apr 14  2025 31
+drwxrwxr-x   2 root root 4096 Apr 14  2025 32
+drwxrwxr-x   2 root root 4096 Apr 14  2025 33
+drwxrwxr-x   2 root root 4096 Apr 14  2025 34
+drwxrwxr-x   2 root root 4096 Apr 14  2025 35
+drwxrwxr-x   2 root root 4096 Apr 14  2025 36
+drwxrwxr-x   2 root root 4096 Apr 14  2025 37
+drwxrwxr-x   2 root root 4096 Apr 14  2025 38
+drwxrwxr-x   2 root root 4096 Apr 14  2025 39
+drwxrwxr-x   2 root root 4096 Apr 14  2025 4
+drwxrwxr-x   2 root root 4096 Apr 14  2025 40
+drwxrwxr-x   2 root root 4096 Apr 14  2025 41
+drwxrwxr-x   2 root root 4096 Apr 14  2025 42
+drwxrwxr-x   2 root root 4096 Apr 14  2025 43
+drwxrwxr-x   2 root root 4096 Apr 14  2025 44
+drwxrwxr-x   2 root root 4096 Apr 14  2025 45
+drwxrwxr-x   2 root root 4096 Apr 14  2025 46
+drwxrwxr-x   2 root root 4096 Apr 14  2025 47
+drwxrwxr-x   2 root root 4096 Apr 14  2025 48
+drwxrwxr-x   2 root root 4096 Apr 14  2025 49
+drwxrwxr-x   2 root root 4096 Apr 14  2025 5
+drwxrwxr-x   2 root root 4096 Apr 14  2025 50
+drwxrwxr-x   2 root root 4096 Apr 14  2025 51
+drwxrwxr-x   2 root root 4096 Apr 14  2025 52
+drwxrwxr-x   2 root root 4096 Apr 14  2025 53
+drwxrwxr-x   2 root root 4096 Apr 14  2025 54
+drwxrwxr-x   2 root root 4096 Apr 14  2025 55
+drwxrwxr-x   2 root root 4096 Apr 14  2025 56
+drwxrwxr-x   2 root root 4096 Apr 14  2025 57
+drwxrwxr-x   2 root root 4096 Apr 14  2025 58
+drwxrwxr-x   2 root root 4096 Apr 14  2025 59
+drwxrwxr-x   2 root root 4096 Apr 14  2025 6
+drwxrwxr-x   2 root root 4096 Apr 14  2025 60
+drwxrwxr-x   2 root root 4096 Apr 14  2025 61
+drwxrwxr-x   2 root root 4096 Apr 14  2025 62
+drwxrwxr-x   2 root root 4096 Apr 14  2025 63
+drwxrwxr-x   2 root root 4096 Apr 14  2025 64
+drwxrwxr-x   2 root root 4096 Apr 14  2025 65
+drwxrwxr-x   2 root root 4096 Apr 14  2025 66
+drwxrwxr-x   2 root root 4096 Apr 14  2025 67
+drwxrwxr-x   2 root root 4096 Apr 14  2025 68
+drwxrwxr-x   2 root root 4096 Apr 14  2025 69
+drwxrwxr-x   2 root root 4096 Apr 14  2025 7
+drwxrwxr-x   2 root root 4096 Apr 14  2025 70
+drwxrwxr-x   2 root root 4096 Apr 14  2025 71
+drwxrwxr-x   2 root root 4096 Apr 14  2025 72
+drwxrwxr-x   2 root root 4096 Apr 14  2025 73
+drwxrwxr-x   2 root root 4096 Apr 14  2025 74
+drwxrwxr-x   2 root root 4096 Apr 14  2025 75
+drwxrwxr-x   2 root root 4096 Apr 14  2025 76
+drwxrwxr-x   2 root root 4096 Apr 14  2025 77
+drwxrwxr-x   2 root root 4096 Apr 14  2025 78
+drwxrwxr-x   2 root root 4096 Apr 14  2025 79
+drwxrwxr-x   2 root root 4096 Apr 14  2025 8
+drwxrwxr-x   2 root root 4096 Apr 14  2025 80
+drwxrwxr-x   2 root root 4096 Apr 14  2025 81
+drwxrwxr-x   2 root root 4096 Apr 14  2025 82
+drwxrwxr-x   2 root root 4096 Apr 14  2025 83
+drwxrwxr-x   2 root root 4096 Apr 14  2025 84
+drwxrwxr-x   2 root root 4096 Apr 14  2025 85
+drwxrwxr-x   2 root root 4096 Apr 14  2025 86
+drwxrwxr-x   2 root root 4096 Apr 14  2025 87
+drwxrwxr-x   2 root root 4096 Apr 14  2025 88
+drwxrwxr-x   2 root root 4096 Apr 14  2025 89
+drwxrwxr-x   2 root root 4096 Apr 14  2025 9
+drwxrwxr-x   2 root root 4096 Apr 14  2025 90
+drwxrwxr-x   2 root root 4096 Apr 14  2025 91
+drwxrwxr-x   2 root root 4096 Apr 14  2025 92
+drwxrwxr-x   2 root root 4096 Apr 14  2025 93
+drwxrwxr-x   2 root root 4096 Apr 14  2025 94
+drwxrwxr-x   2 root root 4096 Apr 14  2025 95
+drwxrwxr-x   2 root root 4096 Apr 14  2025 96
+drwxrwxr-x   2 root root 4096 Apr 14  2025 97
+drwxrwxr-x   2 root root 4096 Apr 14  2025 98
+drwxrwxr-x   2 root root 4096 Apr 14  2025 99
+-rw-r--r--   1 root root 8196 Apr 14  2025 .DS_Store
