@@ -7,12 +7,34 @@ Full-Duplex-Bench 实时评估测试 (v1.0 数据集)
 WS URL: wss://api.digitalhumanai.top/health-dev2/api/realtime?model=health-assistant-qwen
 AUTH_TOKEN: ********************
 ------------------------------------------------------------
+    [DEBUG] load_dataset_cases called: root_dir=/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/synthetic_user_interruption, task=user_interruption
+    [DEBUG] subdirs for task 'user_interruption': ['synthetic_user_interruption']
+    [DEBUG] checking dataset_path: /root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/synthetic_user_interruption/synthetic_user_interruption, exists=False
+    [DEBUG] loaded 0 cases for task 'user_interruption'
 
 警告: user_interruption 未找到测试用例，跳过
+    [DEBUG] load_dataset_cases called: root_dir=/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/icc_backchannel, task=backchannel
+    [DEBUG] subdirs for task 'backchannel': ['icc_backchannel']
+    [DEBUG] checking dataset_path: /root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/icc_backchannel/icc_backchannel, exists=False
+    [DEBUG] loaded 0 cases for task 'backchannel'
 
 警告: backchannel 未找到测试用例，跳过
+    [DEBUG] load_dataset_cases called: root_dir=/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/candor_pause_handling, task=pause_handling
+    [DEBUG] subdirs for task 'pause_handling': ['candor_pause_handling', 'synthetic_pause_handling']
+    [DEBUG] checking dataset_path: /root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/candor_pause_handling/candor_pause_handling, exists=False
+    [DEBUG] checking dataset_path: /root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/candor_pause_handling/synthetic_pause_handling, exists=False
+    [DEBUG] loaded 0 cases for task 'pause_handling'
+    [DEBUG] load_dataset_cases called: root_dir=/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/synthetic_pause_handling, task=pause_handling
+    [DEBUG] subdirs for task 'pause_handling': ['candor_pause_handling', 'synthetic_pause_handling']
+    [DEBUG] checking dataset_path: /root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/synthetic_pause_handling/candor_pause_handling, exists=False
+    [DEBUG] checking dataset_path: /root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/synthetic_pause_handling/synthetic_pause_handling, exists=False
+    [DEBUG] loaded 0 cases for task 'pause_handling'
 
 警告: pause_handling 未找到测试用例，跳过
+    [DEBUG] load_dataset_cases called: root_dir=/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/candor_turn_taking, task=smooth_turn_taking
+    [DEBUG] subdirs for task 'smooth_turn_taking': ['candor_turn_taking']
+    [DEBUG] checking dataset_path: /root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/candor_turn_taking/candor_turn_taking, exists=False
+    [DEBUG] loaded 0 cases for task 'smooth_turn_taking'
 
 警告: smooth_turn_taking 未找到测试用例，跳过
 
@@ -21,4 +43,4 @@ AUTH_TOKEN: ********************
 ============================================================
 总测试数: 0
 
-结果已保存: output/fdb_realtime_all_20260507_151433.json
+结果已保存: output/fdb_realtime_all_20260507_151726.json
