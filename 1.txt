@@ -1,25 +1,40 @@
-方法 1: gdown（推荐）
+root@health-develop:~/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench# pip install nls
+Collecting nls
+  Using cached nls-0.2.0.tar.gz (151 kB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... error
+  error: subprocess-exited-with-error
+  
+  × Getting requirements to build wheel did not run successfully.
+  │ exit code: 1
+  ╰─> [23 lines of output]
+      Traceback (most recent call last):
+        File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 389, in <module>
+          main()
+          ~~~~^^
+        File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 373, in main
+          json_out["return_val"] = hook(**hook_input["kwargs"])
+                                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py", line 143, in get_requires_for_build_wheel
+          return hook(config_settings)
+        File "/tmp/pip-build-env-kys6xo27/overlay/lib/python3.14/site-packages/setuptools/build_meta.py", line 333, in get_requires_for_build_wheel
+          return self._get_build_requires(config_settings, requirements=[])
+                 ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/tmp/pip-build-env-kys6xo27/overlay/lib/python3.14/site-packages/setuptools/build_meta.py", line 301, in _get_build_requires
+          self.run_setup()
+          ~~~~~~~~~~~~~~^^
+        File "/tmp/pip-build-env-kys6xo27/overlay/lib/python3.14/site-packages/setuptools/build_meta.py", line 520, in run_setup
+          super().run_setup(setup_script=setup_script)
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "/tmp/pip-build-env-kys6xo27/overlay/lib/python3.14/site-packages/setuptools/build_meta.py", line 317, in run_setup
+          exec(code, locals())
+          ~~~~^^^^^^^^^^^^^^^^
+        File "<string>", line 13, in <module>
+      ModuleNotFoundError: No module named 'numpy'
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
 
-# 安装
-pip install gdown
-
-# 下载整个文件夹
-gdown --folder https://drive.google.com/drive/folders/1DtoxMVO9_Y_nDs2peZtx3pw-U2qYgpd3 -O ./dataset
-方法 2: wget/curl（需要分享链接）
-
-# 如果有直接下载链接
-wget "https://drive.google.com/uc?export=download&id=FILE_ID" -O output.zip
-方法 3: rclone
-
-# 配置 Google Drive
-rclone config
-
-# 下载
-rclone copy gdrive:Full-Duplex-Bench ./dataset
-方法 4: 直接用浏览器下载后拷贝
-如果上述方法都不行，可以在 Windows/Mac 下载后通过 scp 拷贝到 Linux：
-
-
-# 从 Windows 拷贝到 Linux
-scp -r ./dataset user@linux-server:/path/to/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/
-推荐用 gdown，在 Linux 上最简单。
+[notice] A new release of pip is available: 26.0.1 -> 26.1.1
+[notice] To update, run: python3.14 -m pip install --upgrade pip
+ERROR: Failed to build 'nls' when getting requirements to build wheel怎么解决
