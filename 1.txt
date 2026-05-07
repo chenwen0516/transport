@@ -1,6 +1,9 @@
-if sampwidth == 3:
-                # 24-bit PCM: 每样本 3 bytes (little-endian)
-                result = bytearray()
-                for i in range(0, len(raw_data) - 2, 3):
-                    # 读取 3 bytes (little-endian)
-                    val = raw_data[i] | (raw_data[i+1] << 8) | (raw_data[i+2] << 16)
+python3 -c "
+import wave
+wav = '/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/dataset/v1.0/synthetic_user_interruption/1/interrupt.wav'
+with wave.open(wav, 'rb') as f:
+    print(f'sampwidth: {f.getsampwidth()}')
+    print(f'nchannels: {f.getnchannels()}')
+    print(f'framerate: {f.getframerate()}')
+    print(f'nframes: {f.getnframes()}')
+"
