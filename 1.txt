@@ -1,9 +1,2 @@
-python3 -c "
-import sys
-sys.path.insert(0, '.')
-from pathlib import Path
-from test_fdb_realtime_dataset import load_wav_audio
-wav = 'dataset/v1.0/synthetic_user_interruption/1/interrupt.wav'
-result = load_wav_audio(Path(wav))
-print(f'result: {len(result) if result else None} bytes')
-"
+        [DEBUG] wav format: audio_format=3, n_channels=1, sampwidth=32
+result: None bytes
