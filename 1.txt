@@ -1,2 +1,14 @@
-        [DEBUG] wav format: audio_format=3, n_channels=1, sampwidth=32
-result: None bytes
+root@health-develop:~# cd ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench
+python test_fdb_realtime_dataset.py --limit 20
+Traceback (most recent call last):
+  File "/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/test_fdb_realtime_dataset.py", line 69, in <module>
+    from core.metrics import MetricsAggregator, EvaluationResult
+  File "/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/core/__init__.py", line 33, in <module>
+    _rt_ws = load_spec("core.ws_test_client", REALTIME_DIR / "core" / "ws_test_client.py")
+  File "/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/core/__init__.py", line 30, in load_spec
+    spec.loader.exec_module(module)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 892, in get_code
+  File "<frozen importlib._bootstrap_external>", line 950, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/realtime/core/ws_test_client.py'
