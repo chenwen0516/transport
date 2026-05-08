@@ -1,0 +1,747 @@
+{
+  "timestamp": "20260507_181721",
+  "ws_url": "wss://api.digitalhumanai.top/health-dev2/api/realtime?model=health-assistant-qwen",
+  "dimensions": [
+    "user_interruption",
+    "barge_in_recovery",
+    "backchannel",
+    "pause_handling",
+    "smooth_turn_taking"
+  ],
+  "results": {
+    "user_interruption": {
+      "dimension": "user_interruption",
+      "total_cases": 17,
+      "test_cases": [
+        {
+          "case_name": "synthetic_user_interruption/101",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/102",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/103",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/104",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/105",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/106",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/107",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/108",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/109",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/11",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/110",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/111",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/112",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/113",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/114",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/115",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/116",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        }
+      ],
+      "summary": {
+        "tor_mean": 1.0,
+        "tor_success_count": 17,
+        "latency_mean": 0.0
+      }
+    },
+    "barge_in_recovery": {
+      "dimension": "barge_in_recovery",
+      "total_cases": 20,
+      "test_cases": [
+        {
+          "case_name": "synthetic_user_interruption/1",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/10",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/100",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/101",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/102",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/103",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/104",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/105",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/106",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/107",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/108",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/109",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/11",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/110",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/111",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/112",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/113",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/114",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/115",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "synthetic_user_interruption/116",
+          "tor": 1.0,
+          "latency": 0,
+          "success": true,
+          "error": null
+        }
+      ],
+      "summary": {
+        "tor_mean": 1.0,
+        "tor_success_count": 20,
+        "latency_mean": 0.0
+      }
+    },
+    "backchannel": {
+      "dimension": "backchannel",
+      "total_cases": 20,
+      "test_cases": [
+        {
+          "case_name": "icc_backchannel/0",
+          "tor": 0.0,
+          "latency": 42807.992802001536,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/1",
+          "tor": 0.0,
+          "latency": 10227.465011994354,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/10",
+          "tor": 0.0,
+          "latency": 7755.61413296964,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/11",
+          "tor": 0.0,
+          "latency": 11506.729547050782,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/12",
+          "tor": 0.0,
+          "latency": 14827.341970987618,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/13",
+          "tor": 0.0,
+          "latency": 17169.072880991735,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/14",
+          "tor": 0.0,
+          "latency": 10629.495724919252,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/15",
+          "tor": 0.0,
+          "latency": 11843.685221043415,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/16",
+          "tor": 0.0,
+          "latency": 10812.577951932326,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/17",
+          "tor": 0.0,
+          "latency": 10343.797425972298,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/18",
+          "tor": 0.0,
+          "latency": 12476.096921018325,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/19",
+          "tor": 0.0,
+          "latency": 35650.05321393255,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/2",
+          "tor": 0.0,
+          "latency": 11328.896468039602,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/20",
+          "tor": 0.0,
+          "latency": 11686.610886012204,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/21",
+          "tor": 0.0,
+          "latency": 10340.28410690371,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/22",
+          "tor": 0.0,
+          "latency": 14934.769900050014,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/23",
+          "tor": 0.0,
+          "latency": 9692.966794944368,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/24",
+          "tor": 0.0,
+          "latency": 9655.79793707002,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/25",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "icc_backchannel/26",
+          "tor": 0.0,
+          "latency": 7784.679498057812,
+          "success": true,
+          "error": null
+        }
+      ],
+      "summary": {
+        "tor_mean": 0.0,
+        "tor_success_count": 20,
+        "latency_mean": 14288.101494520608
+      }
+    },
+    "pause_handling": {
+      "dimension": "pause_handling",
+      "total_cases": 20,
+      "test_cases": [
+        {
+          "case_name": "candor_pause_handling/1",
+          "tor": 1.0,
+          "latency": 2688.7223680969328,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/10",
+          "tor": 1.0,
+          "latency": 5702.86910305731,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/100",
+          "tor": 1.0,
+          "latency": 22026.926654041745,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/101",
+          "tor": 1.0,
+          "latency": 5750.639241072349,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/102",
+          "tor": 1.0,
+          "latency": 6449.03369108215,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/103",
+          "tor": 1.0,
+          "latency": 14436.816123081371,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/104",
+          "tor": 1.0,
+          "latency": 11733.663439983502,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/105",
+          "tor": 1.0,
+          "latency": 16022.665483993478,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/106",
+          "tor": 1.0,
+          "latency": 12666.568474960513,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/107",
+          "tor": 1.0,
+          "latency": 7133.650303934701,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/108",
+          "tor": 1.0,
+          "latency": 15621.757157030515,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/109",
+          "tor": 1.0,
+          "latency": 2466.2160370498896,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/11",
+          "tor": 1.0,
+          "latency": 2875.0223389361054,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/110",
+          "tor": 1.0,
+          "latency": 10381.120468024164,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/111",
+          "tor": 1.0,
+          "latency": 5400.210459018126,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/112",
+          "tor": 1.0,
+          "latency": 7194.921837071888,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/113",
+          "tor": 1.0,
+          "latency": 8738.775620935485,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/114",
+          "tor": 1.0,
+          "latency": 9555.068562040105,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/115",
+          "tor": 1.0,
+          "latency": 1646.1835079826415,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_pause_handling/116",
+          "tor": 1.0,
+          "latency": 3779.1927190264687,
+          "success": true,
+          "error": null
+        }
+      ],
+      "summary": {
+        "tor_mean": 1.0,
+        "tor_success_count": 20,
+        "latency_mean": 8613.501179520972
+      }
+    },
+    "smooth_turn_taking": {
+      "dimension": "smooth_turn_taking",
+      "total_cases": 20,
+      "test_cases": [
+        {
+          "case_name": "candor_turn_taking/1",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/10",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/100",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/101",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/102",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/103",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/104",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/105",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/106",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/107",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/108",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/109",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/11",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/110",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/111",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/112",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/113",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/114",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/115",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        },
+        {
+          "case_name": "candor_turn_taking/116",
+          "tor": 0.0,
+          "latency": -1.0,
+          "success": true,
+          "error": null
+        }
+      ],
+      "summary": {
+        "tor_mean": 0.0,
+        "tor_success_count": 20,
+        "latency_mean": null
+      }
+    }
+  }
+}
