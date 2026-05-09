@@ -1,14 +1,37 @@
-root@health-develop:~# cd ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench
-python test_fdb_realtime_dataset.py --limit 20
+============================================================
+纯性能测试结果汇总
+============================================================
+有效样本：0 / 500
+总音频时长：0.00s
+总 wall time：1.38s
+系统吞吐量：0.00x 实时
 Traceback (most recent call last):
-  File "/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/test_fdb_realtime_dataset.py", line 69, in <module>
-    from core.metrics import MetricsAggregator, EvaluationResult
-  File "/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/core/__init__.py", line 33, in <module>
-    _rt_ws = load_spec("core.ws_test_client", REALTIME_DIR / "core" / "ws_test_client.py")
-  File "/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/core/__init__.py", line 30, in load_spec
-    spec.loader.exec_module(module)
-    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
-  File "<frozen importlib._bootstrap_external>", line 755, in exec_module
-  File "<frozen importlib._bootstrap_external>", line 892, in get_code
-  File "<frozen importlib._bootstrap_external>", line 950, in get_data
-FileNotFoundError: [Errno 2] No such file or directory: '/root/ai-agent/health-assistant/backend/livekit_agent/test/Full-Duplex-Bench/realtime/core/ws_test_client.py'
+  File "/root/ai-agent/Qwen3-TTS-Server/test_tts_en.py", line 487, in <module>
+    main()
+    ~~~~^^
+  File "/root/ai-agent/Qwen3-TTS-Server/test_tts_en.py", line 476, in main
+    asyncio.run(run_test(
+    ~~~~~~~~~~~^^^^^^^^^^
+        mode=args.mode,
+        ^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        sample_rate=args.sample_rate,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ))
+    ^^
+  File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/asyncio/runners.py", line 204, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/asyncio/runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/root/.local/share/mise/installs/python/3.14.4/lib/python3.14/asyncio/base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/root/ai-agent/Qwen3-TTS-Server/test_tts_en.py", line 431, in run_test
+    summarize_rtf(log, valid, samples, results, total_wall_time)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/ai-agent/Qwen3-TTS-Server/test_tts_en.py", line 331, in summarize_rtf
+    log(f"平均 RTF：{sum(r['rtf'] for r in valid) / len(valid):.4f}")
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+ZeroDivisionError: division by zero
