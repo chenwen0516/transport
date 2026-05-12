@@ -1,1 +1,3 @@
-python test_tts_en.py -u wss://api.digitalhumanai.top:443/tts/api-ws/v1/realtime -n 5
+export WS_URL="wss://api.digitalhumanai.top/health-dev2/api/realtime?model=health-assistant-qwen"  
+export AUTH_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzEiLCJwaG9uZSI6IjE1OTU1NjYwNTExIiwibmlja25hbWUiOiJcdTUxYjdcdTk3NTlcdTc2ODRcdTVjMGZcdTcxOGEiLCJleHAiOjE3Nzg3MjM1MjB9.XeK-7TIJCNyWMin4PI7v_9vZLGGJiCpZ2qdR8bFhL-4"
+export AGENT_MODE=real
