@@ -1,0 +1,9 @@
+Qwen-TTS-Realtime
+https://help.aliyun.com/zh/model-studio/qwen-tts-realtime-api-reference/
+Qwen3-TTS
+https://github.com/QwenLM/Qwen3-TTS
+
+Qwen3-TTS Research:
+https://qwen.ai/blog?id=qwen3tts-0115
+OBS 桶
+obs://ai-agent-tts/
