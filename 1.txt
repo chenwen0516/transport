@@ -1,1 +1,4 @@
-https://artificialanalysis.ai/methodology/speech-to-speech-benchmarking
+https://help.aliyun.com/zh/model-studio/realtime-tts-user-guide
+voice: Cherry
+model: qwen3-tts-instruct-flash-realtime-2026-01-22
+key: sk-8a9ad3b905a4441db27ffe9daf60483a
