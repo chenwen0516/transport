@@ -1,4 +1,6 @@
-https://github.com/ddlBoJack/MMAR
-https://audio-reasoning-challenge.github.io/leaderboard/
-https://audio-reasoning-challenge.github.io/
-Audio Reasoning Challenge
+uv workspace
+https://docs.astral.sh/uv/concepts/projects/workspaces/
+Qwen3-TTS
+https://help.aliyun.com/zh/model-studio/interactive-process-of-qwen-tts-realtime-synthesis
+Dynaconf
+https://www.dynaconf.com/
