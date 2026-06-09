@@ -4,3 +4,5 @@ Qwen3-TTS
 https://help.aliyun.com/zh/model-studio/interactive-process-of-qwen-tts-realtime-synthesis
 Dynaconf
 https://www.dynaconf.com/
+https://docs.livekit.io/intro/basics/connect/
+https://github.com/livekit/python-sdks
