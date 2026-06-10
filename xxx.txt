@@ -1,1 +1,77 @@
-Some football fans admire various clubs, others love only a single team. But who is a fan of whom precisely? The following argument pertains to this question. First, no devotee of FK Partisan is an expert of Southampton FC. Second, no critic of FC Spartak Moskvah is an expert of Southampton FC. Third, to be a critic of FC Spartak Moskvah or a devotee of FK Partisan is necessary for being an admirer of Karaba FK. Hence, no admirer of Karaba FK is an expert of Southampton FC. Is the argument given the explicitly stated premises, deductively valid or invalid? Options valid invalid answer the question.
+2026-06-10 16:23:40,993 [INFO] bigbench.runner: WebRTC config: token_api_url=https://api.digitalhumanai.top/health-dev2/api/livekit/token livekit_url=(from token response) token_mode=dev2 agent_name=health-assistant-qwen speaker=(backend default)
+2026-06-10 16:23:40,994 [INFO] bigbench.runner: Audio duration filter: kept 719/1000 cases with audio <= 30.00s, skipped 281
+2026-06-10 16:23:40,994 [INFO] bigbench.runner: Filtered categories: {'formal_fallacies': 1, 'navigate': 218, 'object_counting': 250, 'web_of_lies': 250}
+2026-06-10 16:23:40,994 [INFO] test.webrtc_client: Running BigBench WebRTC benchmark: 5 cases
+2026-06-10 16:23:40,994 [INFO] test.webrtc_client: [1/5] Running case: 204 (formal_fallacies)
+2026-06-10 16:23:40,994 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
+2026-06-10 16:23:41,249 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
+2026-06-10 16:23:41,267 [INFO] livekit: livekit_api::signal_client::signal_stream:104:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&device_model=OpenStack+Nova&protocol=17&client_protocol=1&auto_subscribe=1&adaptive_stream=0&version=1.1.10&capabilities=CAP_PACKET_TRAILER
+2026-06-10 16:23:41,267 [INFO] livekit: livekit_api::signal_client::signal_stream:122:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-06-10 16:23:41,545 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-06-10 16:23:41,546 [INFO] test.webrtc_client: Connected to room health-voice-131-1781079821
+2026-06-10 16:23:41,815 [INFO] test.webrtc_client: Agent connected: agent-AJ_GLsPR7zGyQB8
+2026-06-10 16:23:41,821 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:23:41,830 [INFO] test.webrtc_client: Received audio track from agent-AJ_GLsPR7zGyQB8
+2026-06-10 16:23:44,551 [INFO] test.webrtc_client: Injecting question audio...
+2026-06-10 16:23:48,687 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:23:49,122 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:23:49,724 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:23:50,472 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:23:54,362 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:23:54,970 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:23:59,441 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:24:00,471 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:24:08,113 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:24:09,671 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:24:12,376 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:24:13,122 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:24:14,601 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
+2026-06-10 16:24:14,603 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:24:19,352 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 16:24:19,715 [INFO] test.webrtc_client: Agent started speaking
+2026-06-10 16:24:19,715 [INFO] test.webrtc_client: Waiting for agent to finish speaking...
+2026-06-10 16:24:26,874 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:24:29,944 [INFO] test.webrtc_client: Agent finished speaking (silence detected)
+2026-06-10 16:24:29,947 [INFO] test.webrtc_client: Speech audio: 328640 bytes
+2026-06-10 16:24:58,136 [INFO] test.webrtc_client: ASR result: Invalid. The conclusion reverses the relationship in the premise, which does not logically follow.
+2026-06-10 16:24:58,147 [INFO] livekit: livekit::room:1669:livekit::room - disconnected from room with reason: ClientInitiated
+2026-06-10 16:24:58,148 [INFO] test.webrtc_client: Disconnected from room
+2026-06-10 16:25:00,150 [INFO] test.webrtc_client: [2/5] Running case: 250 (navigate)
+2026-06-10 16:25:00,151 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
+2026-06-10 16:25:00,214 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
+2026-06-10 16:25:00,226 [INFO] livekit: livekit_api::signal_client::signal_stream:104:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&device_model=OpenStack+Nova&protocol=17&client_protocol=1&auto_subscribe=1&adaptive_stream=0&version=1.1.10&capabilities=CAP_PACKET_TRAILER
+2026-06-10 16:25:00,227 [INFO] livekit: livekit_api::signal_client::signal_stream:122:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-06-10 16:25:00,497 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-06-10 16:25:00,497 [INFO] test.webrtc_client: Connected to room health-voice-131-1781079900
+2026-06-10 16:25:00,744 [INFO] test.webrtc_client: Agent connected: agent-AJ_nsgZdwo584TR
+2026-06-10 16:25:00,748 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:00,762 [INFO] test.webrtc_client: Received audio track from agent-AJ_nsgZdwo584TR
+2026-06-10 16:25:03,504 [INFO] test.webrtc_client: Injecting question audio...
+2026-06-10 16:25:09,503 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:25:09,725 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:10,228 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:25:10,597 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:12,130 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:25:13,001 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 16:25:13,121 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:14,351 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:25:15,375 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:17,038 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:25:17,844 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 16:25:18,066 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:19,488 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:25:20,348 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:26,176 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:25:27,171 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:29,105 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:25:29,930 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 16:25:30,188 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:32,766 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:25:33,398 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:34,987 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 16:25:35,158 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
+2026-06-10 16:25:35,841 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 16:25:36,361 [INFO] test.webrtc_client: Agent started speaking
+2026-06-10 16:25:36,361 [INFO] test.webrtc_client: Waiting for agent to finish speaking...
+2026-06-10 16:25:36,962 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 16:25:39,970 [INFO] test.webrtc_client: Agent finished speaking (silence detected)
