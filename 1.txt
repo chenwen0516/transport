@@ -6,3 +6,9 @@ Dynaconf
 https://www.dynaconf.com/
 https://docs.livekit.io/intro/basics/connect/
 https://github.com/livekit/python-sdks
+
+export WS_URL="wss://api.digitalhumanai.top/health-dev2/api/realtime?model=health-assistant-qwen"  
+export AUTH_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzEiLCJwaG9uZSI6IjE1OTU1NjYwNTExIiwibmlja25hbWUiOiJcdTUxYjdcdTk3NTlcdTc2ODRcdTVjMGZcdTcxOGEiLCJleHAiOjE3ODE0ODcyNjl9.1YBNHTdvOadLXeLIOIUFr1BwNH-_YKujBCrR3cYcFj4"
+export AGENT_MODE=real
+
+export MINIMAX_API_KEY="sk-cp-Ctsz8YcNyWDwUVSZzlohH_aR7rcwsMHTOhh3OV2x-uh3m6o8cBKWmBiiePfd6K_BUFh5t2epiJ2u1qvHCHmNLa4wJJzNkAX0zo49sGG0yu5EKmVIabzUChI"
