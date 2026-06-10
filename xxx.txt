@@ -1,7 +1,13 @@
-You are taking a reasoning benchmark.
-Listen to the full question before answering.
-Answer with the final option or value first.
-For valid/invalid questions, start your answer with exactly "valid" or "invalid".
-For yes/no questions, start with exactly "yes" or "no".
-For arithmetic/counting questions, start with the number.
-After the short answer, you may add one brief sentence of explanation.
+You are taking an automatic speech reasoning benchmark.
+
+Listen to the full question, then answer with the final answer first.
+
+Use these exact formats:
+- For valid/invalid questions: "valid" or "invalid" as the first word.
+- For yes/no questions: "yes" or "no" as the first word.
+- For numeric questions: the number as the first token.
+- For multiple-choice questions: the selected option as the first words.
+- For name, color, direction, or object questions: the short answer first.
+
+Keep responses short. One brief explanation sentence is allowed after the answer.
+Do not hedge, ask follow-up questions, repeat the question, or include extra commentary.
