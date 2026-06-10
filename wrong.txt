@@ -1,308 +1,206 @@
-================================================================================== FAILURES ==================================================================================
-___________________________________________________________________ test_interruption[barge_in_music_song] ___________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: barge_in_music_song: expected_interrupt=True, actual=False, e2e_latency=3358.5842456668615
-E   assert False
-E    +  where False = InterruptionResult(case_name='barge_in_music_song', expected_interrupt=True, actual_interrupted=False, t_inject_first=5761735.653638266, t_inject_last=5761737.579259806, t_agent_listening=5761739.012222512).correct
-__________________________________________________________________ test_interruption[barge_in_slow_speech] ___________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: barge_in_slow_speech: expected_interrupt=True, actual=False, e2e_latency=3307.3436096310616
-E   assert False
-E    +  where False = InterruptionResult(case_name='barge_in_slow_speech', expected_interrupt=True, actual_interrupted=False, t_inject_first=5761748.735275109, t_inject_last=5761750.655129151, t_agent_listening=5761752.042618719).correct
-__________________________________________________________________ test_interruption[barge_in_fast_speech] ___________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: barge_in_fast_speech: expected_interrupt=True, actual=False, e2e_latency=5227.4279138073325
-E   assert False
-E    +  where False = InterruptionResult(case_name='barge_in_fast_speech', expected_interrupt=True, actual_interrupted=False, t_inject_first=5761761.784430532, t_inject_last=5761763.710136351, t_agent_listening=5761767.011858446).correct
-________________________________________________________________ test_interruption[no_barge_in_echo_speaker] _________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_echo_speaker: expected_interrupt=False, actual=True, e2e_latency=2454.2866572737694
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_echo_speaker', expected_interrupt=False, actual_interrupted=True, t_inject_first=5761994.611423057, t_inject_last=5761996.533989508, t_agent_listening=5761997.065709714).correct
-________________________________________________________________ test_interruption[no_barge_in_echo_delayed] _________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_echo_delayed: expected_interrupt=False, actual=True, e2e_latency=2528.0557814985514
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_echo_delayed', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762007.756570828, t_inject_last=5762010.188431778, t_agent_listening=5762010.28462661).correct
-______________________________________________________________ test_interruption[no_barge_in_third_party_voice] ______________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_third_party_voice: expected_interrupt=False, actual=True, e2e_latency=1940.7488396391273
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_third_party_voice', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762035.623346208, t_inject_last=5762037.549085678, t_agent_listening=5762037.564095047).correct
-__________________________________________________________________ test_interruption[no_barge_in_tts_ninen] __________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_ninen: expected_interrupt=False, actual=True, e2e_latency=1252.776832319796
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_ninen', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762048.63047863, t_inject_last=5762049.136036782, t_agent_listening=5762049.883255462).correct
-__________________________________________________________________ test_interruption[no_barge_in_tts_nage] ___________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_nage: expected_interrupt=False, actual=True, e2e_latency=1255.3267301991582
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_nage', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762060.222211142, t_inject_last=5762060.627073051, t_agent_listening=5762061.477537872).correct
-___________________________________________________________________ test_interruption[no_barge_in_tts_nen] ___________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_nen: expected_interrupt=False, actual=True, e2e_latency=1017.254919745028
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_nen', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762071.721539649, t_inject_last=5762072.126608196, t_agent_listening=5762072.738794569).correct
-____________________________________________________________________ test_interruption[no_barge_in_tts_a] ____________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_a: expected_interrupt=False, actual=True, e2e_latency=998.3062669634819
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_a', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762083.24154231, t_inject_last=5762083.645637601, t_agent_listening=5762084.239848577).correct
-_________________________________________________________________ test_interruption[no_barge_in_tts_woxiang] _________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_woxiang: expected_interrupt=False, actual=True, e2e_latency=1215.9239193424582
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_woxiang', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762094.739593822, t_inject_last=5762095.245740772, t_agent_listening=5762095.955517741).correct
-________________________________________________________________ test_interruption[no_barge_in_tts_zhegenage] ________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_zhegenage: expected_interrupt=False, actual=True, e2e_latency=1257.4176909402013
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_zhegenage', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762106.369294104, t_inject_last=5762107.787632837, t_agent_listening=5762107.626711795).correct
-________________________________________________________________ test_interruption[no_barge_in_multi_person] _________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_multi_person: expected_interrupt=False, actual=True, e2e_latency=1964.6681025624275
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_multi_person', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762118.978206409, t_inject_last=5762121.91605884, t_agent_listening=5762120.942874512).correct
-___________________________________________________________________ test_interruption[no_barge_in_tts_oh] ____________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_oh: expected_interrupt=False, actual=True, e2e_latency=1009.0159932151437
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_oh', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762213.547460375, t_inject_last=5762213.850861173, t_agent_listening=5762214.556476369).correct
-__________________________________________________________________ test_interruption[no_barge_in_tts_okay] ___________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_okay: expected_interrupt=False, actual=True, e2e_latency=1258.7382784113288
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_okay', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762224.951345508, t_inject_last=5762225.456940621, t_agent_listening=5762226.210083786).correct
-__________________________________________________________________ test_interruption[no_barge_in_tts_right] __________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_right: expected_interrupt=False, actual=True, e2e_latency=1090.677684172988
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_right', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762236.616922486, t_inject_last=5762236.919434266, t_agent_listening=5762237.70760017).correct
-__________________________________________________________________ test_interruption[no_barge_in_tts_maybe] __________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_maybe: expected_interrupt=False, actual=True, e2e_latency=1308.8896535336971
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_maybe', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762248.000594029, t_inject_last=5762248.608982266, t_agent_listening=5762249.309483683).correct
-__________________________________________________________________ test_interruption[no_barge_in_tts_sorry] __________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_sorry: expected_interrupt=False, actual=True, e2e_latency=1354.4124104082584
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_sorry', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762259.801870249, t_inject_last=5762260.50875225, t_agent_listening=5762261.15628266).correct
-________________________________________________________________ test_interruption[no_barge_in_tts_excuse_me] ________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_excuse_me: expected_interrupt=False, actual=True, e2e_latency=1423.0510937049985
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_excuse_me', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762271.628699231, t_inject_last=5762272.435594118, t_agent_listening=5762273.051750325).correct
-_______________________________________________________________ test_interruption[no_barge_in_tts_by_the_way] ________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_by_the_way: expected_interrupt=False, actual=True, e2e_latency=1264.404535293579
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_by_the_way', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762283.523395263, t_inject_last=5762284.028958685, t_agent_listening=5762284.787799798).correct
-_________________________________________________________________ test_interruption[no_barge_in_tts_waiting] _________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_waiting: expected_interrupt=False, actual=True, e2e_latency=1103.9792411029339
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_waiting', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762295.110432197, t_inject_last=5762295.513522783, t_agent_listening=5762296.214411438).correct
-________________________________________________________________ test_interruption[no_barge_in_tts_thinking] _________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_thinking: expected_interrupt=False, actual=True, e2e_latency=1249.1802275180817
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_thinking', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762306.793710314, t_inject_last=5762307.704724084, t_agent_listening=5762308.042890541).correct
-___________________________________________________________________ test_interruption[no_barge_in_tts_ha] ____________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_ha: expected_interrupt=False, actual=True, e2e_latency=3435.9100935980678
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_ha', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762318.802707107, t_inject_last=5762319.20637457, t_agent_listening=5762322.2386172).correct
-___________________________________________________________________ test_interruption[no_barge_in_tts_er] ____________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_er: expected_interrupt=False, actual=True, e2e_latency=1102.135868743062
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_er', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762330.354789603, t_inject_last=5762330.760156979, t_agent_listening=5762331.456925471).correct
-__________________________________________________________________ test_interruption[no_barge_in_tts_like] ___________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_like: expected_interrupt=False, actual=True, e2e_latency=1256.4746253192425
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_like', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762341.873550505, t_inject_last=5762342.986761829, t_agent_listening=5762343.130025131).correct
-________________________________________________________________ test_interruption[no_barge_in_tts_forget_it] ________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_forget_it: expected_interrupt=False, actual=True, e2e_latency=1355.5143177509308
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_forget_it', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762354.069805994, t_inject_last=5762355.082375523, t_agent_listening=5762355.425320311).correct
-__________________________________________________________________ test_interruption[no_barge_in_tts_kinda] __________________________________________________________________
-test_interruption.py:103: in test_interruption
-    assert result.correct, (
-E   AssertionError: no_barge_in_tts_kinda: expected_interrupt=False, actual=True, e2e_latency=1204.1534576565027
-E   assert False
-E    +  where False = InterruptionResult(case_name='no_barge_in_tts_kinda', expected_interrupt=False, actual_interrupted=True, t_inject_first=5762366.192691579, t_inject_last=5762366.899248072, t_agent_listening=5762367.396845037).correct
-________________________________________________________ test_barge_in_then_recovery[double_interrupt_then_recovery] _________________________________________________________
-test_interruption.py:163: in test_barge_in_then_recovery
-    assert interrupted, f"{case.name}: 打断未成功，agent 没有停止说话"
-E   AssertionError: double_interrupt_then_recovery: 打断未成功，agent 没有停止说话
-E   assert False
-___________________________________________________________________ test_turn_detection[no_turn_tts_ninen] ___________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: no_turn_tts_ninen: expected_turn_switch=False, actual=True, ep_excess=3211.990031413734, ttfb=3726.5373626723886
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='no_turn_tts_ninen', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762699.331531795, t_agent_thinking=5762703.043521826, t_agent_speaking=None, t_first_agent_audio_delta=5762703.058069157, mid_pause_switched=False, min_delay_s=0.5).correct
-___________________________________________________________________ test_turn_detection[no_turn_tts_nage] ____________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: no_turn_tts_nage: expected_turn_switch=False, actual=True, ep_excess=285.99028289318085, ttfb=786.0065428540111
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='no_turn_tts_nage', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762715.282663034, t_agent_thinking=5762716.068653317, t_agent_speaking=None, t_first_agent_audio_delta=5762716.068669577, mid_pause_switched=False, min_delay_s=0.5).correct
-__________________________________________________________________ test_turn_detection[no_turn_tts_woxiang] __________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: no_turn_tts_woxiang: expected_turn_switch=False, actual=True, ep_excess=2603.299873881042, ttfb=3138.3541226387024
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='no_turn_tts_woxiang', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762732.421833524, t_agent_thinking=5762735.525133397, t_agent_speaking=None, t_first_agent_audio_delta=5762735.560187646, mid_pause_switched=False, min_delay_s=0.5).correct
-____________________________________________________________________ test_turn_detection[no_turn_tts_oh] _____________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: no_turn_tts_oh: expected_turn_switch=False, actual=True, ep_excess=3153.9790546521544, ttfb=3671.471963636577
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='no_turn_tts_oh', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762747.997964841, t_agent_thinking=5762751.651943896, t_agent_speaking=None, t_first_agent_audio_delta=5762751.669436805, mid_pause_switched=False, min_delay_s=0.5).correct
------------------------------------------------------------------------------ Captured log call ------------------------------------------------------------------------------
-WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_oh, text=哦, falling back to speech_like
-___________________________________________________________________ test_turn_detection[no_turn_tts_okay] ____________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: no_turn_tts_okay: expected_turn_switch=False, actual=True, ep_excess=3206.0785237699747, ttfb=3725.0038674101233
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='no_turn_tts_okay', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762764.014089218, t_agent_thinking=5762767.720167742, t_agent_speaking=None, t_first_agent_audio_delta=5762767.739093086, mid_pause_switched=False, min_delay_s=0.5).correct
------------------------------------------------------------------------------ Captured log call ------------------------------------------------------------------------------
-WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_okay, text=好的, falling back to speech_like
-___________________________________________________________________ test_turn_detection[no_turn_tts_right] ___________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: no_turn_tts_right: expected_turn_switch=False, actual=True, ep_excess=3164.7528298199177, ttfb=3692.747287452221
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='no_turn_tts_right', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762779.646220658, t_agent_thinking=5762783.310973488, t_agent_speaking=None, t_first_agent_audio_delta=5762783.338967945, mid_pause_switched=False, min_delay_s=0.5).correct
------------------------------------------------------------------------------ Captured log call ------------------------------------------------------------------------------
-WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_right, text=对, falling back to speech_like
-___________________________________________________________________ test_turn_detection[no_turn_tts_sorry] ___________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: no_turn_tts_sorry: expected_turn_switch=False, actual=True, ep_excess=3249.834598042071, ttfb=3789.4267179071903
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='no_turn_tts_sorry', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762795.329226855, t_agent_thinking=5762799.079061453, t_agent_speaking=None, t_first_agent_audio_delta=5762799.118653573, mid_pause_switched=False, min_delay_s=0.5).correct
------------------------------------------------------------------------------ Captured log call ------------------------------------------------------------------------------
-WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_sorry, text=不好意思, falling back to speech_like
-__________________________________________________________________ test_turn_detection[no_turn_tts_waiting] __________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: no_turn_tts_waiting: expected_turn_switch=False, actual=True, ep_excess=3035.9829794615507, ttfb=3536.5503169596195
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='no_turn_tts_waiting', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762811.311858764, t_agent_thinking=5762814.847841743, t_agent_speaking=None, t_first_agent_audio_delta=5762814.848409081, mid_pause_switched=False, min_delay_s=0.5).correct
------------------------------------------------------------------------------ Captured log call ------------------------------------------------------------------------------
-WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_waiting, text=嗯……, falling back to speech_like
-____________________________________________________________________ test_turn_detection[no_turn_tts_ha] _____________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: no_turn_tts_ha: expected_turn_switch=False, actual=True, ep_excess=3185.7043765485287, ttfb=3705.687467008829
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='no_turn_tts_ha', silence_duration_s=3.0, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5762828.033395944, t_agent_thinking=5762831.719100321, t_agent_speaking=None, t_first_agent_audio_delta=5762831.739083411, mid_pause_switched=False, min_delay_s=0.5).correct
------------------------------------------------------------------------------ Captured log call ------------------------------------------------------------------------------
-WARNING  core.audio_generator:audio_generator.py:500 TTS fixture not found for case=no_turn_tts_ha, text=哈, falling back to speech_like
-_______________________________________________________________ test_turn_detection[incomplete_speech_1800ms] ________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: incomplete_speech_1800ms: expected_turn_switch=False, actual=True, ep_excess=222.02660143375397, ttfb=754.8751384019852
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='incomplete_speech_1800ms', silence_duration_s=1.8, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5763530.215812308, t_agent_thinking=5763530.937838909, t_agent_speaking=None, t_first_agent_audio_delta=5763530.970687446, mid_pause_switched=False, min_delay_s=0.5).correct
-____________________________________________________________________ test_turn_detection[no_switch_300ms] ____________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: no_switch_300ms: expected_turn_switch=False, actual=True, ep_excess=216.6500212624669, ttfb=736.8659405037761
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='no_switch_300ms', silence_duration_s=0.3, expected_turn_switch=False, actual_turn_switched=True, t_audio_end=5763546.461520742, t_agent_thinking=5763547.178170763, t_agent_speaking=None, t_first_agent_audio_delta=5763547.198386682, mid_pause_switched=False, min_delay_s=0.5).correct
-___________________________________________________________________ test_turn_detection[turn_fast_speech] ____________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: turn_fast_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='turn_fast_speech', silence_duration_s=2.5, expected_turn_switch=True, actual_turn_switched=False, t_audio_end=5763614.774796979, t_agent_thinking=None, t_agent_speaking=None, t_first_agent_audio_delta=None, mid_pause_switched=False, min_delay_s=0.5).correct
-___________________________________________________________________ test_turn_detection[turn_slow_speech] ____________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: turn_slow_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='turn_slow_speech', silence_duration_s=2.5, expected_turn_switch=True, actual_turn_switched=False, t_audio_end=5763671.939833497, t_agent_thinking=None, t_agent_speaking=None, t_first_agent_audio_delta=None, mid_pause_switched=False, min_delay_s=0.5).correct
-_________________________________________________________________ test_turn_detection[turn_slow_then_pause] __________________________________________________________________
-test_turn_detection.py:140: in test_turn_detection
-    assert result.correct, (
-E   AssertionError: turn_slow_then_pause: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
-E   assert False
-E    +  where False = TurnDetectionResult(case_name='turn_slow_then_pause', silence_duration_s=3.0, expected_turn_switch=True, actual_turn_switched=False, t_audio_end=5763730.197375331, t_agent_thinking=None, t_agent_speaking=None, t_first_agent_audio_delta=None, mid_pause_switched=False, min_delay_s=0.5).correct
-========================================================================== short test summary info ===========================================================================
-FAILED test_interruption.py::test_interruption[barge_in_music_song] - AssertionError: barge_in_music_song: expected_interrupt=True, actual=False, e2e_latency=3358.5842456668615
-FAILED test_interruption.py::test_interruption[barge_in_slow_speech] - AssertionError: barge_in_slow_speech: expected_interrupt=True, actual=False, e2e_latency=3307.3436096310616
-FAILED test_interruption.py::test_interruption[barge_in_fast_speech] - AssertionError: barge_in_fast_speech: expected_interrupt=True, actual=False, e2e_latency=5227.4279138073325
-FAILED test_interruption.py::test_interruption[no_barge_in_echo_speaker] - AssertionError: no_barge_in_echo_speaker: expected_interrupt=False, actual=True, e2e_latency=2454.2866572737694
-FAILED test_interruption.py::test_interruption[no_barge_in_echo_delayed] - AssertionError: no_barge_in_echo_delayed: expected_interrupt=False, actual=True, e2e_latency=2528.0557814985514
-FAILED test_interruption.py::test_interruption[no_barge_in_third_party_voice] - AssertionError: no_barge_in_third_party_voice: expected_interrupt=False, actual=True, e2e_latency=1940.7488396391273
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_ninen] - AssertionError: no_barge_in_tts_ninen: expected_interrupt=False, actual=True, e2e_latency=1252.776832319796
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_nage] - AssertionError: no_barge_in_tts_nage: expected_interrupt=False, actual=True, e2e_latency=1255.3267301991582
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_nen] - AssertionError: no_barge_in_tts_nen: expected_interrupt=False, actual=True, e2e_latency=1017.254919745028
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_a] - AssertionError: no_barge_in_tts_a: expected_interrupt=False, actual=True, e2e_latency=998.3062669634819
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_woxiang] - AssertionError: no_barge_in_tts_woxiang: expected_interrupt=False, actual=True, e2e_latency=1215.9239193424582
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_zhegenage] - AssertionError: no_barge_in_tts_zhegenage: expected_interrupt=False, actual=True, e2e_latency=1257.4176909402013
-FAILED test_interruption.py::test_interruption[no_barge_in_multi_person] - AssertionError: no_barge_in_multi_person: expected_interrupt=False, actual=True, e2e_latency=1964.6681025624275
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_oh] - AssertionError: no_barge_in_tts_oh: expected_interrupt=False, actual=True, e2e_latency=1009.0159932151437
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_okay] - AssertionError: no_barge_in_tts_okay: expected_interrupt=False, actual=True, e2e_latency=1258.7382784113288
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_right] - AssertionError: no_barge_in_tts_right: expected_interrupt=False, actual=True, e2e_latency=1090.677684172988
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_maybe] - AssertionError: no_barge_in_tts_maybe: expected_interrupt=False, actual=True, e2e_latency=1308.8896535336971
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_sorry] - AssertionError: no_barge_in_tts_sorry: expected_interrupt=False, actual=True, e2e_latency=1354.4124104082584
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_excuse_me] - AssertionError: no_barge_in_tts_excuse_me: expected_interrupt=False, actual=True, e2e_latency=1423.0510937049985
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_by_the_way] - AssertionError: no_barge_in_tts_by_the_way: expected_interrupt=False, actual=True, e2e_latency=1264.404535293579
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_waiting] - AssertionError: no_barge_in_tts_waiting: expected_interrupt=False, actual=True, e2e_latency=1103.9792411029339
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_thinking] - AssertionError: no_barge_in_tts_thinking: expected_interrupt=False, actual=True, e2e_latency=1249.1802275180817
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_ha] - AssertionError: no_barge_in_tts_ha: expected_interrupt=False, actual=True, e2e_latency=3435.9100935980678
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_er] - AssertionError: no_barge_in_tts_er: expected_interrupt=False, actual=True, e2e_latency=1102.135868743062
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_like] - AssertionError: no_barge_in_tts_like: expected_interrupt=False, actual=True, e2e_latency=1256.4746253192425
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_forget_it] - AssertionError: no_barge_in_tts_forget_it: expected_interrupt=False, actual=True, e2e_latency=1355.5143177509308
-FAILED test_interruption.py::test_interruption[no_barge_in_tts_kinda] - AssertionError: no_barge_in_tts_kinda: expected_interrupt=False, actual=True, e2e_latency=1204.1534576565027
-FAILED test_interruption.py::test_barge_in_then_recovery[double_interrupt_then_recovery] - AssertionError: double_interrupt_then_recovery: 打断未成功，agent 没有停止说话
-FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_ninen] - AssertionError: no_turn_tts_ninen: expected_turn_switch=False, actual=True, ep_excess=3211.990031413734, ttfb=3726.5373626723886
-FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_nage] - AssertionError: no_turn_tts_nage: expected_turn_switch=False, actual=True, ep_excess=285.99028289318085, ttfb=786.0065428540111
-FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_woxiang] - AssertionError: no_turn_tts_woxiang: expected_turn_switch=False, actual=True, ep_excess=2603.299873881042, ttfb=3138.3541226387024
-FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_oh] - AssertionError: no_turn_tts_oh: expected_turn_switch=False, actual=True, ep_excess=3153.9790546521544, ttfb=3671.471963636577
-FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_okay] - AssertionError: no_turn_tts_okay: expected_turn_switch=False, actual=True, ep_excess=3206.0785237699747, ttfb=3725.0038674101233
-FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_right] - AssertionError: no_turn_tts_right: expected_turn_switch=False, actual=True, ep_excess=3164.7528298199177, ttfb=3692.747287452221
-FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_sorry] - AssertionError: no_turn_tts_sorry: expected_turn_switch=False, actual=True, ep_excess=3249.834598042071, ttfb=3789.4267179071903
-FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_waiting] - AssertionError: no_turn_tts_waiting: expected_turn_switch=False, actual=True, ep_excess=3035.9829794615507, ttfb=3536.5503169596195
-FAILED test_turn_detection.py::test_turn_detection[no_turn_tts_ha] - AssertionError: no_turn_tts_ha: expected_turn_switch=False, actual=True, ep_excess=3185.7043765485287, ttfb=3705.687467008829
-FAILED test_turn_detection.py::test_turn_detection[incomplete_speech_1800ms] - AssertionError: incomplete_speech_1800ms: expected_turn_switch=False, actual=True, ep_excess=222.02660143375397, ttfb=754.8751384019852
-FAILED test_turn_detection.py::test_turn_detection[no_switch_300ms] - AssertionError: no_switch_300ms: expected_turn_switch=False, actual=True, ep_excess=216.6500212624669, ttfb=736.8659405037761
-FAILED test_turn_detection.py::test_turn_detection[turn_fast_speech] - AssertionError: turn_fast_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
-FAILED test_turn_detection.py::test_turn_detection[turn_slow_speech] - AssertionError: turn_slow_speech: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
-FAILED test_turn_detection.py::test_turn_detection[turn_slow_then_pause] - AssertionError: turn_slow_then_pause: expected_turn_switch=True, actual=False, ep_excess=None, ttfb=None
-================================================================ 42 failed, 103 passed in 2261.12s (0:37:41) =================================================================
+(bigbench) root@health-develop:/opt/cw/health-assistant/backend/livekit_agent/test/bigbench# python run_benchmark.py --protocol webrtc --max-cases 5
+2026-06-10 15:34:06,065 [INFO] core.dataset_hf: Loading dataset ArtificialAnalysis/big_bench_audio...
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'ArtificialAnalysis/big_bench_audio' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-10 15:34:06,065 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'ArtificialAnalysis/big_bench_audio' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-10 15:34:06,492 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/ArtificialAnalysis/big_bench_audio/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-10 15:34:06,580 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/ArtificialAnalysis/big_bench_audio/af7bb9c25b015792583ca4da3ee27ec62cb79fe6/README.md "HTTP/1.1 200 OK"
+2026-06-10 15:34:06,889 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/ArtificialAnalysis/big_bench_audio/resolve/af7bb9c25b015792583ca4da3ee27ec62cb79fe6/big_bench_audio.py "HTTP/1.1 404 Not Found"
+2026-06-10 15:34:07,918 [INFO] httpx: HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/ArtificialAnalysis/big_bench_audio/ArtificialAnalysis/big_bench_audio.py "HTTP/1.1 404 Not Found"
+2026-06-10 15:34:08,232 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/ArtificialAnalysis/big_bench_audio/revision/af7bb9c25b015792583ca4da3ee27ec62cb79fe6 "HTTP/1.1 200 OK"
+2026-06-10 15:34:08,558 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/ArtificialAnalysis/big_bench_audio/resolve/af7bb9c25b015792583ca4da3ee27ec62cb79fe6/.huggingface.yaml "HTTP/1.1 404 Not Found"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-10 15:34:08,558 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-10 15:34:09,134 [INFO] httpx: HTTP Request: GET https://datasets-server.huggingface.co/info?dataset=ArtificialAnalysis/big_bench_audio "HTTP/1.1 200 OK"
+2026-06-10 15:34:09,488 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/ArtificialAnalysis/big_bench_audio/tree/af7bb9c25b015792583ca4da3ee27ec62cb79fe6/data?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-10 15:34:10,011 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/ArtificialAnalysis/big_bench_audio/tree/af7bb9c25b015792583ca4da3ee27ec62cb79fe6?recursive=false&expand=false "HTTP/1.1 200 OK"
+Resolving data files: 100%|██████████████████████████████████████████████████████████████████████| 1001/1001 [00:00<00:00, 36546.82it/s]
+2026-06-10 15:34:10,507 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/ArtificialAnalysis/big_bench_audio/resolve/af7bb9c25b015792583ca4da3ee27ec62cb79fe6/dataset_infos.json "HTTP/1.1 404 Not Found"
+2026-06-10 15:34:10,523 [INFO] core.dataset_hf: Dataset features: {'category': Value('string'), 'official_answer': Value('string'), 'audio': Audio(sampling_rate=None, decode=True, num_channels=None, stream_index=None), 'id': Value('int64')}
+2026-06-10 15:34:23,510 [INFO] core.dataset_hf: Converted 1000 cases from Hugging Face dataset
+2026-06-10 15:34:23,510 [INFO] bigbench.runner: Loaded 1000 cases
+2026-06-10 15:34:23,510 [INFO] bigbench.runner: Categories: {'formal_fallacies': 250, 'navigate': 250, 'object_counting': 250, 'web_of_lies': 250}
+2026-06-10 15:34:23,511 [INFO] bigbench.runner: WebRTC config: token_api_url=https://api.digitalhumanai.top/health-dev2/api/livekit/token livekit_url=(from token response) token_mode=dev2 agent_name=health-assistant-qwen speaker=(backend default)
+2026-06-10 15:34:23,511 [INFO] test.webrtc_client: Running BigBench WebRTC benchmark: 5 cases
+2026-06-10 15:34:23,511 [INFO] test.webrtc_client: [1/5] Running case: 0 (formal_fallacies)
+2026-06-10 15:34:23,511 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
+2026-06-10 15:34:23,577 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
+2026-06-10 15:34:23,597 [INFO] livekit: livekit_api::signal_client::signal_stream:104:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&device_model=OpenStack+Nova&protocol=17&client_protocol=1&auto_subscribe=1&adaptive_stream=0&version=1.1.10&capabilities=CAP_PACKET_TRAILER
+2026-06-10 15:34:23,597 [INFO] livekit: livekit_api::signal_client::signal_stream:122:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-06-10 15:34:23,810 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-06-10 15:34:23,810 [INFO] test.webrtc_client: Connected to room health-voice-131-1781076863
+2026-06-10 15:34:24,161 [INFO] test.webrtc_client: Agent connected: agent-AJ_AEq4LzdYsaxT
+2026-06-10 15:34:24,167 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:34:24,176 [INFO] test.webrtc_client: Received audio track from agent-AJ_AEq4LzdYsaxT
+2026-06-10 15:34:26,816 [INFO] test.webrtc_client: Injecting question audio...
+2026-06-10 15:34:38,219 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:34:38,226 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:34:38,761 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:34:39,015 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:34:46,411 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:34:47,115 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:34:55,589 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:34:56,534 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:34:56,556 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:34:57,384 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:34:58,015 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:34:58,883 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:34:59,565 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:35:00,831 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:35:01,314 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:35:03,412 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:35:03,564 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
+2026-06-10 15:35:04,212 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:35:04,767 [INFO] test.webrtc_client: Agent started speaking
+2026-06-10 15:35:04,767 [INFO] test.webrtc_client: Waiting for agent to finish speaking...
+2026-06-10 15:35:08,933 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:35:11,989 [INFO] test.webrtc_client: Agent finished speaking (silence detected)
+2026-06-10 15:35:11,991 [INFO] test.webrtc_client: Speech audio: 237760 bytes
+2026-06-10 15:35:46,646 [INFO] test.webrtc_client: ASR result: In vague it, the conclusion does not logically follow from the premises.
+2026-06-10 15:35:47,720 [INFO] httpx: HTTP Request: POST https://api.minimax.chat/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 15:35:47,735 [INFO] livekit: livekit::room:1669:livekit::room - disconnected from room with reason: ClientInitiated
+2026-06-10 15:35:47,736 [INFO] test.webrtc_client: Disconnected from room
+2026-06-10 15:35:49,738 [INFO] test.webrtc_client: [2/5] Running case: 1 (formal_fallacies)
+2026-06-10 15:35:49,739 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
+2026-06-10 15:35:49,805 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
+2026-06-10 15:35:49,818 [INFO] livekit: livekit_api::signal_client::signal_stream:104:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&device_model=OpenStack+Nova&protocol=17&client_protocol=1&auto_subscribe=1&adaptive_stream=0&version=1.1.10&capabilities=CAP_PACKET_TRAILER
+2026-06-10 15:35:49,818 [INFO] livekit: livekit_api::signal_client::signal_stream:122:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-06-10 15:35:50,085 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-06-10 15:35:50,089 [INFO] test.webrtc_client: Connected to room health-voice-131-1781076949
+2026-06-10 15:35:50,376 [INFO] test.webrtc_client: Agent connected: agent-AJ_sud9e6ojZrv3
+2026-06-10 15:35:50,381 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:35:50,390 [INFO] test.webrtc_client: Received audio track from agent-AJ_sud9e6ojZrv3
+2026-06-10 15:35:53,095 [INFO] test.webrtc_client: Injecting question audio...
+2026-06-10 15:36:02,693 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:36:02,701 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:36:03,205 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:36:04,153 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:36:04,406 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:36:09,484 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:36:09,614 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:36:10,160 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:36:10,881 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:36:18,031 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:36:19,274 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:36:19,631 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:36:20,393 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:36:21,682 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:36:21,730 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:36:22,382 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:36:23,724 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:36:23,780 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:36:24,632 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:36:25,610 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:36:26,031 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:36:27,426 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:36:28,222 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:36:28,735 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
+2026-06-10 15:36:28,735 [INFO] test.webrtc_client: Agent started speaking
+2026-06-10 15:36:28,735 [INFO] test.webrtc_client: Waiting for agent to finish speaking...
+2026-06-10 15:36:29,023 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:36:32,045 [INFO] test.webrtc_client: Agent finished speaking (silence detected)
+2026-06-10 15:36:32,049 [INFO] test.webrtc_client: Speech audio: 398080 bytes
+2026-06-10 15:37:19,551 [INFO] test.webrtc_client: ASR result: In. Yeah. Yes.
+2026-06-10 15:37:21,464 [INFO] httpx: HTTP Request: POST https://api.minimax.chat/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 15:37:21,481 [INFO] livekit: livekit::room:1669:livekit::room - disconnected from room with reason: ClientInitiated
+2026-06-10 15:37:21,482 [INFO] test.webrtc_client: Disconnected from room
+2026-06-10 15:37:23,484 [INFO] test.webrtc_client: [3/5] Running case: 2 (formal_fallacies)
+2026-06-10 15:37:23,485 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
+2026-06-10 15:37:23,519 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
+2026-06-10 15:37:23,532 [INFO] livekit: livekit_api::signal_client::signal_stream:104:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&device_model=OpenStack+Nova&protocol=17&client_protocol=1&auto_subscribe=1&adaptive_stream=0&version=1.1.10&capabilities=CAP_PACKET_TRAILER
+2026-06-10 15:37:23,532 [INFO] livekit: livekit_api::signal_client::signal_stream:122:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-06-10 15:37:23,804 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-06-10 15:37:23,804 [INFO] test.webrtc_client: Connected to room health-voice-131-1781077043
+2026-06-10 15:37:24,145 [INFO] test.webrtc_client: Agent connected: agent-AJ_FTGrcushGEfN
+2026-06-10 15:37:24,148 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:37:24,162 [INFO] test.webrtc_client: Received audio track from agent-AJ_FTGrcushGEfN
+2026-06-10 15:37:26,809 [INFO] test.webrtc_client: Injecting question audio...
+2026-06-10 15:37:35,244 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:37:36,251 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:37:36,259 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:37:40,202 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:37:41,221 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:37:41,297 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:37:45,603 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:37:46,607 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:37:47,325 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:37:59,653 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:37:59,702 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:38:00,206 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:38:01,023 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:38:01,050 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:38:09,176 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:38:10,948 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:38:11,979 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:38:12,497 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:38:19,171 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:38:19,479 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:38:24,132 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:38:24,185 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
+2026-06-10 15:38:24,185 [INFO] test.webrtc_client: Agent started speaking
+2026-06-10 15:38:24,185 [INFO] test.webrtc_client: Waiting for agent to finish speaking...
+2026-06-10 15:38:24,185 [INFO] test.webrtc_client: Agent finished speaking (silence detected)
+2026-06-10 15:38:24,195 [INFO] test.webrtc_client: Speech audio: 1192320 bytes
+2026-06-10 15:38:25,086 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:38:29,806 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:39:03,138 [INFO] test.webrtc_client: ASR result: Valid.
+2026-06-10 15:39:04,051 [INFO] httpx: HTTP Request: POST https://api.minimax.chat/v1/chat/completions "HTTP/1.1 200 OK"
+2026-06-10 15:39:04,065 [INFO] test.webrtc_client: Disconnected from room
+2026-06-10 15:39:06,065 [INFO] test.webrtc_client: [4/5] Running case: 3 (formal_fallacies)
+2026-06-10 15:39:06,066 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
+2026-06-10 15:39:06,116 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
+2026-06-10 15:39:06,129 [INFO] livekit: livekit_api::signal_client::signal_stream:104:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&device_model=OpenStack+Nova&protocol=17&client_protocol=1&auto_subscribe=1&adaptive_stream=0&version=1.1.10&capabilities=CAP_PACKET_TRAILER
+2026-06-10 15:39:06,130 [INFO] livekit: livekit_api::signal_client::signal_stream:122:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-06-10 15:39:06,395 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-06-10 15:39:06,396 [INFO] test.webrtc_client: Connected to room health-voice-131-1781077146
+2026-06-10 15:39:06,733 [INFO] test.webrtc_client: Agent connected: agent-AJ_gaASutHzJn8e
+2026-06-10 15:39:06,742 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:39:06,749 [INFO] test.webrtc_client: Received audio track from agent-AJ_gaASutHzJn8e
+2026-06-10 15:39:09,401 [INFO] test.webrtc_client: Injecting question audio...
+2026-06-10 15:39:17,354 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:39:18,139 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:39:21,080 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:39:21,888 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:39:25,354 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:39:25,937 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:39:32,956 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:39:34,038 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:39:41,567 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:39:42,337 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:39:54,593 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:39:55,188 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:40:19,907 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
+2026-06-10 15:40:21,389 [INFO] test.webrtc_client: Agent state changed to speaking
+2026-06-10 15:40:22,014 [INFO] test.webrtc_client: Agent started speaking
+2026-06-10 15:40:22,014 [INFO] test.webrtc_client: Waiting for agent to finish speaking...
+2026-06-10 15:40:41,391 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:40:44,278 [INFO] test.webrtc_client: Agent finished speaking (silence detected)
+2026-06-10 15:40:44,286 [INFO] test.webrtc_client: Speech audio: 717120 bytes
+2026-06-10 15:40:49,289 [WARNING] bigbench.runner: WS ASR transcription failed: did not receive a valid HTTP response
+2026-06-10 15:40:49,289 [INFO] test.webrtc_client: ASR result: (empty)
+2026-06-10 15:40:49,299 [INFO] livekit: livekit::room:1669:livekit::room - disconnected from room with reason: ClientInitiated
+2026-06-10 15:40:49,300 [INFO] test.webrtc_client: Disconnected from room
+2026-06-10 15:40:51,302 [INFO] test.webrtc_client: [5/5] Running case: 4 (formal_fallacies)
+2026-06-10 15:40:51,302 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
+2026-06-10 15:40:51,358 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
+2026-06-10 15:40:51,371 [INFO] livekit: livekit_api::signal_client::signal_stream:104:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&device_model=OpenStack+Nova&protocol=17&client_protocol=1&auto_subscribe=1&adaptive_stream=0&version=1.1.10&capabilities=CAP_PACKET_TRAILER
+2026-06-10 15:40:51,371 [INFO] livekit: livekit_api::signal_client::signal_stream:122:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-06-10 15:40:51,637 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-06-10 15:40:51,638 [INFO] test.webrtc_client: Connected to room health-voice-131-1781077251
+2026-06-10 15:40:51,956 [INFO] test.webrtc_client: Agent connected: agent-AJ_mKEjZo4XsWcX
+2026-06-10 15:40:51,963 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:40:51,972 [INFO] test.webrtc_client: Received audio track from agent-AJ_mKEjZo4XsWcX
+2026-06-10 15:40:54,647 [INFO] test.webrtc_client: Injecting question audio...
+2026-06-10 15:42:01,302 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
+2026-06-10 15:43:01,479 [INFO] test.webrtc_client: Disconnected from room
+2026-06-10 15:43:01,479 [INFO] livekit: livekit::room:1669:livekit::room - disconnected from room with reason: ClientInitiated
+
+--- BigBench Results ---
+  Total: 4
+  Answered: 4
+  Accuracy: 0.0%
+  formal_fallacies: 0.0%
+[Report] Saved to /opt/cw/health-assistant/backend/livekit_agent/test/bigbench/test_reports/bigbench_webrtc_20260610_154303.json
