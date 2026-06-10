@@ -1,0 +1,201 @@
+(bigbench) root@health-develop:/opt/cw/health-assistant/backend/livekit_agent/test/bigbench# python run_benchmark.py --protocol webrtc --max-case 1
+2026-06-10 15:22:28,627 [INFO] core.dataset_hf: Loading dataset ArtificialAnalysis/big_bench_audio...
+`trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'ArtificialAnalysis/big_bench_audio' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-10 15:22:28,627 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'ArtificialAnalysis/big_bench_audio' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-10 15:22:29,193 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/ArtificialAnalysis/big_bench_audio/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-10 15:22:29,272 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/ArtificialAnalysis/big_bench_audio/af7bb9c25b015792583ca4da3ee27ec62cb79fe6/README.md "HTTP/1.1 200 OK"
+2026-06-10 15:22:29,581 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/ArtificialAnalysis/big_bench_audio/resolve/af7bb9c25b015792583ca4da3ee27ec62cb79fe6/big_bench_audio.py "HTTP/1.1 404 Not Found"
+2026-06-10 15:22:30,628 [INFO] httpx: HTTP Request: HEAD https://s3.amazonaws.com/datasets.huggingface.co/datasets/datasets/ArtificialAnalysis/big_bench_audio/ArtificialAnalysis/big_bench_audio.py "HTTP/1.1 404 Not Found"
+2026-06-10 15:22:30,977 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/ArtificialAnalysis/big_bench_audio/revision/af7bb9c25b015792583ca4da3ee27ec62cb79fe6 "HTTP/1.1 200 OK"
+2026-06-10 15:22:31,294 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/ArtificialAnalysis/big_bench_audio/resolve/af7bb9c25b015792583ca4da3ee27ec62cb79fe6/.huggingface.yaml "HTTP/1.1 404 Not Found"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-10 15:22:31,294 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-10 15:22:31,864 [INFO] httpx: HTTP Request: GET https://datasets-server.huggingface.co/info?dataset=ArtificialAnalysis/big_bench_audio "HTTP/1.1 200 OK"
+2026-06-10 15:22:32,201 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/ArtificialAnalysis/big_bench_audio/tree/af7bb9c25b015792583ca4da3ee27ec62cb79fe6/data?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-10 15:22:32,694 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/ArtificialAnalysis/big_bench_audio/tree/af7bb9c25b015792583ca4da3ee27ec62cb79fe6?recursive=false&expand=false "HTTP/1.1 200 OK"
+Resolving data files: 100%|██████████████████████████████████████████████████████████████████████| 1001/1001 [00:00<00:00, 35857.94it/s]
+2026-06-10 15:22:33,166 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/ArtificialAnalysis/big_bench_audio/resolve/af7bb9c25b015792583ca4da3ee27ec62cb79fe6/dataset_infos.json "HTTP/1.1 404 Not Found"
+2026-06-10 15:22:33,185 [INFO] core.dataset_hf: Dataset features: {'category': Value('string'), 'official_answer': Value('string'), 'audio': Audio(sampling_rate=None, decode=True, num_channels=None, stream_index=None), 'id': Value('int64')}
+2026-06-10 15:22:47,808 [INFO] core.dataset_hf: Converted 1000 cases from Hugging Face dataset
+2026-06-10 15:22:47,808 [INFO] bigbench.runner: Loaded 1000 cases
+2026-06-10 15:22:47,809 [INFO] bigbench.runner: Categories: {'formal_fallacies': 250, 'navigate': 250, 'object_counting': 250, 'web_of_lies': 250}
+2026-06-10 15:22:47,809 [INFO] bigbench.runner: WebRTC config: token_api_url=https://api.digitalhumanai.top/health-dev2/api/livekit/token livekit_url=(from token response) token_mode=dev2 agent_name=health-assistant-qwen speaker=(backend default)
+2026-06-10 15:22:47,809 [INFO] test.webrtc_client: Running BigBench WebRTC benchmark: 1 cases
+2026-06-10 15:22:47,809 [INFO] test.webrtc_client: [1/1] Running case: 0 (formal_fallacies)
+2026-06-10 15:22:47,809 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
+2026-06-10 15:22:47,872 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
+2026-06-10 15:22:47,957 [INFO] livekit: livekit_api::signal_client::signal_stream:104:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&device_model=OpenStack+Nova&protocol=17&client_protocol=1&auto_subscribe=1&adaptive_stream=0&version=1.1.10&capabilities=CAP_PACKET_TRAILER
+2026-06-10 15:22:47,958 [INFO] livekit: livekit_api::signal_client::signal_stream:122:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-06-10 15:22:48,250 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-06-10 15:22:48,250 [INFO] test.webrtc_client: Connected to room health-voice-131-1781076167
+2026-06-10 15:22:48,472 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:48,475 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:48,482 [INFO] test.webrtc_client: Agent connected: agent-AJ_C2bBVH3LbfZP
+2026-06-10 15:22:48,504 [INFO] test.webrtc_client: Received audio track from agent-AJ_C2bBVH3LbfZP
+2026-06-10 15:22:48,652 [INFO] test.webrtc_client: Injecting question audio...
+2026-06-10 15:22:49,522 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:49,623 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:50,006 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:50,007 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:50,523 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:51,046 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:51,047 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:51,572 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:52,051 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:52,053 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:52,573 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:52,573 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:52,734 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:52,735 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:52,839 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:52,839 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:52,843 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:22:52,846 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:53,023 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:53,272 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:53,279 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:22:53,477 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:53,606 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:53,607 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:53,622 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:54,614 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:54,615 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:54,622 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:55,661 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:55,662 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:55,672 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:56,672 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:56,673 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:56,674 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:57,617 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:57,618 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:57,722 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:58,648 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:58,649 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:58,723 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:59,612 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:59,614 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:22:59,772 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:22:59,972 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:00,027 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:00,028 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:00,033 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:00,034 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:00,036 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:00,041 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:23:00,372 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:00,622 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:00,630 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:23:00,773 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:00,807 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:01,007 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:01,009 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:01,823 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:02,823 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:03,045 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:03,046 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:03,872 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:04,057 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:04,059 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:04,873 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:05,048 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:05,049 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:05,922 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:06,011 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:06,012 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:06,923 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:07,406 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:07,407 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:07,972 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:08,072 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:08,299 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:08,300 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:08,545 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:08,546 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:08,548 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:08,673 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:08,972 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:09,256 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:09,257 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:10,022 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:10,072 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:10,074 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:11,022 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:11,064 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:11,064 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:12,072 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:12,098 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:12,099 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:13,063 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:13,064 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:13,072 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:14,123 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:15,105 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:15,106 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:15,122 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:16,057 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:16,058 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:16,123 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:17,060 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:17,062 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:17,172 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:17,323 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:17,359 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:17,360 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:17,367 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:23:17,466 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:17,467 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:17,467 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:17,471 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:17,474 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:23:18,053 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:18,054 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:18,061 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:23:18,173 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:18,174 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:18,352 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:18,353 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:18,354 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:18,358 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:23:18,830 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:19,072 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:19,213 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:19,213 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:19,218 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:19,221 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:19,222 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:19,227 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:19,229 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:23:19,622 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:19,872 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:19,878 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:23:20,222 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:20,254 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:20,255 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:20,312 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:20,573 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:20,661 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:20,662 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:20,665 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:20,742 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:20,742 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:20,750 [INFO] test.webrtc_client: Agent state changed to thinking
+2026-06-10 15:23:21,122 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:21,272 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:21,372 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:21,380 [INFO] test.webrtc_client: Agent state changed to listening
+2026-06-10 15:23:21,912 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:21,912 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:22,272 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:22,373 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:22,418 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:22,419 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:22,423 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:22,423 [INFO] root: ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-10 15:23:22,512 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:22,513 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-10 15:23:22,520 [INFO] test.webrtc_client: Agent state changed to thinking
