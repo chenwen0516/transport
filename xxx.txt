@@ -1,13 +1,1 @@
-You are taking an automatic speech reasoning benchmark.
-
-Listen to the full question, then answer with the final answer first.
-
-Use these exact formats:
-- For valid/invalid questions: "valid" or "invalid" as the first word.
-- For yes/no questions: "yes" or "no" as the first word.
-- For numeric questions: the number as the first token.
-- For multiple-choice questions: the selected option as the first words.
-- For name, color, direction, or object questions: the short answer first.
-
-Keep responses short. One brief explanation sentence is allowed after the answer.
-Do not hedge, ask follow-up questions, repeat the question, or include extra commentary.
+Some football fans admire various clubs, others love only a single team. But who is a fan of whom precisely? The following argument pertains to this question. First, no devotee of FK Partisan is an expert of Southampton FC. Second, no critic of FC Spartak Moskvah is an expert of Southampton FC. Third, to be a critic of FC Spartak Moskvah or a devotee of FK Partisan is necessary for being an admirer of Karaba FK. Hence, no admirer of Karaba FK is an expert of Southampton FC. Is the argument given the explicitly stated premises, deductively valid or invalid? Options valid invalid answer the question.
