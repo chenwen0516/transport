@@ -1,62 +1,7 @@
-2026-06-10 15:24:41,572 [INFO] test.webrtc_client: ASR result: In vague, the conclusion does not logically follow from the premises. The first statement is a conditional, but the seco
-2026-06-10 15:24:43,294 [INFO] httpx: HTTP Request: POST https://api.minimax.chat/v1/chat/completions "HTTP/1.1 200 OK"
-2026-06-10 15:24:43,299 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
-2026-06-10 15:24:43,299 [INFO] root: ignoring byte stream with topic 'lk.agent.session', no callback attached
-2026-06-10 15:24:43,308 [INFO] test.webrtc_client: Disconnected from room
-
---- BigBench Results ---
-  Total: 1
-  Answered: 1
-  Accuracy: 100.0%
-  formal_fallacies: 100.0%
-[Report] Saved to /opt/cw/health-assistant/backend/livekit_agent/test/bigbench/test_reports/bigbench_webrtc_20260610_152445.json
-(bigbench) root@health-develop:/opt/cw/health-assistant/backend/livekit_agent/test/bigbench# cat /opt/cw/health-assistant/backend/livekit_agent/test/bigbench/test_reports/bigbench_webrtc_20260610_152445.json
-{
-  "timestamp": "2026-06-10T15:24:45.312064",
-  "agent_mode": "webrtc",
-  "summary": {
-    "total": 1,
-    "answered": 1,
-    "accuracy": 1.0,
-    "accuracy_by_category": {
-      "formal_fallacies": 1.0
-    },
-    "accuracy_by_difficulty": {},
-    "latency_first_token": {
-      "p50": null,
-      "p90": null,
-      "p95": null,
-      "p99": null,
-      "max": null
-    },
-    "latency_first_audio": {
-      "p50": 3470.463789999485,
-      "p90": 3470.463789999485,
-      "p95": 3470.463789999485,
-      "p99": 3470.463789999485,
-      "max": 3470.463789999485
-    },
-    "latency_total": {
-      "p50": null,
-      "p90": null,
-      "p95": null,
-      "p99": null,
-      "max": null
-    }
-  },
-  "results": [
-    {
-      "case_id": "0",
-      "category": "formal_fallacies",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "Here comes a perfectly valid argument. First of all, whoever is a schoolmate of Sandra is not a step-sister of Priscilla. In consequence, whoever is not a step-sister of Priscilla is a schoolmate of Sandra. Is the argument, given the explicitly stated premises, deductively valid or invalid? Options valid invalid answer the question.",
-      "expected_answer": "invalid",
-      "predicted_answer": "In vague, the conclusion does not logically follow from the premises. The first statement is a conditional, but the second reverses it incorrectly. Invalid reasoning.",
-      "correct": true,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 3470.463789999485,
-      "latency_total_ms": null
-    }
-  ]
-}
+You are taking a reasoning benchmark.
+Listen to the full question before answering.
+Answer with the final option or value first.
+For valid/invalid questions, start your answer with exactly "valid" or "invalid".
+For yes/no questions, start with exactly "yes" or "no".
+For arithmetic/counting questions, start with the number.
+After the short answer, you may add one brief sentence of explanation.
