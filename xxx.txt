@@ -1,5 +1,122 @@
-root@health-develop:/opt/test/agent-e2e# uv run --package webrtc --no-dev python apps/webrtc/main.py --env dev
-2026-06-11 14:46:20,919 [INFO] 请求 LiveKit Token: https://api.digitalhumanai.top/health-dev2/api/livekit/token?agentName=health-assistant&voice=Voice_Clone
-2026-06-11 14:46:21,219 [INFO] HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?agentName=health-assistant&voice=Voice_Clone "HTTP/1.1 400 Bad Request"
-2026-06-11 14:46:21,220 [ERROR] 获取 LiveKit Token 失败: Client error '400 Bad Request' for url 'https://api.digitalhumanai.top/health-dev2/api/livekit/token?agentName=health-assistant&voice=Voice_Clone'
-For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
+2026-06-11 15:08:02,343 [INFO] [Agent] 体检报告通常包含以下指标及对应计量单位：  
+- 血压：mmHg（毫米汞柱）  
+- 心率：次/分钟（bpm）  
+- 体温：℃（摄氏度）  
+- 体重：kg（千克）  
+- 身高：cm（厘米）  
+- 体重指数（BMI）：kg/m²  
+- 血糖：mmol/L（毫摩尔/升）或 mg/dL（毫克/分升）  
+- 血脂：  
+  - 总胆固醇：mmol/L  
+  - 甘油三酯：mmol/L  
+  - 高密度脂蛋白（HDL）：mmol/L  
+  - 低密度脂蛋白（LDL）：mmol/L  
+- 肝功能：  
+  - ALT、AST：U/L（单位/升）  
+  - 总胆红素：μmol/L  
+- 肾功能：  
+  - 尿素氮（BUN）：mmol/L  
+  - 肌酐（Cr）：μmol/L  
+- 血常规：  
+  - 白细胞：×10⁹/L  
+  - 血红蛋白（Hb）：g/L 或 g/dL  
+  - 血小板
+2026-06-11 15:08:02,345 [INFO] [用户 final] 医生您好，我父亲今年六十八岁，有高血压病史十年，目前服用硝苯地平控释片三十毫克每天，但血压仍波动在一百五十九十五毫米汞柱左右，是否需要调整用药？
+2026-06-11 15:08:02,346 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:03,240 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:03,241 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:03,309 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:04,310 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:04,423 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:04,425 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:05,359 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:05,758 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:05,759 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:06,360 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:06,752 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:06,753 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:07,410 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:07,902 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:07,904 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:08,310 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:08,410 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:08,440 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:08,441 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:08,448 [INFO] Agent 状态: listening -> thinking
+2026-06-11 15:08:08,686 [INFO] 等待 Agent 回复完成...
+2026-06-11 15:08:08,804 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:08,804 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:08,806 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:08,812 [INFO] Agent 状态: thinking -> listening
+2026-06-11 15:08:09,225 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:09,460 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:09,659 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:09,661 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:09,950 [INFO] 音频全为静音，跳过保存
+2026-06-11 15:08:10,221 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:10,222 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:10,226 [INFO] [用户 final] 感冒时，每次吃零点五克药物，一次一至二颗，一日三至四次。
+2026-06-11 15:08:10,226 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:10,451 [INFO] 处理音频 [28/30]: test_voice_29.wav
+2026-06-11 15:08:10,451 [INFO] 处理音频: test_voice_29.wav
+2026-06-11 15:08:10,460 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:10,851 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:10,852 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:10,859 [INFO] Agent 状态: listening -> thinking
+2026-06-11 15:08:11,109 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:11,359 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:11,367 [INFO] Agent 状态: thinking -> listening
+2026-06-11 15:08:11,510 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:11,699 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:12,067 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:12,068 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:12,510 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:12,879 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:12,880 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:13,559 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:14,560 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:15,609 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:15,909 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:16,116 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:16,117 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:16,251 [INFO] 等待 Agent 回复完成...
+2026-06-11 15:08:16,283 [INFO] 音频全为静音，跳过保存
+2026-06-11 15:08:16,610 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:16,784 [INFO] 处理音频 [29/30]: test_voice_30.wav
+2026-06-11 15:08:16,784 [INFO] 处理音频: test_voice_30.wav
+2026-06-11 15:08:16,968 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:16,969 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:17,409 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:17,660 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:17,774 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:17,775 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:18,629 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:18,630 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:18,632 [INFO] [用户 final] 体检报告显示，血压一百二十八十，这正常吗？
+2026-06-11 15:08:18,632 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:18,660 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:19,661 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:19,662 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:19,709 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:20,456 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:20,457 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:20,709 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:21,010 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:21,301 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:21,301 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:21,340 [INFO] 等待 Agent 回复完成...
+2026-06-11 15:08:21,434 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:21,434 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:21,443 [INFO] Agent 状态: listening -> thinking
+2026-06-11 15:08:21,759 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:22,200 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:22,201 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:22,202 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:22,208 [INFO] Agent 状态: thinking -> listening
+2026-06-11 15:08:22,365 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:22,760 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:22,903 [INFO] ignoring byte stream with topic 'lk.agent.session', no callback attached
+2026-06-11 15:08:22,905 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:22,906 [INFO] [用户 final] 血糖六点八毫摩尔每升，需要吃药不？
+2026-06-11 15:08:22,907 [INFO] ignoring text stream with topic 'lk.transcription', no callback attached
+2026-06-11 15:08:23,292 [INFO] 音频全为静音，跳过保存
