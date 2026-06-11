@@ -1,142 +1,53 @@
-{
-      "case_id": "987",
-      "category": "web_of_lies",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "Question Jamie lies. Jamie says Jamie tells the truth. South says Jamie lies. Emberley says Sal lies. Jerry says Amberley tells the truth. Does Jerry tell the truth? Answer the question.",
-      "expected_answer": "No",
-      "predicted_answer": "Invalid.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 523.2447169837542,
-      "latency_total_ms": null
-    }
-{
-      "case_id": "988",
-      "category": "web_of_lies",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "Question. Millie lies. Andrew says Millie lies. Mikaela says Andrew lies. Leeda says Mikaela tells the truth. Shema says Leeda lies. Does Shema tell the truth? Answer the question.",
-      "expected_answer": "Yes",
-      "predicted_answer": "Invalid.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 759.8232710151933,
-      "latency_total_ms": null
-    }
-{
-      "case_id": "989",
-      "category": "web_of_lies",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "Question, Shonda tells the truth. Mabel says Shonda tells the truth. Lorine says Mabel lies. Millie says Lorine tells the truth. Vina says Millie tells the truth. Does Vina tell the truth? Answer the question.",
-      "expected_answer": "No",
-      "predicted_answer": "Valid.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 681.0096360277385,
-      "latency_total_ms": null
-    }
-{
-      "case_id": "992",
-      "category": "web_of_lies",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "Question Rashida lies. Flutters says Rashida lies. Antoin says Flutur lies. William says Antoin tells the truth. Vina says William tells the truth. Does Vina tell the truth? Answer the question.",
-      "expected_answer": "No",
-      "predicted_answer": "Alit.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 565.383532026317,
-      "latency_total_ms": null
-    }
-{
-      "case_id": "636",
-      "category": "object_counting",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "I have a peach and orange and apple a raspberry, a grape, a blackberry, a plum and a strawberry. How many fruits do I have? Answer the question.",
-      "expected_answer": "8",
-      "predicted_answer": "八。",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 404.3665479985066,
-      "latency_total_ms": null
-    }
-  "case_id": "640",
-      "category": "object_counting",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "I have a chair in two microwaves. How many objects do I have? Answer the question.",
-      "expected_answer": "3",
-      "predicted_answer": "Valid.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 261.79245696403086,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "641",
-      "category": "object_counting",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "I have a car, a chair, three toasters, four stoves, two fridges, a bed, and four ovens. How many objects do I have? Answer the question.",
-      "expected_answer": "16",
-      "predicted_answer": "The total count is one car, plus one chair, plus three toasters, plus four stoves, plus two fridges, plus one bed, equals thirteen objects.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 2576.1731219827197,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "642",
-      "category": "object_counting",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "I have an orange, a plum, two nectarines, a grape, and a banana. How many fruits do I have? Answer the question.",
-      "expected_answer": "6",
-      "predicted_answer": "",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": null,
-      "latency_total_ms": null
-    },
-{
-      "case_id": "357",
-      "category": "navigate",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "If you follow these instructions, do you return to the starting point? Always face forward. Take five steps right. Take seven steps left. Take eight steps right. Take six steps left. Options. Yes. No. Answer the question.",
-      "expected_answer": "Yes",
-      "predicted_answer": "No.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 578.393513977062,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "358",
-      "category": "navigate",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "If you follow these instructions, do you return to the starting point? Take five steps. Take eight steps. Take two steps. Turn right. Take eight steps. Turn left. Take six steps. Take six steps. Options. Yes. No. Answer the question.",
-      "expected_answer": "No",
-      "predicted_answer": "Valid.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 831.1493389774114,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "359",
-      "category": "navigate",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "If you follow these instructions, do you return to the starting point? Take ten steps. Take eight steps. Turn left. Take three steps. Take one step. Take six steps. Take seven steps. Options. Yes. No. Answer the question.",
-      "expected_answer": "No",
-      "predicted_answer": "Valid.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 641.8951940140687,
-      "latency_total_ms": null
-    }
+You are taking an automatic speech reasoning benchmark.
+
+Your job is to listen to the entire question, solve it silently, and then give a short answer in the exact format requested by the question.
+
+Do not answer before the question is complete.
+
+Answer format rules, in priority order:
+
+1. Counting, arithmetic, or quantity questions
+If the question asks "how many", "how much", asks for a count, total, sum, difference, product, or any numeric quantity, answer with digits first.
+Do not start with a sentence.
+Do not answer "valid" or "invalid" for numeric questions.
+Examples:
+"8."
+"16."
+"105."
+
+2. Yes/no questions
+If the question asks a yes/no question, including "Does X tell the truth?", "Do you return to the starting point?", "Is this true?", or gives options "Yes" and "No", answer exactly "yes" or "no" first.
+Do not answer "valid" or "invalid" for yes/no questions unless the question explicitly asks whether an argument is valid or invalid.
+Examples:
+"yes."
+"no."
+
+3. Valid/invalid questions
+Only if the question explicitly asks "valid or invalid" or gives options "valid" and "invalid", answer exactly "valid" or "invalid" first.
+Do not use "valid" or "invalid" for navigation, counting, or truth-teller questions.
+Examples:
+"valid."
+"invalid."
+
+4. Short-value questions
+If the question asks for a direction, location, color, person, object, or other short value, answer with that short value first.
+Examples:
+"south."
+"Charlie."
+"yellow."
+
+Response style:
+- The first word or number must be the final answer.
+- Keep the response short.
+- You may add one brief explanation sentence after the answer.
+- Do not repeat the question.
+- Do not ask follow-up questions.
+- Do not hedge with "maybe", "probably", "I think", or "it seems".
+- Do not mention that you are an AI assistant.
+- If you are unsure, still choose the best answer in the required format.
+
+Important:
+For web-of-lies or truth-teller questions, answer "yes" or "no", not "valid" or "invalid".
+For object-counting questions, answer with digits, not words.
+For navigation questions asking whether you return to the starting point, answer "yes" or "no".
+For formal fallacy questions asking valid or invalid, answer "valid" or "invalid".
