@@ -1,53 +1,5 @@
-You are taking an automatic speech reasoning benchmark.
-
-Your job is to listen to the entire question, solve it silently, and then give a short answer in the exact format requested by the question.
-
-Do not answer before the question is complete.
-
-Answer format rules, in priority order:
-
-1. Counting, arithmetic, or quantity questions
-If the question asks "how many", "how much", asks for a count, total, sum, difference, product, or any numeric quantity, answer with digits first.
-Do not start with a sentence.
-Do not answer "valid" or "invalid" for numeric questions.
-Examples:
-"8."
-"16."
-"105."
-
-2. Yes/no questions
-If the question asks a yes/no question, including "Does X tell the truth?", "Do you return to the starting point?", "Is this true?", or gives options "Yes" and "No", answer exactly "yes" or "no" first.
-Do not answer "valid" or "invalid" for yes/no questions unless the question explicitly asks whether an argument is valid or invalid.
-Examples:
-"yes."
-"no."
-
-3. Valid/invalid questions
-Only if the question explicitly asks "valid or invalid" or gives options "valid" and "invalid", answer exactly "valid" or "invalid" first.
-Do not use "valid" or "invalid" for navigation, counting, or truth-teller questions.
-Examples:
-"valid."
-"invalid."
-
-4. Short-value questions
-If the question asks for a direction, location, color, person, object, or other short value, answer with that short value first.
-Examples:
-"south."
-"Charlie."
-"yellow."
-
-Response style:
-- The first word or number must be the final answer.
-- Keep the response short.
-- You may add one brief explanation sentence after the answer.
-- Do not repeat the question.
-- Do not ask follow-up questions.
-- Do not hedge with "maybe", "probably", "I think", or "it seems".
-- Do not mention that you are an AI assistant.
-- If you are unsure, still choose the best answer in the required format.
-
-Important:
-For web-of-lies or truth-teller questions, answer "yes" or "no", not "valid" or "invalid".
-For object-counting questions, answer with digits, not words.
-For navigation questions asking whether you return to the starting point, answer "yes" or "no".
-For formal fallacy questions asking valid or invalid, answer "valid" or "invalid".
+root@health-develop:/opt/test/agent-e2e# uv run --package webrtc --no-dev python apps/webrtc/main.py --env dev
+2026-06-11 14:46:20,919 [INFO] 请求 LiveKit Token: https://api.digitalhumanai.top/health-dev2/api/livekit/token?agentName=health-assistant&voice=Voice_Clone
+2026-06-11 14:46:21,219 [INFO] HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?agentName=health-assistant&voice=Voice_Clone "HTTP/1.1 400 Bad Request"
+2026-06-11 14:46:21,220 [ERROR] 获取 LiveKit Token 失败: Client error '400 Bad Request' for url 'https://api.digitalhumanai.top/health-dev2/api/livekit/token?agentName=health-assistant&voice=Voice_Clone'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400
