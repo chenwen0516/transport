@@ -1,101 +1,14 @@
-{
-  "timestamp": "2026-06-12T15:05:13.866519",
-  "agent_mode": "webrtc",
-  "summary": {
-    "total": 5,
-    "answered": 5,
-    "accuracy": 0.0,
-    "accuracy_by_category": {
-      "formal_fallacies": 0.0
-    },
-    "accuracy_by_difficulty": {},
-    "latency_first_token": {
-      "p50": null,
-      "p90": null,
-      "p95": null,
-      "p99": null,
-      "max": null
-    },
-    "latency_first_audio": {
-      "p50": 1147.6534069515765,
-      "p90": 1697.3075449932367,
-      "p95": 1697.3075449932367,
-      "p99": 1697.3075449932367,
-      "max": 1697.3075449932367
-    },
-    "latency_total": {
-      "p50": null,
-      "p90": null,
-      "p95": null,
-      "p99": null,
-      "max": null
-    }
-  },
-  "results": [
-    {
-      "case_id": "0",
-      "category": "formal_fallacies",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "Here comes a perfectly valid argument. First of all, whoever is a schoolmate of Sandra is not a step-sister of Priscilla. In consequence, whoever is not a step-sister of Priscilla is a schoolmate of Sandra. Is the argument, given the explicitly stated premises, deductively valid or invalid? Options valid invalid answer the question.",
-      "expected_answer": "invalid",
-      "predicted_answer": "Valid.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 1492.1478539472446,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "1",
-      "category": "formal_fallacies",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "Here comes a perfectly valid argument, first, being a cousin of Chris is sufficient for not being a son of Kermit. We may conclude that, however, is not a son of Kermit is a cousin of Chris. Is the argument, given the explicitly stated premises, deductively valid or invalid? Options. Valid. Invalid. Answer the question.",
-      "expected_answer": "invalid",
-      "predicted_answer": "Oh.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 297.90478595532477,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "2",
-      "category": "formal_fallacies",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "It is not always easy to see which chemicals are contained in our consumer products. The following argument pertains to this question. First, vitamin A is an ingredient of liquid eyeliner. Second, every ingredient of BCI cream 15 milliliters is not an ingredient of mango lip butter or not an ingredient of liquid eyeliner. Therefore, it is not the case that vitamin A is an ingredient of BCI cream 15 milliliters. Is the argument given the explicitly stated premises deductively valid or invalid? Options valid invalid. Answer the question.",
-      "expected_answer": "invalid",
-      "predicted_answer": "Valid.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 1697.3075449932367,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "3",
-      "category": "formal_fallacies",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "Some football fans admire various clubs, others love only a single team. But who is a fan of whom precisely? The following argument pertains to this question. First, no devotee of FK Partisan is an expert of Southampton FC. Second, no critic of FC Spartak Moskvah is an expert of Southampton FC. Third, to be a critic of FC Spartak Moskvah or a devotee of FK Partisan is necessary for being an admirer of Karaba FK. Hence, no admirer of Karaba FK is an expert of Southampton FC. Is the argument given the explicitly stated premises, deductively valid or invalid? Options valid invalid answer the question.",
-      "expected_answer": "valid",
-      "predicted_answer": "Yes.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 1147.6534069515765,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "4",
-      "category": "formal_fallacies",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "Some football fans admire various clubs, others love only a single team. But who is a fan of whom precisely? The following argument pertains to this question, first premise, being an expert of Aberdeen FC is sufficient for not being a follower of club a cletico-domodrid. Second premise, every expert of Aberdeen FC is not a fan of AZ Orcma or not a follower of club a cletico-domodrid. Therefore, whoever is an expert of Aberdeen FC is not a fan of AZ Orcma. Is the argument given the explicitly stated premises deductively valid or invalid? Options valid invalid answer the question",
-      "expected_answer": "invalid",
-      "predicted_answer": "Baglid.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 520.7473390037194,
-      "latency_total_ms": null
-    }
-  ]
-}
+nohup uv run python test/audio_benchmarks/run_openaudiobench.py \
+  --protocol webrtc \
+  --component all \
+  --early-response-policy warn \
+  > test/audio_benchmarks/openaudiobench_webrtc_all.log 2>&1 &
+
+
+nohup uv run python test/audio_benchmarks/run_voicebench.py \
+  --protocol webrtc \
+  --subset openbookqa \
+  --early-response-policy warn \
+  > test/audio_benchmarks/voicebench_openbookqa_webrtc.log 2>&1 &
+
+tail -f test/audio_benchmarks/openaudiobench_webrtc_all.log
