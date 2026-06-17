@@ -1,35 +1,7 @@
-root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# nohup uv run python test/audio_benchmarks/run_openaudiobench.py \
-  --protocol webrtc \
-  --component all \
-  --early-response-policy warn \
-  > test/audio_benchmarks/openaudiobench_webrtc_all.log 2>&1 &
-[1] 2382687
-root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# tail -f test/audio_benchmarks/openaudiobench_webrtc_all.log
+root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# ps -ef | grep run_openaudiobench.py | grep -v grep
+root     2388856 2379866  0 14:36 pts/0    00:00:00 uv run python test/audio_benchmarks/run_openaudiobench.py --protocol webrtc --component all --early-response-policy warn
+root     2388868 2388856  1 14:36 pts/0    00:00:21 /opt/cw/health-assistant/backend/livekit_agent/.venv/bin/python3 test/audio_benchmarks/run_openaudiobench.py --protocol webrtc --component all --early-response-policy warn
+mise WARN  missing: uv@0.11.8
+root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# tail -n 100 test/audio_benchmarks/openaudiobench_webrtc_all.log
 nohup: ignoring input
-Traceback (most recent call last):
-  File "/opt/cw/health-assistant/backend/livekit_agent/test/audio_benchmarks/run_openaudiobench.py", line 139, in <module>
-    run_async(main())
-  File "/opt/cw/health-assistant/backend/livekit_agent/test/audio_benchmarks/common.py", line 564, in run_async
-    asyncio.run(coro)
-  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
-    return runner.run(main)
-           ^^^^^^^^^^^^^^^^
-  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
-    return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/opt/cw/health-assistant/backend/livekit_agent/test/audio_benchmarks/run_openaudiobench.py", line 126, in main
-    dataset = OpenAudioBenchDataset.load(
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/cw/health-assistant/backend/livekit_agent/test/audio_benchmarks/run_openaudiobench.py", line 73, in load
-    case._audio_bytes = audio_file_to_pcm16(audio_path)
-                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/cw/health-assistant/backend/livekit_agent/test/audio_benchmarks/common.py", line 530, in audio_file_to_pcm16
-    segment = segment.set_channels(1).set_frame_rate(target_sr).set_sample_width(2)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/cw/health-assistant/backend/livekit_agent/.venv/lib/python3.12/site-packages/pydub/audio_segment.py", line 1008, in set_sample_width
-    audioop.lin2lin(self._data, self.sample_width, sample_width),
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-audioop.error: Size should be 1, 2, 3 or 4
+root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# 
