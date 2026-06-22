@@ -1,14 +1,40 @@
-uv workspace
-https://docs.astral.sh/uv/concepts/projects/workspaces/
-Qwen3-TTS
-https://help.aliyun.com/zh/model-studio/interactive-process-of-qwen-tts-realtime-synthesis
-Dynaconf
-https://www.dynaconf.com/
-https://docs.livekit.io/intro/basics/connect/
-https://github.com/livekit/python-sdks
-
-export WS_URL="wss://api.digitalhumanai.top/health-dev2/api/realtime?model=health-assistant-qwen"  
-export AUTH_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzEiLCJwaG9uZSI6IjE1OTU1NjYwNTExIiwibmlja25hbWUiOiJcdTUxYjdcdTk3NTlcdTc2ODRcdTVjMGZcdTcxOGEiLCJleHAiOjE3ODE0ODcyNjl9.1YBNHTdvOadLXeLIOIUFr1BwNH-_YKujBCrR3cYcFj4"
-export AGENT_MODE=real
-
-export MINIMAX_API_KEY="sk-cp-Ctsz8YcNyWDwUVSZzlohH_aR7rcwsMHTOhh3OV2x-uh3m6o8cBKWmBiiePfd6K_BUFh5t2epiJ2u1qvHCHmNLa4wJJzNkAX0zo49sGG0yu5EKmVIabzUChI"
+ },
+    {
+      "case_id": "reasoning_qa_reasoning_qa_21",
+      "category": "reasoning_qa/反事实",
+      "difficulty": null,
+      "reasoning_steps": null,
+      "question": "为什么监狱里都住著犯人？",
+      "expected_answer": "监狱的功能就是关押犯人",
+      "predicted_answer": "因为监狱是用来关押犯人的场所。",
+      "correct": false,
+      "latency_first_token_ms": null,
+      "latency_first_audio_ms": 4696.513249073178,
+      "latency_total_ms": null
+    },
+    {
+      "case_id": "reasoning_qa_reasoning_qa_22",
+      "category": "reasoning_qa/命题假设",
+      "difficulty": null,
+      "reasoning_steps": null,
+      "question": "如果所有的鱼类都生活在水中，那么我们能不能推断出来“所有不生活在水中的生物都不是鱼类”？",
+      "expected_answer": "可以",
+      "predicted_answer": "Yes. The statement \"all fish live in water\" means that living in water is a necessary condition for being a fish. Therefore, if a creature does not live in water, it cannot be a fish. This is a valid contrapositive inference.",
+      "correct": false,
+      "latency_first_token_ms": null,
+      "latency_first_audio_ms": 4349.606517003849,
+      "latency_total_ms": null
+    },
+    {
+      "case_id": "reasoning_qa_reasoning_qa_23",
+      "category": "reasoning_qa/命题假设",
+      "difficulty": null,
+      "reasoning_steps": null,
+      "question": "每个穿着正式的人我遇到的都是去参加会议的。我看到一个穿着休闲的人。我是否可以推断他不是去参加会议的？",
+      "expected_answer": "不可以",
+      "predicted_answer": "No, I saw a person wearing casual clothes, but I can't infer that he is not going to attend the meeting. Because the topic only indicates that people wearing formal clothes go to meetings, not that people wearing casual clothes cannot go to meetings.",
+      "correct": false,
+      "latency_first_token_ms": null,
+      "latency_first_audio_ms": 4441.180665977299,
+      "latency_total_ms": null
+    },
