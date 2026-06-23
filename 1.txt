@@ -1,40 +1,11 @@
- },
-    {
-      "case_id": "reasoning_qa_reasoning_qa_21",
-      "category": "reasoning_qa/反事实",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "为什么监狱里都住著犯人？",
-      "expected_answer": "监狱的功能就是关押犯人",
-      "predicted_answer": "因为监狱是用来关押犯人的场所。",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 4696.513249073178,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "reasoning_qa_reasoning_qa_22",
-      "category": "reasoning_qa/命题假设",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "如果所有的鱼类都生活在水中，那么我们能不能推断出来“所有不生活在水中的生物都不是鱼类”？",
-      "expected_answer": "可以",
-      "predicted_answer": "Yes. The statement \"all fish live in water\" means that living in water is a necessary condition for being a fish. Therefore, if a creature does not live in water, it cannot be a fish. This is a valid contrapositive inference.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 4349.606517003849,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "reasoning_qa_reasoning_qa_23",
-      "category": "reasoning_qa/命题假设",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "每个穿着正式的人我遇到的都是去参加会议的。我看到一个穿着休闲的人。我是否可以推断他不是去参加会议的？",
-      "expected_answer": "不可以",
-      "predicted_answer": "No, I saw a person wearing casual clothes, but I can't infer that he is not going to attend the meeting. Because the topic only indicates that people wearing formal clothes go to meetings, not that people wearing casual clothes cannot go to meetings.",
-      "correct": false,
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 4441.180665977299,
-      "latency_total_ms": null
-    },
+root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# tail -f test/audio_benchmarks/logs/voicebench_alpacaeval_speaker_test_20_20260622_161225.log
+                        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/cw/health-assistant/backend/livekit_agent/.venv/lib/python3.12/site-packages/datasets/arrow_reader.py", line 130, in make_file_instructions
+    absolute_instructions = instruction.to_absolute(name2len)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/cw/health-assistant/backend/livekit_agent/.venv/lib/python3.12/site-packages/datasets/arrow_reader.py", line 620, in to_absolute
+    return [_rel_to_abs_instr(rel_instr, name2len) for rel_instr in self._relative_instructions]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/cw/health-assistant/backend/livekit_agent/.venv/lib/python3.12/site-packages/datasets/arrow_reader.py", line 437, in _rel_to_abs_instr
+    raise ValueError(f'Unknown split "{split}". Should be one of {list(name2len)}.')
+ValueError: Unknown split "test". Should be one of ['en_AU_Wavenet_A_1.0_0.0_0.0', 'en_AU_Wavenet_B_1.0_0.0_0.0', 'en_IN_Wavenet_A_1.0_0.0_0.0', 'en_IN_Wavenet_B_1.0_0.0_0.0', 'en_GB_Wavenet_A_1.0_0.0_0.0', 'en_GB_Wavenet_B_1.0_0.0_0.0', 'en_US_Wavenet_A_1.0_0.0_0.0', 'en_US_Wavenet_C_1.0_0.0_0.0', 'en_US_Wavenet_A_1.5_0.0_0.0', 'en_US_Wavenet_A_2.0_0.0_0.0', 'en_US_Wavenet_A_0.5_0.0_0.0'].
