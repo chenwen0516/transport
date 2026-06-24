@@ -1,4 +1,4 @@
-MAX_CASES=20 nohup bash -c '
+root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# MAX_CASES=2 nohup bash -c '
 set -e
 for c in alpaca_eval llama_questions reasoning_qa trivia_qa web_questions; do
   echo "[$(date "+%F %T")] running OpenAudioBench $c"
@@ -9,17 +9,23 @@ for c in alpaca_eval llama_questions reasoning_qa trivia_qa web_questions; do
     --early-response-policy warn \
     > "test/audio_benchmarks/openaudiobench_${c}_${MAX_CASES}.log" 2>&1
 done
-' > test/audio_benchmarks/openaudiobench_20_each.out 2>&1 &
-
-tail -f test/audio_benchmarks/openaudiobench_20_each.out
-
-MAX_CASES=20 nohup bash test/audio_benchmarks/run_voicebench_each.sh \
-  > test/audio_benchmarks/voicebench_20_each.out 2>&1 &
-
-tail -f test/audio_benchmarks/voicebench_20_each.out
-
-ps -ef | grep audio_benchmarks | grep -v grep
-
-pkill -f run_openaudiobench.py
-pkill -f run_voicebench.py
-pkill -f run_voicebench_each.sh
+' > test/audio_benchmarks/openaudiobench_2_each.out 2>&1 &
+[1] 264091
+root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# tail -f test/audio_benchmarks/openaudiobench_20_each.out
+tail: cannot open 'test/audio_benchmarks/openaudiobench_20_each.out' for reading: No such file or directory
+tail: no files remaining
+[1]+  Exit 1                  MAX_CASES=2 nohup bash -c '
+set -e
+for c in alpaca_eval llama_questions reasoning_qa trivia_qa web_questions; do
+  echo "[$(date "+%F %T")] running OpenAudioBench $c"
+  uv run python test/audio_benchmarks/run_openaudiobench.py \
+    --protocol webrtc \
+    --component "$c" \
+    --max-cases "$MAX_CASES" \
+    --early-response-policy warn \
+    > "test/audio_benchmarks/openaudiobench_${c}_${MAX_CASES}.log" 2>&1
+done
+' > test/audio_benchmarks/openaudiobench_2_each.out 2>&1
+root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# tail -f test/audio_benchmarks/openaudiobench_2_each.out
+nohup: ignoring input
+[2026-06-24 15:33:33] running OpenAudioBench alpaca_eval
