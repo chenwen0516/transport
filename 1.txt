@@ -1,1 +1,21 @@
-cat $(ls -t test/audio_benchmarks/test_reports/voicebench_table_*/voicebench_paper_table_*.txt | head -n 1)
+ "results": [
+    {
+      "case_id": "sd-qa_usa_0",
+      "category": "sd-qa/usa",
+      "difficulty": null,
+      "reasoning_steps": null,
+      "question": "When was quantum field theory developed?",
+      "expected_answer": "1920s",
+      "predicted_answer": "一九二零秒，一九三零秒。",
+      "correct": false,
+      "judge_type": "reference_based_accuracy",
+      "judge_reason": "The model answer says '1920 seconds, 1930 seconds', which is a misinterpretation of the question asking for a time period (1920s), not seconds. This contradicts the expected answer.",
+      "unanswered": false,
+      "refused": null,
+      "refusal_reason": null,
+      "quality_score": null,
+      "quality_reason": null,
+      "latency_first_token_ms": null,
+      "latency_first_audio_ms": 4029.2107430286705,
+      "latency_total_ms": null
+    }
