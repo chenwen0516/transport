@@ -1,7 +1,1 @@
-sk-93667b9d8d904eddb6fb3672d836b2c5
-export JUDGE_PROVIDER=deepseek
-export DEEPSEEK_API_KEY="你的 deepseek key"
-export JUDGE_MODEL=deepseek-v4-flash
-
-MAX_CASES=20 nohup bash test/audio_benchmarks/run_voicebench_each.sh \
-  > test/audio_benchmarks/voicebench_20_each.out 2>&1 &
+cat $(ls -t test/audio_benchmarks/test_reports/voicebench_table_*/voicebench_paper_table_*.txt | head -n 1)
