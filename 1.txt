@@ -1,21 +1,91 @@
- "results": [
+{
+  "timestamp": "2026-06-29T19:10:42.855798",
+  "benchmark": "VoiceBench",
+  "agent_mode": "webrtc",
+  "summary": {
+    "total": 2,
+    "answered": 1,
+    "accuracy": 0.0,
+    "accuracy_by_category": {
+      "mmsu/health": 0.0
+    },
+    "accuracy_by_difficulty": {},
+    "latency_first_token": {
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null
+    },
+    "latency_first_audio": {
+      "p50": 3940.2002790011466,
+      "p90": 3940.2002790011466,
+      "p95": 3940.2002790011466,
+      "p99": 3940.2002790011466,
+      "max": 3940.2002790011466
+    },
+    "latency_total": {
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null
+    },
+    "unanswered_count": 1,
+    "quality_count": 0,
+    "quality_score_avg": null,
+    "quality_score_by_category": {},
+    "refusal_count": 0,
+    "refusal_rate": null,
+    "refusal_rate_by_category": {},
+    "score_by_category": {
+      "mmsu/health": 0.0
+    },
+    "score_by_task": {
+      "mmsu": 0.0
+    },
+    "overall_score": 0.0
+  },
+  "results": [
     {
-      "case_id": "sd-qa_usa_0",
-      "category": "sd-qa/usa",
+      "case_id": "6001",
+      "category": "mmsu/health",
       "difficulty": null,
       "reasoning_steps": null,
-      "question": "When was quantum field theory developed?",
-      "expected_answer": "1920s",
-      "predicted_answer": "一九二零秒，一九三零秒。",
+      "question": "Polio can be eradicated by which of the following?\nA. Attention to sewage control and hygiene\nB. Administration of tetanus vaccine\nC. Herbal remedies\nD. Natural immunity acquired through exposure\n\nWhat is the answer to the above multiple choice question? Select one of the following: A, B, C, or D.",
+      "expected_answer": "A",
+      "predicted_answer": "",
+      "correct": null,
+      "judge_type": "unanswered",
+      "judge_reason": "No agent answer; excluded from scoring denominator.",
+      "unanswered": true,
+      "refused": null,
+      "refusal_reason": null,
+      "quality_score": null,
+      "quality_reason": null,
+      "latency_first_token_ms": null,
+      "latency_first_audio_ms": 3940.2002790011466,
+      "latency_total_ms": null
+    },
+    {
+      "case_id": "6002",
+      "category": "mmsu/health",
+      "difficulty": null,
+      "reasoning_steps": null,
+      "question": "Which disease do polyomaviruses predominantly cause?\nA. Tumours\nB. Brain pathology\nC. No disease at all\nD. Kidney infections\n\nWhat is the answer to the above multiple choice question? Select one of the following: A, B, C, or D.",
+      "expected_answer": "C",
+      "predicted_answer": "Tumors.",
       "correct": false,
       "judge_type": "reference_based_accuracy",
-      "judge_reason": "The model answer says '1920 seconds, 1930 seconds', which is a misinterpretation of the question asking for a time period (1920s), not seconds. This contradicts the expected answer.",
+      "judge_reason": "The model answer 'Tumors' corresponds to option A, but the expected answer is C (No disease at all).",
       "unanswered": false,
       "refused": null,
       "refusal_reason": null,
       "quality_score": null,
       "quality_reason": null,
       "latency_first_token_ms": null,
-      "latency_first_audio_ms": 4029.2107430286705,
+      "latency_first_audio_ms": 3686.892508994788,
       "latency_total_ms": null
     }
+  ]
+}
