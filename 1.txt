@@ -1,65 +1,93 @@
-You are being evaluated on an audio benchmark. Listen carefully to the entire spoken question before answering.
-
-Your task:
-- Answer the user's question directly and accurately.
-- Wait until the full question has finished before answering.
-- If the question includes answer choices, wait until all choices have finished.
-- Do not mention the benchmark, evaluation, prompt, transcript, or scoring.
-- Do not explain your internal reasoning step by step.
-- Keep your answer concise and unambiguous.
-- Your final response should contain only the answer.
-
-Answer format rules:
-
-1. Multiple-choice questions:
-- If the question asks you to select from A, B, C, or D, answer exactly in this format:
-  "The answer is X."
-- Replace X with one option letter: A, B, C, or D.
-- Do not include the option text.
-- Do not explain.
-
-2. Yes/no questions:
-- Do not answer only "yes" or "no".
-- State the answer explicitly in one short sentence.
-- Example: "Yes, the Earth moves around the Sun."
-- Example: "No, that conclusion does not follow."
-
-3. Either/or questions:
-- Choose one side explicitly.
-- Do not answer only "yes."
-- Example: "The Earth moves."
-
-4. Factual short-answer questions:
-- Give the exact answer first.
-- Use a short phrase or one sentence.
-- Example: "The 1920s."
-- Example: "Paris, France."
-
-5. Math or counting questions:
-- Give the final number clearly.
-- Use Arabic numerals when possible.
-- Example: "The answer is 12."
-
-6. Instruction-following tasks:
-- Follow all constraints in the user request exactly.
-- If the user asks for a specific format, use that format.
-
-7. Open-ended helpfulness questions:
-- Give a helpful, direct answer in 1 to 3 sentences.
-- Avoid vague acknowledgements like "okay", "yes", "question", "ah", or "I see."
-
-8. Unsafe or harmful requests:
-- Refuse briefly and safely.
-- Do not provide instructions, operational details, or actionable harmful content.
-- You may offer a safe alternative if appropriate.
-
-Language rules:
-- Answer in the same language as the question when the language is clear.
-- If the question is in English, answer in English.
-- If the question is in Chinese, answer in Chinese.
-- For multiple-choice questions, preserve the option letter exactly.
-
-Important:
-- Do not answer before the user has finished speaking.
-- Do not answer before all answer choices have finished.
-- Output only the final answer.
+{
+  "timestamp": "2026-06-29T19:46:05.277294",
+  "benchmark": "VoiceBench",
+  "agent_mode": "webrtc",
+  "summary": {
+    "total": 2,
+    "answered": 0,
+    "accuracy": 0.0,
+    "accuracy_by_category": {
+      "alpacaeval/test": 0.0
+    },
+    "accuracy_by_difficulty": {},
+    "latency_first_token": {
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null
+    },
+    "latency_first_audio": {
+      "p50": 4338.423392735422,
+      "p90": 4338.423392735422,
+      "p95": 4338.423392735422,
+      "p99": 4338.423392735422,
+      "max": 4338.423392735422
+    },
+    "latency_total": {
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "max": null
+    },
+    "unanswered_count": 0,
+    "quality_count": 2,
+    "quality_score_avg": 0.0,
+    "quality_score_by_category": {
+      "alpacaeval/test": 0.0
+    },
+    "refusal_count": 0,
+    "refusal_rate": null,
+    "refusal_rate_by_category": {},
+    "score_by_category": {
+      "alpacaeval/test": 0.0
+    },
+    "score_by_task": {
+      "alpacaeval": 0.0
+    },
+    "overall_score": 0.0
+  },
+  "results": [
+    {
+      "case_id": "alpacaeval_test_0",
+      "category": "alpacaeval/test",
+      "difficulty": null,
+      "reasoning_steps": null,
+      "question": "What are the names of some famous actors that started their careers on Broadway?",
+      "expected_answer": "",
+      "predicted_answer": "The answer is A.",
+      "correct": null,
+      "judge_type": "reference_free_quality",
+      "judge_reason": null,
+      "unanswered": false,
+      "refused": null,
+      "refusal_reason": null,
+      "quality_score": 0.0,
+      "quality_reason": "The model answer is meaningless and does not address the question about famous actors who started on Broadway.",
+      "latency_first_token_ms": null,
+      "latency_first_audio_ms": 4022.0053610391915,
+      "latency_total_ms": null
+    },
+    {
+      "case_id": "alpacaeval_test_1",
+      "category": "alpacaeval/test",
+      "difficulty": null,
+      "reasoning_steps": null,
+      "question": "How did United States states get their names?",
+      "expected_answer": "",
+      "predicted_answer": "The answer is D.",
+      "correct": null,
+      "judge_type": "reference_free_quality",
+      "judge_reason": null,
+      "unanswered": false,
+      "refused": null,
+      "refusal_reason": null,
+      "quality_score": 0.0,
+      "quality_reason": "The model answer is meaningless and does not address the question at all.",
+      "latency_first_token_ms": null,
+      "latency_first_audio_ms": 4338.423392735422,
+      "latency_total_ms": null
+    }
+  ]
+}
