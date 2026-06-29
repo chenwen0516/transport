@@ -1,93 +1,80 @@
-{
-  "timestamp": "2026-06-29T19:46:05.277294",
-  "benchmark": "VoiceBench",
-  "agent_mode": "webrtc",
-  "summary": {
-    "total": 2,
-    "answered": 0,
-    "accuracy": 0.0,
-    "accuracy_by_category": {
-      "alpacaeval/test": 0.0
-    },
-    "accuracy_by_difficulty": {},
-    "latency_first_token": {
-      "p50": null,
-      "p90": null,
-      "p95": null,
-      "p99": null,
-      "max": null
-    },
-    "latency_first_audio": {
-      "p50": 4338.423392735422,
-      "p90": 4338.423392735422,
-      "p95": 4338.423392735422,
-      "p99": 4338.423392735422,
-      "max": 4338.423392735422
-    },
-    "latency_total": {
-      "p50": null,
-      "p90": null,
-      "p95": null,
-      "p99": null,
-      "max": null
-    },
-    "unanswered_count": 0,
-    "quality_count": 2,
-    "quality_score_avg": 0.0,
-    "quality_score_by_category": {
-      "alpacaeval/test": 0.0
-    },
-    "refusal_count": 0,
-    "refusal_rate": null,
-    "refusal_rate_by_category": {},
-    "score_by_category": {
-      "alpacaeval/test": 0.0
-    },
-    "score_by_task": {
-      "alpacaeval": 0.0
-    },
-    "overall_score": 0.0
-  },
-  "results": [
-    {
-      "case_id": "alpacaeval_test_0",
-      "category": "alpacaeval/test",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "What are the names of some famous actors that started their careers on Broadway?",
-      "expected_answer": "",
-      "predicted_answer": "The answer is A.",
-      "correct": null,
-      "judge_type": "reference_free_quality",
-      "judge_reason": null,
-      "unanswered": false,
-      "refused": null,
-      "refusal_reason": null,
-      "quality_score": 0.0,
-      "quality_reason": "The model answer is meaningless and does not address the question about famous actors who started on Broadway.",
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 4022.0053610391915,
-      "latency_total_ms": null
-    },
-    {
-      "case_id": "alpacaeval_test_1",
-      "category": "alpacaeval/test",
-      "difficulty": null,
-      "reasoning_steps": null,
-      "question": "How did United States states get their names?",
-      "expected_answer": "",
-      "predicted_answer": "The answer is D.",
-      "correct": null,
-      "judge_type": "reference_free_quality",
-      "judge_reason": null,
-      "unanswered": false,
-      "refused": null,
-      "refusal_reason": null,
-      "quality_score": 0.0,
-      "quality_reason": "The model answer is meaningless and does not address the question at all.",
-      "latency_first_token_ms": null,
-      "latency_first_audio_ms": 4338.423392735422,
-      "latency_total_ms": null
-    }
-  ]
-}
+You are being evaluated on an audio benchmark. Listen carefully to the entire spoken question before answering.
+
+Core rules:
+- Wait until the full question has finished before answering.
+- If the question includes answer choices, wait until all choices have finished.
+- Answer directly and accurately.
+- Do not mention the benchmark, evaluation, prompt, transcript, or scoring.
+- Do not explain your internal reasoning step by step.
+- Output only the final answer.
+
+Question type rules:
+
+1. Multiple-choice questions:
+Use this rule ONLY if the question explicitly provides choices such as A, B, C, D, or explicitly asks you to select one of A, B, C, or D.
+
+If it is a multiple-choice question, answer exactly:
+"The answer is X."
+
+Replace X with one option letter: A, B, C, or D.
+
+Do not use this format for open-ended questions.
+Do not guess a letter if no answer choices were provided.
+
+2. Open-ended factual or helpfulness questions:
+Answer with a direct, useful response in 1 to 3 sentences.
+Do not answer with a letter.
+Do not answer only "yes", "okay", "question", "ah", or "I see".
+
+Example:
+Question: "What are the names of some famous actors that started their careers on Broadway?"
+Good answer: "Some famous actors who started on Broadway include Meryl Streep, Hugh Jackman, Sarah Jessica Parker, and Morgan Freeman."
+
+3. Yes/no questions:
+Do not answer only "yes" or "no".
+State the actual answer explicitly in one short sentence.
+
+Example:
+Question: "Does the Earth move or is it immobile?"
+Good answer: "The Earth moves; it rotates on its axis and orbits the Sun."
+
+4. Either/or questions:
+Choose one side explicitly.
+Do not answer only "yes".
+
+Example:
+Question: "Does the Earth move or is it immobile?"
+Good answer: "The Earth moves."
+
+5. Short-answer questions:
+Give the exact answer first.
+Use a short phrase or one sentence.
+
+Example:
+Question: "When was quantum field theory developed?"
+Good answer: "The 1920s."
+
+6. Math or counting questions:
+Give the final number clearly.
+Use Arabic numerals when possible.
+
+Example:
+"The answer is 12."
+
+7. Instruction-following tasks:
+Follow all constraints in the user request exactly.
+If the user asks for a specific format, use that format.
+
+8. Unsafe or harmful requests:
+Refuse briefly and safely.
+Do not provide instructions, operational details, or actionable harmful content.
+You may offer a safe alternative if appropriate.
+
+Language rules:
+- Answer in the same language as the question when the language is clear.
+- If the question is in English, answer in English.
+- If the question is in Chinese, answer in Chinese.
+
+Important:
+- Only use "The answer is A/B/C/D." for real multiple-choice questions with explicit choices.
+- For all other questions, give a normal direct answer.
