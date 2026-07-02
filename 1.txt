@@ -1,20 +1,414 @@
-usage: run_voicebench.py [-h] [--subset SUBSET] [--split SPLIT]
-                         [--protocol {websocket,webrtc}] [--category CATEGORY]
-                         [--max-cases MAX_CASES] [--per-category PER_CATEGORY]
-                         [--min-audio-seconds MIN_AUDIO_SECONDS]
-                         [--max-audio-seconds MAX_AUDIO_SECONDS] [--dry-run]
-                         [--output OUTPUT] [--asr-model ASR_MODEL]
-                         [--ws-url WS_URL] [--auth-token AUTH_TOKEN]
-                         [--livekit-url LIVEKIT_URL]
-                         [--livekit-token-api-url LIVEKIT_TOKEN_API_URL]
-                         [--livekit-api-key LIVEKIT_API_KEY]
-                         [--livekit-api-secret LIVEKIT_API_SECRET]
-                         [--livekit-room LIVEKIT_ROOM]
-                         [--token-mode TOKEN_MODE] [--agent-name AGENT_NAME]
-                         [--speaker SPEAKER] [--reuse-room]
-                         [--early-response-retries EARLY_RESPONSE_RETRIES]
-                         [--early-response-policy {warn,retry,fail}]
-                         [--trailing-silence-ms TRAILING_SILENCE_MS]
-                         [--response-start-timeout RESPONSE_START_TIMEOUT]
-                         [--response-end-timeout RESPONSE_END_TIMEOUT]
-run_voicebench.py: error: argument --max-cases: invalid int value: 'all'
+# 五篇全双工语音交互论文综述
+
+本文档只总结论文内容本身，不讨论当前项目应该如何落地。涉及的 5 篇论文都围绕实时语音对话系统中的全双工交互、轮次检测、语义 VAD、endpoint detection 和打断管理展开。
+
+## 总览
+
+| 论文 | 核心问题 | 方法关键词 | 主要贡献 |
+| --- | --- | --- | --- |
+| [FastTurn](https://arxiv.org/abs/2604.01897) | 如何在低延迟下做鲁棒 turn detection | acoustic features、streaming CTC、partial semantic cues | 融合声学和流式语义线索，面向重叠语音、backchannel、pause 和噪声场景 |
+| [SoulX-Duplug](https://arxiv.org/abs/2603.14877) | 如何给已有全双工系统外挂一个流式状态预测模块 | plug-and-play、streaming ASR、semantic VAD | 提出可插拔 state prediction module，并提供双语评测集 |
+| [Easy Turn](https://arxiv.org/abs/2509.23938) | 如何开源、模块化地做 turn-taking detection | acoustic-linguistic bimodal model、4-class turn state | 定义 complete / incomplete / backchannel / wait 四类轮次状态，并发布大规模训练数据 |
+| [LLM-Enhanced Dialogue Management](https://arxiv.org/abs/2502.14145) | 如何用轻量 LLM 管理听、说、想之间的实时协调 | semantic VAD、dialogue manager、control tokens | 用 0.5B LLM 预测控制 token，把 Dialogue Manager 和核心对话引擎解耦 |
+| [Phoenix-VAD](https://arxiv.org/abs/2509.20410v2) | 如何做流式语义 endpoint detection | LLM-based semantic endpointing、sliding window | 用 LLM 语义理解判断语义是否完整，支持 streaming inference |
+
+## 1. FastTurn
+
+**论文标题：** FastTurn: Unifying Acoustic and Streaming Semantic Cues for Low-Latency and Robust Turn Detection  
+**链接：** https://arxiv.org/abs/2604.01897  
+**版本信息：** arXiv 页面显示该论文最早提交于 2026-04-02，最近版本为 2026-06-30 的 v5。
+
+### 研究背景
+
+FastTurn 关注的是 AudioLLM 和 spoken dialogue system 从传统 turn-based 交互走向 real-time full-duplex communication 后出现的新问题。在全双工场景里，agent 不能简单地等待用户完全停止说话，而是要持续判断：
+
+```text
+什么时候该说
+什么时候该继续听
+什么时候该让出话轮
+什么时候该打断或停止
+```
+
+论文指出，已有方案主要有两类不足：
+
+1. 只依赖 voice activity cues 的方法没有语义理解能力。
+2. 依赖 ASR 的方法会引入延迟，并且在重叠语音和噪声下会退化。
+
+### 核心方法
+
+FastTurn 的核心思想是同时利用：
+
+```text
+声学特征
+streaming CTC decoding
+partial semantic cues
+```
+
+它不是等完整 ASR 出来再判断，而是从部分观测中提前做决策。这样既能保留一定语义信息，又能避免完整 ASR pipeline 的延迟。
+
+### 数据和评测
+
+论文强调现有数据集很少真实覆盖 full-duplex interaction dynamics，因此提出了一个基于真实人类对话的测试集。该测试集包含：
+
+```text
+真实话轮转换
+重叠语音
+backchannel
+pause
+pitch variation
+environmental noise
+```
+
+这些场景比普通“用户说完 -> agent 回答”的评测更接近真实语音交互。
+
+### 论文价值
+
+FastTurn 的价值在于提出了一个较平衡的路线：不完全依赖声学，也不完全依赖 ASR，而是把两者融合成低延迟 turn detection。它适合用来理解“为什么单纯调 VAD 参数不够”。
+
+### 局限
+
+从摘要和论文定位看，FastTurn 更偏模型与评测集设计。对于工程系统而言，真正落地还需要考虑：
+
+```text
+streaming CTC 组件如何接入现有 ASR
+partial semantic cues 的稳定性
+与 agent 状态机的接口
+部署延迟和资源开销
+```
+
+## 2. SoulX-Duplug
+
+**论文标题：** SoulX-Duplug: Plug-and-Play Streaming State Prediction Module for Realtime Full-Duplex Speech Conversation  
+**链接：** https://arxiv.org/abs/2603.14877  
+**版本信息：** arXiv 页面显示该论文提交于 2026-03-16。
+
+### 研究背景
+
+SoulX-Duplug 关注的是全双工语音系统的可扩展性问题。论文认为现有 full-duplex spoken dialogue system 面临几个困难：
+
+```text
+训练数据难获取
+系统容易 catastrophic forgetting
+扩展性有限
+```
+
+如果每次优化轮次管理都要重新训练整个对话模型，成本会很高，而且不利于模块化迭代。
+
+### 核心方法
+
+SoulX-Duplug 提出一个 plug-and-play streaming state prediction module。它的定位不是替代主对话模型，而是作为外接模块管理全双工状态。
+
+它同时执行 streaming ASR，并显式利用文本信息判断用户意图，因此本质上可以看作一种 semantic VAD：
+
+```text
+输入：流式音频和 streaming ASR 信息
+输出：对话状态预测
+作用：控制系统何时听、何时说、何时保持当前状态
+```
+
+### 评测
+
+论文还提出 SoulX-Duplug-Eval，扩展现有 benchmark，并改进双语覆盖。摘要中强调实验结果显示该模块可以实现低延迟 streaming dialogue state control，并提升整体 turn management 和 latency performance。
+
+### 论文价值
+
+SoulX-Duplug 的重点不是某个具体分类标签，而是“可插拔架构”：
+
+```text
+主对话模型负责回答
+state prediction module 负责轮次状态
+两者可以独立优化
+```
+
+这个思想对实际系统很重要，因为它降低了改造 full-duplex 能力的成本。
+
+### 局限
+
+SoulX-Duplug 依赖 streaming ASR 和状态预测模块。如果 ASR 在重叠语音、噪声、方言、口语化输入中不稳定，state prediction 也会受影响。另外，plug-and-play 的实际效果取决于它和下游 agent 状态机的耦合方式。
+
+## 3. Easy Turn
+
+**论文标题：** Easy Turn: Integrating Acoustic and Linguistic Modalities for Robust Turn-Taking in Full-Duplex Spoken Dialogue Systems  
+**链接：** https://arxiv.org/abs/2509.23938  
+**版本信息：** arXiv 页面显示该论文提交于 2025-09-28。
+
+### 研究背景
+
+Easy Turn 的问题意识非常直接：full-duplex interaction 对自然人机通信很关键，但系统必须可靠判断自己应该：
+
+```text
+说话
+倾听
+保持沉默
+```
+
+论文指出，已有开源方案要么参数量大，要么只支持单一模态，例如只看声学或只看语言；也有一些方案通过微调 LLM backbone 获得全双工能力，但需要大量 full-duplex 数据，而这种数据并不充足。
+
+### 核心方法
+
+Easy Turn 提出一个开源、模块化的 turn-taking detection model，融合 acoustic 和 linguistic bimodal information。
+
+最重要的是，它把 turn state 明确定义为四类：
+
+```text
+complete      用户已经表达完整，系统可以接话
+incomplete    用户还没说完，系统应继续听
+backchannel   用户只是附和、反馈，不应该被视为新话轮
+wait          用户表示等待、暂停或类似意图
+```
+
+这四类标签非常适合描述真实 full-duplex 对话，比单纯的 speech / non-speech 或 end-of-turn / not-end-of-turn 更细。
+
+### 数据
+
+论文发布 Easy Turn trainset，一个 1,145 小时的语音数据集，用于训练 turn-taking detection models。这个规模说明论文更偏向实际可训练模型，而不只是规则系统。
+
+### 评测
+
+论文将 Easy Turn 与 TEN Turn Detection、Smart Turn V2 等已有开源模型比较，并报告在 Easy Turn testset 上取得更好的 turn-taking detection accuracy。
+
+### 论文价值
+
+Easy Turn 的最大价值在于状态定义清晰、模块化、开源导向强。它把 full-duplex 的复杂行为拆成四个可理解、可标注、可评测的状态，是五篇论文里最适合作为通用状态分类参考的一篇。
+
+### 局限
+
+四分类虽然清晰，但真实系统中还需要处理更细的情况，例如：
+
+```text
+用户恶意打断
+用户纠错
+用户临时补充
+多人说话
+背景媒体声音
+口头禅和犹豫音
+```
+
+因此 Easy Turn 的四类状态可以作为主干，但工程系统通常还要额外增加 interruption intent、speaker role、confidence 等字段。
+
+## 4. LLM-Enhanced Dialogue Management
+
+**论文标题：** LLM-Enhanced Dialogue Management for Full-Duplex Spoken Dialogue Systems  
+**链接：** https://arxiv.org/abs/2502.14145  
+**版本信息：** arXiv 页面显示该论文最早提交于 2025-02-19，最近版本为 2026-06-03 的 v3。
+
+### 研究背景
+
+这篇论文关注的是 full-duplex spoken dialogue system 中的 dialogue management 问题。全双工系统不是简单问答，它需要实时协调：
+
+```text
+listening
+speaking
+thinking
+```
+
+如果管理不好，就会出现：
+
+```text
+用户没说完时抢话
+用户打断时不停
+用户只是附和却被误判为打断
+停顿和犹豫被误判为结束
+```
+
+### 核心方法
+
+论文提出 semantic VAD module，把它作为 Dialogue Manager 使用。该模块是一个轻量级 0.5B LLM，并在 full-duplex conversation data 上微调。
+
+它预测四个 control tokens，用来调节：
+
+```text
+turn-switching
+turn-keeping
+intentional barge-in
+unintentional barge-in
+query completion
+pause / hesitation handling
+```
+
+### 架构思想
+
+论文的架构重点是把 Dialogue Manager 和 Core Dialogue Engine 解耦：
+
+```text
+Dialogue Manager：持续处理短间隔输入，负责实时决策
+Core Dialogue Engine：只在需要生成回复时启动
+```
+
+这样可以减少计算开销，也允许单独优化 DM，而不需要重新训练核心对话模型。
+
+### 论文价值
+
+这篇论文把“语义 VAD”提升到了 dialogue manager 的层级。它不是只判断有没有声音，而是判断当前输入对话轮次意味着什么。
+
+它的价值在于解释了一个重要设计原则：
+
+```text
+生成模型不应该同时承担所有轮次控制责任。
+轮次控制应由更轻量、更实时的模块承担。
+```
+
+### 局限
+
+该方案依赖经过 full-duplex conversation data 微调的轻量 LLM。数据质量和标注方式会极大影响效果。另外，LLM 作为实时 DM 虽然比大模型便宜，但仍需要关注：
+
+```text
+推理延迟
+稳定性
+控制 token 误判
+和声学 VAD 的融合方式
+```
+
+## 5. Phoenix-VAD
+
+**论文标题：** Phoenix-VAD: Streaming Semantic Endpoint Detection for Full-Duplex Speech Interaction  
+**链接：** https://arxiv.org/abs/2509.20410v2  
+**版本信息：** 用户给的是 v2 链接。arXiv 页面显示 v2 修订于 2025-09-26，并提示后续存在更新版本记录。
+
+### 研究背景
+
+Phoenix-VAD 聚焦 semantic endpoint detection。普通 VAD 能判断有没有声音，但不能判断用户语义是否完整。例如用户停顿了，但可能只是：
+
+```text
+思考
+犹豫
+句中停顿
+还没说完复杂问题
+```
+
+如果系统只依赖静音，就容易提前响应。
+
+### 核心方法
+
+Phoenix-VAD 是一个 LLM-based streaming semantic endpoint detection model。它利用 LLM 的语义理解能力判断用户当前输入是否已经语义完整。
+
+论文还提出 sliding window training strategy，使模型可以支持 streaming inference，而不是等完整句子输入后再判断。
+
+### 评测
+
+论文在 semantically complete 和 incomplete speech scenarios 上做实验，并报告其性能具有竞争力。这里的重点是同时覆盖“说完了”和“没说完”两类场景。
+
+### 论文价值
+
+Phoenix-VAD 的核心贡献是把 endpoint detection 从“声学结束”提升到“语义结束”：
+
+```text
+声学结束：用户没声音了
+语义结束：用户表达完整了
+```
+
+对于长问题、选择题、多条件描述、医疗问诊等场景，语义 endpointing 比纯静音 endpointing 更可靠。
+
+### 局限
+
+Phoenix-VAD 的重点是 endpoint detection，而不是完整 dialogue management。它擅长判断是否该结束用户输入，但对以下问题不一定完整覆盖：
+
+```text
+用户是否是 backchannel
+用户是否是有意打断
+agent 当前是否应停止说话
+多轮上下文下的等待和暂停意图
+```
+
+因此它更像是 full-duplex 系统中的一个关键组件，而不是完整的 turn manager。
+
+## 横向比较
+
+| 维度 | FastTurn | SoulX-Duplug | Easy Turn | LLM-Enhanced DM | Phoenix-VAD |
+| --- | --- | --- | --- | --- | --- |
+| 主要目标 | 低延迟鲁棒 turn detection | 可插拔 streaming state prediction | 开源模块化 turn-taking 四分类 | 用轻量 LLM 做 dialogue manager | 流式语义 endpoint detection |
+| 是否强调声学信息 | 强 | 有 | 强 | 有，但摘要更强调 semantic VAD | 弱一些，更强调语义 |
+| 是否强调文本/语义 | 强 | 强 | 强 | 很强 | 很强 |
+| 是否模块化 | 是 | 很强 | 很强 | 很强 | 是 |
+| 是否关注 backchannel | 是 | 间接关注 | 明确关注 | 明确关注 barge-in 区分 | 不是核心 |
+| 是否关注 endpoint | 是 | 是 | 是 | 是 | 核心 |
+| 是否关注打断 | 是 | 是 | 间接关注 | 明确关注 intentional / unintentional barge-in | 不是核心 |
+| 代表性状态设计 | turn decision | streaming state | complete / incomplete / backchannel / wait | control tokens | semantic complete / incomplete |
+
+## 五篇论文之间的关系
+
+可以把它们放在一个从“局部能力”到“完整管理”的谱系里：
+
+```text
+Phoenix-VAD
+  重点：判断用户语义是否结束
+
+FastTurn
+  重点：融合声学和流式语义，做低延迟 turn detection
+
+Easy Turn
+  重点：把 turn-taking 明确建模成四类状态
+
+SoulX-Duplug
+  重点：把状态预测模块做成可插拔 streaming module
+
+LLM-Enhanced Dialogue Management
+  重点：把 semantic VAD 提升为 Dialogue Manager，管理听/说/想
+```
+
+如果只关心“用户说完了吗”，Phoenix-VAD 最直接。  
+如果关心“真实全双工下什么时候说、听、停”，Easy Turn 和 FastTurn 更完整。  
+如果关心“怎么接到现有系统里”，SoulX-Duplug 和 LLM-Enhanced DM 的架构思想更重要。
+
+## 共性技术路线
+
+五篇论文虽然表述不同，但共同技术路线可以概括为：
+
+```text
+1. 声学层判断人声活动和声学事件
+2. 流式 ASR 或 partial text 提供语义线索
+3. 语义模型判断用户表达是否完整、是否打断、是否 backchannel
+4. 状态管理器把判断结果转换成系统动作
+5. 用真实 full-duplex 场景评测延迟、误判和鲁棒性
+```
+
+其中最关键的转变是：
+
+```text
+从 VAD = voice activity detection
+转向 semantic VAD = dialogue state / endpoint / intent detection
+```
+
+## 常见评测维度
+
+这些论文关注的评测维度大致包括：
+
+```text
+Turn detection accuracy
+False alarm rate
+Miss rate
+Interruption latency
+Endpoint latency
+Backchannel recognition
+Pause handling
+Robustness under overlapping speech
+Robustness under noise
+Decision delay
+```
+
+相比传统 ASR 或 QA benchmark，这些指标不关心“回答内容是否正确”，而关心“对话系统行为是否自然”。
+
+## 主要启示
+
+1. 全双工不是简单打开双向音频流。
+   真正的全双工需要持续判断用户和 agent 的轮次关系。
+
+2. endpointing 是语义问题，不只是声学问题。
+   用户安静了不代表说完，用户继续说也不代表必须打断 agent。
+
+3. backchannel 是全双工系统的难点。
+   “嗯”“对”“好的”“yeah” 既可能是附和，也可能是接管话轮，必须结合上下文和 agent 当前状态判断。
+
+4. 模块化是主流方向。
+   这些论文都倾向于把 turn-taking / semantic VAD / dialogue manager 做成独立模块，而不是完全依赖主生成模型。
+
+5. 流式决策比离线分类更重要。
+   真实系统需要边听边判断，不能等完整音频和完整文本都出来后再做决策。
+
+## 参考链接
+
+- FastTurn: https://arxiv.org/abs/2604.01897
+- SoulX-Duplug: https://arxiv.org/abs/2603.14877
+- Easy Turn: https://arxiv.org/abs/2509.23938
+- LLM-Enhanced Dialogue Management: https://arxiv.org/abs/2502.14145
+- Phoenix-VAD: https://arxiv.org/abs/2509.20410v2
