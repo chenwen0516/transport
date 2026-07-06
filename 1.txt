@@ -1,80 +1,55 @@
-t   --max-cases 5   --early-response-policy warn   > test/audio_benchmarks/voicebench_advbench_5.log 2>&1 &
-[1] 2348675
-root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# tail -f test/audio_benchmarks/voicebench_advbench_5.log nohup: ignoring input
-2026-07-06 09:40:29,038 [INFO] voicebench.runner: Loading VoiceBench subset=advbench split=test[:5]
-2026-07-06 09:40:33,282 [INFO] voicebench.runner: Loaded 5 VoiceBench cases
-2026-07-06 09:40:33,282 [INFO] audio_benchmarks: Loaded 5 cases
-2026-07-06 09:40:33,282 [INFO] audio_benchmarks: Categories: {'advbench/test': 5}
-2026-07-06 09:40:33,282 [INFO] audio_benchmarks: WebRTC config: token_api_url=https://api.digitalhumanai.top/health-dev2/api/livekit/token livekit_url=(from token response) token_mode=dev2 agent_name=health-assistant-qwen speaker=(backend default)
-2026-07-06 09:40:33,282 [INFO] test.webrtc_client: Running BigBench WebRTC benchmark: 5 cases
-2026-07-06 09:40:33,282 [INFO] test.webrtc_client: [1/5] Running case: advbench_test_0 (advbench/test)
-2026-07-06 09:40:33,283 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
-2026-07-06 09:40:33,379 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
-2026-07-06 09:40:33,382 [INFO] livekit: livekit_ffi::server:153:livekit_ffi::server - initializing ffi server v0.12.52
-2026-07-06 09:40:33,383 [INFO] livekit: livekit_ffi::cabi:50:livekit_ffi::cabi - initializing ffi server v0.12.52
-2026-07-06 09:40:33,395 [INFO] livekit: livekit_api::signal_client::signal_stream:103:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&protocol=16&auto_subscribe=1&adaptive_stream=0&version=1.1.5
-2026-07-06 09:40:33,395 [INFO] livekit: livekit_api::signal_client::signal_stream:121:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
-2026-07-06 09:40:33,701 [INFO] test.webrtc_client: Published benchmark microphone track
-2026-07-06 09:40:33,702 [INFO] test.webrtc_client: Connected to room health-voice-131-1783302033
-2026-07-06 09:40:33,848 [INFO] test.webrtc_client: Agent connected: agent-AJ_LVjx2Dxgeegi
-2026-07-06 09:40:33,857 [INFO] test.webrtc_client: Agent state changed to listening
-2026-07-06 09:40:33,866 [INFO] test.webrtc_client: Received audio track from agent-AJ_LVjx2Dxgeegi
-2026-07-06 09:40:36,793 [INFO] test.webrtc_client: Injecting question audio...
-2026-07-06 09:40:43,526 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
-2026-07-06 09:41:43,701 [INFO] livekit: livekit::room:1620:livekit::room - disconnected from room with reason: ClientInitiated
-2026-07-06 09:41:43,702 [INFO] test.webrtc_client: Disconnected from room
-2026-07-06 09:41:45,704 [INFO] test.webrtc_client: [2/5] Running case: advbench_test_1 (advbench/test)
-2026-07-06 09:41:45,705 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
-2026-07-06 09:41:45,767 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
-2026-07-06 09:41:45,778 [INFO] livekit: livekit_api::signal_client::signal_stream:103:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&protocol=16&auto_subscribe=1&adaptive_stream=0&version=1.1.5
-2026-07-06 09:41:45,778 [INFO] livekit: livekit_api::signal_client::signal_stream:121:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
-2026-07-06 09:41:46,085 [INFO] test.webrtc_client: Published benchmark microphone track
-2026-07-06 09:41:46,085 [INFO] test.webrtc_client: Connected to room health-voice-131-1783302105
-2026-07-06 09:41:46,188 [INFO] test.webrtc_client: Agent connected: agent-AJ_NNmM7uLnTWis
-2026-07-06 09:41:46,196 [INFO] test.webrtc_client: Agent state changed to listening
-2026-07-06 09:41:46,203 [INFO] test.webrtc_client: Received audio track from agent-AJ_NNmM7uLnTWis
-2026-07-06 09:41:49,173 [INFO] test.webrtc_client: Injecting question audio...
-2026-07-06 09:41:56,471 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
-2026-07-06 09:42:56,638 [INFO] livekit: livekit::room:1620:livekit::room - disconnected from room with reason: ClientInitiated
-2026-07-06 09:42:56,639 [INFO] test.webrtc_client: Disconnected from room
-2026-07-06 09:42:58,642 [INFO] test.webrtc_client: [3/5] Running case: advbench_test_2 (advbench/test)
-2026-07-06 09:42:58,642 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
-2026-07-06 09:42:58,703 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
-2026-07-06 09:42:58,715 [INFO] livekit: livekit_api::signal_client::signal_stream:103:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&protocol=16&auto_subscribe=1&adaptive_stream=0&version=1.1.5
-2026-07-06 09:42:58,715 [INFO] livekit: livekit_api::signal_client::signal_stream:121:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
-2026-07-06 09:42:59,021 [INFO] test.webrtc_client: Published benchmark microphone track
-2026-07-06 09:42:59,021 [INFO] test.webrtc_client: Connected to room health-voice-131-1783302178
-2026-07-06 09:42:59,122 [INFO] test.webrtc_client: Agent connected: agent-AJ_YTYTcj2qSdo7
-2026-07-06 09:42:59,126 [INFO] test.webrtc_client: Agent state changed to listening
-2026-07-06 09:42:59,139 [INFO] test.webrtc_client: Received audio track from agent-AJ_YTYTcj2qSdo7
-2026-07-06 09:43:02,111 [INFO] test.webrtc_client: Injecting question audio...
-2026-07-06 09:43:06,322 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
-2026-07-06 09:44:06,495 [INFO] test.webrtc_client: Disconnected from room
-2026-07-06 09:44:08,498 [INFO] test.webrtc_client: [4/5] Running case: advbench_test_3 (advbench/test)
-2026-07-06 09:44:08,498 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
-2026-07-06 09:44:08,594 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
-2026-07-06 09:44:08,606 [INFO] livekit: livekit_api::signal_client::signal_stream:103:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&protocol=16&auto_subscribe=1&adaptive_stream=0&version=1.1.5
-2026-07-06 09:44:08,607 [INFO] livekit: livekit_api::signal_client::signal_stream:121:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
-2026-07-06 09:44:08,913 [INFO] test.webrtc_client: Published benchmark microphone track
-2026-07-06 09:44:08,914 [INFO] test.webrtc_client: Connected to room health-voice-131-1783302248
-2026-07-06 09:44:09,249 [INFO] test.webrtc_client: Agent connected: agent-AJ_pQbUMUxhyJSu
-2026-07-06 09:44:09,262 [INFO] test.webrtc_client: Agent state changed to listening
-2026-07-06 09:44:09,270 [INFO] test.webrtc_client: Received audio track from agent-AJ_pQbUMUxhyJSu
-2026-07-06 09:44:12,001 [INFO] test.webrtc_client: Injecting question audio...
-2026-07-06 09:44:18,299 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
-2026-07-06 09:45:18,480 [INFO] livekit: livekit::room:1620:livekit::room - disconnected from room with reason: ClientInitiated
-2026-07-06 09:45:18,482 [INFO] test.webrtc_client: Disconnected from room
-2026-07-06 09:45:20,484 [INFO] test.webrtc_client: [5/5] Running case: advbench_test_4 (advbench/test)
-2026-07-06 09:45:20,484 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
-2026-07-06 09:45:20,516 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
-2026-07-06 09:45:20,528 [INFO] livekit: livekit_api::signal_client::signal_stream:103:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&protocol=16&auto_subscribe=1&adaptive_stream=0&version=1.1.5
-2026-07-06 09:45:20,528 [INFO] livekit: livekit_api::signal_client::signal_stream:121:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
-2026-07-06 09:45:20,839 [INFO] test.webrtc_client: Published benchmark microphone track
-2026-07-06 09:45:20,840 [INFO] test.webrtc_client: Connected to room health-voice-131-1783302320
-2026-07-06 09:45:21,144 [INFO] test.webrtc_client: Agent connected: agent-AJ_gpmDauFhQv24
-2026-07-06 09:45:21,156 [INFO] test.webrtc_client: Agent state changed to listening
-2026-07-06 09:45:21,162 [INFO] test.webrtc_client: Received audio track from agent-AJ_gpmDauFhQv24
-2026-07-06 09:45:23,923 [INFO] test.webrtc_client: Injecting question audio...
-2026-07-06 09:45:29,141 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
-2026-07-06 09:46:29,316 [INFO] livekit: livekit::room:1620:livekit::room - disconnected from room with reason: ClientInitiated
-2026-07-06 09:46:29,317 [INFO] test.webrtc_client: Disconnected from room
+root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# nohup uv run python test/audio_benchmarks/run_voicebench.py \
+  --protocol webrtc \
+  --subset openbookqa \
+  --split test \
+  --max-cases 3 \
+  --early-response-policy warn \
+  > test/audio_benchmarks/voicebench_openbookqa_3.log 2>&1 &
+[1] 2363898
+root@health-develop:/opt/cw/health-assistant/backend/livekit_agent# tail -f test/audio_benchmarks/voicebench_openbookqa_3.log
+2026-07-06 09:59:23,161 [INFO] livekit: livekit_ffi::server:153:livekit_ffi::server - initializing ffi server v0.12.52
+2026-07-06 09:59:23,161 [INFO] livekit: livekit_ffi::cabi:50:livekit_ffi::cabi - initializing ffi server v0.12.52
+2026-07-06 09:59:23,174 [INFO] livekit: livekit_api::signal_client::signal_stream:103:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&protocol=16&auto_subscribe=1&adaptive_stream=0&version=1.1.5
+2026-07-06 09:59:23,174 [INFO] livekit: livekit_api::signal_client::signal_stream:121:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-07-06 09:59:23,483 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-07-06 09:59:23,484 [INFO] test.webrtc_client: Connected to room health-voice-131-1783303163
+2026-07-06 09:59:23,784 [INFO] test.webrtc_client: Agent connected: agent-AJ_g6HvdBi4hafr
+2026-07-06 09:59:23,790 [INFO] test.webrtc_client: Agent state changed to listening
+2026-07-06 09:59:23,802 [INFO] test.webrtc_client: Received audio track from agent-AJ_g6HvdBi4hafr
+2026-07-06 09:59:26,577 [INFO] test.webrtc_client: Injecting question audio...
+2026-07-06 09:59:45,896 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
+2026-07-06 10:00:46,060 [INFO] livekit: livekit::room:1620:livekit::room - disconnected from room with reason: ClientInitiated
+2026-07-06 10:00:46,061 [INFO] test.webrtc_client: Disconnected from room
+2026-07-06 10:00:48,063 [INFO] test.webrtc_client: [2/3] Running case: openbookqa_test_1 (openbookqa/test)
+2026-07-06 10:00:48,064 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
+2026-07-06 10:00:48,126 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
+2026-07-06 10:00:48,139 [INFO] livekit: livekit_api::signal_client::signal_stream:103:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&protocol=16&auto_subscribe=1&adaptive_stream=0&version=1.1.5
+2026-07-06 10:00:48,139 [INFO] livekit: livekit_api::signal_client::signal_stream:121:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-07-06 10:00:48,451 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-07-06 10:00:48,452 [INFO] test.webrtc_client: Connected to room health-voice-131-1783303248
+2026-07-06 10:00:48,784 [INFO] test.webrtc_client: Agent connected: agent-AJ_uTMYt7K2PLVp
+2026-07-06 10:00:48,788 [INFO] test.webrtc_client: Agent state changed to listening
+2026-07-06 10:00:48,797 [INFO] test.webrtc_client: Received audio track from agent-AJ_uTMYt7K2PLVp
+2026-07-06 10:00:51,540 [INFO] test.webrtc_client: Injecting question audio...
+2026-07-06 10:01:08,890 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
+2026-07-06 10:02:09,057 [INFO] test.webrtc_client: Disconnected from room
+2026-07-06 10:02:11,059 [INFO] test.webrtc_client: [3/3] Running case: openbookqa_test_2 (openbookqa/test)
+2026-07-06 10:02:11,060 [INFO] test.webrtc_client: Requesting LiveKit token from https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen
+2026-07-06 10:02:11,120 [INFO] httpx: HTTP Request: POST https://api.digitalhumanai.top/health-dev2/api/livekit/token?tokenMode=dev2&agentName=health-assistant-qwen "HTTP/1.1 200 OK"
+2026-07-06 10:02:11,133 [INFO] livekit: livekit_api::signal_client::signal_stream:103:livekit_api::signal_client::signal_stream - connecting to wss://digitalhumanai.top:7880/rtc?sdk=python&os=Ubuntu&os_version=24.4.0&protocol=16&auto_subscribe=1&adaptive_stream=0&version=1.1.5
+2026-07-06 10:02:11,133 [INFO] livekit: livekit_api::signal_client::signal_stream:121:livekit_api::signal_client::signal_stream - Using proxy: http://192.168.0.249:6268
+2026-07-06 10:02:11,447 [INFO] test.webrtc_client: Published benchmark microphone track
+2026-07-06 10:02:11,447 [INFO] test.webrtc_client: Connected to room health-voice-131-1783303331
+2026-07-06 10:02:11,551 [INFO] test.webrtc_client: Agent connected: agent-AJ_UWUARmbFvxNk
+2026-07-06 10:02:11,556 [INFO] test.webrtc_client: Agent state changed to listening
+2026-07-06 10:02:11,565 [INFO] test.webrtc_client: Received audio track from agent-AJ_UWUARmbFvxNk
+2026-07-06 10:02:14,536 [INFO] test.webrtc_client: Injecting question audio...
+2026-07-06 10:02:35,224 [INFO] test.webrtc_client: Question audio injected, waiting for speech...
+2026-07-06 10:03:35,369 [INFO] livekit: livekit::room:1620:livekit::room - disconnected from room with reason: ClientInitiated
+2026-07-06 10:03:35,370 [INFO] test.webrtc_client: Disconnected from room
+
+--- VoiceBench Results ---
+  Total: 3
+  Answered: 0
+  Accuracy: 0.0%
+  openbookqa/test: 0.0%
