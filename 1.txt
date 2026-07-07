@@ -1,16 +1,1 @@
-岗位职责（27届校招，本\硕\博\海外）：
-1. 负责华为云大模型、Agentic大模型、计算机视觉、多模态等相关技术分析及算法研发落地，包括但不限于多模态大模型应用、多模态Agentic、多模态内容理解、多模态生成、多模态检索等。
-2. 负责追踪调研多模态分析前沿问题和学术界动态，挖掘客户潜在需求，并结合实际场景提供面向企业的技术解决方案。
-岗位要求：
-1、计算机/数学/统计等理工科专业；
-2、熟练掌握NLP/CV/ML/DL领域常用的算法模型原理，有AI相关的项目经验；
-3、熟练掌握Java/Python/C/C++以及TensorFlow/Pytorch/caffe等深度学习开发框架；
-4、在计算机视觉、NLP等领域顶会(ACL/EMNLP/NeurIPS/ICML/AAAI/CVPR/ECCV等)有发表过论文的优先；
-5、良好的自我学习能力和自驱力，以及良好的沟通能力和团队协作能力。
-工作地点：杭州
-
-
-AI工程师/Agent工程师/大模型开发工程师
-
-华子27届校招即将开启——华为ICT BG云软件研发部-多模态智能部门即将开启27应届生招聘，主要有多模态理解、多模态搜索、多模态生成、多模态Agent应用等方向
-团队在杭州、深圳、西安，氛围好好好，欢迎加入
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzEiLCJwaG9uZSI6IjE1OTU1NjYwNTExIiwibmlja25hbWUiOiJcdTUxYjdcdTk3NTlcdTc2ODRcdTVjMGZcdTcxOGEiLCJleHAiOjE3ODM1NjE1MzZ9.8MaoXK-1tH2eXSJbCZfBoIUgcwX2Z7nrxq-CJFM9YFo
