@@ -1,0 +1,31 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: livekit-agent-qwen-confimap
+  namespace: digital-human
+  uid: 3944ee3c-4d77-462c-9ba9-b27e48756f94
+  resourceVersion: '937559070'
+  creationTimestamp: '2026-04-01T03:13:05Z'
+  annotations:
+    currentVersion: '15'
+    originName: ''
+  managedFields:
+    - manager: cfe-apiserver
+      operation: Update
+      apiVersion: v1
+      time: '2026-06-29T11:59:50Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:data:
+          .: {}
+          f:.env_deprecated: {}
+          f:settings.prod.toml: {}
+          f:vision_analysis.txt: {}
+          f:voice_assistant.txt: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:currentVersion: {}
+            f:originName: {}
+data:
+  .env_deprecated: |-
