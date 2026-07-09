@@ -1,1 +1,7 @@
-招聘系统规则和流程需要，一是需要身份证号码查重，确保你目前没有在任何部门流程中（名字+手机号码有时不一定准确）；二是需要录入系统生成唯一有效简历ID（当然系统会对部分数字打码保护隐私）。 三是机考和综测申请等都需要身份证号码作为查重凭证，确保半年内你没有或只参加过这一次机考和综测。
+export WS_URL="wss://api.digitalhumanai.top/health-dev2/api/realtime?model=health-assistant-qwen"  
+export AUTH_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzEiLCJwaG9uZSI6IjE1OTU1NjYwNTExIiwibmlja25hbWUiOiJcdTUxYjdcdTk3NTlcdTc2ODRcdTVjMGZcdTcxOGEiLCJleHAiOjE3ODM1NjE1MzZ9.8MaoXK-1tH2eXSJbCZfBoIUgcwX2Z7nrxq-CJFM9YFo"
+export AGENT_MODE=real
+
+export JUDGE_PROVIDER=deepseek
+export DEEPSEEK_API_KEY="sk-93667b9d8d904eddb6fb3672d836b2c5"
+export JUDGE_MODEL=deepseek-v4-flash
