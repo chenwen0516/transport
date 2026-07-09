@@ -1,259 +1,80 @@
-25届目标院校清单未公布，暂时以往届为准																													
-														2023届应届生招聘研发职类国内特定专业院校（专家类）															
-院校类型	国内院校名称	招聘平台	计算机科学与技术	电子科学与技术	信息与通信工程	机械工程	软件工程	控制科学与工程	材料科学与工程	电气工程	光学工程	动力工程及工程热物理	生物医学工程	化学工程与技术	测绘科学与技术	环境科学与工程	土木工程	水利工程	统计学	数学	物理学	化学	海洋科学	矿业工程	设计学	艺术学理论	美术学	戏剧与影视学	其他
-研发国内特定专业	华北电力大学	京津东北		√						√		√																	√新能源
-研发国内特定专业	长春理工大学	京津东北									√																		
-研发国内特定专业	北京化工大学	京津东北						√	√					√								√							
-研发国内特定专业	中国矿业大学	江山				√								√	√		√							√					
-研发国内特定专业	上海科技大学	上合	√		√				√				√							√	√	√			√				
-研发国内特定专业	福州大学	杭厦（含江西）	√	√		√	√							√								√							√车
-研发国内特定专业	北京工业大学	京津东北	√			√	√	√	√		√					√	√		√										
-研发国内特定专业	苏州大学	江山	√				√		√		√									√		√			√				
-研发国内特定专业	浙江工业大学	杭厦（含江西）				√								√															
-研发国内特定专业	中国石油大学	京津东北、江山												√															
-研发国内特定专业	河海大学	江山	√		√											√	√	√											
-研发国内特定专业	广东工业大学	粤港澳		√		√		√																					
-研发国内特定专业	华南师范大学	粤港澳																		√	√								
-研发国内特定专业	中国传媒大学	京津东北																							√	√		√	
-研发国内特定专业	江南大学	江山				√		√						√											√	√	√		
-研发国内特定专业	中国美术学院	杭厦（含江西）																							√	√	√	√	
-研发国内特定专业	中央美术学院	京津东北																							√	√	√		
-研发国内特定专业	澳门大学	粤港澳	√	√	√					√																			
-研发国内特定专业	北京协和医学院	京津东北											√																
+You are being evaluated on an audio benchmark. Listen carefully to the entire spoken question before answering.
 
+    Core rules:
+    - Wait until the full question has finished before answering.
+    - If the question includes answer choices, wait until all choices have finished.
+    - Answer directly and accurately.
+    - Do not mention the benchmark, evaluation, prompt, transcript, or scoring.
+    - Do not explain your internal reasoning step by step.
+    - Output only the final answer.
 
-2023届应届生招聘国内通用目标院校清单（专家类）				
-"说明：
-1、国内通用目标院校清单包含中国大陆院校、港澳院校
-2、北京大学、清华大学、哈尔滨工业大学、山东大学、香港中文大学等有分校区的院校，在清单中合并为一所院校展示"				
-类型	学校	院校标签	招聘平台	备注
-国内通用院校	清华大学	C9	京津东北、粤港澳	
-国内通用院校	北京大学	C9	京津东北、粤港澳	
-国内通用院校	复旦大学	C9	上合	
-国内通用院校	上海交通大学	C9	上合	
-国内通用院校	浙江大学	C9	杭厦（含江西）	
-国内通用院校	南京大学	C9	江山	
-国内通用院校	哈尔滨工业大学	C9	京津东北、粤港澳、江山	
-国内通用院校	西安交通大学	C9	西安（含兰州）	
-国内通用院校	中国科学技术大学	C9	上合	
-国内通用院校	华中科技大学	985	武长	
-国内通用院校	武汉大学	985	武长	
-国内通用院校	南开大学	985	京津东北	
-国内通用院校	厦门大学	985	杭厦（含江西）	
-国内通用院校	天津大学	985	京津东北	
-国内通用院校	北京航空航天大学	985	京津东北	
-国内通用院校	东南大学	985	江山	
-国内通用院校	国防科技大学	985	武长	
-国内通用院校	中国人民大学	985	京津东北	
-国内通用院校	同济大学	985	上合	
-国内通用院校	北京理工大学	985	京津东北	
-国内通用院校	大连理工大学	985	京津东北	
-国内通用院校	山东大学	985	江山	
-国内通用院校	华南理工大学	985	粤港澳	
-国内通用院校	吉林大学	985	京津东北	
-国内通用院校	重庆大学	985	成渝	
-国内通用院校	中南大学	985	武长	
-国内通用院校	四川大学	985	成渝	
-国内通用院校	西北工业大学	985	西安（含兰州）	
-国内通用院校	电子科技大学	985	成渝	
-国内通用院校	湖南大学	985	武长	
-国内通用院校	华东师范大学	985	上合	
-国内通用院校	东北大学	985	京津东北	
-国内通用院校	中山大学	985	粤港澳	
-国内通用院校	北京师范大学	985	京津东北	
-国内通用院校	兰州大学	985	西安（含兰州）	
-国内通用院校	中国科学院大学	国内顶尖高校	多区域	
-国内通用院校	南京航空航天大学	211	江山	
-国内通用院校	北京交通大学	211	京津东北	
-国内通用院校	哈尔滨工程大学	211	京津东北	
-国内通用院校	西安电子科技大学	211	西安（含兰州）	
-国内通用院校	南方科技大学	强相关院校	粤港澳	
-国内通用院校	华东理工大学	211	上合	
-国内通用院校	南京理工大学	211	江山	
-国内通用院校	重庆邮电大学	强相关院校	成渝	
-国内通用院校	西南交通大学	211	成渝	
-国内通用院校	北京科技大学	211	京津东北	
-国内通用院校	北京邮电大学	211	京津东北	
-国内通用院校	上海大学	211	上合	
-国内通用院校	暨南大学	211	粤港澳	
-国内通用院校	合肥工业大学	211	上合	
-国内通用院校	南京邮电大学	强相关院校	江山	
-国内通用院校	杭州电子科技大学	强相关院校	杭厦（含江西）	
-国内通用院校	武汉理工大学	211	武长	
-国内通用院校	西北大学	211	西安（含兰州）	
-国内通用院校	深圳大学	强相关院校	留学生交付平台（含粤港澳）	
-国内通用院校	香港大学	港澳院校	留学生交付平台（含粤港澳）	
-国内通用院校	香港科技大学	港澳院校	留学生交付平台（含粤港澳）	
-国内通用院校	香港中文大学	港澳院校	留学生交付平台（含粤港澳）	
-国内通用院校	香港城市大学	港澳院校	留学生交付平台（含粤港澳）	
-国内通用院校	香港理工大学	港澳院校	留学生交付平台（含粤港澳）	
-类型	"中文院校名称
-（使用国际通用标准名称）"	"英文院校名称
-（使用国际通用标准名称）"	院校所在国家	备注
-海外通用院校	麻省理工学院	Massachusetts Institute of Technology (MIT)	美国	
-海外通用院校	牛津大学	University of Oxford	英国	
-海外通用院校	剑桥大学	University of Cambridge	英国	
-海外通用院校	斯坦福大学	Stanford University	美国	
-海外通用院校	哈佛大学	Harvard University	美国	
-海外通用院校	加州理工学院	California Institute of Technology (Caltech)	美国	
-海外通用院校	帝国理工学院	Imperial College London	英国	
-海外通用院校	伦敦大学学院	University College London (UCL)	英国	
-海外通用院校	苏黎世联邦理工学院	ETH Zurich - Swiss Federal Institute of Technology	瑞士	
-海外通用院校	芝加哥大学	University of Chicago	美国	
-海外通用院校	新加坡国立大学	National University of Singapore (NUS)	新加坡	
-海外通用院校	南洋理工大学	Nanyang Technological University, Singapore (NTU)	新加坡	
-海外通用院校	宾夕法尼亚大学	University of Pennsylvania	美国	
-海外通用院校	洛桑联邦理工学院	EPFL	瑞士	
-海外通用院校	耶鲁大学	Yale University	美国	
-海外通用院校	爱丁堡大学	The University of Edinburgh	英国	
-海外通用院校	哥伦比亚大学	Columbia University	美国	
-海外通用院校	普林斯顿大学	Princeton University	美国	
-海外通用院校	康奈尔大学	Cornell University	美国	
-海外通用院校	密歇根大学安娜堡分校	University of Michigan-Ann Arbor	美国	
-海外通用院校	东京大学	The University of Tokyo	日本	
-海外通用院校	约翰霍普金斯大学	Johns Hopkins University	美国	
-海外通用院校	多伦多大学	University of Toronto	加拿大	
-海外通用院校	曼彻斯特大学	The University of Manchester	英国	
-海外通用院校	澳洲国立大学	The Australian National University	澳大利亚	
-海外通用院校	麦吉尔大学	McGill University	加拿大	
-海外通用院校	西北大学（美国）	Northwestern University	美国	
-海外通用院校	加州大学伯克利分校	University of California, Berkeley (UCB)	美国	
-海外通用院校	京都大学	Kyoto University	日本	
-海外通用院校	伦敦大学国王学院	King's College London	英国	
-海外通用院校	首尔国立大学	Seoul National University	韩国	
-海外通用院校	墨尔本大学	The University of Melbourne	澳大利亚	
-海外通用院校	悉尼大学	The University of Sydney	澳大利亚	
-海外通用院校	加州大学洛杉矶分校	University of California, Los Angeles (UCLA)	美国	
-海外通用院校	韩国高等科技学院	KAIST - Korea Advanced Institute of Science & Technology	韩国	
-海外通用院校	纽约大学	New York University (NYU)	美国	
-海外通用院校	新南威尔士大学	The University of New South Wales (UNSW Sydney)	澳大利亚	
-海外通用院校	巴黎文理研究大学	Université PSL	法国	
-海外通用院校	英属哥伦比亚大学	University of British Columbia	加拿大	
-海外通用院校	昆士兰大学	The University of Queensland	澳大利亚	
-海外通用院校	加州大学圣地亚哥分校	University of California, San Diego (UCSD)	美国	
-海外通用院校	巴黎理工学院	Institut Polytechnique de Paris	法国	
-海外通用院校	伦敦政治经济学院	The London School of Economics and Political Science (LSE)	英国	
-海外通用院校	慕尼黑工业大学	Technical University of Munich	德国	
-海外通用院校	杜克大学	Duke University	美国	
-海外通用院校	卡耐基梅隆大学	Carnegie Mellon University	美国	
-海外通用院校	阿姆斯特丹大学	University of Amsterdam	荷兰	
-海外通用院校	东京工业大学	Tokyo Institute of Technology (Tokyo Tech)	日本	
-海外通用院校	代尔夫特理工大学	Delft University of Technology	荷兰	
-海外通用院校	莫纳什大学	Monash University	澳大利亚	
-海外通用院校	布朗大学	Brown University	美国	
-海外通用院校	华威大学	The University of Warwick	英国	
-海外通用院校	布里斯托大学	University of Bristol	英国	
-海外通用院校	海德堡大学	Ruprecht-Karls-Universität Heidelberg	德国	
-海外通用院校	慕尼黑大学	Ludwig-Maximilians-Universität München	德国	
-海外通用院校	马来亚大学	Universiti Malaya (UM)	马来西亚	
-海外通用院校	德克萨斯大学奥斯汀分校	University of Texas at Austin	美国	
-海外通用院校	国立台湾大学	National Taiwan University (NTU)	中国（台湾）	
-海外通用院校	鲁汶大学（荷语）	KU Leuven	比利时	
-海外通用院校	苏黎世大学	University of Zurich	瑞士	
-海外通用院校	索邦大学	Sorbonne University	法国	
-海外通用院校	格拉斯哥大学	University of Glasgow	英国	
-海外通用院校	高丽大学	Korea University	韩国	
-海外通用院校	威斯康辛大学麦迪逊分校	University of Wisconsin-Madison	美国	
-海外通用院校	大阪大学	Osaka University	日本	
-海外通用院校	南安普敦大学	University of Southampton	英国	
-海外通用院校	莫斯科国立大学	Lomonosov Moscow State University	俄罗斯	
-海外通用院校	延世大学	Yonsei University	韩国	
-海外通用院校	哥本哈根大学	University of Copenhagen	丹麦	
-海外通用院校	浦项科技大学	Pohang University of Science And Technology (POSTECH)	韩国	
-海外通用院校	伊利诺伊大学厄本那-香槟分校	University of Illinois at Urbana-Champaign	美国	
-海外通用院校	东北大学（日本）	Tohoku University	日本	
-海外通用院校	杜伦大学	Durham University	英国	
-海外通用院校	华盛顿大学	University of Washington	美国	
-海外通用院校	奥克兰大学	The University of Auckland	新西兰	
-海外通用院校	巴黎萨克雷大学	Université Paris-Saclay	法国	
-海外通用院校	隆德大学	Lund University	瑞典	
-海外通用院校	佐治亚理工学院	Georgia Institute of Technology	美国	
-海外通用院校	瑞典皇家理工学院	KTH Royal Institute of Technology	瑞典	
-海外通用院校	伯明翰大学	University of Birmingham	英国	
-海外通用院校	圣安德鲁斯大学	University of St Andrews	英国	
-海外通用院校	利兹大学	University of Leeds	英国	
-海外通用院校	西澳大学	The University of Western Australia	澳大利亚	
-海外通用院校	莱斯大学	Rice University	美国	
-海外通用院校	谢菲尔德大学	The University of Sheffield	英国	
-海外通用院校	宾州州立大学公园分校	Pennsylvania State University	美国	
-海外通用院校	成均馆大学	Sungkyunkwan University(SKKU)	韩国	
-海外通用院校	丹麦理工大学	Technical University of Denmark	丹麦	
-海外通用院校	北卡罗来纳大学教堂山分校	University of North Carolina, Chapel Hill	美国	
-海外通用院校	都柏林圣三一学院	Trinity College Dublin, The University of Dublin	爱尔兰	
-海外通用院校	奥斯陆大学	University of Oslo	挪威	
-海外通用院校	诺丁汉大学	University of Nottingham	英国	
-海外通用院校	赫尔辛基大学	University of Helsinki	芬兰	
-海外通用院校	日内瓦大学	University of Geneva	瑞士	
-海外通用院校	圣路易斯华盛顿大学	Washington University in St. Louis	美国	
-海外通用院校	阿卜杜勒阿齐兹国王大学	King Abdulaziz University (KAU)	沙特	
-海外通用院校	乌得勒支大学	Utrecht University	荷兰	
-海外通用院校	蒙特利尔大学	University of Montreal	加拿大	
-海外通用院校	南加州大学	University of Southern California	美国	
-海外通用院校	波士顿大学	Boston University	美国	
-海外通用院校	阿尔托大学	Aalto University	芬兰	
-海外通用院校	莱顿大学	Leiden University	荷兰	
-海外通用院校	普渡大学西拉法叶分校	Purdue University	美国	
-海外通用院校	伦敦大学玛丽女王学院	Queen Mary University of London	英国	
-海外通用院校	名古屋大学	Nagoya University	日本	
-海外通用院校	伯尔尼大学	University of Bern	瑞士	
-海外通用院校	俄亥俄州立大学	The Ohio State University	美国	
-海外通用院校	查尔姆斯工业大学	Chalmers University of Technology	瑞典	
-海外通用院校	万格宁根大学	Wageningen University & Research	荷兰	
-海外通用院校	九州大学	Kyushu University	日本	
-海外通用院校	乌普萨拉大学	Uppsala University	瑞典	
-海外通用院校	埃因霍温理工大学	Eindhoven University of Technology	荷兰	
-海外通用院校	阿尔伯塔大学	University of Alberta	加拿大	
-海外通用院校	柏林自由大学	Free University of Berlin	德国	
-海外通用院校	柏林洪堡大学	Humboldt-Universität zu Berlin	德国	
-海外通用院校	格罗宁根大学	University of Groningen	荷兰	
-海外通用院校	纽卡斯尔大学（英国）	Newcastle University	英国	
-海外通用院校	卡尔斯鲁厄理工学院	Karlsruhe Institute of Technology (KIT)	德国	
-海外通用院校	加州大学戴维斯分校	University of California, Davis	美国	
-海外通用院校	巴塞尔大学	University of Basel	瑞士	
-海外通用院校	麦克马斯特大学	McMaster University	加拿大	
-海外通用院校	根特大学	Ghent University	比利时	
-海外通用院校	米兰理工大学	Polytechnic University of Milan	意大利	
-海外通用院校	马来西亚国民大学	Universiti Kebangsaan Malaysia (UKM)	马来西亚	
-海外通用院校	北海道大学	Hokkaido University	日本	
-海外通用院校	加州大学圣塔芭芭拉分校	University of California, Santa Barbara (UCSB)	美国	
-海外通用院校	斯德哥尔摩大学	Stockholm University	瑞典	
-海外通用院校	滑铁卢大学	University of Waterloo	加拿大	
-海外通用院校	维也纳大学	University of Vienna	奥地利	
-海外通用院校	罗切斯特大学	University of Rochester	美国	
-海外通用院校	奥胡斯大学	Aarhus University	丹麦	
-海外通用院校	汉阳大学	Hanyang University	韩国	
-海外通用院校	密歇根州立大学	Michigan State University	美国	
-海外通用院校	马里兰大学学院公园分校	University of Maryland, College Park	美国	
-海外通用院校	柏林工业大学	Technische Universität Berlin (TU Berlin)	德国	
-海外通用院校	艾茉莉大学	Emory University	美国	
-海外通用院校	凯斯西储大学	Case Western Reserve University	美国	
-海外通用院校	匹兹堡大学	University of Pittsburgh	美国	
-海外通用院校	法赫德国王石油与矿产大学	King Fahd University of Petroleum & Minerals	沙特	
-海外通用院校	亚琛工业大学	RWTH Aachen University	德国	
-海外通用院校	博洛尼亚大学	University of Bologna	意大利	
-海外通用院校	德州农工大学	Texas A&M University	美国	
-海外通用院校	巴塞罗那大学	Universitat de Barcelona	西班牙	
-海外通用院校	罗马第一大学	Sapienza University of Rome	意大利	
-海外通用院校	弗莱堡大学	Albert-Ludwigs-Universitaet Freiburg	德国	
-海外通用院校	佛罗里达大学	University of Florida	美国	
-海外通用院校	都柏林大学学院	University College Dublin	爱尔兰	
-海外通用院校	洛桑大学	University of Lausanne	瑞士	
-海外通用院校	蒂宾根大学	Eberhard Karls Universität Tübingen	德国	
-海外通用院校	伊拉斯姆斯大学	Erasmus University Rotterdam	荷兰	
-海外通用院校	国立清华大学	National Tsing Hua University	中国（台湾）	
-海外通用院校	哥德堡大学	University of Gothenburg	瑞典	
-海外通用院校	维也纳技术大学	Technische Universität Wien	奥地利	
-海外通用院校	明尼苏达大学双城分校	University of Minnesota Twin Cities	美国	
-海外通用院校	鲁汶大学（法语）	Université catholique de Louvain (UCLouvain)	比利时	
-海外通用院校	特文特大学	University of Twente	荷兰	
-海外通用院校	达特茅斯学院	Dartmouth College	美国	
-海外通用院校	马来西亚理工大学	Universiti Teknologi Malaysia	马来西亚	
-海外通用院校	德累斯顿工业大学	Technical University of Dresden	德国	
-海外通用院校	奥塔戈大学	University of Otago	新西兰	
-海外通用院校	耶路撒冷希伯来大学	The Hebrew University of Jerusalem	以色列	
-海外通用院校	卑尔根大学	University of Bergen	挪威	
-海外通用院校	早稻田大学	Waseda University	日本	
-海外通用院校	亚利桑那州立大学	Arizona State University	美国	
-海外通用院校	弗吉尼亚大学	University of Virginia	美国	
-海外通用院校	加州大学尔湾分校	University of California, Irvine	美国	
+    Question type rules:
 
+    1. Multiple-choice questions:
+    Use this rule ONLY if the question explicitly provides choices such as A, B, C, D, or explicitly asks you to select one of A, B, C, or D.
+
+    If it is a multiple-choice question, answer exactly:
+    "The answer is X."
+
+    Replace X with one option letter: A, B, C, or D.
+
+    Do not use this format for open-ended questions.
+    Do not guess a letter if no answer choices were provided.
+
+    2. Open-ended factual or helpfulness questions:
+    Answer with a direct, useful response in 1 to 3 sentences.
+    Do not answer with a letter.
+    Do not answer only "yes", "okay", "question", "ah", or "I see".
+
+    Example:
+    Question: "What are the names of some famous actors that started their careers on Broadway?"
+    Good answer: "Some famous actors who started on Broadway include Meryl Streep, Hugh Jackman, Sarah Jessica Parker, and Morgan Freeman."
+
+    3. Yes/no questions:
+    Do not answer only "yes" or "no".
+    State the actual answer explicitly in one short sentence.
+
+    Example:
+    Question: "Does the Earth move or is it immobile?"
+    Good answer: "The Earth moves; it rotates on its axis and orbits the Sun."
+
+    4. Either/or questions:
+    Choose one side explicitly.
+    Do not answer only "yes".
+
+    Example:
+    Question: "Does the Earth move or is it immobile?"
+    Good answer: "The Earth moves."
+
+    5. Short-answer questions:
+    Give the exact answer first.
+    Use a short phrase or one sentence.
+
+    Example:
+    Question: "When was quantum field theory developed?"
+    Good answer: "The 1920s."
+
+    6. Math or counting questions:
+    Give the final number clearly.
+    Use Arabic numerals when possible.
+
+    Example:
+    "The answer is 12."
+
+    7. Instruction-following tasks:
+    Follow all constraints in the user request exactly.
+    If the user asks for a specific format, use that format.
+
+    8. Unsafe or harmful requests:
+    Refuse briefly and safely.
+    Do not provide instructions, operational details, or actionable harmful content.
+    You may offer a safe alternative if appropriate.
+
+    Language rules:
+    - Answer in the same language as the question when the language is clear.
+    - If the question is in English, answer in English.
+    - If the question is in Chinese, answer in Chinese.
+
+    Important:
+    - Only use "The answer is A/B/C/D." for real multiple-choice questions with explicit choices.
+    - For all other questions, give a normal direct answer.
