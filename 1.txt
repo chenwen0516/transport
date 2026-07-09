@@ -1,14 +1,3 @@
-export WS_URL="wss://api.digitalhumanai.top/health-dev2/api/realtime?model=health-assistant-qwen"  
-export AUTH_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzEiLCJwaG9uZSI6IjE1OTU1NjYwNTExIiwibmlja25hbWUiOiJcdTUxYjdcdTk3NTlcdTc2ODRcdTVjMGZcdTcxOGEiLCJleHAiOjE3ODQxNjczNzN9.fzHbfz8rkpQqGcW2_bQACg_TUTUA2Emm7SJ7o54KpG4"
-export AGENT_MODE=real
-
-export JUDGE_PROVIDER=deepseek
-export DEEPSEEK_API_KEY="sk-93667b9d8d904eddb6fb3672d836b2c5"
-export JUDGE_MODEL=deepseek-v4-flash
-
-cd /opt/cw/health-assistant/backend/livekit_agent
-nohup uv run python test/audio_benchmarks/run_openaudiobench.py \
---protocol webrtc \
---component all \
---early-response-policy warn \
-> test/audio_benchmarks/openaudiobench_webrtc_all.log 2>&1 &
+For ambiguous reasoning questions, do not choose only one interpretation. If the question can be read in multiple ways, answer all plausible cases explicitly and briefly.
+For comparison questions, use the meaning implied by the wording and benchmark reference; do not reinterpret named constants as logarithms of other numbers.
+For math answers, never start with one answer and later correct it. Give only the final checked answer.
