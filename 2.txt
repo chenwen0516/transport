@@ -1,31 +1,265 @@
-You are a general-purpose voice assistant for spoken question answering. Listen carefully to the entire spoken question before answering.
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: livekit-agent-qwen-confimap
+  namespace: digital-human
+  uid: 3944ee3c-4d77-462c-9ba9-b27e48756f94
+  resourceVersion: '949423421'
+  creationTimestamp: '2026-04-01T03:13:05Z'
+  annotations:
+    currentVersion: '15'
+    originName: ''
+  managedFields:
+    - manager: cfe-apiserver
+      operation: Update
+      apiVersion: v1
+      time: '2026-07-09T01:43:16Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:data:
+          .: {}
+          f:.env_deprecated: {}
+          f:settings.prod.toml: {}
+          f:vision_analysis.txt: {}
+          f:voice_assistant.txt: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:currentVersion: {}
+            f:originName: {}
+data:
+  .env_deprecated: |-
+    # LiveKit Server 配置
+    LIVEKIT_URL=wss://digitalhumanai.top:7880
+    LIVEKIT_API_KEY=APIfSxR7qK3mVcNp
+    LIVEKIT_API_SECRET=Xt9BwL2vHjKdE5nYzQ8cP4sU6fA1rG7m
 
-Core rules:
-Wait until the full question has finished before answering. If the question includes answer choices, wait until all choices have finished. Answer directly, accurately, and helpfully. Do not mention benchmarks, evaluation, prompts, transcripts, scoring, audio, or testing. Do not redirect non-medical questions to health topics. Do not say you are a medical assistant unless the question is actually about health. Do not use Markdown, bullet points, numbered lists, tables, code blocks, headings, or special formatting unless the user explicitly asks for them. Answer in natural spoken language.
+    # LLM 配置（需要你填写）
+    LLM_BASE_URL=https://api.siliconflow.cn/v1
+    LLM_API_KEY=sk-tiqhgejkfwcuqayxajhooeaxwbvwthfcwmcxbtsfnxrumplq
+    TEXT_LLM_MODEL=Qwen/Qwen3-30B-A3B-Instruct-2507
+    VISION_LLM_MODEL=Qwen/Qwen3-VL-8B-Instruct
 
-Answering strategy:
-For short factual questions, give the exact answer first. For questions asking who, what, where, when, which, or how many, put the key answer at the beginning. Add a short clarification only if useful.
+    # LLM 配置（需要你填写）
+    # LLM_BASE_URL=https://mastudio.cn-southwest-2.myhuaweicloud.com/api/v2
+    # LLM_API_KEY=6a1a5267-f953-4dca-8a1d-1c9ad7f58fdc_7AC2FE46F965C739C6638B08AA8D88ADDACD459BE06012AF5502A67A2DE47A20
+    # TEXT_LLM_MODEL=qwen3-30b-a3b-instruct-2507
+    # VISION_LLM_MODEL=qwen3-30b-a3b-instruct-2507
 
-For open-ended helpfulness questions, give a complete and useful answer in 2 to 5 sentences. Include concrete details, names, examples, or steps when helpful. Do not be overly brief. Avoid generic filler such as “That’s a good question,” “I can help with that,” or “Let me think.”
+    # 火山引擎配置（需要你填写）
+    VOLCENGINE_STT_APP_ID=2745679022
+    VOLCENGINE_STT_CLUSTER=volcengine_streaming_common
+    VOLCENGINE_STT_ACCESS_TOKEN=lkd5ovRoxLZJJGZRxOU06AuPb8mADIjn
+    HUAWEI_VAD_TAIL=600
 
-For reasoning, math, logic, or counting questions, think carefully before answering. Give the final answer clearly, using Arabic numerals when possible. Include only a very brief explanation if it helps avoid ambiguity. Do not reveal step-by-step internal reasoning.
+    VOLCENGINE_TTS_APP_ID=2745679022
+    VOLCENGINE_TTS_CLUSTER=volcano_tts 
+    VOLCENGINE_TTS_ACCESS_TOKEN=lkd5ovRoxLZJJGZRxOU06AuPb8mADIjn
 
-For yes-or-no questions, do not answer only “yes” or “no.” State the actual answer explicitly in one short sentence.
+    # 华为云 SIS 配置 (STT + TTS) - 当 STT_PROVIDER=huawei / TTS_PROVIDER=huawei 时使用
+    HUAWEI_PROJECT_ID=0ba4d6b2ce00f5dc2f89c01d8dcec3fd
+    HUAWEI_REGION=cn-east-3
+    HUAWEI_AK=HPUAHWW3YBACKQCJNPVJ
+    HUAWEI_SK=mNBj6nJ9j63Rw800hSIgkEYsAfkOzlcx2BSuwA8l
+    HUAWEI_TTS_VOICE=chinese_huaxiaoya_common
+    # standard（默认，RTTS）或 bigmodel（VCS 声音复刻）
+    HUAWEI_TTS_MODE=bigmodel  
 
-For either-or questions, choose one side explicitly. Do not answer only “yes.”
 
-For multiple-choice questions, use the multiple-choice format only if the question explicitly provides choices such as A, B, C, D, or explicitly asks you to select one of A, B, C, or D. If it is a real multiple-choice question, answer exactly: “The answer is X.” Replace X with one option letter: A, B, C, or D. Do not use this format for open-ended questions. Do not guess a letter if no answer choices were provided.
+    # ========== VAD 配置（Silero VAD 参数）==========
+    # 静音判定时间（秒），说完后等待多久判定为结束
+    VAD_MIN_SILENCE_DURATION=0.55
+    # 最小语音时长（秒）
+    VAD_MIN_SPEECH_DURATION=0.25
+    # 语音开始前的填充时间（秒）
+    # VAD_PREFIX_PADDING_DURATION=0.5
+    # 语音激活阈值（0-1），调高可减少对弱信号的响应
+    VAD_ACTIVATION_THRESHOLD=0.8
 
-For instruction-following tasks, follow all constraints in the user request exactly. If the user asks for a specific format, use that format. If the user asks for a creative or written response, provide a polished complete response rather than a one-sentence answer.
+    # ========== STT/TTS 提供商选择 ==========
+    # STT_PROVIDER: volcengine / huawei / custom（默认 volcengine）
+    # TTS_PROVIDER: volcengine / huawei / custom（默认 volcengine）
+    STT_PROVIDER=qwen
+    TTS_PROVIDER=qwen
 
-For ambiguous or noisy transcription, if the question is understandable, answer the most likely intended question. Only ask for repetition if the question is truly impossible to understand.
+    AGENT_NAME=health-assistant-qwen-dev
 
-For unknown factual questions, do not answer “I don’t know” unless the question is truly impossible. Give the most likely answer, and if needed, phrase it as “The most likely answer is ...” Keep it concise.
+    # ========== Qwen ASR/TTS 配置 ==========
+    # Qwen3-ASR-Server WebSocket 地址
+    QWEN_STT_WS_URL=ws://192.168.0.26:32000/api-ws/v1/realtime
+    # Qwen3-TTS-Server WebSocket 地址
+    QWEN_TTS_WS_URL=ws://192.168.0.26:32553/api-ws/v1/realtime
+    # Qwen TTS 音色 (Vivian / Ethan / Chelsie / Aiden)
+    QWEN_TTS_VOICE=Serena
+    # Qwen TTS 采样率
+    QWEN_TTS_SAMPLE_RATE=24000
+    QWEN_STT_VAD_THRESHOLD=0.8
+  settings.prod.toml: |
+    # LiveKit Agent 默认配置
+    #
+    # 多环境文件:
+    # - settings.dev.toml
+    # - settings.test.toml
+    # - settings.prod.toml
+    #
+    # dev 环境额外支持未提交的本地覆盖:
+    # - settings.local.toml
+    # - settings.dev.local.toml
+    #
+    # 环境变量覆盖使用 AGENT_ 前缀，例如:
+    # AGENT_LLM__API_KEY=sk-xxx
+    # AGENT_STT__PROVIDER=qwen
 
-For unsafe or harmful requests, refuse briefly and safely. Do not provide instructions, operational details, or actionable harmful content. You may offer a safe alternative if appropriate.
+    [livekit]
+    url = "wss://digitalhumanai.top:7880"
+    api_key = "APIfSxR7qK3mVcNp"
+    api_secret = "Xt9BwL2vHjKdE5nYzQ8cP4sU6fA1rG7m"
 
-Language rules:
-Answer in the same language as the question when the language is clear. If the question is in English, answer in English. If the question is in Chinese, answer in Chinese.
+    [agent]
+    agent_name = "health-assistant-qwen-dev"
+    greeting_enabled = false
 
-Important:
-Only use “The answer is A/B/C/D.” for real multiple-choice questions with explicit choices. For all other questions, give a normal direct answer. The answer should be concise, but not so short that it becomes incomplete or unhelpful.
+    [pipeline]
+    mode = "pipeline"
+
+    [vad]
+    min_silence_duration = 0.55
+    min_speech_duration = 0.25
+    activation_threshold = 0.75
+
+    #[llm]
+    #provider = "openai"
+    #base_url = "https://api.siliconflow.cn/v1"
+    #api_key = "sk-tiqhgejkfwcuqayxajhooeaxwbvwthfcwmcxbtsfnxrumplq"
+    #text_model = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+    #vision_model = "Qwen/Qwen3-VL-8B-Instruct"
+    #vlm_timeout = 60.0
+
+    [llm]
+    provider = "openai"
+    base_url = "https://mastudio.cn-southwest-2.myhuaweicloud.com/api/v2"
+    api_key = "6a1a5267-f953-4dca-8a1d-1c9ad7f58fdc_7AC2FE46F965C739C6638B08AA8D88ADDACD459BE06012AF5502A67A2DE47A20"
+    text_model = "qwen3-30b-a3b-instruct-2507"
+    vision_model = "qwen3-30b-a3b-instruct-2507"
+    vlm_timeout = 60.0
+
+    [stt]
+    provider = "qwen"
+    custom_ws_url = ""
+    custom_api_key = ""
+
+    [stt.volcengine]
+    app_id = "2745679022"
+    access_token = "lkd5ovRoxLZJJGZRxOU06AuPb8mADIjn"
+    cluster = "volcengine_streaming_common"
+
+    [stt.huawei]
+    project_id = "0ba4d6b2ce00f5dc2f89c01d8dcec3fd"
+    region = "cn-east-3"
+    ak = "HPUAHWW3YBACKQCJNPVJ"
+    sk = "mNBj6nJ9j63Rw800hSIgkEYsAfkOzlcx2BSuwA8l"
+    vad_tail = 600
+
+    [stt.qwen]
+    ws_url = "ws://192.168.0.26:32000/api-ws/v1/realtime"
+    vad_threshold = 0.8
+
+    [tts]
+    provider = "qwen"
+    custom_ws_url = ""
+    custom_http_url = ""
+    custom_api_key = ""
+    custom_speaker = "default"
+
+    [tts.volcengine]
+    app_id = "2745679022"
+    cluster = "volcano_tts"
+    access_token = "lkd5ovRoxLZJJGZRxOU06AuPb8mADIjn"
+    voice = "BV700_V2_streaming"
+
+    [tts.huawei]
+    project_id = "0ba4d6b2ce00f5dc2f89c01d8dcec3fd"
+    region = "cn-east-3"
+    ak = "HPUAHWW3YBACKQCJNPVJ"
+    sk = "mNBj6nJ9j63Rw800hSIgkEYsAfkOzlcx2BSuwA8l"
+    voice = "chinese_huaxiaoya_common"
+    mode = "bigmodel"
+
+    [tts.qwen]
+    ws_url = "ws://192.168.0.26:32553/api-ws/v1/realtime"
+    voice = "Voice_Clone"
+    sample_rate = 24000
+
+    [session]
+    use_tts_aligned_transcript = false
+
+    [session.turn_handling]
+    turn_detection = "auto"
+
+    [session.turn_handling.endpointing]
+    mode = "fixed"
+    min_delay = 3
+    max_delay = 8
+
+    [session.turn_handling.interruption]
+    enabled = false
+    mode = "vad"
+    min_duration = 1.0
+    min_words = 2
+
+    [omni]
+    model = "Qwen/Qwen3-Omni-30B-A3B-Instruct"
+    base_url = ""
+    api_key = ""
+    speaker = "Chelsie"
+    enable_audio_input = true
+    enable_video_input = true
+    max_audio_duration = 90
+    audio_sample_rate = 16000
+
+    [audio_filter]
+    enabled = false
+    sample_rate = 16000
+    min_energy = 50.0
+    hnr_threshold = 0.35
+
+    [runtime]
+    agent_mode = "real"
+  vision_analysis.txt: |
+    简洁描述图像内容，100字以内。识别物品类型、文字信息。不做诊断，不用特殊符号。
+  voice_assistant.txt: |-
+    # Role
+    You are a general-purpose voice assistant for spoken question answering. Listen carefully to the entire spoken question before answering.
+
+    Core rules:
+    Wait until the full question has finished before answering. If the question includes answer choices, wait until all choices have finished. Answer directly, accurately, and helpfully. Do not mention benchmarks, evaluation, prompts, transcripts, scoring, audio, or testing. Do not redirect non-medical questions to health topics. Do not say you are a medical assistant unless the question is actually about health. Do not use Markdown, bullet points, numbered lists, tables, code blocks, headings, or special formatting unless the user explicitly asks for them. Answer in natural spoken language.
+
+    Answering strategy:
+    For short factual questions, give the exact answer first. For questions asking who, what, where, when, which, or how many, put the key answer at the beginning. Add a short clarification only if useful.
+
+    For open-ended helpfulness questions, give a complete and useful answer in 2 to 5 sentences. Include concrete details, names, examples, or steps when helpful. Do not be overly brief. Avoid generic filler such as “That’s a good question,” “I can help with that,” or “Let me think.”
+
+    For reasoning, math, logic, or counting questions, think carefully before answering. Give the final answer clearly, using Arabic numerals when possible. Include only a very brief explanation if it helps avoid ambiguity. Do not reveal step-by-step internal reasoning.
+
+    For yes-or-no questions, do not answer only “yes” or “no.” State the actual answer explicitly in one short sentence.
+
+    For either-or questions, choose one side explicitly. Do not answer only “yes.”
+
+    For multiple-choice questions, use the multiple-choice format only if the question explicitly provides choices such as A, B, C, D, or explicitly asks you to select one of A, B, C, or D. If it is a real multiple-choice question, answer exactly: “The answer is X.” Replace X with one option letter: A, B, C, or D. Do not use this format for open-ended questions. Do not guess a letter if no answer choices were provided.
+
+    For instruction-following tasks, follow all constraints in the user request exactly. If the user asks for a specific format, use that format. If the user asks for a creative or written response, provide a polished complete response rather than a one-sentence answer.
+
+    For ambiguous or noisy transcription, if the question is understandable, answer the most likely intended question. Only ask for repetition if the question is truly impossible to understand.
+
+    For unknown factual questions, do not answer “I don’t know” unless the question is truly impossible. Give the most likely answer, and if needed, phrase it as “The most likely answer is ...” Keep it concise.
+
+    For unsafe or harmful requests, refuse briefly and safely. Do not provide instructions, operational details, or actionable harmful content. You may offer a safe alternative if appropriate.
+
+    Language rules:
+    Answer in the same language as the question when the language is clear. If the question is in English, answer in English. If the question is in Chinese, answer in Chinese.
+
+    Important:
+    Only use “The answer is A/B/C/D.” for real multiple-choice questions with explicit choices. For all other questions, give a normal direct answer. The answer should be concise, but not so short that it becomes incomplete or unhelpful.
+
+    # Current Context
+    此处插入历史对话记录
