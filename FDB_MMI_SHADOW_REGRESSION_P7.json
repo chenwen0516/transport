@@ -1,0 +1,794 @@
+{
+  "run_dir": "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_regression_p7_20260720_1105",
+  "agent_runs_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs",
+  "summary": {
+    "scope": "FDB v1.5 noisy output sessions",
+    "samples": 12,
+    "joined_samples": 12,
+    "join_rate": 1.0,
+    "target_decision_samples": 11,
+    "target_decision_coverage": 0.916667,
+    "decision_count": 77,
+    "malformed_log_lines": 0,
+    "executed_count": 0,
+    "duplicate_agent_room_count": 1,
+    "control_confusion_matrix": {
+      "positive_class": "user_interruption_requires_START_LISTENING",
+      "tp": 3,
+      "fn": 0,
+      "fp": 0,
+      "tn": 9,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": 0.0
+    },
+    "phase_gates": {
+      "agent_log_join_rate": {
+        "value": 1.0,
+        "threshold": 0.999,
+        "pass": true
+      },
+      "shadow_executed_actions_zero": {
+        "value": 0,
+        "threshold": 0,
+        "pass": true
+      },
+      "required_interruption_decision_coverage": {
+        "value": 1.0,
+        "threshold": 0.999,
+        "pass": true,
+        "note": "Required for user_interruption; negative scenarios without an active or pending agent output need no control action."
+      },
+      "strong_interruption_recall": {
+        "value": 1.0,
+        "threshold": 0.95,
+        "pass": true
+      },
+      "backchannel_false_interruption_rate": {
+        "value": 0.0,
+        "threshold": 0.03,
+        "pass": true
+      },
+      "event_processing_latency_p95_ms": {
+        "value": 1.466,
+        "threshold": 20,
+        "pass": true,
+        "note": "SpeakerGate callback-to-MMI-decision latency; transcript_observe_ms is not processing latency."
+      }
+    },
+    "active_verdict": "REVIEW",
+    "scenarios": {
+      "background_speech": {
+        "samples": 3,
+        "joined": 3,
+        "target_decision_coverage": 1.0,
+        "strict_control_accuracy": 1.0,
+        "outcomes": {
+          "SUPPRESS": 3
+        },
+        "lifecycle_outcomes": {
+          "COMMIT": 3
+        },
+        "behavior_labels": {
+          "MISSING": 3
+        },
+        "terminal_actions": {
+          "CONTINUE_SPEAKING": 3
+        },
+        "terminal_reasons": {
+          "speaker_gate_warmup": 3
+        },
+        "terminal_pattern_versions": {
+          "2026-07-20.speaker-addressee-v2": 3
+        },
+        "terminal_turn_speaker_states": {
+          "UNKNOWN": 3
+        },
+        "outcome_by_behavior": {
+          "SUPPRESS|MISSING": 3
+        },
+        "first_target_observe_ms": {
+          "count": 3,
+          "p50": 0.0,
+          "p95": 1382.4,
+          "min": 0.0,
+          "max": 1536.0
+        },
+        "terminal_observe_ms": {
+          "count": 3,
+          "p50": 1022.0,
+          "p95": 1484.6,
+          "min": 1009.0,
+          "max": 1536.0
+        },
+        "event_processing_latency_ms": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "min": null,
+          "max": null
+        },
+        "speaker_verdict_recheck_count": 0,
+        "terminal_external_voice_signal_coverage": 0.0,
+        "terminal_speaker_gate_locked_rate": 0.0,
+        "terminal_started_before_speaker_gate_locked_rate": 1.0,
+        "native_start_listening_sessions": 3
+      },
+      "talking_to_other": {
+        "samples": 3,
+        "joined": 3,
+        "target_decision_coverage": 1.0,
+        "strict_control_accuracy": 1.0,
+        "outcomes": {
+          "SUPPRESS": 3
+        },
+        "lifecycle_outcomes": {
+          "COMMIT": 3
+        },
+        "behavior_labels": {
+          "MISSING": 3
+        },
+        "terminal_actions": {
+          "CONTINUE_SPEAKING": 3
+        },
+        "terminal_reasons": {
+          "addressed_to_other": 3
+        },
+        "terminal_pattern_versions": {
+          "2026-07-20.speaker-addressee-v2": 3
+        },
+        "terminal_turn_speaker_states": {
+          "TARGET": 3
+        },
+        "outcome_by_behavior": {
+          "SUPPRESS|MISSING": 3
+        },
+        "first_target_observe_ms": {
+          "count": 3,
+          "p50": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "terminal_observe_ms": {
+          "count": 3,
+          "p50": 1847.0,
+          "p95": 2098.1,
+          "min": 1705.0,
+          "max": 2126.0
+        },
+        "event_processing_latency_ms": {
+          "count": 3,
+          "p50": 1.189,
+          "p95": 1.273,
+          "min": 1.186,
+          "max": 1.282
+        },
+        "speaker_verdict_recheck_count": 3,
+        "terminal_external_voice_signal_coverage": 0.0,
+        "terminal_speaker_gate_locked_rate": 1.0,
+        "terminal_started_before_speaker_gate_locked_rate": 1.0,
+        "native_start_listening_sessions": 3
+      },
+      "user_backchannel": {
+        "samples": 3,
+        "joined": 3,
+        "target_decision_coverage": 0.666667,
+        "strict_control_accuracy": 1.0,
+        "outcomes": {
+          "NO_TARGET_DECISION": 1,
+          "SUPPRESS": 2
+        },
+        "lifecycle_outcomes": {
+          "COMMIT": 2,
+          "NO_TARGET_DECISION": 1
+        },
+        "behavior_labels": {
+          "MISSING": 3
+        },
+        "terminal_actions": {
+          "CONTINUE_SPEAKING": 2,
+          "MISSING": 1
+        },
+        "terminal_reasons": {
+          "MISSING": 1,
+          "addressed_to_other": 1,
+          "backchannel": 1
+        },
+        "terminal_pattern_versions": {
+          "2026-07-20.speaker-addressee-v2": 2,
+          "MISSING": 1
+        },
+        "terminal_turn_speaker_states": {
+          "UNKNOWN": 2
+        },
+        "outcome_by_behavior": {
+          "NO_TARGET_DECISION|MISSING": 1,
+          "SUPPRESS|MISSING": 2
+        },
+        "first_target_observe_ms": {
+          "count": 2,
+          "p50": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "terminal_observe_ms": {
+          "count": 2,
+          "p50": 608.0,
+          "p95": 730.4,
+          "min": 472.0,
+          "max": 744.0
+        },
+        "event_processing_latency_ms": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "min": null,
+          "max": null
+        },
+        "speaker_verdict_recheck_count": 0,
+        "terminal_external_voice_signal_coverage": 0.0,
+        "terminal_speaker_gate_locked_rate": 0.0,
+        "terminal_started_before_speaker_gate_locked_rate": 1.0,
+        "native_start_listening_sessions": 2
+      },
+      "user_interruption": {
+        "samples": 3,
+        "joined": 3,
+        "target_decision_coverage": 1.0,
+        "strict_control_accuracy": 1.0,
+        "outcomes": {
+          "INTERRUPT": 3
+        },
+        "lifecycle_outcomes": {
+          "INTERRUPT": 3
+        },
+        "behavior_labels": {
+          "MISSING": 3
+        },
+        "terminal_actions": {
+          "START_LISTENING": 3
+        },
+        "terminal_reasons": {
+          "ordinary_valid_interjection": 3
+        },
+        "terminal_pattern_versions": {
+          "2026-07-20.speaker-addressee-v2": 3
+        },
+        "terminal_turn_speaker_states": {
+          "TARGET": 3
+        },
+        "outcome_by_behavior": {
+          "INTERRUPT|MISSING": 3
+        },
+        "first_target_observe_ms": {
+          "count": 3,
+          "p50": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "terminal_observe_ms": {
+          "count": 3,
+          "p50": 1760.0,
+          "p95": 3760.7,
+          "min": 1017.0,
+          "max": 3983.0
+        },
+        "event_processing_latency_ms": {
+          "count": 3,
+          "p50": 1.419,
+          "p95": 1.476,
+          "min": 1.29,
+          "max": 1.482
+        },
+        "speaker_verdict_recheck_count": 3,
+        "terminal_external_voice_signal_coverage": 0.0,
+        "terminal_speaker_gate_locked_rate": 1.0,
+        "terminal_started_before_speaker_gate_locked_rate": 1.0,
+        "native_start_listening_sessions": 3
+      }
+    }
+  },
+  "duplicate_agent_rooms": {
+    "health-voice-131-1783994059": [
+      "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260714_095420_health-voice-131-1783994059",
+      "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260714_095455_health-voice-131-1783994059"
+    ]
+  },
+  "samples": [
+    {
+      "sample": "v1.5/background_speech/53",
+      "scenario": "background_speech",
+      "sample_id": "53",
+      "room": "fdb-1784516539-5ed1a8eb82",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110220_fdb-1784516539-5ed1a8eb82",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110220_fdb-1784516539-5ed1a8eb82/mmi_turn_detection_active_20260720_110220.log",
+      "decision_count": 6,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 2,
+      "speaker_verdict_recheck_count": 0,
+      "event_processing_latencies_ms": [],
+      "event_processing_latency_p95_ms": null,
+      "lifecycle_decision_count": 4,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 1022,
+      "terminal_silence_ms": 0,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "speaker_gate_warmup",
+      "terminal_confidence": 0.5,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": false,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": null,
+      "terminal_turn_speaker_is_target": null
+    },
+    {
+      "sample": "v1.5/background_speech/56",
+      "scenario": "background_speech",
+      "sample_id": "56",
+      "room": "fdb-1784516586-15e1d65332",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110307_fdb-1784516586-15e1d65332",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110307_fdb-1784516586-15e1d65332/mmi_turn_detection_active_20260720_110307.log",
+      "decision_count": 5,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 1,
+      "speaker_verdict_recheck_count": 0,
+      "event_processing_latencies_ms": [],
+      "event_processing_latency_p95_ms": null,
+      "lifecycle_decision_count": 3,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 1536,
+      "terminal_observe_ms": 1536,
+      "terminal_silence_ms": 555,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "speaker_gate_warmup",
+      "terminal_confidence": 0.5,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": false,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": null,
+      "terminal_turn_speaker_is_target": null
+    },
+    {
+      "sample": "v1.5/background_speech/94",
+      "scenario": "background_speech",
+      "sample_id": "94",
+      "room": "fdb-1784516636-9d11b985bb",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110357_fdb-1784516636-9d11b985bb",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110357_fdb-1784516636-9d11b985bb/mmi_turn_detection_active_20260720_110357.log",
+      "decision_count": 6,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 2,
+      "speaker_verdict_recheck_count": 0,
+      "event_processing_latencies_ms": [],
+      "event_processing_latency_p95_ms": null,
+      "lifecycle_decision_count": 4,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 1009,
+      "terminal_silence_ms": 0,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "speaker_gate_warmup",
+      "terminal_confidence": 0.5,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": false,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": null,
+      "terminal_turn_speaker_is_target": null
+    },
+    {
+      "sample": "v1.5/talking_to_other/15",
+      "scenario": "talking_to_other",
+      "sample_id": "15",
+      "room": "fdb-1784516684-13a24d2de4",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110445_fdb-1784516684-13a24d2de4",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110445_fdb-1784516684-13a24d2de4/mmi_turn_detection_active_20260720_110445.log",
+      "decision_count": 7,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 3,
+      "speaker_verdict_recheck_count": 1,
+      "event_processing_latencies_ms": [
+        1.189
+      ],
+      "event_processing_latency_p95_ms": 1.189,
+      "lifecycle_decision_count": 5,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 2126,
+      "terminal_silence_ms": 0,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "addressed_to_other",
+      "terminal_confidence": 0.95,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": true,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": true,
+      "terminal_turn_speaker_is_target": true
+    },
+    {
+      "sample": "v1.5/talking_to_other/76",
+      "scenario": "talking_to_other",
+      "sample_id": "76",
+      "room": "fdb-1784516739-8adb5ed9eb",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110540_fdb-1784516739-8adb5ed9eb",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110540_fdb-1784516739-8adb5ed9eb/mmi_turn_detection_active_20260720_110540.log",
+      "decision_count": 7,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 3,
+      "speaker_verdict_recheck_count": 1,
+      "event_processing_latencies_ms": [
+        1.282
+      ],
+      "event_processing_latency_p95_ms": 1.282,
+      "lifecycle_decision_count": 5,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 1705,
+      "terminal_silence_ms": 0,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "addressed_to_other",
+      "terminal_confidence": 0.95,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": true,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": true,
+      "terminal_turn_speaker_is_target": true
+    },
+    {
+      "sample": "v1.5/talking_to_other/89",
+      "scenario": "talking_to_other",
+      "sample_id": "89",
+      "room": "fdb-1784516789-3cdd332a73",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110630_fdb-1784516789-3cdd332a73",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110630_fdb-1784516789-3cdd332a73/mmi_turn_detection_active_20260720_110630.log",
+      "decision_count": 7,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 3,
+      "speaker_verdict_recheck_count": 1,
+      "event_processing_latencies_ms": [
+        1.186
+      ],
+      "event_processing_latency_p95_ms": 1.186,
+      "lifecycle_decision_count": 5,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 1847,
+      "terminal_silence_ms": 0,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "addressed_to_other",
+      "terminal_confidence": 0.95,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": true,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": true,
+      "terminal_turn_speaker_is_target": true
+    },
+    {
+      "sample": "v1.5/user_backchannel/28",
+      "scenario": "user_backchannel",
+      "sample_id": "28",
+      "room": "fdb-1784516837-538e1bae22",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "NO_TARGET_DECISION",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110719_fdb-1784516837-538e1bae22",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110719_fdb-1784516837-538e1bae22/mmi_turn_detection_active_20260720_110719.log",
+      "decision_count": 4,
+      "native_action_count": 2,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": null,
+      "target_decision_count": 0,
+      "speaker_verdict_recheck_count": 0,
+      "event_processing_latencies_ms": [],
+      "event_processing_latency_p95_ms": null,
+      "lifecycle_decision_count": 0,
+      "lifecycle_outcome": "NO_TARGET_DECISION",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": false,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": null,
+      "terminal_observe_ms": null,
+      "terminal_silence_ms": null,
+      "terminal_action": null,
+      "terminal_reason": null,
+      "terminal_confidence": null,
+      "terminal_pattern_version": null,
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": null,
+      "terminal_started_before_speaker_gate_locked": null,
+      "terminal_speaker_is_target": null,
+      "terminal_turn_speaker_is_target": null
+    },
+    {
+      "sample": "v1.5/user_backchannel/30",
+      "scenario": "user_backchannel",
+      "sample_id": "30",
+      "room": "fdb-1784516905-7d8cc4b072",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110826_fdb-1784516905-7d8cc4b072",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110826_fdb-1784516905-7d8cc4b072/mmi_turn_detection_active_20260720_110826.log",
+      "decision_count": 6,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 2,
+      "speaker_verdict_recheck_count": 0,
+      "event_processing_latencies_ms": [],
+      "event_processing_latency_p95_ms": null,
+      "lifecycle_decision_count": 4,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 472,
+      "terminal_silence_ms": 0,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "addressed_to_other",
+      "terminal_confidence": 0.95,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": false,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": null,
+      "terminal_turn_speaker_is_target": null
+    },
+    {
+      "sample": "v1.5/user_backchannel/65",
+      "scenario": "user_backchannel",
+      "sample_id": "65",
+      "room": "fdb-1784516982-2048483825",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110943_fdb-1784516982-2048483825",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_110943_fdb-1784516982-2048483825/mmi_turn_detection_active_20260720_110943.log",
+      "decision_count": 6,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 2,
+      "speaker_verdict_recheck_count": 0,
+      "event_processing_latencies_ms": [],
+      "event_processing_latency_p95_ms": null,
+      "lifecycle_decision_count": 4,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 744,
+      "terminal_silence_ms": 0,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "backchannel",
+      "terminal_confidence": 0.95,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": false,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": null,
+      "terminal_turn_speaker_is_target": null
+    },
+    {
+      "sample": "v1.5/user_interruption/47",
+      "scenario": "user_interruption",
+      "sample_id": "47",
+      "room": "fdb-1784517044-0122d6daec",
+      "behavior_label": null,
+      "expected_outcome": "INTERRUPT",
+      "join_status": "joined",
+      "mmi_outcome": "INTERRUPT",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_111045_fdb-1784517044-0122d6daec",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_111045_fdb-1784517044-0122d6daec/mmi_turn_detection_active_20260720_111045.log",
+      "decision_count": 7,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 3,
+      "speaker_verdict_recheck_count": 1,
+      "event_processing_latencies_ms": [
+        1.482
+      ],
+      "event_processing_latency_p95_ms": 1.482,
+      "lifecycle_decision_count": 5,
+      "lifecycle_outcome": "INTERRUPT",
+      "target_has_start_listening": true,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 1760,
+      "terminal_silence_ms": 0,
+      "terminal_action": "START_LISTENING",
+      "terminal_reason": "ordinary_valid_interjection",
+      "terminal_confidence": 0.8,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": true,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": true,
+      "terminal_turn_speaker_is_target": true
+    },
+    {
+      "sample": "v1.5/user_interruption/74",
+      "scenario": "user_interruption",
+      "sample_id": "74",
+      "room": "fdb-1784517097-daf739a6ca",
+      "behavior_label": null,
+      "expected_outcome": "INTERRUPT",
+      "join_status": "joined",
+      "mmi_outcome": "INTERRUPT",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_111138_fdb-1784517097-daf739a6ca",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_111138_fdb-1784517097-daf739a6ca/mmi_turn_detection_active_20260720_111138.log",
+      "decision_count": 7,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 3,
+      "speaker_verdict_recheck_count": 1,
+      "event_processing_latencies_ms": [
+        1.419
+      ],
+      "event_processing_latency_p95_ms": 1.419,
+      "lifecycle_decision_count": 5,
+      "lifecycle_outcome": "INTERRUPT",
+      "target_has_start_listening": true,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 3983,
+      "terminal_silence_ms": 0,
+      "terminal_action": "START_LISTENING",
+      "terminal_reason": "ordinary_valid_interjection",
+      "terminal_confidence": 0.8,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": true,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": true,
+      "terminal_turn_speaker_is_target": true
+    },
+    {
+      "sample": "v1.5/user_interruption/91",
+      "scenario": "user_interruption",
+      "sample_id": "91",
+      "room": "fdb-1784517157-d393296bf8",
+      "behavior_label": null,
+      "expected_outcome": "INTERRUPT",
+      "join_status": "joined",
+      "mmi_outcome": "INTERRUPT",
+      "strict_correct": true,
+      "agent_run_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_111239_fdb-1784517157-d393296bf8",
+      "mmi_log": "/opt/health-assistant/backend/livekit_agent/tmp/runs/20260720_111239_fdb-1784517157-d393296bf8/mmi_turn_detection_active_20260720_111239.log",
+      "decision_count": 9,
+      "native_action_count": 4,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 2,
+      "target_decision_count": 3,
+      "speaker_verdict_recheck_count": 1,
+      "event_processing_latencies_ms": [
+        1.29
+      ],
+      "event_processing_latency_p95_ms": 1.29,
+      "lifecycle_decision_count": 5,
+      "lifecycle_outcome": "INTERRUPT",
+      "target_has_start_listening": true,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 1017,
+      "terminal_silence_ms": 0,
+      "terminal_action": "START_LISTENING",
+      "terminal_reason": "ordinary_valid_interjection",
+      "terminal_confidence": 0.8,
+      "terminal_pattern_version": "2026-07-20.speaker-addressee-v2",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": true,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": true,
+      "terminal_turn_speaker_is_target": true
+    }
+  ]
+}

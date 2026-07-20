@@ -1,0 +1,83 @@
+FDB v1.5 + MMI Shadow 关联分析
+==================================
+
+FDB 目录：/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_regression_p7_20260720_1105
+Agent 日志目录：/opt/health-assistant/backend/livekit_agent/tmp/runs
+分析范围：v1.5 noisy output sessions
+
+一、关联完整性
+--------------
+样本数：12
+成功关联：12/12 (100.00%)
+存在目标轮次决策：11/12 (91.67%)
+MMI 决策总数：77
+JSON 解析失败行：0
+Shadow executed=true：0
+
+二、按场景结果
+--------------
+场景                  样本  目标覆盖  INTERRUPT  COMMIT  SUPPRESS  NO_TARGET  严格正确率
+background_speech         3   100.00%          0       0         3          0     100.00%
+talking_to_other          3   100.00%          0       0         3          0     100.00%
+user_backchannel          3    66.67%          0       0         2          1     100.00%
+user_interruption         3   100.00%          3       0         0          0     100.00%
+
+三、控制动作混淆矩阵
+--------------------
+正类：user_interruption 应产生 START_LISTENING。
+TP=3  FN=0  FP=0  TN=9
+强打断召回率：100.00%
+非打断场景误触发率：0.00%
+
+四、Phase 门禁
+------------
+agent_log_join_rate: 100.00% -> PASS
+shadow_executed_actions_zero: 0 -> PASS
+required_interruption_decision_coverage: 100.00% -> PASS
+  说明：Required for user_interruption; negative scenarios without an active or pending agent output need no control action.
+strong_interruption_recall: 100.00% -> PASS
+backchannel_false_interruption_rate: 0.00% -> PASS
+event_processing_latency_p95_ms: 1.466 -> PASS
+  说明：SpeakerGate callback-to-MMI-decision latency; transcript_observe_ms is not processing latency.
+
+Active 结论：REVIEW
+
+五、裁判标签与 MMI 的对照提示
+-----------------------------
+下列数字是 Shadow 决策的反事实线索，不等价于真实 Active A/B 结果。
+background_speech behavior={'MISSING': 3}
+  MMI outcome x behavior={'SUPPRESS|MISSING': 3}
+  native lifecycle outcome={'COMMIT': 3}
+  observe_ms first={'count': 3, 'p50': 0.0, 'p95': 1382.4, 'min': 0.0, 'max': 1536.0} terminal={'count': 3, 'p50': 1022.0, 'p95': 1484.6, 'min': 1009.0, 'max': 1536.0}
+  speaker_verdict_rechecks=0 callback_to_decision_ms={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None}
+  voice_signal=0.00% speaker_gate_locked=0.00% started_before_lock=100.00%
+  turn_speaker={'UNKNOWN': 3}
+talking_to_other behavior={'MISSING': 3}
+  MMI outcome x behavior={'SUPPRESS|MISSING': 3}
+  native lifecycle outcome={'COMMIT': 3}
+  observe_ms first={'count': 3, 'p50': 0.0, 'p95': 0.0, 'min': 0.0, 'max': 0.0} terminal={'count': 3, 'p50': 1847.0, 'p95': 2098.1, 'min': 1705.0, 'max': 2126.0}
+  speaker_verdict_rechecks=3 callback_to_decision_ms={'count': 3, 'p50': 1.189, 'p95': 1.273, 'min': 1.186, 'max': 1.282}
+  voice_signal=0.00% speaker_gate_locked=100.00% started_before_lock=100.00%
+  turn_speaker={'TARGET': 3}
+user_backchannel behavior={'MISSING': 3}
+  MMI outcome x behavior={'NO_TARGET_DECISION|MISSING': 1, 'SUPPRESS|MISSING': 2}
+  native lifecycle outcome={'COMMIT': 2, 'NO_TARGET_DECISION': 1}
+  observe_ms first={'count': 2, 'p50': 0.0, 'p95': 0.0, 'min': 0.0, 'max': 0.0} terminal={'count': 2, 'p50': 608.0, 'p95': 730.4, 'min': 472.0, 'max': 744.0}
+  speaker_verdict_rechecks=0 callback_to_decision_ms={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None}
+  voice_signal=0.00% speaker_gate_locked=0.00% started_before_lock=100.00%
+  turn_speaker={'UNKNOWN': 2}
+user_interruption behavior={'MISSING': 3}
+  MMI outcome x behavior={'INTERRUPT|MISSING': 3}
+  native lifecycle outcome={'INTERRUPT': 3}
+  observe_ms first={'count': 3, 'p50': 0.0, 'p95': 0.0, 'min': 0.0, 'max': 0.0} terminal={'count': 3, 'p50': 1760.0, 'p95': 3760.7, 'min': 1017.0, 'max': 3983.0}
+  speaker_verdict_rechecks=3 callback_to_decision_ms={'count': 3, 'p50': 1.419, 'p95': 1.476, 'min': 1.29, 'max': 1.482}
+  voice_signal=0.00% speaker_gate_locked=100.00% started_before_lock=100.00%
+  turn_speaker={'TARGET': 3}
+
+六、口径限制
+------------
+1. 只分析 noisy output room；clean room 是对照，不计入真值混淆矩阵。
+2. 主指标使用 Agent 正在说话、播放 TTS 或存在 pending reply 时的控制决策；native 后续状态单列为 lifecycle。
+3. START_LISTENING 用作打断控制正类；控制通道无打断动作归为 SUPPRESS。
+4. native_action 不是权威打断真值；官方 FDB behavior 标签用于实际行为对照。
+5. event_processing_latency_ms 仅衡量 SpeakerGate callback 到 MMI 重算完成的耗时。

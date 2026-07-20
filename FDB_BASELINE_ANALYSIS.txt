@@ -1,0 +1,229 @@
+Full-Duplex-Bench 英文全量基线分析
+==================================
+
+一、运行信息
+------------
+Run ID：en_qwen_shadow_full_loopback_20260716_1058
+模型：health-assistant-qwen
+数据集：Full-Duplex-Bench 英文完整数据集
+样本数：1225
+实际推理次数：1723
+强制对齐：Qwen3，1723/1723 完成
+MMI 模式：Shadow；记录到的决策均为 executed=false
+
+二、总体结论
+------------
+Agent 已经可以稳定完成英文 FDB 全流程。基础轮次获取、停顿安全性，以及用户
+打断后的回答质量较强，但还不能视为成熟的全双工系统，主要原因是：
+
+1. 正常轮次和打断后的响应延迟接近 5 秒。
+2. 背景讲话和用户对其他人讲话仍会频繁触发 Agent。
+3. 用户 backchannel 的处理还不够稳定。
+4. 当前 MMI 只运行在 Shadow 模式，本次分数不代表 MMI 带来的实际增益。
+
+三、核心结果
+------------
+1. 停顿处理
+   合成停顿成功率：100.00%（137 个样本）
+   Candor 自然停顿成功率：99.07%（216 个样本）
+   Candor 中只有 2/216 个样本在用户继续讲话前提前响应。
+
+2. 正常轮次
+   成功响应率：99.16%（118/119）
+   平均响应延迟：4.93 秒
+
+3. V1.0 用户打断
+   成功响应率：100.00%（200/200）
+   平均行为评分：4.805/5
+   评分分布：5 分=176，4 分=17，3 分=3，2 分=2，1 分=0，0 分=2
+   平均响应延迟：5.18 秒
+
+4. V1.0 ICC backchannel 生成
+   正式轮次率：94.55%
+   backchannel 频率：0.0163
+   时序分布 JSD：0.6872
+   Agent 大多生成完整正式轮次，而不是简短、自然的附和；其附和时序与人类
+   分布也有较大差异。
+
+5. V1.5 行为分类（统一使用 DeepSeek 官方接口重新裁判）
+   background_speech：正确忽略/继续 21/100（21.00%），直接响应 74/100。
+   talking_to_other：正确忽略/继续 15/100（15.00%），直接响应 79/100。
+   user_backchannel：正确继续 70/98（71.43%），错误新响应 4/98（4.08%）。
+   user_interruption：正确响应 170/200（85.00%）。
+
+四、结果解释
+------------
+停顿安全性优秀，系统基本不会因用户短暂停顿而抢话。但约 5 秒的响应延迟说明
+当前端点检测或后续链路偏保守，交互体验仍不自然。下一步需要把总延迟拆成：
+
+用户结束 -> ASR final -> MMI 决策 -> LLM 首 token -> TTS 首音频
+
+最严重的问题仍然是非目标讲话。背景讲话有 74% 会触发响应，用户对其他人讲话
+也有 79% 会触发响应。这主要指向说话人归属、对话对象识别和 speaker gating，
+单纯修改 prompt 很难可靠解决。
+
+user_backchannel 的错误新响应率为 4.08%，仍高于 MMI 设计目标 3%；另外有
+16.33% 被标为 C_UNCERTAIN_HANDLING，说明行为还不稳定。强打断正确响应率为
+85.00%，低于设计目标 95%。因此目前不应直接把 MMI 切换到 Active。
+
+停顿、正常轮次、用户打断、用户 backchannel 四个维度的派生宏平均约为
+88.78%。该数字没有包含最困难的 background_speech 和 talking_to_other，
+不能作为上线标准。
+
+五、能力判断
+------------
+停顿安全性：优秀
+正常轮次成功率：优秀
+打断后的回答质量：优秀
+响应速度：较弱
+用户 backchannel 处理：中等偏弱
+非目标说话人鲁棒性：不可接受
+生产级全双工就绪状态：未就绪
+
+六、数据质量与可复现性
+----------------------
+当前 summary 保留：
+  1225 个推理样本
+  1723 条 ASR 记录
+  498 个 V1.5 行为标签
+
+全部 498 个当前生效的 V1.5 标签来自同一裁判：
+  endpoint：https://api.deepseek.com
+  model：deepseek-v4-flash
+  backend：openai-compatible
+
+旧的混合裁判标签已保留备份，文件后缀为：
+  mixed_judge_backup_20260717_official_full_rejudge
+
+共有 23 次运行带 warning，涉及 22 个不同样本。两个静音样本已于
+2026-07-17 重新运行，并再次复现：
+
+  v1.0/candor_turn_taking/62
+    没有 response_done，没有助手文本，输出音频仍为静音。
+
+  v1.0/candor_pause_handling/62
+    产生了 81 个字符的助手文本，但发生 response_completion_timeout，
+    输出音频仍为静音。
+
+因此这两条应继续计为真实失败，问题更可能位于 Agent 响应完成或 TTS/音频发布
+链路，而不是偶发的评测文件损坏。
+
+七、已经完成的后续工作
+----------------------
+1. 已将 498 个 V1.5 结果统一用 DeepSeek 官方接口重新裁判，无需重跑音频推理。
+2. 已修复评测器在批量裁判结果缺少 item 时静默丢标签的问题；现在会对缺项做
+   两次单条重试，并清除成功样本的旧错误标记。
+3. 已重新运行两个静音样本，确认问题可以复现。
+4. 已恢复并合并 summary，避免 evaluation-only 和 resume 覆盖原始推理/ASR 元数据。
+
+八、下一步工作
+------------
+1. 定位两个 sample-62 静音失败在 Agent、TTS 和 LiveKit 音频发布链路中的根因。
+2. 使用 output_events.jsonl 中的 room ID，将 FDB 样本与
+   /opt/health-assistant/backend/livekit_agent/tmp/runs/<room-id> 下的 MMI Shadow
+   日志精确关联，输出各场景混淆矩阵和决策延迟。
+3. 优先改进 background_speech 和 talking_to_other 的说话人/对话对象 gating。
+4. 拆分约 5 秒的端到端延迟，确认 ASR、MMI、LLM、TTS 各自耗时。
+5. 只在开发集调参；Shadow 指标达到门槛后，再用同一 manifest 做 Active p20、
+   p50 对照实验。
+
+九、一句话结论
+--------------
+系统回答质量很好，也很少抢用户的话，但当前仍然偏保守、偏慢，并且太容易响应
+错误的说话人；近期工程重点应放在 speaker/addressee gating、静音失败根因和
+端到端延迟归因，而不是继续单独调整 prompt。
+
+十、MMI Shadow 第一轮修复验证（2026-07-17）
+--------------------------------------------
+已完成两条由 FDB 失败样本驱动的定向修复：
+
+1. user_interruption/164
+   文本：Hold on, how do I make a smoothie?
+   修复前：SUPPRESS，reason=target_speaker_pending。
+   修复后：INTERRUPT，reason=strong_interrupt_intent。
+   原因：SpeakerGate 未给出明确非目标 verdict 时，不应吞掉高优先级强打断命令；
+   明确 NON_TARGET 判决仍然保留拦截能力。
+
+2. user_backchannel/15
+   文本：uh-huh sure
+   修复前：普通插话或新轮次提交。
+   修复后：SUPPRESS，reason=backchannel，严格正确率 100%。
+   原因：补齐英文 backchannel 模式，并在 Agent thinking/pending reply 阶段冻结
+   事件时上下文进行 Shadow 反事实判断，避免异步状态切换污染决策。
+
+同时修复了评估关联器在复测样本含多条 client.livekit_credentials 时错误选取
+旧 room 的问题；现在始终使用最后一条凭据。主控制决策与 LiveKit 原生后续
+lifecycle 也已分开统计。上述 Shadow 决策全部 executed=false。
+
+本地 MMI 与分析器回归：169 passed。
+
+当前结论仍是 Active BLOCK。两条定向样本说明修复方向有效，但样本量不足以
+满足发布门禁。下一步必须在 background_speech、talking_to_other、
+user_backchannel、user_interruption 四类英文场景上运行固定 manifest 的 Shadow
+回归，重点确认强打断召回、backchannel 误打断率和非目标说话人误触发率。
+
+十一、四场景英文 Shadow 小规模回归（2026-07-17）
+------------------------------------------------
+Run ID：en_qwen_shadow_mmi_regression_p3_20260717_1558
+固定 seed：20260717
+样本：每类 3 条，共 12 条；12/12 推理成功，12/12 精确关联。
+MMI 决策：74 条，executed=true 为 0。
+
+结果：
+  background_speech：1/3 正确抑制，2/3 错误打断。
+  talking_to_other：3/3 正确抑制。
+  user_backchannel：3/3 正确抑制，误打断率 0%。
+  user_interruption：0/3 正确打断，3/3 被抑制。
+
+混淆矩阵：TP=0，FN=3，FP=2，TN=7；强打断召回率 0%，非打断场景
+误触发率 22.22%。这批普通 user_interruption 不含已定向修复的明确强控制短语，
+三条终态原因均为 target_speaker_pending。三条 talking_to_other 也因同一原因被
+抑制，因此当前正确结果部分来自严格 SpeakerGate 的保守行为，而不是完成了
+可靠的 addressee 识别。
+
+SpeakerGate 信号进一步显示：
+  user_interruption：3/3 gate 已锁定，但 turn speaker verdict 仍为 UNKNOWN。
+  talking_to_other：3/3 gate 已锁定，但 turn speaker verdict 仍为 UNKNOWN。
+  background_speech：只有 1/3 gate 已锁定；未锁定的两条均被普通插话规则打断。
+
+因此下一项代码工作已经收敛为：
+1. SpeakerGate verdict 到达时，通过线程安全回调触发当前话轮的 MMI 重算；
+2. 记录 verdict 产生、回调和 MMI 重算延迟，验证是否晚于 native interruption；
+3. 对 SpeakerGate warmup/unlocked 期间的 background_speech 增加保守观察策略；
+4. 用同一 12 条 manifest 复测，不能通过更换 seed 掩盖失败。
+
+当前仍维持 Active BLOCK，不应直接把 require_target_speaker 设为 false；否则虽可
+提高普通打断召回，却会同时放大 talking_to_other 和 background_speech 误触发。
+
+十二、SpeakerGate 闭环与固定 12 条 P7 最终回归（2026-07-20）
+
+上述 P3 结论保留为历史问题记录。此后已经完成以下修复：
+1. SpeakerGate 后置 verdict 通过线程安全回调进入 runtime，并对当前 interruption
+   候选进行重判；过期 room、turn 和 sequence 不会作用到新话轮。
+2. 第二个一致注册候选可以锁定当前音频分段并产生 target verdict。
+3. 未锁定 warmup 阶段采用严格 pending；明确强控制命令仅在没有明确非目标证据
+   时放行。
+4. 增加英文句尾称呼和逗号、句号等标点变体，并修正 thinking 阶段路由。
+5. 分析器区分控制决策与 lifecycle，并统计 verdict 重判和事件处理时延。
+
+最终运行：en_qwen_shadow_mmi_regression_p7_20260720_1105
+结果目录：/opt/Full-Duplex-Bench/runs/health_webrtc_en/
+          en_qwen_shadow_mmi_regression_p7_20260720_1105/
+
+P7 结果：
+  推理成功 12/12，forced-align 24/24，日志关联 12/12；
+  background_speech 3/3 正确；
+  talking_to_other 3/3 正确；
+  user_backchannel 3/3 严格正确；
+  user_interruption 3/3 正确打断；
+  混淆矩阵 TP=3、FN=0、FP=0、TN=9；
+  强中断召回率 100%，非中断误触发率 0%；
+  Shadow 实际控制动作 0；
+  verdict 回调决策时延 P95 为 1.466 毫秒。
+
+一条 backchannel 发生时不存在 active/pending 输出，因此原始诊断为 NO_TARGET。
+该样本日志关联成功且没有错误动作，按严格安全结果计为正确，并非漏日志或漏判。
+
+当前决策由 Active BLOCK 更新为 Active REVIEW。固定 12 条 Shadow 门禁已经通过，
+但样本规模较小，而且尚未执行真实控制动作。下一步应只在隔离 FDB worker 上进行
+可回滚的 Active p20；p20 无非中断误触发且强中断保持 3/3 后，再进入 p50。
