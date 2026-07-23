@@ -183,3 +183,40 @@ Qwen 实时 ASR 支持通过 `session.input_audio_transcription.corpus.text` 提
 操作过程中发现一次非交互 `uv run` 重建了不完整的 `.venv`。已使用原始 `uv.lock`、独立目录和国内镜像恢复环境，完成 186 个测试后原子切换，并重启验证：Shadow Worker 和 Token Bridge 均为 active，Worker 已重新注册为 `health-assistant-qwen-fdb-shadow`。损坏环境保留为 `.venv.broken_20260723_1013`，便于审计，未影响 FDB 产物。
 
 因此下一项工程工作已从“准备回放数据”推进为“实现候选检测器回放接口与首个声学 + 流式文本基线”，仍只输出 Shadow 决策，不接管 Active 控制。
+
+## 13. 7 月 23 日续作：留出集与 Replay Runner
+
+已完成确定性留出集选择器和事件驱动 Replay Runner，生产 MMI 路径未改动。
+
+| 项目 | 结果 | 中文说明 |
+|---|---:|---|
+| 服务器完整相关测试 | 192 passed | 包含 173 个 MMI 测试、分析器/导出器以及新增的选择器和回放测试 |
+| 调参排除范围 | 28 个 Shadow run | 排除完整基线之外的 Shadow 调参、边界、badcase 和 per20 manifest |
+| 排除样本并集 | 23/23/23/24 | 依次为 background、talking_to_other、backchannel、interruption |
+| 冻结留出集 | 80 条 | 四类各 20 条，seed=`20260723`，使用硬链接生成，不重复复制源音频块 |
+| v4 per20 历史回放 | 80/80 对齐 | 复现 TP=19、FN=1、FP=2、TN=58，控制结果与正式分析器完全一致 |
+| P11 历史回放 | 12/12 对齐 | 复现 TP=6、FN=0、FP=2、TN=4 |
+
+留出集路径：
+
+`/opt/Full-Duplex-Bench/data_subsets/en_mmi_holdout_v1_20260723`
+
+Replay Runner 按时间合并以下输入：
+
+- Agent `stt_input` 或 `raw_input` PCM，每 200 ms 一帧；
+- 流式 ASR interim/final；
+- Agent/User 状态变化；
+- SpeakerGate 事件；
+- 历史 MMI 决策。
+
+v4 per20 实际回放共处理 10,458 个音频块、495 条 ASR、509 条 MMI 决策、434 条 SpeakerGate 事件和 1,026 条状态事件。历史日志基线只用于证明回放口径正确，不作为新的候选模型成绩。
+
+严格口径说明：完整英文基线历史上已经覆盖全部 FDB v1.5，因此现有数据无法宣称“从未运行过”。本留出集的含义是**未进入后续 28 个 MMI 调参/回归 run**。当前 v5 不提前运行该留出集，待候选检测器冻结后再进行一次性评估。
+
+归档文件：
+
+- `FDB_MMI_HOLDOUT_V1_20260723.json`
+- `FDB_MMI_REPLAY_LOGGED_BASELINE_V4_PER20_20260723.json`
+- `FDB_MMI_REPLAY_LOGGED_BASELINE_P11_20260723.json`
+
+下一步是基于统一 `StreamingReplayDetector` 接口实现首个流式文本语义候选，再加入同时间窗声学特征进行 A/B；两者先在已见开发集上调试，冻结后才读取上述留出集结果。
