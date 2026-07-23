@@ -1,0 +1,34 @@
+{
+  "manifest_path": "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_holdout_v2_20260723/mmi_replay_v1/manifest.jsonl",
+  "frame_ms": 200,
+  "audio_source": "stt_input",
+  "detector": "logged_mmi_baseline",
+  "samples": 80,
+  "historical_parity_count": 80,
+  "historical_parity_rate": 1.0,
+  "strict_control_correct": 78,
+  "strict_control_accuracy": 0.975,
+  "target_state_correct": 61,
+  "target_state_accuracy": 0.7625,
+  "control_confusion_matrix": {
+    "tp": 18,
+    "fn": 2,
+    "fp": 0,
+    "tn": 60,
+    "recall": 0.9,
+    "false_positive_rate": 0.0
+  },
+  "scenario_counts": {
+    "background_speech": 20,
+    "talking_to_other": 20,
+    "user_backchannel": 20,
+    "user_interruption": 20
+  },
+  "event_counts": {
+    "asr": 494,
+    "audio": 10263,
+    "mmi_decision": 499,
+    "speaker_gate": 432,
+    "state": 1022
+  }
+}

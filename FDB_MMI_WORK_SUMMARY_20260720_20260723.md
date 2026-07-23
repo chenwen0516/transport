@@ -335,3 +335,93 @@ v3.2 留出集已经解封为错误分析数据，后续不得继续作为新版
 - `FDB_MMI_HOLDOUT_REPLAY_EXPORT_20260723.json`
 - `FDB_MMI_HOLDOUT_LOGGED_BASELINE_20260723.json`
 - `FDB_MMI_HOLDOUT_SEMANTIC_HYBRID_V3_2_20260723.json`
+
+## 16. 分层纠错 overlay v4 与 holdout v2
+
+在 v3.2 留出集失败后，没有继续让 Qwen 单独控制，而是实现独立文件
+`evaluation/fdb_mmi_semantic_overlay.py`。冻结版本为
+`2026-07-23.semantic-overlay-v4-frozen`。
+
+v4 的控制原则是：
+
+- 现有低延迟 MMI 是主决策，`START_LISTENING` 默认保留；
+- 仅当首个稳定语义明确寻址他人、明确 backchannel，或整轮都是无请求形式的
+  陈述句时，才抑制基础 MMI 的打断；
+- 反向补打断只接受高精度抢话/改题 cue，普通文本命令不能覆盖基础抑制；
+- 使用两条连续 partial 或一条 final 确认，避免单个流式假设直接改控制。
+
+已用开发集结果：
+
+| 数据集 | 样本数 | TP/FN/FP/TN | 严格正确率 |
+|---|---:|---|---:|
+| P11 压力集 | 12 | 6/0/1/5 | 91.67% |
+| v4 per20 | 80 | 20/0/0/60 | 100% |
+| 已解封 holdout v1 | 80 | 20/0/0/60 | 100% |
+
+上述结果仅用于开发，不能替代新留出集。为此创建 holdout v2，额外排除 holdout
+v1 的 80 条样本：
+
+| 项目 | 结果 |
+|---|---:|
+| 排除样本总数 | 173 |
+| background 排除数 | 43 |
+| talking-to-other 排除数 | 43 |
+| backchannel 排除数 | 43 |
+| interruption 排除数 | 44 |
+| 新留出集 | 四类各 20 条，共 80 条 |
+| seed | `20260724` |
+
+holdout v2 运行目录：
+
+`en_qwen_shadow_mmi_holdout_v2_20260723`
+
+80/80 样本、160 次成对会话均成功，没有 Agent not-ready 重试。3 条
+`response_completion_timeout` warning 不影响 MMI replay 完整性。
+
+### 16.1 holdout v2 最终结果
+
+| 方法 | TP/FN/FP/TN | 严格正确率 | 打断召回 | 非打断误停率 |
+|---|---|---:|---:|---:|
+| 历史 Shadow 日志 | 18/2/0/60 | 97.50% | 90% | 0% |
+| 语义单独决策 v3.2 | 17/3/3/57 | 92.50% | 85% | 5% |
+| 分层纠错 overlay v4 | 20/0/0/60 | 100% | 100% | 0% |
+
+v4 在完全隔离的新留出集上满足控制门禁。它只改变两条历史结果：
+
+- `user_interruption/80`：早期流式 ASR 保留了
+  `Actually, let's switch gears...`，即使最终上下文被改写为 `Recently.`，
+  overlay 仍正确捕获改题；
+- `user_interruption/162`：`before I forget` 连续出现在 partial/final，
+  overlay 正确补回基础 MMI 漏掉的打断。
+
+目标语义状态正确率仍只有 63/80（78.75%），因此 100% 是控制二分类结果，
+不是五状态语义分类结果。
+
+### 16.2 冻结与上线边界
+
+冻结时服务器相关测试为 **240 passed**。校验值：
+
+| 文件 | SHA-256 |
+|---|---|
+| `evaluation/fdb_mmi_semantic_overlay.py` | `9c16b459636e7e1857b06e3a82c4527b9f254323a3909cc52cb4508f3fc9dd5f` |
+| `evaluation/fdb_mmi_semantic.py` | `fd42e37b5f128726599d2ada3254de01c4b7e044f09d6b44aea944f9cf00cdd0` |
+| `evaluation/run_fdb_mmi_replay.py` | `13169107d7d8c7b55a585f971a2aa908a29da9bb2b1b9d8081407ebf66a9d7d0` |
+| holdout v2 manifest | `8e56808219d0a1151d28582f360b9546f49d0afb5eb25cd6f5b4bb72ad08325d` |
+
+该结果允许进入**在线 Shadow 集成**，仍不允许直接 Active：
+
+1. 当前 overlay 回放使用历史 MMI 事件，尚未接入实时 runtime；
+2. replay 的事件时间戳没有计入在线 Qwen 请求等待时间；
+3. holdout v2 的 Qwen API 延迟 P50 为 873.949 ms、P95 为
+   1,192.187 ms，不能同步阻塞实时控制；
+4. 确定性 cue 补打断可以走本地快速路径，语义抑制应异步运行或换成本地轻量模型；
+5. 在线 Shadow 需要记录基础动作、overlay 建议、实际到达延迟和来不及生效的比例，
+   再运行更大规模 FDB 与真实流量观测。
+
+归档文件：
+
+- `FDB_MMI_HOLDOUT_V2_20260723.json`
+- `FDB_MMI_HOLDOUT_V2_REPLAY_EXPORT_20260723.json`
+- `FDB_MMI_HOLDOUT_V2_LOGGED_BASELINE_20260723.json`
+- `FDB_MMI_HOLDOUT_V2_SEMANTIC_HYBRID_V3_2_20260723.json`
+- `FDB_MMI_HOLDOUT_V2_SEMANTIC_OVERLAY_V4_20260723.json`

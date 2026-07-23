@@ -1,0 +1,615 @@
+{
+  "format_version": 1,
+  "purpose": "FDB v1.5 MMI tuning-isolated holdout",
+  "data_root": "/opt/Full-Duplex-Bench/data",
+  "output_root": "/opt/Full-Duplex-Bench/data_subsets/en_mmi_holdout_v2_20260723",
+  "per_scenario": 20,
+  "seed": 20260724,
+  "materialization_mode": "hardlink",
+  "exclude_manifests": [
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_backchannel_fix_20260717_1540/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_backchannel_snapshot_20260717_1554/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_backchannel_thinking_fix_20260717_1548/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_fidelity_fix_20260717_1532/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_fidelity_smoke_20260717_1440/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_fidelity_targeted_20260717_1519/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_fidelity_targeted_20260717_1522/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_latest_ccepaired_v15_per20_20260722/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_latest_v4_ccepaired_v15_per20_20260722/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_badcase_p9_20260722/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_badcases_p10_v4_20260722/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_badcases_p8_20260722_1123/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_regression_p3_20260717_1558/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_regression_p4_20260720_0945/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_regression_p5_20260720_1030/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_regression_p6_20260720_1050/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_regression_p7_20260720_1105/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_temporal_p11_v5_20260723/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_p20_loopback_20260716_1048/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_similarity_boundary_20260720_1043/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_talking15_partial_fix_20260720_1022/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_talking15_vocative_fix_20260720_1028/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_thinking_boundary_20260720_1102/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_unique_smoke_20260720_0941/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_user_interrupt_retry_20260716_1042/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_v15_p1_loopback_20260716_1026/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_verdict_smoke_20260720_0924/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_verdict_smoke_fix_20260720_0935/sample_manifest.json",
+    "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_holdout_v1_20260723/sample_manifest.json"
+  ],
+  "excluded_unique_samples": 173,
+  "excluded_counts": {
+    "background_speech": 43,
+    "talking_to_other": 43,
+    "user_backchannel": 43,
+    "user_interruption": 44
+  },
+  "selected_counts": {
+    "background_speech": 20,
+    "talking_to_other": 20,
+    "user_backchannel": 20,
+    "user_interruption": 20
+  },
+  "selected": [
+    {
+      "scenario": "background_speech",
+      "sample_id": "4",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/4",
+      "source_relative": "v1.5/background_speech/4",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "6",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/6",
+      "source_relative": "v1.5/background_speech/6",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "11",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/11",
+      "source_relative": "v1.5/background_speech/11",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "13",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/13",
+      "source_relative": "v1.5/background_speech/13",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "18",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/18",
+      "source_relative": "v1.5/background_speech/18",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "28",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/28",
+      "source_relative": "v1.5/background_speech/28",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "36",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/36",
+      "source_relative": "v1.5/background_speech/36",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "38",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/38",
+      "source_relative": "v1.5/background_speech/38",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "42",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/42",
+      "source_relative": "v1.5/background_speech/42",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "43",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/43",
+      "source_relative": "v1.5/background_speech/43",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "44",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/44",
+      "source_relative": "v1.5/background_speech/44",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "46",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/46",
+      "source_relative": "v1.5/background_speech/46",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "55",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/55",
+      "source_relative": "v1.5/background_speech/55",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "63",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/63",
+      "source_relative": "v1.5/background_speech/63",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "74",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/74",
+      "source_relative": "v1.5/background_speech/74",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "75",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/75",
+      "source_relative": "v1.5/background_speech/75",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "77",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/77",
+      "source_relative": "v1.5/background_speech/77",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "89",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/89",
+      "source_relative": "v1.5/background_speech/89",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "91",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/91",
+      "source_relative": "v1.5/background_speech/91",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "background_speech",
+      "sample_id": "97",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/background_speech/97",
+      "source_relative": "v1.5/background_speech/97",
+      "target_state": "CONTINUE"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "1",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/1",
+      "source_relative": "v1.5/talking_to_other/1",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "3",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/3",
+      "source_relative": "v1.5/talking_to_other/3",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "16",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/16",
+      "source_relative": "v1.5/talking_to_other/16",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "25",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/25",
+      "source_relative": "v1.5/talking_to_other/25",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "30",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/30",
+      "source_relative": "v1.5/talking_to_other/30",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "37",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/37",
+      "source_relative": "v1.5/talking_to_other/37",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "40",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/40",
+      "source_relative": "v1.5/talking_to_other/40",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "43",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/43",
+      "source_relative": "v1.5/talking_to_other/43",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "46",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/46",
+      "source_relative": "v1.5/talking_to_other/46",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "48",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/48",
+      "source_relative": "v1.5/talking_to_other/48",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "56",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/56",
+      "source_relative": "v1.5/talking_to_other/56",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "67",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/67",
+      "source_relative": "v1.5/talking_to_other/67",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "79",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/79",
+      "source_relative": "v1.5/talking_to_other/79",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "80",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/80",
+      "source_relative": "v1.5/talking_to_other/80",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "85",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/85",
+      "source_relative": "v1.5/talking_to_other/85",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "86",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/86",
+      "source_relative": "v1.5/talking_to_other/86",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "90",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/90",
+      "source_relative": "v1.5/talking_to_other/90",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "92",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/92",
+      "source_relative": "v1.5/talking_to_other/92",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "94",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/94",
+      "source_relative": "v1.5/talking_to_other/94",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "talking_to_other",
+      "sample_id": "96",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/talking_to_other/96",
+      "source_relative": "v1.5/talking_to_other/96",
+      "target_state": "ADDRESSED_OTHER"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "1",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/1",
+      "source_relative": "v1.5/user_backchannel/1",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "3",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/3",
+      "source_relative": "v1.5/user_backchannel/3",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "4",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/4",
+      "source_relative": "v1.5/user_backchannel/4",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "6",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/6",
+      "source_relative": "v1.5/user_backchannel/6",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "13",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/13",
+      "source_relative": "v1.5/user_backchannel/13",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "17",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/17",
+      "source_relative": "v1.5/user_backchannel/17",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "25",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/25",
+      "source_relative": "v1.5/user_backchannel/25",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "36",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/36",
+      "source_relative": "v1.5/user_backchannel/36",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "41",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/41",
+      "source_relative": "v1.5/user_backchannel/41",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "50",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/50",
+      "source_relative": "v1.5/user_backchannel/50",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "51",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/51",
+      "source_relative": "v1.5/user_backchannel/51",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "68",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/68",
+      "source_relative": "v1.5/user_backchannel/68",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "70",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/70",
+      "source_relative": "v1.5/user_backchannel/70",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "74",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/74",
+      "source_relative": "v1.5/user_backchannel/74",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "78",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/78",
+      "source_relative": "v1.5/user_backchannel/78",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "82",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/82",
+      "source_relative": "v1.5/user_backchannel/82",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "84",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/84",
+      "source_relative": "v1.5/user_backchannel/84",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "85",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/85",
+      "source_relative": "v1.5/user_backchannel/85",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "87",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/87",
+      "source_relative": "v1.5/user_backchannel/87",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_backchannel",
+      "sample_id": "93",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_backchannel/93",
+      "source_relative": "v1.5/user_backchannel/93",
+      "target_state": "BACKCHANNEL"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "10",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/10",
+      "source_relative": "v1.5/user_interruption/10",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "12",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/12",
+      "source_relative": "v1.5/user_interruption/12",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "13",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/13",
+      "source_relative": "v1.5/user_interruption/13",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "33",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/33",
+      "source_relative": "v1.5/user_interruption/33",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "35",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/35",
+      "source_relative": "v1.5/user_interruption/35",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "60",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/60",
+      "source_relative": "v1.5/user_interruption/60",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "71",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/71",
+      "source_relative": "v1.5/user_interruption/71",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "80",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/80",
+      "source_relative": "v1.5/user_interruption/80",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "86",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/86",
+      "source_relative": "v1.5/user_interruption/86",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "96",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/96",
+      "source_relative": "v1.5/user_interruption/96",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "105",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/105",
+      "source_relative": "v1.5/user_interruption/105",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "112",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/112",
+      "source_relative": "v1.5/user_interruption/112",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "124",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/124",
+      "source_relative": "v1.5/user_interruption/124",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "126",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/126",
+      "source_relative": "v1.5/user_interruption/126",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "129",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/129",
+      "source_relative": "v1.5/user_interruption/129",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "137",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/137",
+      "source_relative": "v1.5/user_interruption/137",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "153",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/153",
+      "source_relative": "v1.5/user_interruption/153",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "162",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/162",
+      "source_relative": "v1.5/user_interruption/162",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "177",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/177",
+      "source_relative": "v1.5/user_interruption/177",
+      "target_state": "INTERRUPT"
+    },
+    {
+      "scenario": "user_interruption",
+      "sample_id": "198",
+      "source": "/opt/Full-Duplex-Bench/data/v1.5/user_interruption/198",
+      "source_relative": "v1.5/user_interruption/198",
+      "target_state": "INTERRUPT"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "format_version": 1,
+  "run_dir": "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_holdout_v2_20260723",
+  "agent_runs_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs",
+  "timezone": "Asia/Shanghai",
+  "includes_transcripts": true,
+  "samples": 80,
+  "joined": 80,
+  "replay_ready": 80,
+  "scenario_counts": {
+    "background_speech": 20,
+    "talking_to_other": 20,
+    "user_backchannel": 20,
+    "user_interruption": 20
+  },
+  "target_state_counts": {
+    "ADDRESSED_OTHER": 20,
+    "BACKCHANNEL": 20,
+    "CONTINUE": 20,
+    "INTERRUPT": 20
+  },
+  "duplicate_agent_room_count": 1,
+  "missing_artifacts": {}
+}
