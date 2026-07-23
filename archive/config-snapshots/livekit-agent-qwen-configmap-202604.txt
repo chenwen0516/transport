@@ -31,36 +31,36 @@ data:
   .env_deprecated: |-
     # LiveKit Server 配置
     LIVEKIT_URL=wss://digitalhumanai.top:7880
-    LIVEKIT_API_KEY=APIfSxR7qK3mVcNp
-    LIVEKIT_API_SECRET=Xt9BwL2vHjKdE5nYzQ8cP4sU6fA1rG7m
+    LIVEKIT_API_KEY=<redacted>
+    LIVEKIT_API_SECRET=<redacted>
 
     # LLM 配置（需要你填写）
     LLM_BASE_URL=https://api.siliconflow.cn/v1
-    LLM_API_KEY=sk-tiqhgejkfwcuqayxajhooeaxwbvwthfcwmcxbtsfnxrumplq
+    LLM_API_KEY=<redacted>
     TEXT_LLM_MODEL=Qwen/Qwen3-30B-A3B-Instruct-2507
     VISION_LLM_MODEL=Qwen/Qwen3-VL-8B-Instruct
 
     # LLM 配置（需要你填写）
     # LLM_BASE_URL=https://mastudio.cn-southwest-2.myhuaweicloud.com/api/v2
-    # LLM_API_KEY=6a1a5267-f953-4dca-8a1d-1c9ad7f58fdc_7AC2FE46F965C739C6638B08AA8D88ADDACD459BE06012AF5502A67A2DE47A20
+    # LLM_API_KEY=<redacted>
     # TEXT_LLM_MODEL=qwen3-30b-a3b-instruct-2507
     # VISION_LLM_MODEL=qwen3-30b-a3b-instruct-2507
 
     # 火山引擎配置（需要你填写）
     VOLCENGINE_STT_APP_ID=2745679022
     VOLCENGINE_STT_CLUSTER=volcengine_streaming_common
-    VOLCENGINE_STT_ACCESS_TOKEN=lkd5ovRoxLZJJGZRxOU06AuPb8mADIjn
+    VOLCENGINE_STT_ACCESS_TOKEN=<redacted>
     HUAWEI_VAD_TAIL=600
 
     VOLCENGINE_TTS_APP_ID=2745679022
     VOLCENGINE_TTS_CLUSTER=volcano_tts 
-    VOLCENGINE_TTS_ACCESS_TOKEN=lkd5ovRoxLZJJGZRxOU06AuPb8mADIjn
+    VOLCENGINE_TTS_ACCESS_TOKEN=<redacted>
 
     # 华为云 SIS 配置 (STT + TTS) - 当 STT_PROVIDER=huawei / TTS_PROVIDER=huawei 时使用
     HUAWEI_PROJECT_ID=0ba4d6b2ce00f5dc2f89c01d8dcec3fd
     HUAWEI_REGION=cn-east-3
-    HUAWEI_AK=HPUAHWW3YBACKQCJNPVJ
-    HUAWEI_SK=mNBj6nJ9j63Rw800hSIgkEYsAfkOzlcx2BSuwA8l
+    HUAWEI_AK=<redacted>
+    HUAWEI_SK=<redacted>
     HUAWEI_TTS_VOICE=chinese_huaxiaoya_common
     # standard（默认，RTTS）或 bigmodel（VCS 声音复刻）
     HUAWEI_TTS_MODE=bigmodel  
@@ -112,8 +112,8 @@ data:
 
     [livekit]
     url = "wss://digitalhumanai.top:7880"
-    api_key = "APIfSxR7qK3mVcNp"
-    api_secret = "Xt9BwL2vHjKdE5nYzQ8cP4sU6fA1rG7m"
+    api_key = "<redacted>"
+    api_secret = "<redacted>"
 
     [agent]
     agent_name = "health-assistant-qwen-dev"
@@ -130,7 +130,7 @@ data:
     #[llm]
     #provider = "openai"
     #base_url = "https://api.siliconflow.cn/v1"
-    #api_key = "sk-tiqhgejkfwcuqayxajhooeaxwbvwthfcwmcxbtsfnxrumplq"
+    #api_key = "<redacted>"
     #text_model = "Qwen/Qwen3-30B-A3B-Instruct-2507"
     #vision_model = "Qwen/Qwen3-VL-8B-Instruct"
     #vlm_timeout = 60.0
@@ -138,7 +138,7 @@ data:
     [llm]
     provider = "openai"
     base_url = "https://mastudio.cn-southwest-2.myhuaweicloud.com/api/v2"
-    api_key = "6a1a5267-f953-4dca-8a1d-1c9ad7f58fdc_7AC2FE46F965C739C6638B08AA8D88ADDACD459BE06012AF5502A67A2DE47A20"
+    api_key = "<redacted>"
     text_model = "qwen3-30b-a3b-instruct-2507"
     vision_model = "qwen3-30b-a3b-instruct-2507"
     vlm_timeout = 60.0
@@ -150,14 +150,14 @@ data:
 
     [stt.volcengine]
     app_id = "2745679022"
-    access_token = "lkd5ovRoxLZJJGZRxOU06AuPb8mADIjn"
+    access_token = "<redacted>"
     cluster = "volcengine_streaming_common"
 
     [stt.huawei]
     project_id = "0ba4d6b2ce00f5dc2f89c01d8dcec3fd"
     region = "cn-east-3"
-    ak = "HPUAHWW3YBACKQCJNPVJ"
-    sk = "mNBj6nJ9j63Rw800hSIgkEYsAfkOzlcx2BSuwA8l"
+    ak = "<redacted>"
+    sk = "<redacted>"
     vad_tail = 600
 
     [stt.qwen]
@@ -174,14 +174,14 @@ data:
     [tts.volcengine]
     app_id = "2745679022"
     cluster = "volcano_tts"
-    access_token = "lkd5ovRoxLZJJGZRxOU06AuPb8mADIjn"
+    access_token = "<redacted>"
     voice = "BV700_V2_streaming"
 
     [tts.huawei]
     project_id = "0ba4d6b2ce00f5dc2f89c01d8dcec3fd"
     region = "cn-east-3"
-    ak = "HPUAHWW3YBACKQCJNPVJ"
-    sk = "mNBj6nJ9j63Rw800hSIgkEYsAfkOzlcx2BSuwA8l"
+    ak = "<redacted>"
+    sk = "<redacted>"
     voice = "chinese_huaxiaoya_common"
     mode = "bigmodel"
 
