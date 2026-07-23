@@ -1,0 +1,54 @@
+{
+  "manifest_path": "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_mmi_temporal_p11_v5_20260723/mmi_replay_v1/manifest.jsonl",
+  "frame_ms": 200,
+  "audio_source": "stt_input",
+  "detector": "cached_streaming_semantic",
+  "samples": 12,
+  "historical_parity_count": 11,
+  "historical_parity_rate": 0.916667,
+  "strict_control_correct": 11,
+  "strict_control_accuracy": 0.916667,
+  "target_state_correct": 10,
+  "target_state_accuracy": 0.833333,
+  "control_confusion_matrix": {
+    "tp": 6,
+    "fn": 0,
+    "fp": 1,
+    "tn": 5,
+    "recall": 1.0,
+    "false_positive_rate": 0.166667
+  },
+  "scenario_counts": {
+    "talking_to_other": 6,
+    "user_interruption": 6
+  },
+  "event_counts": {
+    "asr": 86,
+    "audio": 1499,
+    "mmi_decision": 85,
+    "speaker_gate": 74,
+    "state": 156
+  },
+  "semantic_cache": {
+    "prompt_version": "2026-07-23.streaming-semantic-v3",
+    "model": "qwen3-30b-a3b",
+    "requests": 45,
+    "successful": 45,
+    "errors": 0,
+    "state_counts": {
+      "ADDRESSED_OTHER": 10,
+      "BACKCHANNEL": 1,
+      "CONTINUE": 23,
+      "INTERRUPT": 11
+    },
+    "api_latency_ms": {
+      "count": 45,
+      "p50": 893.537,
+      "p95": 1310.493,
+      "min": 534.417,
+      "max": 1626.149
+    }
+  },
+  "min_confidence": 0.8,
+  "partial_confirmations": 2
+}
