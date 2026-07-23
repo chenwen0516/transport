@@ -158,3 +158,28 @@ Qwen 实时 ASR 支持通过 `session.input_audio_transcription.corpus.text` 提
 | MMI 分析器 | `backend/livekit_agent/evaluation/analyze_fdb_mmi.py` |
 
 本文未包含 Token、API Key、服务器密码等敏感信息。凭据曾在命令行和对话中使用，后续应统一轮换并改用服务器密钥管理或受限环境变量文件。
+
+## 12. 7 月 23 日续作：离线回放数据准备
+
+在完成上述总结后，已继续实现并运行第一版 FDB + MMI 多模态回放导出器：
+
+| 项目 | 结果 | 中文说明 |
+|---|---:|---|
+| 导出器 | `evaluation/export_fdb_mmi_replay.py` | 按 LiveKit room 关联 FDB 与 Agent，不复制大体积 WAV，只写绝对路径和对齐时间线 |
+| 导出器与分析器测试 | 13 passed | 覆盖时间对齐、标签映射、控制终态口径和默认隐藏 transcript |
+| 完整相关测试 | 186 passed | 包含 MMI、分析器和回放导出器测试 |
+| v4 per20 回放集 | 80/80 replay-ready | 四类各 20 条，均具备 raw/STT 音频、流式 ASR、MMI 和 SpeakerGate 时间线 |
+| P11 v5 回放集 | 12/12 replay-ready | 包含 6 条 `ADDRESSED_OTHER` 和 6 条 `INTERRUPT` 压力样本 |
+
+回放标签显式区分 `CONTINUE`、`ADDRESSED_OTHER`、`BACKCHANNEL` 和 `INTERRUPT`；后续模型还应支持 `UNCERTAIN`，但 FDB 当前没有该状态的直接监督标签。
+
+服务器产物：
+
+- v4 per20：`en_qwen_shadow_latest_v4_ccepaired_v15_per20_20260722/mmi_replay_v1/manifest.jsonl`
+- P11 v5：`en_qwen_shadow_mmi_temporal_p11_v5_20260723/mmi_replay_v1/manifest.jsonl`
+
+样本 49 的回放时间线验证了修复前后差异：v4 会先产生 `Edes, can you?`，随后改写为 `It is...`；v5 的第一条目标轮 ASR 已直接是 `It is. Can you?`。这进一步证明 addressee 检测必须尽量利用早期流式语义和声学证据，不能只读取最终文本。
+
+操作过程中发现一次非交互 `uv run` 重建了不完整的 `.venv`。已使用原始 `uv.lock`、独立目录和国内镜像恢复环境，完成 186 个测试后原子切换，并重启验证：Shadow Worker 和 Token Bridge 均为 active，Worker 已重新注册为 `health-assistant-qwen-fdb-shadow`。损坏环境保留为 `.venv.broken_20260723_1013`，便于审计，未影响 FDB 产物。
+
+因此下一项工程工作已从“准备回放数据”推进为“实现候选检测器回放接口与首个声学 + 流式文本基线”，仍只输出 Shadow 决策，不接管 Active 控制。
