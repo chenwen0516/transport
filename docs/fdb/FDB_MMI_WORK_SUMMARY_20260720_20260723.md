@@ -462,3 +462,37 @@ python3 evaluation/analyze_semantic_overlay_shadow.py tmp/runs \
 小规模英文 FDB，统计语义请求成功率、P50/P95、300 ms 内到达率、丢弃率和
 `would_change_action` 分布。只有在线时序和控制收益同时满足门禁，才讨论本地轻量
 模型或 Active Canary。
+
+## 18. 7 月 23 日续作：服务器在线 Shadow 部署与 P1 冒烟
+
+在线观察器已部署到 `/opt/health-assistant` 的专用 Shadow Worker。部署前已备份
+原文件，备份目录为：
+
+`/opt/health-assistant-backups/semantic-overlay-20260723_163458`
+
+服务器配置继续使用 `mode=shadow`，语义观察器复用现有 `[llm]` 的
+`qwen3-30b-a3b`，没有复制或新增明文 API Key。部署后远端针对性回归为
+`192 passed`，Worker 已重新注册为 `health-assistant-qwen-fdb-shadow`。
+
+P1 冒烟 run：
+
+`en_qwen_shadow_semantic_overlay_online_v1_smoke_p1_20260723`
+
+| 指标 | 结果 | 中文说明 |
+|---|---:|---|
+| FDB 样本 | 4/4 | background、talking-to-other、backchannel、interruption 各 1 条。 |
+| Agent 日志关联 | 4/4 | noisy 会话全部关联成功，Shadow 没有执行真实动作。 |
+| 基础控制矩阵 | TP=1/FN=0/FP=1/TN=2 | 唯一误打断来自 talking-to-other。 |
+| 语义请求 | 11/11 成功 | 没有请求错误或并发丢弃。 |
+| API 延迟 | P50=872.804 ms，P95=1011.095 ms | 明显超过实时同步控制窗口。 |
+| 300 ms 内到达率 | 0% | 远端 Qwen 不能直接放进同步 Active 链路。 |
+| Overlay 决策变化 | 3/18 | 包含将 talking-to-other 误打断建议改为继续输出。 |
+| 当前结论 | Active BLOCK | 纠错方向有价值，但远端语义延迟不满足实时要求。 |
+
+已启动四场景各 20 条的正式在线 Shadow：
+
+`en_qwen_shadow_semantic_overlay_online_v1_per20_20260723`
+
+systemd 单元：
+
+`fdb-semantic-overlay-online-v1-per20-20260723.service`
