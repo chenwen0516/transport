@@ -47,3 +47,19 @@ TP/FN/FP/TN=`16/4/1/59`，未通过门禁；评估后该集合已解封为 v4 �
 ## Regression P7
 
 `regression-p7/` 保留早期 12 条 Shadow 回归的 CSV、JSON 和可读文本报告。
+
+## Online Shadow v1
+
+`online-shadow-v1/` 保存 2026-07-23 正式在线 Shadow 的基础 MMI、远端语义延迟、
+样本级决策对齐和 2026-07-27 v5 策略反事实结果。
+
+| 文件 | 含义 |
+|---|---|
+| `FDB_MMI_ONLINE_SHADOW_V1_PER20_20260723.*` | 四场景各 20 条的基础 MMI 报告 |
+| `SEMANTIC_OVERLAY_ONLINE_V1_PER20_20260723.json` | 243 次在线语义请求的成功率、丢弃率和延迟 |
+| `SEMANTIC_OVERLAY_SAMPLE_ALIGNMENT_V1_PER20_20260723.json` | 修正字段后 345 条目标决策的逐样本对齐 |
+| `SEMANTIC_OVERLAY_POLICY_V5_COUNTERFACTUAL_20260727.json` | v5 边界修复后的有状态反事实矩阵 |
+
+结果摘要：基础 MMI 为 TP/FN/FP/TN=`20/0/4/56`；v5 反事实为
+`20/0/1/59`。远端语义延迟 P50=`850.725 ms`、P95=`1062.657 ms`，
+300 ms 内到达率为 0%，因此结果只支持继续 Shadow，不支持直接 Active。

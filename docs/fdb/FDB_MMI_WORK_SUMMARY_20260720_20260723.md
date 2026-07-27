@@ -496,3 +496,101 @@ P1 冒烟 run：
 systemd 单元：
 
 `fdb-semantic-overlay-online-v1-per20-20260723.service`
+
+## 19. 7 月 27 日续作：正式在线 Shadow 结果与 v5 边界修复
+
+正式 run `en_qwen_shadow_semantic_overlay_online_v1_per20_20260723` 已完成。
+80 条样本全部推理成功，80/80 Agent 日志关联成功，noisy/clean ASR 共
+160/160 成功。基础 MMI 共产生 506 条决策，没有格式损坏；本轮保持 Shadow，
+`executed=true` 为 0。
+
+### 19.1 基础 MMI 结果
+
+| 场景 | 样本数 | 打断 | 抑制 | 无目标决策 | 严格正确率 | 中文说明 |
+|---|---:|---:|---:|---:|---:|---|
+| background speech | 20 | 1 | 18 | 1 | 95% | 有 1 条背景语音误打断。 |
+| talking to other | 20 | 3 | 17 | 0 | 85% | 有 3 条对他人说话被误打断。 |
+| user backchannel | 20 | 0 | 20 | 0 | 100% | 20 条附和均未打断。 |
+| user interruption | 20 | 20 | 0 | 0 | 100% | 20 条真实打断全部召回。 |
+
+基础二分类矩阵为 TP/FN/FP/TN=`20/0/4/56`，打断召回率 100%，非打断误停率
+6.67%。召回已达标，但误停率未达标，因此基础策略仍为 `Active BLOCK`。
+MMI 事件处理 P95 为 2.849 ms，说明本地规则链本身很快，错误主要来自语义和
+说话对象判断，而不是代码执行耗时。
+
+### 19.2 在线语义观察结果
+
+| 指标 | 结果 | 中文说明 |
+|---|---:|---|
+| 请求总数 | 243 | 80 条会话中的流式 partial/final 语义请求。 |
+| 成功 | 242（99.59%） | 只有 1 条没有获得语义结果。 |
+| 丢弃 | 1（0.41%） | 原因为 `max_concurrency_reached`，按 fail-open 处理。 |
+| 错误 | 0 | 没有 HTTP、超时或解析错误。 |
+| 延迟 P50 | 850.725 ms | 已明显超过 300 ms 假设生效窗口。 |
+| 延迟 P95 | 1062.657 ms | 尾延迟约 1.06 秒。 |
+| 300 ms 内到达 | 0/242（0%） | 远端 Qwen 不可直接进入同步 Active 控制链。 |
+
+日志中的 `semantic_arrived_before_base_decision` 不能直接理解为“来得及阻止用户
+听见的中断”。部分基础决策由 `native_assistant_item_interrupted` 触发，此时原生
+打断已经发生，之后到达的语义建议只能用于反事实分析，不能撤销已经发生的音频停止。
+
+### 19.3 对齐修正与反事实结果
+
+样本级分析最初错误地使用 `event_id` 对齐基础决策；基础决策实际字段为
+`based_on_event_id`。修正后 345/345 条目标 turn 决策全部匹配，只有 1 条本来就
+没有目标决策的样本为零匹配。
+
+正式日志还暴露了两个策略边界：
+
+1. 旧 overlay 会把 `START_SPEAKING` 和 `CONTINUE_LISTENING` 改成
+   `START_LISTENING`。正式日志中共有 38 次这种端点检测动作误改写。
+2. `BACKCHANNEL` 曾无条件压制打断，导致完整抢话问句
+   “Oh, by the way, how do I know...” 存在被误压制风险。
+
+在线策略已升级为 `2026-07-27.semantic-overlay-v5-online-guard`：
+
+- 只允许在 `START_LISTENING` 与 `CONTINUE_SPEAKING` 两条打断通道上纠错；
+- `START_SPEAKING`、`CONTINUE_LISTENING` 等端点检测动作保持基础决策；
+- 带显式抢话 cue 的完整问句不能仅凭 `BACKCHANNEL` 标签压制。
+
+将 v5 规则按日志顺序做有状态反事实回放，得到：
+
+| 方法 | TP/FN/FP/TN | 严格正确率 | 打断召回 | 非打断误停率 |
+|---|---|---:|---:|---:|
+| 基础 MMI | 20/0/4/56 | 95.00% | 100% | 6.67% |
+| 在线 overlay v5 反事实 | 20/0/1/59 | 98.75% | 100% | 1.67% |
+
+v5 建议纠正了 3 条误打断：
+
+- `v1.5/background_speech/82`
+- `v1.5/talking_to_other/38`
+- `v1.5/talking_to_other/68`
+
+剩余错误是 `v1.5/talking_to_other/49`。数据标注中的称呼为 “IT desk”，在线 ASR
+却识别成 “Eddes/Yes”，语义模型因而把后续 “Can you reset my password?” 判断为
+面向助手的新请求。该问题不能靠继续增加文本规则稳定解决，下一步需要保留早期称呼
+假设，并引入说话对象或重叠音频的声学证据。
+
+### 19.4 部署与门禁结论
+
+修复前服务器文件已备份到：
+
+`/opt/health-assistant-backups/semantic-overlay-policy-fix-20260727_090023`
+
+服务器 MMI/评估相关回归为 `237 passed`，overlay 定向回归为 `12 passed`。
+独立 Worker 已恢复运行并注册为 `health-assistant-qwen-fdb-shadow`，仍是
+`mode=shadow`、Active 比例 0%，没有修改 CCE 工作负载。
+
+当前结论仍为 **Active BLOCK**。原因不是反事实准确率，而是远端语义请求
+P50 约 851 ms 且 300 ms 内到达率为 0%。下一阶段应先做本地快速语义层或蒸馏模型，
+并把控制点前移到原生打断发生之前，再跑新的在线 Shadow；不能直接把远端 Qwen
+切成 Active。
+
+归档文件：
+
+- [基础 MMI JSON](../../results/fdb/online-shadow-v1/FDB_MMI_ONLINE_SHADOW_V1_PER20_20260723.json)
+- [基础 MMI CSV](../../results/fdb/online-shadow-v1/FDB_MMI_ONLINE_SHADOW_V1_PER20_20260723.csv)
+- [基础 MMI 文本报告](../../results/fdb/online-shadow-v1/FDB_MMI_ONLINE_SHADOW_V1_PER20_20260723.txt)
+- [在线语义汇总](../../results/fdb/online-shadow-v1/SEMANTIC_OVERLAY_ONLINE_V1_PER20_20260723.json)
+- [样本级对齐](../../results/fdb/online-shadow-v1/SEMANTIC_OVERLAY_SAMPLE_ALIGNMENT_V1_PER20_20260723.json)
+- [v5 有状态反事实结果](../../results/fdb/online-shadow-v1/SEMANTIC_OVERLAY_POLICY_V5_COUNTERFACTUAL_20260727.json)

@@ -1,0 +1,3425 @@
+{
+  "source_run": "en_qwen_shadow_semantic_overlay_online_v1_per20_20260723",
+  "policy": "2026-07-27.semantic-overlay-v5-online-guard",
+  "method": "stateful counterfactual replay over matched target-turn decisions; v5 only rewrites START_LISTENING and CONTINUE_SPEAKING",
+  "samples": 80,
+  "matrix": {
+    "tp": 20,
+    "fn": 0,
+    "fp": 1,
+    "tn": 59
+  },
+  "metrics": {
+    "strict_accuracy": 0.9875,
+    "interrupt_recall": 1.0,
+    "non_interrupt_false_interrupt_rate": 0.016666666666666666,
+    "precision": 0.9523809523809523,
+    "f1": 0.975609756097561
+  },
+  "rejected_endpointing_rewrites": 38,
+  "changed_samples": [
+    {
+      "sample": "v1.5/background_speech/82",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": true,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_suppress_interrupt:continue"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/38",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": true,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_suppress_interrupt:continue"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/68",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": true,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_suppress_interrupt:continue"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    }
+  ],
+  "remaining_errors": [
+    {
+      "sample": "v1.5/talking_to_other/49",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Counterfactual Shadow result; overlay actions were not executed.",
+    "Remote semantic latency is measured separately and is not included in this classification matrix.",
+    "A recommendation logged after native_assistant_item_interrupted cannot undo the audible interruption."
+  ],
+  "rows": [
+    {
+      "sample": "v1.5/background_speech/1",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": []
+    },
+    {
+      "sample": "v1.5/background_speech/14",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/20",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 9,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/21",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/23",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/26",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/34",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 9,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/39",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/48",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/56",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 16,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/59",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/65",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/68",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/70",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/78",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/81",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/82",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": true,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_suppress_interrupt:continue"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/93",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/98",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/background_speech/100",
+      "scenario": "background_speech",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 9,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 13,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 13,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/2",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/9",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/15",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/33",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 9,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/35",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 9,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/38",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": true,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_suppress_interrupt:continue"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/44",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/49",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/50",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 9,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/55",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/60",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 9,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/68",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": true,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_suppress_interrupt:continue"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/69",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/71",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/77",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/83",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 16,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 17,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 17,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/88",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/93",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/97",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/talking_to_other/99",
+      "scenario": "talking_to_other",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/7",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/12",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_LISTENING",
+          "v5_action": "CONTINUE_LISTENING",
+          "trigger": "endpointing_timer",
+          "event_id": 12,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "CONTINUE_LISTENING",
+          "v5_action": "CONTINUE_LISTENING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 12,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/15",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/18",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 12,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 12,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/20",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 12,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 12,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/21",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/29",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/34",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_LISTENING",
+          "v5_action": "CONTINUE_LISTENING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 12,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/47",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/52",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/55",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/64",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/66",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/69",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/72",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/75",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/81",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/88",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 12,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 12,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/96",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_backchannel/97",
+      "scenario": "user_backchannel",
+      "expected_interrupt": false,
+      "base_outcome": "SUPPRESS",
+      "v5_counterfactual_outcome": "SUPPRESS",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_keep_base"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/9",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/15",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "shadow_transcript_after_native_interrupt",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "shadow_transcript_after_native_interrupt",
+          "event_id": 16,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/17",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 17,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 18,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 18,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/36",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_recheck",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 17,
+          "reason": "overlay_keep_base_action"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/37",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_LISTENING",
+          "v5_action": "CONTINUE_LISTENING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "CONTINUE_LISTENING",
+          "v5_action": "CONTINUE_LISTENING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/55",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/59",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/64",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/68",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 15,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 16,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/69",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/81",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 16,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 17,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 18,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 18,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/102",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 11,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 15,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 17,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 18,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 18,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/103",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 12,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 15,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 16,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/118",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 16,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 16,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/128",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 9,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 14,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 14,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/146",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 16,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "shadow_transcript_after_native_interrupt",
+          "event_id": 17,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 18,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 18,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/165",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 16,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/168",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "v5_reject_backchannel_suppression_for_floor_taking_question"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 15,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 16,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/184",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 14,
+          "reason": "overlay_explicit_floor_taking_or_redirect_cue"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 16,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 17,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    },
+    {
+      "sample": "v1.5/user_interruption/199",
+      "scenario": "user_interruption",
+      "expected_interrupt": true,
+      "base_outcome": "INTERRUPT",
+      "v5_counterfactual_outcome": "INTERRUPT",
+      "changed": false,
+      "recommendations": [
+        {
+          "base_action": "CONTINUE_SPEAKING",
+          "v5_action": "CONTINUE_SPEAKING",
+          "trigger": "user_started_speaking",
+          "event_id": 10,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "speaker_verdict_after_native_interrupt",
+          "event_id": 13,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_LISTENING",
+          "v5_action": "START_LISTENING",
+          "trigger": "native_assistant_item_interrupted",
+          "event_id": 14,
+          "reason": "overlay_keep_base_action"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "endpointing_timer",
+          "event_id": 15,
+          "reason": "v5_reject_endpointing_rewrite"
+        },
+        {
+          "base_action": "START_SPEAKING",
+          "v5_action": "START_SPEAKING",
+          "trigger": "native_user_turn_committed",
+          "event_id": 15,
+          "reason": "v5_reject_endpointing_rewrite"
+        }
+      ]
+    }
+  ]
+}

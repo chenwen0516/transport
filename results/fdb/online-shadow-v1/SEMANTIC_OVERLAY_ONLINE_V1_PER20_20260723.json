@@ -1,0 +1,49 @@
+{
+  "files": 80,
+  "events": 589,
+  "requests": {
+    "total": 243,
+    "successful": 242,
+    "dropped": 1,
+    "errors": 0,
+    "success_rate": 0.995885,
+    "drop_rate": 0.004115,
+    "error_rate": 0.0
+  },
+  "latency_ms": {
+    "count": 242,
+    "p50": 850.725,
+    "p95": 1062.657,
+    "max": 1246.397,
+    "within_effective_budget": 0,
+    "within_effective_budget_rate": 0.0,
+    "arrived_before_base_decision": 228,
+    "arrived_before_base_decision_rate": 0.65896
+  },
+  "decisions": {
+    "comparisons": 346,
+    "comparison_changes": 53,
+    "result_changes": 38,
+    "base_to_overlay": {
+      "CONTINUE_LISTENING->CONTINUE_LISTENING": 3,
+      "CONTINUE_LISTENING->START_LISTENING": 2,
+      "CONTINUE_SPEAKING->CONTINUE_SPEAKING": 138,
+      "CONTINUE_SPEAKING->START_LISTENING": 11,
+      "START_LISTENING->CONTINUE_SPEAKING": 4,
+      "START_LISTENING->START_LISTENING": 38,
+      "START_SPEAKING->START_LISTENING": 36,
+      "START_SPEAKING->START_SPEAKING": 114
+    }
+  },
+  "semantic_states": {
+    "ADDRESSED_OTHER": 16,
+    "BACKCHANNEL": 29,
+    "CONTINUE": 168,
+    "INTERRUPT": 29
+  },
+  "drop_reasons": {
+    "max_concurrency_reached": 1
+  },
+  "error_types": {},
+  "parse_errors": 0
+}
