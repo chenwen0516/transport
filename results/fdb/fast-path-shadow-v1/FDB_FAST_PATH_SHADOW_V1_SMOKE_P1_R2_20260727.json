@@ -1,0 +1,465 @@
+{
+  "run_dir": "/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_shadow_fast_path_v1_smoke_p1_r2_20260727",
+  "agent_runs_dir": "/opt/health-assistant/backend/livekit_agent/tmp/runs",
+  "summary": {
+    "scope": "FDB v1.5 noisy output sessions",
+    "samples": 4,
+    "joined_samples": 4,
+    "join_rate": 1.0,
+    "target_decision_samples": 4,
+    "target_decision_coverage": 1.0,
+    "decision_count": 23,
+    "malformed_log_lines": 0,
+    "executed_count": 0,
+    "duplicate_agent_room_count": 1,
+    "control_confusion_matrix": {
+      "positive_class": "user_interruption_requires_START_LISTENING",
+      "tp": 1,
+      "fn": 0,
+      "fp": 0,
+      "tn": 3,
+      "recall": 1.0,
+      "precision": 1.0,
+      "false_positive_rate": 0.0
+    },
+    "phase_gates": {
+      "agent_log_join_rate": {
+        "value": 1.0,
+        "threshold": 0.999,
+        "pass": true
+      },
+      "shadow_executed_actions_zero": {
+        "value": 0,
+        "threshold": 0,
+        "pass": true
+      },
+      "required_interruption_decision_coverage": {
+        "value": 1.0,
+        "threshold": 0.999,
+        "pass": true,
+        "note": "Required for user_interruption; negative scenarios without an active or pending agent output need no control action."
+      },
+      "strong_interruption_recall": {
+        "value": 1.0,
+        "threshold": 0.95,
+        "pass": true
+      },
+      "non_interruption_false_interruption_rate": {
+        "value": 0.0,
+        "threshold": 0.0,
+        "pass": true,
+        "note": "Any interruption in background_speech, talking_to_other, or user_backchannel blocks Active rollout."
+      },
+      "backchannel_false_interruption_rate": {
+        "value": 0.0,
+        "threshold": 0.03,
+        "pass": true
+      },
+      "event_processing_latency_p95_ms": {
+        "value": 2.841,
+        "threshold": 20,
+        "pass": true,
+        "note": "SpeakerGate callback-to-MMI-decision latency; transcript_observe_ms is not processing latency."
+      }
+    },
+    "active_verdict": "REVIEW",
+    "scenarios": {
+      "background_speech": {
+        "samples": 1,
+        "joined": 1,
+        "target_decision_coverage": 1.0,
+        "strict_control_accuracy": 1.0,
+        "outcomes": {
+          "SUPPRESS": 1
+        },
+        "lifecycle_outcomes": {
+          "COMMIT": 1
+        },
+        "behavior_labels": {
+          "MISSING": 1
+        },
+        "terminal_actions": {
+          "CONTINUE_SPEAKING": 1
+        },
+        "terminal_reasons": {
+          "speaker_gate_warmup": 1
+        },
+        "terminal_pattern_versions": {
+          "2026-07-23.temporal-addressee-v5": 1
+        },
+        "terminal_turn_speaker_states": {
+          "UNKNOWN": 1
+        },
+        "outcome_by_behavior": {
+          "SUPPRESS|MISSING": 1
+        },
+        "first_target_observe_ms": {
+          "count": 1,
+          "p50": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "terminal_observe_ms": {
+          "count": 1,
+          "p50": 1431.0,
+          "p95": 1431.0,
+          "min": 1431.0,
+          "max": 1431.0
+        },
+        "event_processing_latency_ms": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "min": null,
+          "max": null
+        },
+        "speaker_verdict_recheck_count": 0,
+        "terminal_external_voice_signal_coverage": 0.0,
+        "terminal_speaker_gate_locked_rate": 0.0,
+        "terminal_started_before_speaker_gate_locked_rate": 1.0,
+        "native_start_listening_sessions": 1
+      },
+      "talking_to_other": {
+        "samples": 1,
+        "joined": 1,
+        "target_decision_coverage": 1.0,
+        "strict_control_accuracy": 1.0,
+        "outcomes": {
+          "SUPPRESS": 1
+        },
+        "lifecycle_outcomes": {
+          "COMMIT": 1
+        },
+        "behavior_labels": {
+          "MISSING": 1
+        },
+        "terminal_actions": {
+          "CONTINUE_SPEAKING": 1
+        },
+        "terminal_reasons": {
+          "addressed_to_other": 1
+        },
+        "terminal_pattern_versions": {
+          "2026-07-23.temporal-addressee-v5": 1
+        },
+        "terminal_turn_speaker_states": {
+          "TARGET": 1
+        },
+        "outcome_by_behavior": {
+          "SUPPRESS|MISSING": 1
+        },
+        "first_target_observe_ms": {
+          "count": 1,
+          "p50": 0.0,
+          "p95": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "terminal_observe_ms": {
+          "count": 1,
+          "p50": 1957.0,
+          "p95": 1957.0,
+          "min": 1957.0,
+          "max": 1957.0
+        },
+        "event_processing_latency_ms": {
+          "count": 1,
+          "p50": 2.565,
+          "p95": 2.565,
+          "min": 2.565,
+          "max": 2.565
+        },
+        "speaker_verdict_recheck_count": 1,
+        "terminal_external_voice_signal_coverage": 0.0,
+        "terminal_speaker_gate_locked_rate": 1.0,
+        "terminal_started_before_speaker_gate_locked_rate": 1.0,
+        "native_start_listening_sessions": 1
+      },
+      "user_backchannel": {
+        "samples": 1,
+        "joined": 1,
+        "target_decision_coverage": 1.0,
+        "strict_control_accuracy": 1.0,
+        "outcomes": {
+          "SUPPRESS": 1
+        },
+        "lifecycle_outcomes": {
+          "COMMIT": 1
+        },
+        "behavior_labels": {
+          "MISSING": 1
+        },
+        "terminal_actions": {
+          "CONTINUE_SPEAKING": 1
+        },
+        "terminal_reasons": {
+          "addressed_to_other": 1
+        },
+        "terminal_pattern_versions": {
+          "2026-07-23.temporal-addressee-v5": 1
+        },
+        "terminal_turn_speaker_states": {
+          "UNKNOWN": 1
+        },
+        "outcome_by_behavior": {
+          "SUPPRESS|MISSING": 1
+        },
+        "first_target_observe_ms": {
+          "count": 1,
+          "p50": 373.0,
+          "p95": 373.0,
+          "min": 373.0,
+          "max": 373.0
+        },
+        "terminal_observe_ms": {
+          "count": 1,
+          "p50": 373.0,
+          "p95": 373.0,
+          "min": 373.0,
+          "max": 373.0
+        },
+        "event_processing_latency_ms": {
+          "count": 0,
+          "p50": null,
+          "p95": null,
+          "min": null,
+          "max": null
+        },
+        "speaker_verdict_recheck_count": 0,
+        "terminal_external_voice_signal_coverage": 0.0,
+        "terminal_speaker_gate_locked_rate": 0.0,
+        "terminal_started_before_speaker_gate_locked_rate": 1.0,
+        "native_start_listening_sessions": 1
+      },
+      "user_interruption": {
+        "samples": 1,
+        "joined": 1,
+        "target_decision_coverage": 1.0,
+        "strict_control_accuracy": 1.0,
+        "outcomes": {
+          "INTERRUPT": 1
+        },
+        "lifecycle_outcomes": {
+          "INTERRUPT": 1
+        },
+        "behavior_labels": {
+          "MISSING": 1
+        },
+        "terminal_actions": {
+          "START_LISTENING": 1
+        },
+        "terminal_reasons": {
+          "ordinary_valid_interjection": 1
+        },
+        "terminal_pattern_versions": {
+          "2026-07-23.temporal-addressee-v5": 1
+        },
+        "terminal_turn_speaker_states": {
+          "TARGET": 1
+        },
+        "outcome_by_behavior": {
+          "INTERRUPT|MISSING": 1
+        },
+        "first_target_observe_ms": {
+          "count": 1,
+          "p50": 3122.0,
+          "p95": 3122.0,
+          "min": 3122.0,
+          "max": 3122.0
+        },
+        "terminal_observe_ms": {
+          "count": 1,
+          "p50": 3374.0,
+          "p95": 3374.0,
+          "min": 3374.0,
+          "max": 3374.0
+        },
+        "event_processing_latency_ms": {
+          "count": 1,
+          "p50": 2.856,
+          "p95": 2.856,
+          "min": 2.856,
+          "max": 2.856
+        },
+        "speaker_verdict_recheck_count": 1,
+        "terminal_external_voice_signal_coverage": 0.0,
+        "terminal_speaker_gate_locked_rate": 1.0,
+        "terminal_started_before_speaker_gate_locked_rate": 1.0,
+        "native_start_listening_sessions": 1
+      }
+    }
+  },
+  "duplicate_agent_rooms": {
+    "health-voice-131-1783994059": [
+      "tmp/runs/20260714_095420_health-voice-131-1783994059",
+      "tmp/runs/20260714_095455_health-voice-131-1783994059"
+    ]
+  },
+  "samples": [
+    {
+      "sample": "v1.5/background_speech/70",
+      "scenario": "background_speech",
+      "sample_id": "70",
+      "room": "fdb-1785116197-8bb49c1624",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "tmp/runs/20260727_093638_fdb-1785116197-8bb49c1624",
+      "mmi_log": "tmp/runs/20260727_093638_fdb-1785116197-8bb49c1624/mmi_turn_detection_active_20260727_093638.log",
+      "decision_count": 5,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 2,
+      "speaker_verdict_recheck_count": 0,
+      "event_processing_latencies_ms": [],
+      "event_processing_latency_p95_ms": null,
+      "lifecycle_decision_count": 4,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 1431,
+      "terminal_silence_ms": 0,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "speaker_gate_warmup",
+      "terminal_confidence": 0.5,
+      "terminal_pattern_version": "2026-07-23.temporal-addressee-v5",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": false,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": null,
+      "terminal_turn_speaker_is_target": null
+    },
+    {
+      "sample": "v1.5/talking_to_other/2",
+      "scenario": "talking_to_other",
+      "sample_id": "2",
+      "room": "fdb-1785116247-47b59a834b",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "tmp/runs/20260727_093728_fdb-1785116247-47b59a834b",
+      "mmi_log": "tmp/runs/20260727_093728_fdb-1785116247-47b59a834b/mmi_turn_detection_active_20260727_093728.log",
+      "decision_count": 7,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 3,
+      "speaker_verdict_recheck_count": 1,
+      "event_processing_latencies_ms": [
+        2.565
+      ],
+      "event_processing_latency_p95_ms": 2.565,
+      "lifecycle_decision_count": 5,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 0,
+      "terminal_observe_ms": 1957,
+      "terminal_silence_ms": 0,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "addressed_to_other",
+      "terminal_confidence": 0.95,
+      "terminal_pattern_version": "2026-07-23.temporal-addressee-v5",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": true,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": true,
+      "terminal_turn_speaker_is_target": true
+    },
+    {
+      "sample": "v1.5/user_backchannel/18",
+      "scenario": "user_backchannel",
+      "sample_id": "18",
+      "room": "fdb-1785116296-3d8c23c2ab",
+      "behavior_label": null,
+      "expected_outcome": "SUPPRESS",
+      "join_status": "joined",
+      "mmi_outcome": "SUPPRESS",
+      "strict_correct": true,
+      "agent_run_dir": "tmp/runs/20260727_093817_fdb-1785116296-3d8c23c2ab",
+      "mmi_log": "tmp/runs/20260727_093817_fdb-1785116296-3d8c23c2ab/mmi_turn_detection_active_20260727_093817.log",
+      "decision_count": 5,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 1,
+      "speaker_verdict_recheck_count": 0,
+      "event_processing_latencies_ms": [],
+      "event_processing_latency_p95_ms": null,
+      "lifecycle_decision_count": 3,
+      "lifecycle_outcome": "COMMIT",
+      "target_has_start_listening": false,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 373,
+      "terminal_observe_ms": 373,
+      "terminal_silence_ms": 565,
+      "terminal_action": "CONTINUE_SPEAKING",
+      "terminal_reason": "addressed_to_other",
+      "terminal_confidence": 0.95,
+      "terminal_pattern_version": "2026-07-23.temporal-addressee-v5",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": false,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": null,
+      "terminal_turn_speaker_is_target": null
+    },
+    {
+      "sample": "v1.5/user_interruption/81",
+      "scenario": "user_interruption",
+      "sample_id": "81",
+      "room": "fdb-1785116342-6690396c37",
+      "behavior_label": null,
+      "expected_outcome": "INTERRUPT",
+      "join_status": "joined",
+      "mmi_outcome": "INTERRUPT",
+      "strict_correct": true,
+      "agent_run_dir": "tmp/runs/20260727_093903_fdb-1785116342-6690396c37",
+      "mmi_log": "tmp/runs/20260727_093903_fdb-1785116342-6690396c37/mmi_turn_detection_active_20260727_093903.log",
+      "decision_count": 6,
+      "native_action_count": 3,
+      "malformed_log_lines": 0,
+      "executed_count": 0,
+      "target_turn_id": 1,
+      "target_decision_count": 2,
+      "speaker_verdict_recheck_count": 1,
+      "event_processing_latencies_ms": [
+        2.856
+      ],
+      "event_processing_latency_p95_ms": 2.856,
+      "lifecycle_decision_count": 4,
+      "lifecycle_outcome": "INTERRUPT",
+      "target_has_start_listening": true,
+      "target_has_start_speaking": false,
+      "native_has_start_listening": true,
+      "native_has_start_speaking": true,
+      "first_target_observe_ms": 3122,
+      "terminal_observe_ms": 3374,
+      "terminal_silence_ms": 0,
+      "terminal_action": "START_LISTENING",
+      "terminal_reason": "ordinary_valid_interjection",
+      "terminal_confidence": 0.8,
+      "terminal_pattern_version": "2026-07-23.temporal-addressee-v5",
+      "terminal_external_voice_confidence": null,
+      "terminal_speaker_gate_locked": true,
+      "terminal_started_before_speaker_gate_locked": true,
+      "terminal_speaker_is_target": true,
+      "terminal_turn_speaker_is_target": true
+    }
+  ]
+}

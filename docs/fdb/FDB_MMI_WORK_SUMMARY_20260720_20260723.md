@@ -594,3 +594,93 @@ P50 约 851 ms 且 300 ms 内到达率为 0%。下一阶段应先做本地快速
 - [在线语义汇总](../../results/fdb/online-shadow-v1/SEMANTIC_OVERLAY_ONLINE_V1_PER20_20260723.json)
 - [样本级对齐](../../results/fdb/online-shadow-v1/SEMANTIC_OVERLAY_SAMPLE_ALIGNMENT_V1_PER20_20260723.json)
 - [v5 有状态反事实结果](../../results/fdb/online-shadow-v1/SEMANTIC_OVERLAY_POLICY_V5_COUNTERFACTUAL_20260727.json)
+
+## 20. 7 月 27 日续作：本地 FastPath Shadow v1
+
+远端 Qwen 的 300 ms 到达率为 0% 后，下一阶段没有继续把远端模型塞入同步控制
+链路，而是在服务器 `/opt/health-assistant` 中实现了纯本地 FastPath Shadow
+观察器。它复用现有 MMI 规则、流式 ASR 历史和 SpeakerGate，不执行真实
+`interrupt()`。
+
+新增实现：
+
+| 文件或配置 | 中文说明 |
+|---|---|
+| `mmi_turn_detection/fast_path_shadow.py` | 管理 `PENDING_BARGE_IN`、首次明确决策、deadline 和 native stop 的关联。 |
+| `evaluation/analyze_fast_path_shadow.py` | 汇总首次明确决策 P50/P95、200 ms 命中率和 stop 前决策率。 |
+| `fast_path_shadow_enabled` | 默认关闭；服务器专用 Shadow Worker 已设为 `true`。 |
+| `fast_path_deadline_ms` | 当前观察窗口为 200 ms。 |
+
+FastPath 只观察 `START_LISTENING` 与 `CONTINUE_SPEAKING`，不会把
+`START_SPEAKING` 或 `CONTINUE_LISTENING` 混入打断指标。日志新增：
+
+- `fast_path_pending`
+- `fast_path_decision`
+- `fast_path_deadline`
+- `fast_path_native_stop`
+- `fast_path_resolved`
+
+同时修复了语义 overlay 配置空字符串遮住 `[llm]` 默认值的问题。现在
+`semantic_overlay_base_url/api_key/model` 为空时会复用已有 LLM 配置，不复制
+密钥。服务器运行日志已经确认：
+
+`MMI FastPath: shadow=True deadline=200ms semantic_shadow=True`
+
+### 20.1 四场景 P1 冒烟
+
+run：
+
+`en_qwen_shadow_fast_path_v1_smoke_p1_r2_20260727`
+
+| 指标 | 结果 | 中文说明 |
+|---|---:|---|
+| FDB 推理 | 4/4 | 四个 v1.5 场景各 1 条。 |
+| Agent 日志关联 | 4/4 | 全部关联到服务器专用 Shadow Worker。 |
+| MMI 矩阵 | TP/FN/FP/TN=`1/0/0/3` | 最终控制分类四条都正确。 |
+| Shadow 执行动作 | 0 | 没有真实接管控制。 |
+| FastPath attempt | 4/4 | 四条 native stop 均建立了时间线。 |
+| 首次明确本地决策 | 1/4 | 只有 talking-to-other 最终形成明确抑制。 |
+| 首次明确决策时延 | 1948.414 ms | 已远超 200 ms deadline。 |
+| 200 ms 内明确决策率 | 0% | 四条都没有在窗口内形成可执行结论。 |
+| native stop 前决策率 | 0% | 四条都没有在音频停止前形成明确结论。 |
+
+这说明本地规则函数本身很快，但它依赖的 ASR/SpeakerGate 证据来得太晚。
+`event_processing_latency` 约 2–3 ms 只表示“拿到信号后的计算耗时”，不能代表
+“从用户起声到可执行决策”的总时延。
+
+### 20.2 晚信号 P2 验证
+
+为验证 backchannel 和 interruption 的事件倒序，额外运行：
+
+`en_qwen_shadow_fast_path_v1_late_signal_p2_20260727`
+
+| 场景 | FastPath 启动源 | 启动到 native stop | stop 前明确决策 |
+|---|---|---:|---|
+| user backchannel | `user_input_transcribed` | 0.512 ms | 否 |
+| user interruption | `user_input_transcribed` | 0.532 ms | 否 |
+
+两条会话的第一条文本信号虽然形式上早于 stop，但只早约 0.5 ms，实际没有决策
+空间。观察器现在会记录 `observer_started_before_native_stop` 和带符号的
+`start_to_native_stop_ms`；晚到或重建的时间线也会标记
+`start_time_estimated=true`，不会再把倒序事件误读成 0 ms 快速响应。
+
+### 20.3 当前结论与下一改造点
+
+服务器相关测试为 `245 passed`，Worker
+`health-assistant-qwen-fdb-shadow` 当前为 `active/running`，配置仍是
+`mode=shadow`、`active_percentage=0`。部署前备份目录：
+
+`/opt/health-assistant-backups/fast-path-shadow-20260727_092306`
+
+当前仍为 **Active BLOCK**。下一步必须把 FastPath 起点前移到音频帧、VAD
+起声或 SpeakerGate 的早期回调，而不是等待 `user_input_transcribed`。目标是在
+文本产生前先建立候选态，并缓冲 150–200 ms 的 TTS 控制窗口；之后再跑四场景
+各 20 条，验证 stop 前决策率和真实打断额外等待。
+
+归档文件：
+
+- [P1 基础 MMI JSON](../../results/fdb/fast-path-shadow-v1/FDB_FAST_PATH_SHADOW_V1_SMOKE_P1_R2_20260727.json)
+- [P1 基础 MMI 文本报告](../../results/fdb/fast-path-shadow-v1/FDB_FAST_PATH_SHADOW_V1_SMOKE_P1_R2_20260727.txt)
+- [P1 FastPath 时间线](../../results/fdb/fast-path-shadow-v1/FAST_PATH_SHADOW_V1_TIMING_P1_R2_20260727.json)
+- [P2 基础 MMI JSON](../../results/fdb/fast-path-shadow-v1/FDB_FAST_PATH_SHADOW_V1_LATE_SIGNAL_P2_20260727.json)
+- [P2 晚信号时间线](../../results/fdb/fast-path-shadow-v1/FAST_PATH_SHADOW_V1_LATE_SIGNAL_P2_20260727.json)

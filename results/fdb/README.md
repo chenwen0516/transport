@@ -63,3 +63,18 @@ TP/FN/FP/TN=`16/4/1/59`，未通过门禁；评估后该集合已解封为 v4 �
 结果摘要：基础 MMI 为 TP/FN/FP/TN=`20/0/4/56`；v5 反事实为
 `20/0/1/59`。远端语义延迟 P50=`850.725 ms`、P95=`1062.657 ms`，
 300 ms 内到达率为 0%，因此结果只支持继续 Shadow，不支持直接 Active。
+
+## FastPath Shadow v1
+
+`fast-path-shadow-v1/` 保存本地 200 ms FastPath 时间线验证。
+
+| 文件 | 含义 |
+|---|---|
+| `FDB_FAST_PATH_SHADOW_V1_SMOKE_P1_R2_20260727.*` | 四场景各 1 条的基础 MMI 结果 |
+| `FAST_PATH_SHADOW_V1_TIMING_P1_R2_20260727.json` | 四条会话的 pending、deadline、明确决策和 native stop 关联 |
+| `FDB_FAST_PATH_SHADOW_V1_LATE_SIGNAL_P2_20260727.json` | backchannel/interruption 两条复验的基础结果 |
+| `FAST_PATH_SHADOW_V1_LATE_SIGNAL_P2_20260727.json` | 第一条文本信号与 native stop 的先后关系 |
+
+P1 控制矩阵为 `1/0/0/3`，但 200 ms 内明确决策率和 native stop 前明确决策率
+均为 0%。P2 显示第一条文本信号只比 native stop 早约 0.5 ms，因此下一阶段需要
+从音频/VAD 早期回调启动候选态。
