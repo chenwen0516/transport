@@ -156,3 +156,71 @@ endpoint 本身额外增加了约 0.42 秒。
 # 同一候选的 9 维度完整回归（已完成）
 /opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_mmi_active_candidate_exact20x9_20260728
 ```
+
+## 9. 2026-07-29 音频入口门控优化
+
+### 9.1 根因与修复
+
+文本层 MMI 已能撤回大部分背景转写，但 Qwen Realtime 在撤回前已经收到原始
+音频，因此仍会在回答中提到背景内容。为此完成以下修复：
+
+- 将 `SpeakerGate` 接到 Qwen Realtime WebSocket 的音频入口，背景音频在发送给
+  远端模型前静音；side-ASR 不再重复调用同一个有状态门控。
+- 首个完整用户语音建立目标声纹：`enroll_segments=1`，
+  `enroll_min_seg_ms=800`。
+- 使用声纹滞回：首次判决阈值 `theta_close=0.40`，背景静音后只有达到
+  `theta_open=0.50` 才恢复，短窗目标阈值为 `0.40`。
+- 修复短间隔用户续说与 LiveKit 原生 endpoint 竞争，并对无明确打断意图的
+  长间隔重叠输入做抑制。
+- 修复英文称呼误判，包括 `Prolific, specifically...`、中间 ASR 的
+  `Enderly/Endlessly`，以及 final 到达后仍锁存陈旧称呼假设的问题。
+
+服务器测试为 **226 passed**，无失败；告警仅来自 `websockets` 的弃用提示。
+
+### 9.2 v1.5 分阶段结果
+
+| 候选阶段 | 背景讲话正确忽略/恢复 | 用户打断正确响应 | 中文说明 |
+|---|---:|---:|---|
+| 历史 Active | 9/20，45% | 17/20，85% | 文本与原生实时音频仍会竞争 |
+| 重叠文本保护 | 5/20，25% | 19/20，95% | 控制日志已撤回背景，但 Qwen 仍听到原始音频 |
+| Qwen 音频入口门控 | 14/20，70% | 18/20，90% | 方向有效，仍有同段相似度回升后重新放行 |
+| **音频入口 + 声纹滞回** | **20/20，100%** | **18/20，90%** | 背景维度通过；用户打断保持，无新增行为回退 |
+
+最终背景 20 条的控制日志均为“一次原始请求提交 + 一次背景撤回”，没有背景
+二次提交。撤回原因分布为：`non_target_speaker_suppressed` 9 条、
+`non_target_speaker_ignored` 7 条、`target_speaker_not_confirmed` 3 条、
+`addressed_to_other` 1 条。
+
+最终用户打断独立复跑中，19/20 形成两次提交；样本 109 只形成一次较短提交，
+但行为裁判仍判为 `C_RESPOND`。两条非 `C_RESPOND` 输出实际都在处理最新问题：
+样本 9 追问手机型号以回答价格，样本 152 说明例行车辆检查的收益。表格保留
+DeepSeek 原始正式分数，不用人工判断覆盖官方结果。
+
+两组最终运行共 60 个源样本、120 次实时会话、120 次强制对齐，推理和 ASR
+失败均为 0；最终 timing evaluator 也全部返回 0。
+
+### 9.3 最新门禁结论
+
+背景语音从 25% 恢复到 100%，说明将 MMI 前移到音频入口是正确方向。当前候选
+仍维持 **Active BLOCK**，原因不是背景维度，而是以下回归尚未完成：
+
+1. 新声纹参数和音频入口尚未复跑 Candor pause 20 条。
+2. `talking_to_other`、Backchannel 尚未使用最终滞回版本复跑。
+3. 还没有执行最终版本的 v1.0 + v1.5 共 180 条完整回归。
+4. `K=1`、800 ms 首轮注册需要通过短首句、噪声首句和误注册专项集验证。
+
+### 9.4 新增结果目录
+
+```text
+# 文本重叠保护，背景 25% / 用户打断 95%
+/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_mmi_active_final_bg_interrupt40_20260729
+
+# Qwen 音频入口门控，背景 70% / 用户打断 90%
+/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_mmi_active_audio_ingress_v2_bg_interrupt40_20260729
+
+# 音频入口 + 声纹滞回，背景 100% / 用户打断 90%
+/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_mmi_active_audio_ingress_hysteresis_bg_interrupt40_20260729
+
+# 最终用户打断独立复跑，90%
+/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_mmi_active_final_user_interruption20_20260729
+```
