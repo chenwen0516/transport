@@ -2,6 +2,8 @@
   "date": "2026-08-03",
   "change": "mmi_empty_response_single_retry",
   "agent_release": "health-assistant-a5e4300-empty-response-v1-20260803",
+  "source_commit": "f6ed177",
+  "release_directory_note": "directory name retains the a5e4300 base hash; deployed key files match source_commit by sha256",
   "production_like_config": {
     "mmi_mode": "active",
     "active_percentage": 100,

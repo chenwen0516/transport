@@ -4,6 +4,8 @@
 
 测试对象：服务器隔离版本 `health-assistant-a5e4300-empty-response-v1-20260803`
 
+实际代码提交：`f6ed177`。隔离目录名保留了创建时的 `a5e4300` 基线哈希；部署后的四个关键代码文件已通过 SHA-256 与 `f6ed177` 本地工作区逐一核对一致。
+
 运行配置：MMI-TD Active 100%，CAM++ 开启，`audio_mode=mute`，`mmi_mode=negative_only`
 
 ## 1. 结论
