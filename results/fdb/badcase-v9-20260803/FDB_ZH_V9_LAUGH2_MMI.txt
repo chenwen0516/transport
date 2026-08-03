@@ -1,0 +1,85 @@
+FDB v1.5 + MMI Shadow 关联分析
+==================================
+
+FDB 目录：/opt/Full-Duplex-Bench/runs/health_webrtc_zh/zh_qwen_mmi_badcase_v3_laugh2_v9_20260803
+Agent 日志目录：/opt/health-assistant/releases/health-assistant-c63c3ee-aa-fdb-badcase-v3-20260803/backend/livekit_agent/tmp/runs
+分析范围：v1.5 noisy output sessions
+
+一、关联完整性
+--------------
+样本数：2
+成功关联：2/2 (100.00%)
+存在目标轮次决策：2/2 (100.00%)
+MMI 决策总数：14
+JSON 解析失败行：0
+Shadow executed=true：2
+
+二、按场景结果
+--------------
+场景                  样本  目标覆盖  INTERRUPT  COMMIT  SUPPRESS  NO_TARGET  严格正确率
+background_speech         0       N/A          0       0         0          0         N/A
+talking_to_other          0       N/A          0       0         0          0         N/A
+user_backchannel          2   100.00%          0       0         2          0     100.00%
+user_interruption         0       N/A          0       0         0          0         N/A
+
+三、控制动作混淆矩阵
+--------------------
+正类：user_interruption 应产生 START_LISTENING。
+TP=0  FN=0  FP=0  TN=2
+强打断召回率：N/A
+非打断场景误触发率：0.00%
+
+四、Phase 门禁
+------------
+agent_log_join_rate: 100.00% -> PASS
+shadow_executed_actions_zero: 2 -> FAIL
+required_interruption_decision_coverage: None -> FAIL
+  说明：Required for user_interruption; negative scenarios without an active or pending agent output need no control action.
+strong_interruption_recall: None -> FAIL
+non_interruption_false_interruption_rate: 0.00% -> PASS
+  说明：Any interruption in background_speech, talking_to_other, or user_backchannel blocks Active rollout.
+backchannel_false_interruption_rate: 0.00% -> PASS
+event_processing_latency_p95_ms: 1.699 -> PASS
+  说明：SpeakerGate callback-to-MMI-decision latency; transcript_observe_ms is not processing latency.
+
+Active 结论：BLOCK
+
+五、裁判标签与 MMI 的对照提示
+-----------------------------
+下列数字是 Shadow 决策的反事实线索，不等价于真实 Active A/B 结果。
+background_speech behavior={}
+  MMI outcome x behavior={}
+  native lifecycle outcome={}
+  observe_ms first={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None} terminal={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None}
+  speaker_verdict_rechecks=0 callback_to_decision_ms={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None}
+  voice_signal=N/A speaker_gate_locked=N/A started_before_lock=N/A
+  turn_speaker={}
+talking_to_other behavior={}
+  MMI outcome x behavior={}
+  native lifecycle outcome={}
+  observe_ms first={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None} terminal={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None}
+  speaker_verdict_rechecks=0 callback_to_decision_ms={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None}
+  voice_signal=N/A speaker_gate_locked=N/A started_before_lock=N/A
+  turn_speaker={}
+user_backchannel behavior={'MISSING': 2}
+  MMI outcome x behavior={'SUPPRESS|MISSING': 2}
+  native lifecycle outcome={'SUPPRESS': 2}
+  observe_ms first={'count': 2, 'p50': 0.0, 'p95': 0.0, 'min': 0.0, 'max': 0.0} terminal={'count': 2, 'p50': 329.5, 'p95': 350.65, 'min': 306.0, 'max': 353.0}
+  speaker_verdict_rechecks=3 callback_to_decision_ms={'count': 3, 'p50': 1.647, 'p95': 1.699, 'min': 1.583, 'max': 1.705}
+  voice_signal=0.00% speaker_gate_locked=100.00% started_before_lock=0.00%
+  turn_speaker={'NON_TARGET': 1, 'TARGET': 1}
+user_interruption behavior={}
+  MMI outcome x behavior={}
+  native lifecycle outcome={}
+  observe_ms first={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None} terminal={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None}
+  speaker_verdict_rechecks=0 callback_to_decision_ms={'count': 0, 'p50': None, 'p95': None, 'min': None, 'max': None}
+  voice_signal=N/A speaker_gate_locked=N/A started_before_lock=N/A
+  turn_speaker={}
+
+六、口径限制
+------------
+1. 只分析 noisy output room；clean room 是对照，不计入真值混淆矩阵。
+2. 主指标使用 Agent 正在说话、播放 TTS 或存在 pending reply 时的控制决策；native 后续状态单列为 lifecycle。
+3. START_LISTENING 用作打断控制正类；控制通道无打断动作归为 SUPPRESS。
+4. native_action 不是权威打断真值；官方 FDB behavior 标签用于实际行为对照。
+5. event_processing_latency_ms 仅衡量 SpeakerGate callback 到 MMI 重算完成的耗时。
