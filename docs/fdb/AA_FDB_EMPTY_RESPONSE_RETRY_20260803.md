@@ -4,7 +4,7 @@
 
 测试对象：服务器隔离版本 `health-assistant-a5e4300-empty-response-v1-20260803`
 
-canary 代码提交：`f6ed177`；根据 canary bad case 形成的修复提交：`b1b34ac`。隔离目录名保留了创建时的 `a5e4300` 基线哈希，服务器运行文件已更新到 `b1b34ac` 对应实现。
+canary 代码提交：`f6ed177`；三类静默根因修复提交：`b1b34ac`；英文 greeting/addressee 补丁提交：`5ff9ad5`。隔离目录名保留了创建时的 `a5e4300` 基线哈希，服务器运行文件已更新到 `5ff9ad5` 对应实现。
 
 运行配置：MMI-TD Active 100%，CAM++ 开启，`audio_mode=mute`，`mmi_mode=negative_only`
 
@@ -19,7 +19,9 @@ canary 代码提交：`f6ed177`；根据 canary bad case 形成的修复提交�
 7. 英文 5 个维度各 20 条 canary 共 100 条推理全部完成，出现 3 条静默输出；由此定位出英文称呼误判、说话人证据冲突和取消清理竞态三类问题。
 8. 修复后三条静默样本 `189 / 48 / 41` 均产生有效文本、非静音音频和单个 `response.done`，无运行警告。
 9. `1s` 故障注入确认旧响应超时后 retry 能继续生成 247 字符回复，不再被旧响应的取消清理回调误杀。
-10. 本次 canary 的本地四维代理分约为 95.6%，不是 AA 官方加权分数，也不能替代英文 770 条和中文 915 条全量回归。
+10. `b1b34ac` 同样本 100 条复测将静默从 3 条降至 1 条；新增静默样本 38 是 `Hello!` greeting 被误判为第三方称呼，不是模型空响应。
+11. `5ff9ad5` 修复 greeting 后，样本 38 定向复测得到 `TOR=1.0`、延迟 7.214 s。将它补回可得 Turn Taking 20/20，估算平均延迟 7.582 s。
+12. 本报告中的本地代理计算不是 AA 官方加权分数，也不能替代英文 770 条和中文 915 条全量回归。
 
 ## 2. 历史根因
 
@@ -156,10 +158,47 @@ AGENT_MMI_TURN_DETECTION__EMPTY_RESPONSE_CANCEL_GRACE_MS=3000
 
 另用 `1s` 阈值对样本 41 做故障注入。attempt 0 在 1001 ms 触发 `first_output_timeout`，随后记录 `retry_requested` 和新的 `speech_created`；最终 retry 产生 247 字符回复、单个 `response.done` 和非静音音频。由于 `1s` 也低于正常 retry 首音延迟，trace 会记录 `retry_exhausted`，但 retry 不再被取消，证明 100 ms 清理窗口修复了原竞态。正式服务已经恢复 `10s` 阈值。
 
-## 9. 仍需关注
+## 9. 修复版 100 条复测与 greeting 补丁
+
+`b1b34ac` 同样本运行目录：
+
+`/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_aa_empty_response_v2_canary20x5_20260803`
+
+| 指标 | 原版 `f6ed177` | 修复版 `b1b34ac` | greeting 补算 `5ff9ad5` | 中文说明 |
+| --- | ---: | ---: | ---: | --- |
+| 有效回复 | 97/100 | 99/100 | 已知样本 100/100 | 原 3 条静默全部恢复；新增样本 38 定向恢复 |
+| Candor Pause | 95% | 95% | 95% | 提前响应错误仍为 1/20；样本 189 已恢复 |
+| Synthetic Pause | 100% | 100% | 100% | 样本 41 已恢复 |
+| Turn Taking TOR | 95% | 95% | 100% | 样本 38 定向补算通过 |
+| Turn Taking 平均延迟 | 7.804 s | 7.601 s | 约 7.582 s | 补算值用新样本 38 的 7.214 s 替换静默项 |
+| User Backchannel | 95% `C_RESUME` | 95% `C_RESUME` | 不变 | 行为裁判完整 |
+| User Interruption | 95% `C_RESPOND` | 94.74% `C_RESPOND` | 待补 ASR | 修复版为 18/19；另 1 条 forced-align HTTP 502，不能判定为退化 |
+
+修复版 100 条推理全部完成，99 条有可见回复。forced alignment 为 139/140，唯一失败是 `v1.5/user_interruption/24` 请求返回 HTTP 502。Backchannel timing 因 Torch Hub 访问 GitHub 失败，但行为裁判结果完整。修复版没有触发 `retry_requested`，说明已提交响应未再出现 10 s 空输出。
+
+修复版唯一静默样本：
+
+| 样本 | 输入末句 | 原因 |
+| --- | --- | --- |
+| `v1.0/candor_turn_taking/38` | `Hello! Somebody's knocking on my door.` | 通用英文 vocative 正则把 `Hello` 当作第三方人名，命中 `addressed_to_other` 后未提交回复 |
+
+`5ff9ad5` 将 `hello/hi` 作为 greeting 保护词，并增加 greeting + 明确姓名规则。它同时满足：
+
+- `Hello! Somebody's knocking on my door.`：不是第三方称呼。
+- `Hello, can you help me?`：不是第三方称呼。
+- `Hello, Laura, can you help?`：仍识别为第三方称呼。
+
+样本 38 定向运行目录：
+
+`/opt/Full-Duplex-Bench/runs/health_webrtc_en/en_qwen_aa_greeting_v3_sample38_20260803`
+
+该样本产生 105 个 assistant 字符、非静音音频、无警告。输入包含 `Hold on. One sec.` 和后续敲门描述两轮，因此两个 `response.done` 分别对应两轮正常回复。forced alignment 成功，本地 evaluator 结果为 `TOR=1.0`、延迟 7.214 s。
+
+## 10. 仍需关注
 
 1. 空响应具有随机性，5 条正常回放只能证明没有回归，不能估算稳定的故障率。后续全量回归要统计 `retry_requested`、重试成功率和重试后重复音频数。
 2. 当前成功判据使用 `agent speaking` 作为音频到达代理。若以后要区分 TTS 已生成和 RTC 已发布，应补充首个真实音频帧事件。
 3. 样本 18 暴露了回答过长问题。可单独收紧 FDB 测试提示词，但不应把提示词缩短与空响应恢复混为同一项改动。
-4. 三条定向复测证明已知根因得到修复，但样本量不足以估算新故障率。下一轮应重跑同一套英文 100 条 canary，与 `f6ed177` 结果做逐样本对比。
-5. 若新版 100 条 canary 静默数归零，且 pause、turn-taking、interruption、backchannel 均无显著退化，再启动英文 770 条正式全量；中文 915 条在英文稳定后单独运行。
+4. `user_interruption/24` 的 forced-align HTTP 502 应直接补算，不需要重新执行 100 条推理。
+5. Backchannel timing 应固定使用本地 Silero 缓存或本地仓库路径，避免 evaluator 运行时依赖 GitHub。
+6. greeting 补丁已通过定向回放，但尚未做独立 addressee 小样本回归；正式全量前应覆盖寒暄、姓名、亲属、职称和背景对话正反例。
