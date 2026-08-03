@@ -1,0 +1,88 @@
+{
+  "date": "2026-08-03",
+  "change": "mmi_empty_response_single_retry",
+  "agent_release": "health-assistant-a5e4300-empty-response-v1-20260803",
+  "production_like_config": {
+    "mmi_mode": "active",
+    "active_percentage": 100,
+    "campp_enabled": true,
+    "speaker_gate_audio_mode": "mute",
+    "speaker_gate_mmi_mode": "negative_only",
+    "empty_response_retry_enabled": true,
+    "empty_response_timeout_ms": 10000,
+    "empty_response_max_retries": 1,
+    "empty_response_cancel_grace_ms": 3000
+  },
+  "historical_badcase_replay": [
+    {
+      "language": "en",
+      "sample": "v1.0/candor_turn_taking/42",
+      "assistant_transcript_chars": 226,
+      "first_audio_ms": 1971.754,
+      "retry_count": 0,
+      "non_silent_audio": true,
+      "warnings": []
+    },
+    {
+      "language": "en",
+      "sample": "v1.0/candor_turn_taking/118",
+      "assistant_transcript_chars": 171,
+      "first_audio_ms": 3388.16,
+      "retry_count": 0,
+      "non_silent_audio": true,
+      "warnings": []
+    },
+    {
+      "language": "zh",
+      "sample": "v1.0/candor_turn_taking/18",
+      "assistant_transcript_chars": 214,
+      "first_audio_ms": 4693.077,
+      "retry_count": 0,
+      "non_silent_audio": true,
+      "warnings": [
+        "response_completion_timeout",
+        "missing_response_done"
+      ]
+    },
+    {
+      "language": "zh",
+      "sample": "v1.0/candor_turn_taking/46",
+      "assistant_transcript_chars": 47,
+      "first_audio_ms": 5474.417,
+      "retry_count": 0,
+      "non_silent_audio": true,
+      "warnings": []
+    },
+    {
+      "language": "zh",
+      "sample": "v1.0/candor_turn_taking/68",
+      "assistant_transcript_chars": 88,
+      "first_audio_ms": 5238.608,
+      "retry_count": 0,
+      "non_silent_audio": true,
+      "warnings": []
+    }
+  ],
+  "forced_timeout_replay": {
+    "language": "zh",
+    "sample": "v1.0/candor_turn_taking/46",
+    "timeout_ms": 3000,
+    "initial_speech_created_ms": 2005.754,
+    "initial_timeout_ms": 3001.665,
+    "retry_count": 1,
+    "retry_first_audio_ms": 2971.307,
+    "assistant_transcript": "挺有意思的啊，人老了反而更爱分享了，您聊得开心吗？",
+    "assistant_transcript_chars": 25,
+    "response_done_events": 1,
+    "non_silent_audio": true,
+    "duplicate_output_detected": false,
+    "warnings": []
+  },
+  "verification": {
+    "local_tests_passed": 250,
+    "server_tests_passed": 250,
+    "python_compile": "passed",
+    "git_diff_check": "passed"
+  },
+  "score_scope": "targeted_regression_only_no_new_aa_fdb_score"
+}
