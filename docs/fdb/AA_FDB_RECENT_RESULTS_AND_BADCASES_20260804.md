@@ -293,11 +293,28 @@ commit_requested
 | --- | ---: | ---: | ---: | --- |
 | `en_qwen_aa_empty_response_v2_canary20x5_20260803` | 1（Turn Taking 38） | 62 | 52 | 修复前固定对照 |
 | `en_qwen_aa_response_wait_v2_canary100_fixed_20260804` | 1（Turn Taking 35） | 66 | 57 | runner 记录 122 次 `wait:agent_active` |
+| `en_qwen_aa_mmi_v11_canary100_fixed_20260807` | 3（Turn Taking 47、48、49） | 62 | 52 | v11 与 TTS 恢复后复验；140/140 次推理完成 |
 
 固定 100 条的严格静默总数没有下降，只是样本从 38 漂移到 35；这说明 P0 的 5 条历史静默
 定向恢复有效，但还不能宣称总体静默率已改善。两轮都在 Pause 8 出现一次“一个 commit、两个
 `response.done`”的潜在重复回复，也必须继续监控。该 canary 使用 `--skip-asr --skip-evaluation`，
 只能评价推理与输出完整性，不能生成 AA 四维得分。
+
+2026-08-07 的 v11 固定回归同样使用这份 100 条 manifest，共完成 140/140 次实际推理。与
+2026-08-04 对照相比，存在任意 warning 的运行从 67 降至 65，
+`response_completion_timeout` 从 66 降至 62，`missing_response_done` 从 57 降至 52；
+User Interruption 的完成超时从 22 降至 20，缺少 done 从 12 降至 8。输出完整性小幅改善，
+但严格静默从 1 条升至 3 条，不能通过扩大回归门禁。
+
+新的严格静默集中在连续的 Turn Taking 47、48、49。三条均没有 STT final、commit、retract
+或 assistant transcript；Agent 已进入 listening，RTC 音轨也存在。同期 Agent 日志显示
+`speech scheduling is paused` 后 Qwen STT 流结束，且没有产生 final。上一轮这三条均正常，
+而上一轮静默的 Turn Taking 35 本轮已恢复为 145 字、35.53% 非零音频。因此当前证据更支持
+session update 与音频开始之间的 STT 时序竞争，而不是 v11 的 MMI 决策回归。
+
+Pause 8 再次出现一个 commit、两个 `response.done`，证明潜在重复回复问题仍未修复。下一轮
+应先为 runner 的 `session.update` 增加可观测确认或安全等待，并定向重跑 47、48、49；同时
+单独修复 Pause 8 的响应所有权/去重，再使用同一 manifest 复验，不应直接进入英文 770 条。
 
 v10 定向回放目录：
 
@@ -350,10 +367,10 @@ v11 已把同一窄规则补到 interruption policy：只在 Agent 正在 thinki
 
 ### P0：空响应恢复已完成，进入扩大回归
 
-Agent 空后继轮次判断、runner 会话延长、5 条定向回放、第一轮固定 100 条和 v11 的 50、61
-音频复验均已完成。固定 100 条的严格静默仍是 1/100，且发现 1 条潜在重复回复，因此下一门禁
-是使用 v11 重跑同 manifest 的 100 条，重点观察严格静默、重复回复、
-`response_completion_timeout`、`missing_response_done` 和 User Interruption/Backchannel 回退。
+Agent 空后继轮次判断、runner 会话延长、5 条定向回放、v11 的 50、61 音频复验和 v11 固定
+100 条回归均已完成。最新固定回归有 3 条连续 Turn Taking 严格静默，并再次复现 Pause 8
+重复 done。下一门禁是修复 session-update/STT 启动时序和响应去重，定向通过 47、48、49、8
+后再重跑同 manifest；当前不能直接进入英文 770 条。
 
 ### P0：复盘 User Interruption 回归
 
@@ -397,9 +414,10 @@ Active。
 
 1. 已确认 Qwen TTS WebSocket 不再返回 502，并完成真实会话握手。
 2. 已重跑 User Interruption 50、61，双 commit、无 retract、第二轮均有非静音输出。
-3. 使用 v11 重跑固定 manifest 的英文 100 条 canary，并检查 61 类长回复完成超时。
-4. 通过静默、重复回复和 interruption 门禁后跑英文 770 条全量。
-5. 最后跑中文 915 条全量。
+3. 已使用 v11 重跑固定 manifest 的英文 100 条 canary；140/140 完成，但有 3 条 STT 时序型严格静默。
+4. 修复并定向重跑 Turn Taking 47、48、49 和 Pause 8，再复验固定 100 条。
+5. 通过静默、重复回复和 interruption 门禁后跑英文 770 条全量。
+6. 最后跑中文 915 条全量。
 
 ## 11. 相关文档
 
