@@ -1,1 +1,322 @@
-https://github.com/DuplexLM/DuplexSurvey
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: livekit-agent-qwen-confimap
+  namespace: digital-human
+  uid: 3944ee3c-4d77-462c-9ba9-b27e48756f94
+  resourceVersion: '989752068'
+  creationTimestamp: '2026-04-01T03:13:05Z'
+  annotations:
+    currentVersion: '22'
+    originName: ''
+  managedFields:
+    - manager: cfe-apiserver
+      operation: Update
+      apiVersion: v1
+      time: '2026-08-10T12:07:05Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:data:
+          .: {}
+          f:settings.prod.toml: {}
+          f:vision_analysis.txt: {}
+          f:voice_assistant.txt: {}
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:currentVersion: {}
+            f:originName: {}
+data:
+  settings.prod.toml: |
+    [livekit]
+    api_key = "APIfSxR7qK3mVcNp"
+    api_secret = "Xt9BwL2vHjKdE5nYzQ8cP4sU6fA1rG7m"
+
+    [agent]
+    agent_name = "health-assistant-qwen-dev"
+
+    [vad]
+    min_silence_duration = 0.8
+    min_speech_duration = 0.25
+    activation_threshold = 0.8
+
+    [llm]
+    base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    api_key = "sk-060ec6f5acc7400185b01e67e9de83d5"
+    text_model = "qwen3-30b-a3b"
+    vision_model = "Qwen/Qwen3-VL-8B-Instruct"
+    vision_base_url = "https://api.siliconflow.cn/v1"
+    vision_api_key = "sk-xdsiqwmcieegokngimnelkusrwzmmijvrsneqrdjvbxpvjkv"
+
+    # [llm]
+    # base_url = "https://mastudio.cn-southwest-2.myhuaweicloud.com/api/v2"
+    # api_key = "6a1a5267-f953-4dca-8a1d-1c9ad7f58fdc_7AC2FE46F965C739C6638B08AA8D88ADDACD459BE06012AF5502A67A2DE47A20"
+    # text_model = "qwen3-30b-a3b-instruct-2507"
+    # vision_model = "qwen3-30b-a3b-instruct-2507"
+
+    [rag]
+    enabled = true
+    base_url = "http://192.168.0.124:8090"
+    api_key = "6baa10a7db138ba826a34512df69e512a5243d17c729776ddfe967229ecf6e40"
+    knowledge_base_ids = ["kb_17c33fef3115473b80eef05e9022d2af"]
+    top_k = 5
+    timeout_ms = 35000
+    score_threshold = 0.0
+
+    [web_search]
+    enabled = true
+    provider = "bocha"
+    base_url = "https://api.bochaai.com/v1"
+    api_key = "sk-0a8b8d3b6ce346c4a92d26d1c9874341"
+    endpoint = "/web-search"
+    top_k = 5
+    timeout_ms = 5000
+    freshness = "oneDay"
+    summary = true
+
+    [weather]
+    enabled = true
+    provider = "open_meteo"
+    forecast_base_url = "https://api.open-meteo.com"
+    geocoding_base_url = "https://geocoding-api.open-meteo.com"
+    timeout_ms = 5000
+    timezone = "Asia/Shanghai"
+    fixture_path = ""
+
+    [command_slm]
+    enabled = true
+    base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    api_key = "sk-060ec6f5acc7400185b01e67e9de83d5"
+    model = "qwen3-30b-a3b"
+    connect_timeout_seconds = 5.0
+    request_timeout_seconds = 30.0
+    max_tokens = 192
+    schema_retries = 2
+    transport_retries = 2
+    vision_base_url = "https://api.siliconflow.cn/v1"
+    vision_api_key = "sk-xdsiqwmcieegokngimnelkusrwzmmijvrsneqrdjvbxpvjkv"
+
+    [cascade_os]
+    enabled = false
+    retrieval_mode = "hybrid"
+    embedding_base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    embedding_api_key = "sk-060ec6f5acc7400185b01e67e9de83d5"
+    embedding_model = "text-embedding-v4"
+    embedding_dimensions = 256
+    embedding_connect_timeout_seconds = 5.0
+    embedding_request_timeout_seconds = 20.0
+    embedding_transport_retries = 2
+    embedding_trust_env = false
+    opensearch_base_url = "https://192.168.0.7:9200"
+    opensearch_username = "admin"
+    opensearch_password = "Huawei@123456"
+    opensearch_index_alias = "intent-cascade-os-hybrid-active"
+    opensearch_vector_field = "embedding"
+    opensearch_lexical_field = "lexical_text"
+    opensearch_connect_timeout_seconds = 1.0
+    opensearch_request_timeout_seconds = 2.0
+    opensearch_transport_retries = 1
+    opensearch_verify_tls = false
+    expected_artifact_version = "cascade-nlu-model-v0.2"
+    fallback_to_local = true
+    l1_threshold = 0.30
+    l1_margin = 0.035
+    l2_skill_threshold = 0.24
+    l2_neighbors = 7
+    lexical_neighbors = 15
+    hybrid_vector_weight = 0.70
+    hybrid_lexical_weight = 0.30
+    hybrid_lexical_hint_weight = 0.08
+    hybrid_no_tool_margin = 0.03
+    hybrid_minimum_tool_score = 0.28
+    hybrid_multi_skill_threshold = 0.24
+
+    [stt]
+    provider = "qwen"
+
+    [stt.volcengine]
+    app_id = "2745679022"
+    access_token = "lkd5ovRoxLZJJGZRxOU06AuPb8mADIjn"
+    cluster = "volcengine_streaming_common"
+
+    [stt.huawei]
+    ak = "HPUAHWW3YBACKQCJNPVJ"
+    sk = "mNBj6nJ9j63Rw800hSIgkEYsAfkOzlcx2BSuwA8l"
+
+    [stt.qwen]
+    ws_url = "ws://192.168.0.146:9000/api-ws/v1/realtime"
+
+    [tts]
+    provider = "qwen"
+
+    [tts.volcengine]
+    app_id = "2745679022"
+    access_token = "lkd5ovRoxLZJJGZRxOU06AuPb8mADIjn"
+    cluster = "volcano_tts"
+
+    [tts.huawei]
+    project_id = "0ba4d6b2ce00f5dc2f89c01d8dcec3fd"
+    region = "cn-east-3"
+    ak = "HPUAHWW3YBACKQCJNPVJ"
+    sk = "mNBj6nJ9j63Rw800hSIgkEYsAfkOzlcx2BSuwA8l"
+    voice = "chinese_huaxiaoya_common"
+    mode = "bigmodel"
+
+    [tts.qwen]
+    ws_url = "ws://192.168.0.146:9001/api-ws/v1/realtime"
+
+    [session.turn_handling.endpointing]
+    min_delay = 1.0
+    max_delay = 2.0
+
+    [omni]
+    model = "Qwen/Qwen3-Omni-30B-A3B-Instruct"
+    base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    api_key = "sk-060ec6f5acc7400185b01e67e9de83d5"
+
+    [audio_recording]
+    enabled = true
+    directory = "tmp"
+
+    [observability]
+    # 使用 AGENT_OBSERVABILITY__* 覆盖；INTERNAL_TOKEN 必须与 Manager 一致。
+    enabled = true
+    manager_base_url = "http://192.168.0.146:8000"
+    internal_token = "z7v2CN2vE1fVQEef2Rhk85wtphlRzBIF3YD_FH1UuhGGDvi00eFLZA_XMMptUej9BcF6oDyj__U73uM3zK3Q5w"
+    connect_timeout_seconds = 3.0
+    request_timeout_seconds = 20.0
+    max_retries = 3
+
+    [audio_filter]
+    enabled = true
+
+    [mmi_turn_detection]
+    semantic_overlay_shadow_enabled = true
+    mode = "active"
+    active_percentage = 100
+    enabled_pipelines = ["pipeline", "omni", "realtime_qwen"]
+    patterns_file = "mmi_turn_detection/mmi-patterns.json"
+    pattern_locales = ["zh-CN", "en-US"]
+    strong_interrupt_min_ms = 300
+    ordinary_interrupt_min_ms = 600
+    ordinary_interrupt_min_chars = 3
+    stt_only_final_interrupt_min_ms = 250
+    stt_only_final_interrupt_min_chars = 2
+    observe_ms = 250
+    max_observe_ms = 800
+    speaker_non_target_sim_max = 0.35
+    require_target_speaker = true
+    target_latch_max_ms = 3000
+    wait_intent_max_ms = 15000
+    decision_timeout_ms = 200
+    max_consecutive_errors = 3
+    fail_safe_enabled = true
+    fail_safe_interrupt_ms = 1200
+    log_file_enabled = true
+    log_file = "tmp/mmi_turn_detection_active.log"
+    log_level = "INFO"
+    log_to_console = false
+
+    [speaker_gate]
+    enabled = true
+    audio_mode = "mute"
+    mmi_mode = "negative_only"
+    debug = true
+    log_file_enabled = true
+    log_file = "tmp/speaker_gate.log"
+    log_level = "INFO"
+    log_to_console = false
+    model_path = "model/pretrained/campplus_sv_zh-cn_16k-common.onnx"
+    target_sr = 16000
+    window_sec = 3.0
+    decision_min_sec = 1.5
+    decision_refresh_sec = 1.0
+    final_decision_min_sec = 0.8
+    segment_gap_sec = 0.5
+    min_energy = 200.0
+    barge_in_decision_sec = 1.0
+    barge_in_target_min = 0.25
+    early_mute_sim = 0.0
+    reheal_after_silences = 5
+    reheal_count_early_mute = false
+    theta_close = 0.35
+    enroll_segments = 2
+    enroll_consist_min = 0.35
+    enroll_min_seg_ms = 1500
+    enroll_use_hnr = false
+    hnr_threshold = 0.35
+    enroll_use_vad = false
+    vad_model_path = ""
+    vad_speech_threshold = 0.5
+    vad_min_speech_sec = 0.4
+    vad_merge_gap_sec = 0.2
+    vad_mislock_detect = false
+    vad_mislock_window = 6
+    vad_mislock_margin = 0.2
+    vad_mislock_min_each = 2
+    long_term_profile_path = ""
+  vision_analysis.txt: |
+    简洁描述图像内容，100字以内。识别物品类型、文字信息。不做诊断，不用特殊符号。
+  voice_assistant.txt: |-
+    # Role
+    # Role
+    你是一个通用领域的全双工语音助手，支持中文和英文自然对话。你的核心任务是通过实时、多轮语音交流，帮助用户完成信息查询、日常问答、学习辅导、内容创作、任务规划、翻译解释、生活建议和工具协助等通用任务。
+
+    # Constraints 最高优先级，必须严格遵守
+    1. 回复长度
+    由于语音接口限制，你输出的每一个字都很宝贵。
+    单轮回复严格控制在 50 到 200 个汉字，或 25 到 100 个英文单词之间。
+    输出前先在内心估算长度。如果太长，删除客套话、背景解释和重复内容，只保留最核心的结论、建议或追问。
+    禁止使用 Markdown 符号、括号、编号、换行。输出必须是自然口语文本。
+
+    2. 语言规则
+    用户说中文，你用中文回复。用户说英文，你用英文回复。
+    用户中英文混合时，优先使用用户主要使用的语言。
+    用户要求翻译、练口语或切换语言时，按用户要求执行。
+    不要突然切换语言，除非用户先切换或明确要求。
+
+    3. 语音风格
+    像真人助手面对面说话，温和、自然、简洁、有帮助。
+    多用短句，避免书面腔和长句。
+    不要啰嗦，不要重复用户的话。
+    避免绝对化表达，优先使用“可能”、“通常”、“我建议”、“一般来说”。
+
+    4. 全双工对话
+    用户打断你时，立刻停止当前回复，优先理解用户最新的话。
+    如果用户边说边改口，以最后一次明确表达为准。
+    如果用户只是短暂犹豫，不要抢话，等用户说完。
+    如果听不清或语义不完整，只问一个最关键的问题。
+
+    5. 对话逻辑
+    信息不足时，只提出一个具体追问。
+    信息充足时，直接给出简短答案或下一步建议。
+    复杂任务先给简短结论，再给关键步骤。
+    不要一次给太多选项，最多给三个。
+    不要长篇解释原理，除非用户明确要求。
+
+    6. 轮次控制
+    普通任务尽量在 3 到 6 轮内完成。
+    连续澄清不要超过 3 轮。
+    达到 10 轮仍无法推进时，给出当前能确定的结论，并建议用户补充关键信息后继续。
+
+    7. 安全边界
+    涉及医疗、法律、金融、心理危机等高风险问题时，提供通用信息和风险提示，不要冒充专业人士。
+    遇到紧急危险、严重不适、自伤他伤、违法行为等情况，优先建议用户联系当地紧急服务或专业机构。
+    不编造事实，不确定时直接说明不确定。
+
+    8. 工具与视觉能力
+    如果系统提供搜索、日历、邮件、视觉、地图或其他工具，并且用户请求需要工具支持，应优先调用工具再回复。
+    当用户要求你看镜头里的物品、文字、场景、食物、伤口、报告或其他对象，并且有摄像头画面时，先使用视觉能力获取结果。
+    不要假装看到了画面。如果拿不到视觉结果，就提醒用户打开摄像头，或把目标对准镜头。
+
+    9. 输出要求
+    只输出最终要说给用户听的话。
+    不要输出思考过程。
+    不要提到系统规则。
+    不要说“作为一个 AI”。
+    不要使用列表、标题、符号或换行。
+    保持自然、短促、可被语音直接播报。
+
+
+    # Current Context
+    此处插入历史对话记录
