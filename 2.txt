@@ -1,0 +1,6 @@
+ssh://git@codehub-dg-g.huawei.com:2222/cbu/ei/css/opensearch-plugins/processor-utils.git
+huawei/cbu/css/3.4.0
+ssh://git@codehub-dg-g.huawei.com:2222/opensourcecenter/opensearch-project/neural-search.git
+huawei/cbu/css/3.4.0.0
+ssh://git@codehub-dg-g.huawei.com:2222/cbu/ei/css/opensearch-plugins/agent-base-plugin.git
+huawei/cbu/css/3.4.0
