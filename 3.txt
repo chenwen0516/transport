@@ -1,0 +1,29 @@
+[Versatile] [KooSearch] 知识库增加检索服务，通过开启“长文本开关”支持“小召大”策略， 需要在搜索接口中支持对上面“长文本开关”的生效 ：https://clouddevops.huawei.com/workitem/FE2025110400302
+[Versatile] [KooSearch] Versatile 在开发者空间提供AI能力， 面向2C的开发者，依赖KooSearch服务构建RAG能力， 期待通过减少分片降低成本：https://clouddevops.huawei.com/workitem/FE2025110400298
+KooSearch知识库上传文档需要对文档名称的长度、特殊字符等做校验 ：https://clouddevops.huawei.com/workitem/FE2025070201010
+https://codehub-g.huawei.com/cbu/ei/css/kos/UniSearch/merge_requests/1829
+https://codehub-g.huawei.com/cbu/ei/css/kos/UniSearch/merge_requests/1833
+https://codehub-g.huawei.com/cbu/ei/css/kos/UniSearch/merge_requests/1839
+https://codehub-g.huawei.com/cbu/ei/css/kos/UniSearch/merge_requests/1840
+https://codehub-g.huawei.com/cbu/ei/css/kos/UniSearch/merge_requests/1859
+https://codehub-g.huawei.com/cbu/ei/css/kos/UniSearch/merge_requests/1846
+https://codehub-g.huawei.com/cbu/ei/css/kos/UniSearch/merge_requests/1863
+https://codehub-g.huawei.com/cbu/ei/css/kos/UniSearch/merge_requests/1905
+https://codehub-g.huawei.com/cbu/ei/css/kos/UniSearch/merge_requests/1903
+https://codehub-g.huawei.com/cbu/ei/css/kos/UniSearch/merge_requests/1913
+【CSS】【kos】【独享版】【unisearch】创建记忆索引接口必填参数校验问题 ：https://clouddevops.huawei.com/#/bug/BUG2025093027269
+【CSS】【kos】【独享版】【unisearch】创建记忆索引接口参数校验问题 ：https://clouddevops.huawei.com/#/bug/BUG2025100928753
+【CSS】【kos】【独享版】【unisearch】记忆列表查询接口参数校验及功能问题 ：https://clouddevops.huawei.com/#/bug/BUG2025100929290
+【CSS】【kos】【独享版】【unisearch】记忆列表、记忆检索、批量删除接口根据2个及以上元数据过滤时，接口调用报错 ：https://clouddevops.huawei.com/#/bug/BUG2025101027308
+【CSS】【kos】【独享版】【unisearch】记忆检索接口仅存在过滤条件时受threshold值影响无法正常召回数据，且通过query检索召回数据未显示得分 ：https://clouddevops.huawei.com/#/bug/BUG2025101027345
+【CSS】【kos】【独享版】【unisearch】添加记忆接口及记忆检索接口xx_id参数校验与api设计实现不一致问题 ：https://clouddevops.huawei.com/#/bug/BUG2025101119544
+【CSS】【kos】【独享版】【unisearch】添加记忆、更新记忆接口metadata参数校验及功能问题 ：https://clouddevops.huawei.com/#/bug/BUG2025101122991
+【CSS】【kos】【独享版】【unisrarch】创建记忆数据接口，当请求的索引不存在时，会自动创建index ：https://clouddevops.huawei.com/#/bug/BUG2025101123345
+【CSS】【kos】【独享版】【unsearch】开启iam鉴权后请求头缺失鉴权信息报错error_message和响应码看不出来是鉴权信息异常，鉴权数据异常场景接口返回500建议修改为403 ：https://clouddevops.huawei.com/#/bug/BUG2025101317892
+【CSS】【kos】【独享版】【unisearch】记忆索引创建接口模型状态异常时错误提示信息翻译错误 ：https://clouddevops.huawei.com/#/bug/BUG2025101414968
+【CSS】【kos】【独享版】【unisearch】记忆数据入库及查询响应速度过慢及相关接口不具备流控 ：https://clouddevops.huawei.com/#/bug/BUG2025101519706
+【CSS】【kos】【独享版】【搜索模型】使用三方embedding/rerank模型，问答打分效果差 ：https://clouddevops.huawei.com/#/bug/BUG2025120429235
+【CSS】【kos】【独享版】【三方embedding模型】QA生成失败 ：https://clouddevops.huawei.com/#/bug/BUG2025120626909
+【CSS】【kos】【独享版】【三方embedding模型】不允许重建版本，提示没有faq模型 ：https://clouddevops.huawei.com/#/bug/BUG2025120625787
+【CSS】【kos】【独享版】【三方embedding模型】使用三方embedding模型创建知识库，文档和结构化数据上传偶现失败数据，报错与es相关 ：https://clouddevops.huawei.com/#/bug/BUG2025120624241
+【CSS】【kos】【独享版】【体验平台】搜索接口支持开启长文本：extend_context为true时，搜素长文本效果未生效 ：https://clouddevops.huawei.com/#/bug/BUG2025121836360
